@@ -1,0 +1,34 @@
+
+name: sourcepoint_unified_cmp
+
+packages:
+  - packages/*
+  - packages/*/*
+
+command:
+  version:
+    # Generate commit links in package changelogs.
+    #linkToCommits: true
+    # # Only allow versioning to happen on main branch.
+    # branch: master
+    # Additionally build a changelog at the root of the workspace.
+    workspaceChangelog: true
+    
+scripts:
+  analyze:
+    exec: dart analyze .
+
+  format:
+    run: |
+      dart pub global run flutter_plugin_tools format && \
+      swiftformat .
+    description: |
+       - Requires `swiftformat` (can be installed via Brew on macOS).
+
+  generate:pigeon:
+    run: |
+      melos exec -- "flutter pub run pigeon --input ./pigeons/messages.dart" && \
+      melos run format --no-select
+    packageFilters:
+      fileExists: 'pigeons/messages.dart'
+    description: Generate the pigeon messages for all the supported packages.

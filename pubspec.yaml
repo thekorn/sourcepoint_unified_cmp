@@ -1,0 +1,6 @@
+name: sourcepoint_unified_cmp
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+dev_dependencies:
+  melos: ^4.0.0
