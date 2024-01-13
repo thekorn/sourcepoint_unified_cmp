@@ -3,7 +3,7 @@ name: sourcepoint_unified_cmp
 
 packages:
   - packages/*
-  - packages/*/*
+  - packages/*/example
 
 sdkPath: .fvm/flutter_sdk
 
