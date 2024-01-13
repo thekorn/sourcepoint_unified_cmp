@@ -30,8 +30,10 @@ void main() {
 
     test('can be registered', () {
       SourcepointUnifiedCmpAndroid.registerWith();
-      expect(SourcepointUnifiedCmpPlatform.instance,
-          isA<SourcepointUnifiedCmpAndroid>());
+      expect(
+        SourcepointUnifiedCmpPlatform.instance,
+        isA<SourcepointUnifiedCmpAndroid>(),
+      );
     });
 
     test('getPlatformName returns correct name', () async {

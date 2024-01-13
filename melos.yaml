@@ -8,6 +8,11 @@ packages:
 sdkPath: .fvm/flutter_sdk
 
 command:
+  clean:
+    hooks:
+      # Runs "flutter clean" in all Flutter packages (`--flutter`)
+      # with a concurrency of 3 at a time (`--concurrency=3`).
+      post: melos exec --flutter --concurrency=3 -- "fvm flutter clean"
   version:
     # Generate commit links in package changelogs.
     #linkToCommits: true
@@ -18,7 +23,7 @@ command:
     
 scripts:
   analyze:
-    exec: fvm dart analyze .
+    exec: fvm flutter analyze .
 
   pana:
     exec: fvm exec pana . --no-warning

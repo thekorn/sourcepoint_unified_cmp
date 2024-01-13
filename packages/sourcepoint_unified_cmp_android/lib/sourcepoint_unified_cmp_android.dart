@@ -8,7 +8,8 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('sourcepoint_unified_cmp_android');
 
-  /// Registers this class as the default instance of [SourcepointUnifiedCmpPlatform]
+  /// Registers this class as the default instance
+  /// of [SourcepointUnifiedCmpPlatform]
   static void registerWith() {
     SourcepointUnifiedCmpPlatform.instance = SourcepointUnifiedCmpAndroid();
   }
