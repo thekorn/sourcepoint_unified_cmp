@@ -42,3 +42,11 @@ scripts:
     packageFilters:
       fileExists: 'pigeons/messages.dart'
     description: Generate the pigeon messages for all the supported packages.
+
+  run:example:
+    run: fvm flutter run -d sdk
+    description: Run the example app.
+    exec:
+      concurrency: 1
+    packageFilters:
+        scope: 'sourcepoint_unified_cmp_example'
