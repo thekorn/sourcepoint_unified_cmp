@@ -1,6 +1,6 @@
 # sourcepoint unified cmp
 
-This is the flutter integration for sourcepoints unified CMP sdk.
+This is the flutter integration for sourcepoint's unified CMP sdk.
 
 ## requirements
 

@@ -17,6 +17,8 @@
   "useGitignore": true,
   "words": [
     "fluttium",
-    "sourcepoint"
+    "sourcepoint",
+    "swiftformat",
+    "flutterfire"
   ]
 }
