@@ -1,0 +1,29 @@
+name: sourcepoint_unified_cmp_ios
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/sourcepoint_unified_cmp_ios.yaml"
+      - "sourcepoint_unified_cmp_ios/**"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/sourcepoint_unified_cmp_ios.yaml"
+      - "sourcepoint_unified_cmp_ios/**"
+
+jobs:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      flutter_channel: stable
+      flutter_version: 3.13.2
+      working_directory: sourcepoint_unified_cmp_ios
+
+  pana:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
+
