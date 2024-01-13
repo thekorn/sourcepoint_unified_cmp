@@ -82,7 +82,7 @@ jobs:
         with:
           api-level: 29
           script: fluttium test flows/test_platform_name.yaml -d android
-          working-directory: sourcepoint_unified_cmp/example
+          working-directory: packages/sourcepoint_unified_cmp/example
 
   ios:
     runs-on: macos-latest
