@@ -8,13 +8,13 @@ on:
   pull_request:
     paths:
       - ".github/workflows/sourcepoint_unified_cmp_android.yaml"
-      - "sourcepoint_unified_cmp_android/**"
+      - "packages/sourcepoint_unified_cmp_android/**"
   push:
     branches:
       - main
     paths:
       - ".github/workflows/sourcepoint_unified_cmp_android.yaml"
-      - "sourcepoint_unified_cmp_android/**"
+      - "packages/sourcepoint_unified_cmp_android/**"
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
     with:
       flutter_channel: stable
       flutter_version: 3.13.2
-      working_directory: sourcepoint_unified_cmp_android
+      working_directory: packages/sourcepoint_unified_cmp_android
 
   pana:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1

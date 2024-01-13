@@ -8,13 +8,13 @@ on:
   pull_request:
     paths:
       - ".github/workflows/sourcepoint_unified_cmp.yaml"
-      - "sourcepoint_unified_cmp/**"
+      - "packages/sourcepoint_unified_cmp/**"
   push:
     branches:
       - main
     paths:
       - ".github/workflows/sourcepoint_unified_cmp.yaml"
-      - "sourcepoint_unified_cmp/**"
+      - "packages/sourcepoint_unified_cmp/**"
 
 jobs:
   spell-check:
@@ -31,7 +31,7 @@ jobs:
     with:
       flutter_channel: stable
       flutter_version: 3.13.2
-      working_directory: sourcepoint_unified_cmp
+      working_directory: packages/sourcepoint_unified_cmp
 
   pana:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
@@ -42,7 +42,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: sourcepoint_unified_cmp/example
+        working-directory: packages/sourcepoint_unified_cmp/example
 
     steps:
       - uses: actions/checkout@v4
@@ -87,7 +87,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: sourcepoint_unified_cmp/example
+        working-directory: packages/sourcepoint_unified_cmp/example
 
     steps:
       - uses: actions/checkout@v4
@@ -112,7 +112,7 @@ jobs:
     if: false # todo(renancaraujo): https://github.com/wolfenrain/fluttium/issues/345
     defaults:
       run:
-        working-directory: sourcepoint_unified_cmp/example
+        working-directory: packages/sourcepoint_unified_cmp/example
 
     steps:
       - uses: actions/checkout@v4
@@ -135,7 +135,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: sourcepoint_unified_cmp/example
+        working-directory: packages/sourcepoint_unified_cmp/example
 
     steps:
       - uses: actions/checkout@v4
@@ -153,7 +153,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: sourcepoint_unified_cmp/example
+        working-directory: packages/sourcepoint_unified_cmp/example
 
     steps:
       - uses: actions/checkout@v4
@@ -171,7 +171,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: sourcepoint_unified_cmp/example
+        working-directory: packages/sourcepoint_unified_cmp/example
 
     steps:
       - uses: actions/checkout@v4
