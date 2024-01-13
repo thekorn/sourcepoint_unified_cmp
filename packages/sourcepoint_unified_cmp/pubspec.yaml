@@ -1,8 +1,6 @@
 name: sourcepoint_unified_cmp
 description: sourcepoint unified cmp plugin for flutter
 version: 0.1.0+1
-publish_to: none
-
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -18,12 +16,9 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  sourcepoint_unified_cmp_android:
-    path: ../sourcepoint_unified_cmp_android
-  sourcepoint_unified_cmp_ios:
-    path: ../sourcepoint_unified_cmp_ios
-  sourcepoint_unified_cmp_platform_interface:
-    path: ../sourcepoint_unified_cmp_platform_interface
+  sourcepoint_unified_cmp_android: ^0.1.0+1
+  sourcepoint_unified_cmp_ios: ^0.1.0+1
+  sourcepoint_unified_cmp_platform_interface: ^0.1.0+1
 
 dev_dependencies:
   flutter_test:
