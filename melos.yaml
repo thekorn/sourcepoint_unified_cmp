@@ -35,6 +35,23 @@ scripts:
     description: |
        - Requires `swiftformat` (can be installed via Brew on macOS).
 
+  test:all:
+    run: |
+      melos run test --no-select
+    description: |
+      Run all tests available.
+
+  test:
+    run: |
+      melos exec -c 6 --fail-fast -- \
+        "flutter test"
+    description: Run `flutter test` for a specific package.
+    packageFilters:
+      dirExists:
+        - test
+      ignore:
+        - '*example*'
+
   generate:pigeon:
     run: |
       melos exec -- "fvm flutter pub run pigeon --input ./pigeons/messages.dart" && \

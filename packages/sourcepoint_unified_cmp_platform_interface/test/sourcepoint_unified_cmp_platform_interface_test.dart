@@ -5,7 +5,7 @@ class SourcepointUnifiedCmpMock extends SourcepointUnifiedCmpPlatform {
   static const mockPlatformName = 'Mock';
 
   @override
-  Future<String?> getPlatformName() async => mockPlatformName;
+  Future<void> loadPrivacyManager() async => mockPlatformName;
 }
 
 void main() {
@@ -21,8 +21,9 @@ void main() {
     group('getPlatformName', () {
       test('returns correct name', () async {
         expect(
-          await SourcepointUnifiedCmpPlatform.instance.getPlatformName(),
-          equals(SourcepointUnifiedCmpMock.mockPlatformName),
+          () async =>
+              SourcepointUnifiedCmpPlatform.instance.loadPrivacyManager(),
+          isA<void>(),
         );
       });
     });

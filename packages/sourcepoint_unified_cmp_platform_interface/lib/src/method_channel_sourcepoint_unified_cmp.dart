@@ -10,7 +10,7 @@ class MethodChannelSourcepointUnifiedCmp extends SourcepointUnifiedCmpPlatform {
   final methodChannel = const MethodChannel('sourcepoint_unified_cmp');
 
   @override
-  Future<String?> getPlatformName() {
-    return methodChannel.invokeMethod<String>('getPlatformName');
+  Future<void> loadPrivacyManager() {
+    return methodChannel.invokeMethod<String>('loadPrivacyManager');
   }
 }

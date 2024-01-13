@@ -32,6 +32,8 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  /// Return the current platform name.
-  Future<String?> getPlatformName();
+  /// show privacy manager
+  Future<void> loadPrivacyManager() {
+    throw UnimplementedError('loadPrivacyManager() has not been implemented.');
+  }
 }

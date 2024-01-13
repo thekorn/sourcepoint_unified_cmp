@@ -19,25 +19,12 @@ void main() {
       SourcepointUnifiedCmpPlatform.instance = sourcepointUnifiedCmpPlatform;
     });
 
-    group('getPlatformName', () {
-      test('returns correct name when platform implementation exists',
-          () async {
-        const platformName = '__test_platform__';
+    group('loadPrivacyManager', () {
+      test('load the privacy manager', () async {
         when(
-          () => sourcepointUnifiedCmpPlatform.getPlatformName(),
-        ).thenAnswer((_) async => platformName);
-
-        final actualPlatformName = await getPlatformName();
-        expect(actualPlatformName, equals(platformName));
-      });
-
-      test('throws exception when platform implementation is missing',
-          () async {
-        when(
-          () => sourcepointUnifiedCmpPlatform.getPlatformName(),
-        ).thenAnswer((_) async => null);
-
-        expect(getPlatformName, throwsException);
+          () => sourcepointUnifiedCmpPlatform.loadPrivacyManager(),
+        ).thenAnswer((_) async {});
+        expect(() async => loadPrivacyManager(), isA<void>());
       });
     });
   });
