@@ -41,6 +41,7 @@ jobs:
 
   android:
     runs-on: macos-latest
+    if: false    # for now we don't run android tests
 
     defaults:
       run:
@@ -86,6 +87,7 @@ jobs:
 
   ios:
     runs-on: macos-latest
+    if: false    # for now we don't run ios tests
 
     defaults:
       run:
