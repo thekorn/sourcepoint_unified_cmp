@@ -78,9 +78,15 @@ SourcepointUnifiedCMPBuilder(
 
 **Result:**
 
-![](./docs/images/sample.gif)
+When opening the app for the first time, the consent dialog will be shown:
 
-The consent output we get is:
+![](./docs/images/sample-1st-run.gif)
+
+Any subsequent run will load the consent from cache:
+
+![](./docs/images/sample-2nd-run.gif)
+
+In both cases we get this consent output:
 ```
 user consent has been loaded:
     grants: {5e7ced57b8e05c5a7d171cda: GDPRPurposeGrants(granted: false, purposeGrants: {}), 5e37fc3e56a5e60e003a7124: GDPRPurposeGrants(granted: true, purposeGrants: {5e87321eb31ef52cd96cc552: true, 5e87321eb31ef52cd96cc553: true, 5e87321eb31ef52cd96cc554: true, 5e87321eb31ef52cd96cc555: true, 5e87321eb31ef52cd96cc556: true, 5e87321eb31ef52cd96cc558: true, 5e87321eb31ef52cd96cc559: true, 5e87321eb31ef52cd96cc55a: true, 5e87321eb31ef52cd96cc55b: true, 5e87321eb31ef52cd96cc55c: true}), 5e4a5fbf26de4a77922b38a6: GDPRPurposeGrants(granted: true, purposeGrants: {5e87321eb31ef52cd96cc556: true})}
