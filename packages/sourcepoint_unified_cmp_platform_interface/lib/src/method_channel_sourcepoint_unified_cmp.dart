@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:flutter/services.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
-import 'package:sourcepoint_unified_cmp_platform_interface/src/types.dart';
 
 /// An implementation of [SourcepointUnifiedCmpPlatform] that uses method
 /// channels.
