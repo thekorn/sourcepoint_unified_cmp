@@ -20,7 +20,39 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? _platformName;
+  late final SourcepointController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = SourcepointController()
+      ..setCmpConfig(
+        accountId: 22,
+        propertyId: 7639,
+        propertyName: 'tcfv2.mobile.webview',
+        pmId: '122058',
+      );
+    //onConsentUIReady: () {
+    //  debugPrint('onConsentUIReady');
+    //},
+    //onConsentUIFinished: () {
+    //  debugPrint('onConsentUIFinished');
+    //},
+    //onConsentReady: ({GDPRUserConsent? consent}) {
+    //  debugPrint('Consent string: ${consent?.consentString}');
+    //  debugPrint('Consent action is taken and returned to Sourcepoint');
+    //},
+    //onAction: (ActionType? action) {
+    //  debugPrint('onAction(${action.toString()})');
+    //},
+    //onError: (errorCode) {
+    //  debugPrint('consentError: errorCode:$errorCode');
+    //},
+
+    //Show on Start
+    _controller.load();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,31 +62,16 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (_platformName == null)
-              const SizedBox.shrink()
-            else
-              Text(
-                'Platform Name: $_platformName',
-                style: Theme.of(context).textTheme.headlineSmall,
+            Center(
+              child: TextButton(
+                onPressed: () {
+                  _controller.loadPrivacyManager();
+                },
+                child: const Text(
+                  'Show PrivacyManager',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () async {
-                if (!context.mounted) return;
-                try {
-                  final result = await getPlatformName();
-                  setState(() => _platformName = result);
-                } catch (error) {
-                  if (!context.mounted) return;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: Theme.of(context).primaryColor,
-                      content: Text('$error'),
-                    ),
-                  );
-                }
-              },
-              child: const Text('Get Platform Name'),
             ),
           ],
         ),
