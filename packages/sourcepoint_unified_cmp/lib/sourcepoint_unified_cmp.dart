@@ -1,11 +1,28 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
+
+export 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart'
+    show SPConfig;
 
 SourcepointUnifiedCmpPlatform get _platform =>
     SourcepointUnifiedCmpPlatform.instance;
 
-/// Returns the name of the current platform.
-Future<String> getPlatformName() async {
-  final platformName = await _platform.getPlatformName();
-  if (platformName == null) throw Exception('Unable to get platform name.');
-  return platformName;
+class SourcepointController {
+  SourcepointController({required this.config});
+  final SPConfig config;
+
+  /// show privacy manager
+  Future<void> loadPrivacyManager() async {
+    await _platform.loadPrivacyManager(config);
+  }
+
+  /// initially show privacy manager if neccesarry and load consent
+  Future<void> load() async {
+    await _platform.load(config);
+  }
+
+  Future<void> init() async {
+    await _platform.init(config);
+  }
 }

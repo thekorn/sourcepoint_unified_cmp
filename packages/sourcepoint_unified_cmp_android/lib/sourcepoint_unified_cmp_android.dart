@@ -1,12 +1,11 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:sourcepoint_unified_cmp_android/src/messages.g.dart'
+    as messages;
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
 
 /// The Android implementation of [SourcepointUnifiedCmpPlatform].
 class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
-  /// The method channel used to interact with the native platform.
-  @visibleForTesting
-  final methodChannel = const MethodChannel('sourcepoint_unified_cmp_android');
+  final messages.SourcepointUnifiedCmpApi _api =
+      messages.SourcepointUnifiedCmpApi();
 
   /// Registers this class as the default instance
   /// of [SourcepointUnifiedCmpPlatform]
@@ -15,7 +14,32 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   }
 
   @override
-  Future<String?> getPlatformName() {
-    return methodChannel.invokeMethod<String>('getPlatformName');
+  Future<void> loadPrivacyManager(SPConfig config) {
+    return _api.loadPrivacyManager(
+      accountId: config.accountId,
+      propertyId: config.propertyId,
+      propertyName: config.propertyName,
+      pmId: config.pmId,
+    );
+  }
+
+  @override
+  Future<void> load(SPConfig config) {
+    return _api.loadPrivacyManager(
+      accountId: config.accountId,
+      propertyId: config.propertyId,
+      propertyName: config.propertyName,
+      pmId: config.pmId,
+    );
+  }
+
+  @override
+  Future<void> init(SPConfig config) {
+    return _api.init(
+      accountId: config.accountId,
+      propertyId: config.propertyId,
+      propertyName: config.propertyName,
+      pmId: config.pmId,
+    );
   }
 }
