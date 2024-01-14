@@ -13,4 +13,9 @@ class MethodChannelSourcepointUnifiedCmp extends SourcepointUnifiedCmpPlatform {
   Future<void> loadPrivacyManager() {
     return methodChannel.invokeMethod<String>('loadPrivacyManager');
   }
+
+  @override
+  Future<void> load() {
+    return methodChannel.invokeMethod<String>('load');
+  }
 }
