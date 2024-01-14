@@ -96,10 +96,10 @@ user consent has been loaded:
 ## TODO
 - [ ] commit on an api
   - [x] the api for the initial consent loading
-  - [ ] api on the on demand loading of the consent message
-  - [ ] implementation of a `SourcepointEventDelegate` which allows the flutter stack to hook onto consent events
+  - [ ] api on the on demand loading of the consent message (#5)
+  - [ ] implementation of a `SourcepointEventDelegate` which allows the flutter stack to hook onto consent events (#6)
   - [ ] commit on namings, at the moment the *public* api of this packages does not stick to a single rule, sometimes it's *SourcepointUnifiedCMP*, sometimes it's *SourcepointCMP*, and in other places just *Sourcepoint*
-- [ ] implementation for ios/swift
+- [ ] implementation for ios/swift (#7)
 - [ ] implementation of tests
 - [ ] open source this as a proper flutter package.
   - [ ] add proper (dart) documentation
