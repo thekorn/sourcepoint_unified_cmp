@@ -10,7 +10,7 @@ class MethodChannelSourcepointUnifiedCmp extends SourcepointUnifiedCmpPlatform {
   final methodChannel = const MethodChannel('sourcepoint_unified_cmp');
 
   @override
-  Future<void> loadMessage(SPConfig config) {
-    return methodChannel.invokeMethod<String>('loadMessage');
+  Future<bool?> loadMessage(SPConfig config) {
+    return methodChannel.invokeMethod<bool>('loadMessage');
   }
 }

@@ -377,7 +377,7 @@ class SourcepointUnifiedCmpHostApi {
   static const MessageCodec<Object?> pigeonChannelCodec =
       StandardMessageCodec();
 
-  Future<void> loadMessage({
+  Future<bool> loadMessage({
     required int accountId,
     required int propertyId,
     required String propertyName,
@@ -402,8 +402,13 @@ class SourcepointUnifiedCmpHostApi {
         message: __pigeon_replyList[1] as String?,
         details: __pigeon_replyList[2],
       );
+    } else if (__pigeon_replyList[0] == null) {
+      throw PlatformException(
+        code: 'null-error',
+        message: 'Host platform returned null value for non-null return value.',
+      );
     } else {
-      return;
+      return (__pigeon_replyList[0] as bool?)!;
     }
   }
 }

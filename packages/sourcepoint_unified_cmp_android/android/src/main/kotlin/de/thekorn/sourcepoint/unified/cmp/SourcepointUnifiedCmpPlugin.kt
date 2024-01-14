@@ -1,6 +1,7 @@
 package de.thekorn.sourcepoint.unified.cmp
 
 
+import SPConsent
 import SourcepointUnifiedCmpHostApi
 import android.app.Activity
 import android.view.View
@@ -21,6 +22,7 @@ import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.BinaryMessenger
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.internal.wait
 import org.json.JSONObject
 
@@ -68,6 +70,7 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
 
 
     internal inner class LocalClient : SpClient {
+        val isInitialized: CompletableDeferred<Boolean> = CompletableDeferred()
         override fun onUIFinished(view: View) {
             Log.d("SourcepointUnifiedCmp", "onUIFinished")
             spConsentLib?.removeView(view)
@@ -80,7 +83,9 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
             Log.d("SourcepointUnifiedCmp", "onNativeMessageReady")
         }
         override fun onError(error: Throwable) {
-            Log.d("SourcepointUnifiedCmp", "onError")}
+            Log.d("SourcepointUnifiedCmp", "onError")
+
+        }
         @Deprecated("onMessageReady callback will be removed in favor of onUIReady. Currently this callback is disabled.",
             ReplaceWith(
                 "onUIReady",
@@ -91,7 +96,13 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
             Log.d("SourcepointUnifiedCmp", "onMessageReady")}
 
         override fun onConsentReady(consent: SPConsents) {
-            Log.d("SourcepointUnifiedCmp", "onConsentReady $consent")}
+            Log.d("SourcepointUnifiedCmp", "onConsentReady $consent")
+
+
+
+            isInitialized.complete(true)
+        }
+
         override fun onAction(view: View, consentAction: ConsentAction): ConsentAction = consentAction
         override fun onNoIntentActivitiesFound(url: String) {
             Log.d("SourcepointUnifiedCmp", "onNoIntentActivitiesFound")}
@@ -104,7 +115,7 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
         propertyId: Long,
         propertyName: String,
         pmId: String,
-        callback: (Result<Unit>) -> Unit
+        callback: (Result<Boolean>) -> Unit
     ) {
         Log.d("SourcepointUnifiedCmp", "loadMessage")
         val cmpConfig = SpConfigDataBuilder()
@@ -124,7 +135,10 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
         //isInitialized.
         spConsentLib =  makeConsentLib(spConfig = cmpConfig, activity = this.activity, spClient = spClient)
         spConsentLib!!.loadMessage()
-        callback(kotlin.Result.success(Unit))
+        spClient.isInitialized.invokeOnCompletion {
+
+            callback(kotlin.Result.success(spClient.isInitialized.getCompleted()))
+        }
     }
 
 }

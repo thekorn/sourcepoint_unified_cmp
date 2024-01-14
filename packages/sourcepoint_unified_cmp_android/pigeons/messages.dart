@@ -161,7 +161,7 @@ class SPConfig {
 @HostApi()
 abstract class SourcepointUnifiedCmpHostApi {
   @async
-  void loadMessage({
+  bool loadMessage({
     required int accountId,
     required int propertyId,
     required String propertyName,

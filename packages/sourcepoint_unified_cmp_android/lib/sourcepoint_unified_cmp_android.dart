@@ -14,7 +14,7 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   }
 
   @override
-  Future<void> loadMessage(SPConfig config) {
+  Future<bool> loadMessage(SPConfig config) {
     return _api.loadMessage(
       accountId: config.accountId,
       propertyId: config.propertyId,

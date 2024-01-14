@@ -355,7 +355,7 @@ data class SPConsent (
 
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface SourcepointUnifiedCmpHostApi {
-  fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, callback: (Result<Unit>) -> Unit)
+  fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, callback: (Result<Boolean>) -> Unit)
 
   companion object {
     /** The codec used by SourcepointUnifiedCmpHostApi. */
@@ -374,12 +374,13 @@ interface SourcepointUnifiedCmpHostApi {
             val propertyIdArg = args[1].let { if (it is Int) it.toLong() else it as Long }
             val propertyNameArg = args[2] as String
             val pmIdArg = args[3] as String
-            api.loadMessage(accountIdArg, propertyIdArg, propertyNameArg, pmIdArg) { result: Result<Unit> ->
+            api.loadMessage(accountIdArg, propertyIdArg, propertyNameArg, pmIdArg) { result: Result<Boolean> ->
               val error = result.exceptionOrNull()
               if (error != null) {
                 reply.reply(wrapError(error))
               } else {
-                reply.reply(wrapResult(null))
+                val data = result.getOrNull()
+                reply.reply(wrapResult(data))
               }
             }
           }
