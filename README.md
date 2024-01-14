@@ -1,5 +1,7 @@
 # sourcepoint unified cmp
 
+**NOTE: this is a work in progress - see TODO section for more details**
+
 This is the flutter integration for sourcepoint's unified CMP sdk.
 
 ## requirements
@@ -74,7 +76,8 @@ SourcepointUnifiedCMPBuilder(
 )
 ```
 
-Result:
+**Result:**
+
 ![](./docs/images/sample.gif)
 
 The consent output we get is:
@@ -84,6 +87,18 @@ user consent has been loaded:
     euconsent: CP4X2gAP4X2gAAGABCENDgCgAL3AAEIAAAYgAHgACAB4AAgDAgAIAMggAEAGQYACADIQABABkOAAgAyKAAQAZAAA.YAAAAAAAAAAA
 ```
 
+## TODO
+- [ ] commit on an api
+  - [x] the api for the initial consent loading
+  - [ ] api on the on demand loading of the consent message
+  - [ ] implementation of a `SourcepointEventDelegate` which allows the flutter stack to hook onto consent events
+- [ ] implementation for ios/swift
+- [ ] implementation of tests
+- [ ] open source this as a proper flutter package.
+  - [ ] add proper (dart) documentation
+- [ ] additional apis:
+  - [ ] ingesting consent into platforms webviews
+  - [ ] more app samples
 
 ## resources
 - [Flutter](https://flutter.dev/)
