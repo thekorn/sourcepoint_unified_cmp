@@ -44,7 +44,7 @@ scripts:
   test:
     run: |
       melos exec -c 6 --fail-fast -- \
-        "flutter test"
+        "fvm flutter test"
     description: Run `flutter test` for a specific package.
     packageFilters:
       dirExists:
@@ -61,7 +61,7 @@ scripts:
     description: Generate the pigeon messages for all the supported packages.
 
   run:example:
-    run: fvm flutter run -d sdk
+    run: fvm flutter run
     description: Run the example app.
     exec:
       concurrency: 1

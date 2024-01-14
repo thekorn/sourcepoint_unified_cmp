@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:flutter/services.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
+import 'package:sourcepoint_unified_cmp_platform_interface/src/types.dart';
 
 /// An implementation of [SourcepointUnifiedCmpPlatform] that uses method
 /// channels.
@@ -10,12 +11,12 @@ class MethodChannelSourcepointUnifiedCmp extends SourcepointUnifiedCmpPlatform {
   final methodChannel = const MethodChannel('sourcepoint_unified_cmp');
 
   @override
-  Future<void> loadPrivacyManager() {
+  Future<void> loadPrivacyManager(SPConfig config) {
     return methodChannel.invokeMethod<String>('loadPrivacyManager');
   }
 
   @override
-  Future<void> load() {
+  Future<void> load(SPConfig config) {
     return methodChannel.invokeMethod<String>('load');
   }
 }

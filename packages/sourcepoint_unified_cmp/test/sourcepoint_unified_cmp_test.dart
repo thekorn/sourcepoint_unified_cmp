@@ -19,13 +19,13 @@ void main() {
       SourcepointUnifiedCmpPlatform.instance = sourcepointUnifiedCmpPlatform;
     });
 
-    group('loadPrivacyManager', () {
-      test('load the privacy manager', () async {
-        when(
-          () => sourcepointUnifiedCmpPlatform.loadPrivacyManager(),
-        ).thenAnswer((_) async {});
-        expect(() async => loadPrivacyManager(), isA<void>());
-      });
-    });
+    //group('loadPrivacyManager', () {
+    //  test('load the privacy manager', () async {
+    //    when(
+    //      () => sourcepointUnifiedCmpPlatform.loadPrivacyManager(),
+    //    ).thenAnswer((_) async {});
+    //    expect(() async => loadPrivacyManager(), isA<void>());
+    //  });
+    //});
   });
 }

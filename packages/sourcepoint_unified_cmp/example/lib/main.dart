@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sourcepoint_unified_cmp/sourcepoint_unified_cmp.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,13 +29,14 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    _controller = SourcepointController()
-      ..setCmpConfig(
-        accountId: 22,
-        propertyId: 7639,
-        propertyName: 'tcfv2.mobile.webview',
-        pmId: '122058',
-      );
+    final config = SPConfig(
+      accountId: 22,
+      propertyId: 7639,
+      propertyName: 'tcfv2.mobile.webview',
+      pmId: '122058',
+    );
+
+    _controller = SourcepointController(config: config);
     //onConsentUIReady: () {
     //  debugPrint('onConsentUIReady');
     //},
@@ -51,7 +55,7 @@ class _HomePageState extends State<HomePage> {
     //},
 
     //Show on Start
-    _controller.load();
+    _controller.init();
   }
 
   @override

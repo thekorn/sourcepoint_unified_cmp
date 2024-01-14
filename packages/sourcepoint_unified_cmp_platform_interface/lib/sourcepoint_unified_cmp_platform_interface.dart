@@ -1,5 +1,8 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/src/method_channel_sourcepoint_unified_cmp.dart';
+import 'package:sourcepoint_unified_cmp_platform_interface/src/types.dart';
+
+export 'package:sourcepoint_unified_cmp_platform_interface/src/types.dart';
 
 /// The interface that implementations of sourcepoint_unified_cmp must
 /// implement.
@@ -33,12 +36,17 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
   }
 
   /// show privacy manager
-  Future<void> loadPrivacyManager() {
+  Future<void> loadPrivacyManager(SPConfig config) {
     throw UnimplementedError('loadPrivacyManager() has not been implemented.');
   }
 
   /// initially show privacy manager if neccesarry and load consent
-  Future<void> load() {
+  Future<void> load(SPConfig config) {
     throw UnimplementedError('load() has not been implemented.');
+  }
+
+  /// initially show privacy manager if neccesarry and load consent
+  Future<void> init(SPConfig config) {
+    throw UnimplementedError('init() has not been implemented.');
   }
 }
