@@ -36,7 +36,7 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
   }
 
   /// show privacy manager
-  Future<bool?> loadMessage(SPConfig config) {
+  Future<SPConsent> loadMessage(SPConfig config) {
     throw UnimplementedError('loadMessage() has not been implemented.');
   }
 }

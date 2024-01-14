@@ -68,15 +68,19 @@ class _SourcepointunifiedCMPBuilderExampleState
         builder: (BuildContext context, AsyncSnapshot<SPConsent> snapshot) {
           List<Widget> children;
           if (snapshot.hasData) {
+            final consent = snapshot.data;
+            debugPrint('user consent has been loaded:');
+            debugPrint('   grants: ${consent?.gdpr?.grants}');
+            debugPrint('euconsent: ${consent?.gdpr?.euconsent}');
             children = <Widget>[
               const Icon(
                 Icons.check_circle_outline,
                 color: Colors.green,
                 size: 60,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: Text('Result: ${snapshot.data}'),
+              const Padding(
+                padding: EdgeInsets.only(top: 16),
+                child: Text('Result: we got initial consent'),
               ),
             ];
           } else if (snapshot.hasError) {

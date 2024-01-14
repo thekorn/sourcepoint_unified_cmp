@@ -27,9 +27,6 @@ class SourcepointController {
   /// and returns the inital consent status
   Future<SPConsent> loadMessage() async {
     debugPrint('loadMessage');
-    final r = await _platform.loadMessage(config);
-    debugPrint('WE GOT RESULT $r');
-
-    return SPConsent();
+    return _platform.loadMessage(config);
   }
 }

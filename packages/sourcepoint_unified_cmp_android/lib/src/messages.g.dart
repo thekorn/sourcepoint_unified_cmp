@@ -26,11 +26,11 @@ List<Object?> wrapResponse(
   return <Object?>[error.code, error.message, error.details];
 }
 
-enum PMTab {
+enum HostAPIPMTab {
   purposes,
 }
 
-enum CampaignType {
+enum HostAPICampaignType {
   gdpr,
   ccpa,
 }
@@ -41,13 +41,13 @@ enum MessageType {
   lagazyOtt,
 }
 
-enum GranularState {
+enum HostAPIGranularState {
   all,
   some,
   none,
 }
 
-enum ActionType {
+enum HostAPIActionType {
   showOptions,
   rejectAll,
   acceptAll,
@@ -57,7 +57,7 @@ enum ActionType {
   pmDismiss,
 }
 
-enum SourcepointUnifiedCmpError {
+enum HostAPISourcepointUnifiedCmpError {
   invalidArgumentException,
   missingPropertyException,
   invalidConsentResponse,
@@ -67,19 +67,19 @@ enum SourcepointUnifiedCmpError {
   invalidRequestException,
 }
 
-class ConsentAction {
-  ConsentAction({
+class HostAPIConsentAction {
+  HostAPIConsentAction({
     required this.actionType,
     required this.pubData,
     required this.campaignType,
     this.customActionId,
   });
 
-  ActionType actionType;
+  HostAPIActionType actionType;
 
   Object pubData;
 
-  CampaignType campaignType;
+  HostAPICampaignType campaignType;
 
   String? customActionId;
 
@@ -92,19 +92,19 @@ class ConsentAction {
     ];
   }
 
-  static ConsentAction decode(Object result) {
+  static HostAPIConsentAction decode(Object result) {
     result as List<Object?>;
-    return ConsentAction(
-      actionType: ActionType.values[result[0]! as int],
+    return HostAPIConsentAction(
+      actionType: HostAPIActionType.values[result[0]! as int],
       pubData: result[1]!,
-      campaignType: CampaignType.values[result[2]! as int],
+      campaignType: HostAPICampaignType.values[result[2]! as int],
       customActionId: result[3] as String?,
     );
   }
 }
 
-class GDPRPurposeGrants {
-  GDPRPurposeGrants({
+class HostAPIGDPRPurposeGrants {
+  HostAPIGDPRPurposeGrants({
     required this.granted,
     this.purposeGrants,
   });
@@ -120,9 +120,9 @@ class GDPRPurposeGrants {
     ];
   }
 
-  static GDPRPurposeGrants decode(Object result) {
+  static HostAPIGDPRPurposeGrants decode(Object result) {
     result as List<Object?>;
-    return GDPRPurposeGrants(
+    return HostAPIGDPRPurposeGrants(
       granted: result[0]! as bool,
       purposeGrants:
           (result[1] as Map<Object?, Object?>?)?.cast<String?, bool?>(),
@@ -130,8 +130,8 @@ class GDPRPurposeGrants {
   }
 }
 
-class GranularStatus {
-  GranularStatus({
+class HostAPIGranularStatus {
+  HostAPIGranularStatus({
     this.defaultConsent,
     this.previousOptInAll,
     this.purposeConsent,
@@ -144,13 +144,13 @@ class GranularStatus {
 
   bool? previousOptInAll;
 
-  GranularState? purposeConsent;
+  HostAPIGranularState? purposeConsent;
 
-  GranularState? purposeLegInt;
+  HostAPIGranularState? purposeLegInt;
 
-  GranularState? vendorConsent;
+  HostAPIGranularState? vendorConsent;
 
-  GranularState? vendorLegInt;
+  HostAPIGranularState? vendorLegInt;
 
   Object encode() {
     return <Object?>[
@@ -163,25 +163,29 @@ class GranularStatus {
     ];
   }
 
-  static GranularStatus decode(Object result) {
+  static HostAPIGranularStatus decode(Object result) {
     result as List<Object?>;
-    return GranularStatus(
+    return HostAPIGranularStatus(
       defaultConsent: result[0] as bool?,
       previousOptInAll: result[1] as bool?,
-      purposeConsent:
-          result[2] != null ? GranularState.values[result[2]! as int] : null,
-      purposeLegInt:
-          result[3] != null ? GranularState.values[result[3]! as int] : null,
-      vendorConsent:
-          result[4] != null ? GranularState.values[result[4]! as int] : null,
-      vendorLegInt:
-          result[5] != null ? GranularState.values[result[5]! as int] : null,
+      purposeConsent: result[2] != null
+          ? HostAPIGranularState.values[result[2]! as int]
+          : null,
+      purposeLegInt: result[3] != null
+          ? HostAPIGranularState.values[result[3]! as int]
+          : null,
+      vendorConsent: result[4] != null
+          ? HostAPIGranularState.values[result[4]! as int]
+          : null,
+      vendorLegInt: result[5] != null
+          ? HostAPIGranularState.values[result[5]! as int]
+          : null,
     );
   }
 }
 
-class ConsentStatus {
-  ConsentStatus({
+class HostAPIConsentStatus {
+  HostAPIConsentStatus({
     this.consentedAll,
     this.consentedToAny,
     this.granularStatus,
@@ -196,7 +200,7 @@ class ConsentStatus {
 
   bool? consentedToAny;
 
-  GranularStatus? granularStatus;
+  HostAPIGranularStatus? granularStatus;
 
   bool? hasConsentData;
 
@@ -221,13 +225,13 @@ class ConsentStatus {
     ];
   }
 
-  static ConsentStatus decode(Object result) {
+  static HostAPIConsentStatus decode(Object result) {
     result as List<Object?>;
-    return ConsentStatus(
+    return HostAPIConsentStatus(
       consentedAll: result[0] as bool?,
       consentedToAny: result[1] as bool?,
       granularStatus: result[2] != null
-          ? GranularStatus.decode(result[2]! as List<Object?>)
+          ? HostAPIGranularStatus.decode(result[2]! as List<Object?>)
           : null,
       hasConsentData: result[3] as bool?,
       rejectedAny: result[4] as bool?,
@@ -238,22 +242,22 @@ class ConsentStatus {
   }
 }
 
-class GDPRConsent {
-  GDPRConsent({
+class HostAPIGDPRConsent {
+  HostAPIGDPRConsent({
     this.uuid,
     this.tcData,
     this.grants,
     required this.euconsent,
     this.acceptedCategories,
     required this.apply,
-    required this.consentStatus,
+    this.consentStatus,
   });
 
   String? uuid;
 
   Map<String?, String?>? tcData;
 
-  Map<String?, GDPRPurposeGrants?>? grants;
+  Map<String?, HostAPIGDPRPurposeGrants?>? grants;
 
   String euconsent;
 
@@ -261,7 +265,7 @@ class GDPRConsent {
 
   bool apply;
 
-  ConsentStatus consentStatus;
+  HostAPIConsentStatus? consentStatus;
 
   Object encode() {
     return <Object?>[
@@ -271,27 +275,29 @@ class GDPRConsent {
       euconsent,
       acceptedCategories,
       apply,
-      consentStatus.encode(),
+      consentStatus?.encode(),
     ];
   }
 
-  static GDPRConsent decode(Object result) {
+  static HostAPIGDPRConsent decode(Object result) {
     result as List<Object?>;
-    return GDPRConsent(
+    return HostAPIGDPRConsent(
       uuid: result[0] as String?,
       tcData: (result[1] as Map<Object?, Object?>?)?.cast<String?, String?>(),
       grants: (result[2] as Map<Object?, Object?>?)
-          ?.cast<String?, GDPRPurposeGrants?>(),
+          ?.cast<String?, HostAPIGDPRPurposeGrants?>(),
       euconsent: result[3]! as String,
       acceptedCategories: (result[4] as List<Object?>?)?.cast<String?>(),
       apply: result[5]! as bool,
-      consentStatus: ConsentStatus.decode(result[6]! as List<Object?>),
+      consentStatus: result[6] != null
+          ? HostAPIConsentStatus.decode(result[6]! as List<Object?>)
+          : null,
     );
   }
 }
 
-class CCPAConsent {
-  CCPAConsent({
+class HostAPICCPAConsent {
+  HostAPICCPAConsent({
     this.uuid,
     this.rejectedCategories,
     this.rejectedVendors,
@@ -323,9 +329,9 @@ class CCPAConsent {
     ];
   }
 
-  static CCPAConsent decode(Object result) {
+  static HostAPICCPAConsent decode(Object result) {
     result as List<Object?>;
-    return CCPAConsent(
+    return HostAPICCPAConsent(
       uuid: result[0] as String?,
       rejectedCategories: (result[1] as List<Object?>?)?.cast<String?>(),
       rejectedVendors: (result[2] as List<Object?>?)?.cast<String?>(),
@@ -336,15 +342,15 @@ class CCPAConsent {
   }
 }
 
-class SPConsent {
-  SPConsent({
+class HostAPISPConsent {
+  HostAPISPConsent({
     this.gdpr,
     this.ccpa,
   });
 
-  GDPRConsent? gdpr;
+  HostAPIGDPRConsent? gdpr;
 
-  CCPAConsent? ccpa;
+  HostAPICCPAConsent? ccpa;
 
   Object encode() {
     return <Object?>[
@@ -353,16 +359,64 @@ class SPConsent {
     ];
   }
 
-  static SPConsent decode(Object result) {
+  static HostAPISPConsent decode(Object result) {
     result as List<Object?>;
-    return SPConsent(
+    return HostAPISPConsent(
       gdpr: result[0] != null
-          ? GDPRConsent.decode(result[0]! as List<Object?>)
+          ? HostAPIGDPRConsent.decode(result[0]! as List<Object?>)
           : null,
       ccpa: result[1] != null
-          ? CCPAConsent.decode(result[1]! as List<Object?>)
+          ? HostAPICCPAConsent.decode(result[1]! as List<Object?>)
           : null,
     );
+  }
+}
+
+class _SourcepointUnifiedCmpHostApiCodec extends StandardMessageCodec {
+  const _SourcepointUnifiedCmpHostApiCodec();
+  @override
+  void writeValue(WriteBuffer buffer, Object? value) {
+    if (value is HostAPICCPAConsent) {
+      buffer.putUint8(128);
+      writeValue(buffer, value.encode());
+    } else if (value is HostAPIConsentStatus) {
+      buffer.putUint8(129);
+      writeValue(buffer, value.encode());
+    } else if (value is HostAPIGDPRConsent) {
+      buffer.putUint8(130);
+      writeValue(buffer, value.encode());
+    } else if (value is HostAPIGDPRPurposeGrants) {
+      buffer.putUint8(131);
+      writeValue(buffer, value.encode());
+    } else if (value is HostAPIGranularStatus) {
+      buffer.putUint8(132);
+      writeValue(buffer, value.encode());
+    } else if (value is HostAPISPConsent) {
+      buffer.putUint8(133);
+      writeValue(buffer, value.encode());
+    } else {
+      super.writeValue(buffer, value);
+    }
+  }
+
+  @override
+  Object? readValueOfType(int type, ReadBuffer buffer) {
+    switch (type) {
+      case 128:
+        return HostAPICCPAConsent.decode(readValue(buffer)!);
+      case 129:
+        return HostAPIConsentStatus.decode(readValue(buffer)!);
+      case 130:
+        return HostAPIGDPRConsent.decode(readValue(buffer)!);
+      case 131:
+        return HostAPIGDPRPurposeGrants.decode(readValue(buffer)!);
+      case 132:
+        return HostAPIGranularStatus.decode(readValue(buffer)!);
+      case 133:
+        return HostAPISPConsent.decode(readValue(buffer)!);
+      default:
+        return super.readValueOfType(type, buffer);
+    }
   }
 }
 
@@ -375,9 +429,9 @@ class SourcepointUnifiedCmpHostApi {
   final BinaryMessenger? __pigeon_binaryMessenger;
 
   static const MessageCodec<Object?> pigeonChannelCodec =
-      StandardMessageCodec();
+      _SourcepointUnifiedCmpHostApiCodec();
 
-  Future<bool> loadMessage({
+  Future<HostAPISPConsent> loadMessage({
     required int accountId,
     required int propertyId,
     required String propertyName,
@@ -408,7 +462,7 @@ class SourcepointUnifiedCmpHostApi {
         message: 'Host platform returned null value for non-null return value.',
       );
     } else {
-      return (__pigeon_replyList[0] as bool?)!;
+      return (__pigeon_replyList[0] as HostAPISPConsent?)!;
     }
   }
 }
@@ -417,25 +471,25 @@ class _SourcepointUnifiedCmpFlutterApiCodec extends StandardMessageCodec {
   const _SourcepointUnifiedCmpFlutterApiCodec();
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
-    if (value is CCPAConsent) {
+    if (value is HostAPICCPAConsent) {
       buffer.putUint8(128);
       writeValue(buffer, value.encode());
-    } else if (value is ConsentAction) {
+    } else if (value is HostAPIConsentAction) {
       buffer.putUint8(129);
       writeValue(buffer, value.encode());
-    } else if (value is ConsentStatus) {
+    } else if (value is HostAPIConsentStatus) {
       buffer.putUint8(130);
       writeValue(buffer, value.encode());
-    } else if (value is GDPRConsent) {
+    } else if (value is HostAPIGDPRConsent) {
       buffer.putUint8(131);
       writeValue(buffer, value.encode());
-    } else if (value is GDPRPurposeGrants) {
+    } else if (value is HostAPIGDPRPurposeGrants) {
       buffer.putUint8(132);
       writeValue(buffer, value.encode());
-    } else if (value is GranularStatus) {
+    } else if (value is HostAPIGranularStatus) {
       buffer.putUint8(133);
       writeValue(buffer, value.encode());
-    } else if (value is SPConsent) {
+    } else if (value is HostAPISPConsent) {
       buffer.putUint8(134);
       writeValue(buffer, value.encode());
     } else {
@@ -447,19 +501,19 @@ class _SourcepointUnifiedCmpFlutterApiCodec extends StandardMessageCodec {
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
       case 128:
-        return CCPAConsent.decode(readValue(buffer)!);
+        return HostAPICCPAConsent.decode(readValue(buffer)!);
       case 129:
-        return ConsentAction.decode(readValue(buffer)!);
+        return HostAPIConsentAction.decode(readValue(buffer)!);
       case 130:
-        return ConsentStatus.decode(readValue(buffer)!);
+        return HostAPIConsentStatus.decode(readValue(buffer)!);
       case 131:
-        return GDPRConsent.decode(readValue(buffer)!);
+        return HostAPIGDPRConsent.decode(readValue(buffer)!);
       case 132:
-        return GDPRPurposeGrants.decode(readValue(buffer)!);
+        return HostAPIGDPRPurposeGrants.decode(readValue(buffer)!);
       case 133:
-        return GranularStatus.decode(readValue(buffer)!);
+        return HostAPIGranularStatus.decode(readValue(buffer)!);
       case 134:
-        return SPConsent.decode(readValue(buffer)!);
+        return HostAPISPConsent.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -474,15 +528,15 @@ abstract class SourcepointUnifiedCmpFlutterApi {
 
   void onUIReady(int viewId);
 
-  void onError(SourcepointUnifiedCmpError error);
+  void onError(HostAPISourcepointUnifiedCmpError error);
 
-  void onConsentReady(SPConsent consent);
+  void onConsentReady(HostAPISPConsent consent);
 
-  void onAction(int viewId, ConsentAction consentAction);
+  void onAction(int viewId, HostAPIConsentAction consentAction);
 
   void onNoIntentActivitiesFound(String url);
 
-  void onSpFinished(SPConsent consent);
+  void onSpFinished(HostAPISPConsent consent);
 
   static void setup(SourcepointUnifiedCmpFlutterApi? api,
       {BinaryMessenger? binaryMessenger}) {
@@ -555,11 +609,11 @@ abstract class SourcepointUnifiedCmpFlutterApi {
           assert(message != null,
               'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError was null.');
           final List<Object?> args = (message as List<Object?>?)!;
-          final SourcepointUnifiedCmpError? arg_error = args[0] == null
+          final HostAPISourcepointUnifiedCmpError? arg_error = args[0] == null
               ? null
-              : SourcepointUnifiedCmpError.values[args[0]! as int];
+              : HostAPISourcepointUnifiedCmpError.values[args[0]! as int];
           assert(arg_error != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError was null, expected non-null SourcepointUnifiedCmpError.');
+              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError was null, expected non-null HostAPISourcepointUnifiedCmpError.');
           try {
             api.onError(arg_error!);
             return wrapResponse(empty: true);
@@ -585,9 +639,9 @@ abstract class SourcepointUnifiedCmpFlutterApi {
           assert(message != null,
               'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady was null.');
           final List<Object?> args = (message as List<Object?>?)!;
-          final SPConsent? arg_consent = (args[0] as SPConsent?);
+          final HostAPISPConsent? arg_consent = (args[0] as HostAPISPConsent?);
           assert(arg_consent != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady was null, expected non-null SPConsent.');
+              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady was null, expected non-null HostAPISPConsent.');
           try {
             api.onConsentReady(arg_consent!);
             return wrapResponse(empty: true);
@@ -616,9 +670,10 @@ abstract class SourcepointUnifiedCmpFlutterApi {
           final int? arg_viewId = (args[0] as int?);
           assert(arg_viewId != null,
               'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction was null, expected non-null int.');
-          final ConsentAction? arg_consentAction = (args[1] as ConsentAction?);
+          final HostAPIConsentAction? arg_consentAction =
+              (args[1] as HostAPIConsentAction?);
           assert(arg_consentAction != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction was null, expected non-null ConsentAction.');
+              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction was null, expected non-null HostAPIConsentAction.');
           try {
             api.onAction(arg_viewId!, arg_consentAction!);
             return wrapResponse(empty: true);
@@ -672,9 +727,9 @@ abstract class SourcepointUnifiedCmpFlutterApi {
           assert(message != null,
               'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished was null.');
           final List<Object?> args = (message as List<Object?>?)!;
-          final SPConsent? arg_consent = (args[0] as SPConsent?);
+          final HostAPISPConsent? arg_consent = (args[0] as HostAPISPConsent?);
           assert(arg_consent != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished was null, expected non-null SPConsent.');
+              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished was null, expected non-null HostAPISPConsent.');
           try {
             api.onSpFinished(arg_consent!);
             return wrapResponse(empty: true);

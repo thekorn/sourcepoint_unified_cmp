@@ -2,15 +2,15 @@
 
 import 'package:pigeon/pigeon.dart';
 
-enum PMTab { purposes }
+enum HostAPIPMTab { purposes }
 
-enum CampaignType { gdpr, ccpa }
+enum HostAPICampaignType { gdpr, ccpa }
 
 enum MessageType { mobile, ott, lagazyOtt }
 
-enum GranularState { all, some, none }
+enum HostAPIGranularState { all, some, none }
 
-enum ActionType {
+enum HostAPIActionType {
   showOptions,
   rejectAll,
   acceptAll,
@@ -20,7 +20,7 @@ enum ActionType {
   pmDismiss,
 }
 
-enum SourcepointUnifiedCmpError {
+enum HostAPISourcepointUnifiedCmpError {
   invalidArgumentException,
   missingPropertyException,
   invalidConsentResponse,
@@ -30,27 +30,30 @@ enum SourcepointUnifiedCmpError {
   invalidRequestException
 }
 
-class ConsentAction {
-  ConsentAction({
+class HostAPIConsentAction {
+  HostAPIConsentAction({
     required this.actionType,
     required this.pubData,
     required this.campaignType,
     this.customActionId,
   });
-  final ActionType actionType;
+  final HostAPIActionType actionType;
   final Object pubData;
-  final CampaignType campaignType;
+  final HostAPICampaignType campaignType;
   final String? customActionId;
 }
 
-class GDPRPurposeGrants {
-  GDPRPurposeGrants({required this.granted, required this.purposeGrants});
+class HostAPIGDPRPurposeGrants {
+  HostAPIGDPRPurposeGrants({
+    required this.granted,
+    required this.purposeGrants,
+  });
   final bool granted;
   final Map<String?, bool?>? purposeGrants;
 }
 
-class GranularStatus {
-  GranularStatus({
+class HostAPIGranularStatus {
+  HostAPIGranularStatus({
     this.defaultConsent,
     this.previousOptInAll,
     this.purposeConsent,
@@ -60,14 +63,14 @@ class GranularStatus {
   });
   final bool? defaultConsent;
   final bool? previousOptInAll;
-  final GranularState? purposeConsent;
-  final GranularState? purposeLegInt;
-  final GranularState? vendorConsent;
-  final GranularState? vendorLegInt;
+  final HostAPIGranularState? purposeConsent;
+  final HostAPIGranularState? purposeLegInt;
+  final HostAPIGranularState? vendorConsent;
+  final HostAPIGranularState? vendorLegInt;
 }
 
-class ConsentStatus {
-  ConsentStatus({
+class HostAPIConsentStatus {
+  HostAPIConsentStatus({
     this.consentedAll,
     this.consentedToAny,
     this.granularStatus,
@@ -79,7 +82,7 @@ class ConsentStatus {
   });
   final bool? consentedAll;
   final bool? consentedToAny;
-  final GranularStatus? granularStatus;
+  final HostAPIGranularStatus? granularStatus;
   final bool? hasConsentData;
   final bool? rejectedAny;
   final bool? rejectedLI;
@@ -87,27 +90,27 @@ class ConsentStatus {
   final bool? vendorListAdditions;
 }
 
-class GDPRConsent {
-  GDPRConsent({
+class HostAPIGDPRConsent {
+  HostAPIGDPRConsent({
     required this.tcData,
     required this.grants,
     required this.euconsent,
     required this.acceptedCategories,
     required this.apply,
-    required this.consentStatus,
+    this.consentStatus,
     this.uuid,
   });
   final String? uuid;
   final Map<String?, String?>? tcData;
-  final Map<String?, GDPRPurposeGrants?>? grants;
+  final Map<String?, HostAPIGDPRPurposeGrants?>? grants;
   final String euconsent;
   final List<String?>? acceptedCategories;
   final bool apply;
-  final ConsentStatus consentStatus;
+  final HostAPIConsentStatus? consentStatus;
 }
 
-class CCPAConsent {
-  CCPAConsent({
+class HostAPICCPAConsent {
+  HostAPICCPAConsent({
     required this.rejectedCategories,
     required this.rejectedVendors,
     required this.uspstring,
@@ -123,10 +126,10 @@ class CCPAConsent {
   final bool apply;
 }
 
-class SPConsent {
-  SPConsent({this.gdpr, this.ccpa});
-  final GDPRConsent? gdpr;
-  final CCPAConsent? ccpa;
+class HostAPISPConsent {
+  HostAPISPConsent({this.gdpr, this.ccpa});
+  final HostAPIGDPRConsent? gdpr;
+  final HostAPICCPAConsent? ccpa;
 }
 
 class SPConfig {
@@ -161,7 +164,7 @@ class SPConfig {
 @HostApi()
 abstract class SourcepointUnifiedCmpHostApi {
   @async
-  bool loadMessage({
+  HostAPISPConsent loadMessage({
     required int accountId,
     required int propertyId,
     required String propertyName,
@@ -174,9 +177,9 @@ abstract class SourcepointUnifiedCmpFlutterApi {
   void onUIFinished(int viewId) {}
   void onUIReady(int viewId) {}
 
-  void onError(SourcepointUnifiedCmpError error) {}
-  void onConsentReady(SPConsent consent) {}
-  void onAction(int viewId, ConsentAction consentAction) {}
+  void onError(HostAPISourcepointUnifiedCmpError error) {}
+  void onConsentReady(HostAPISPConsent consent) {}
+  void onAction(int viewId, HostAPIConsentAction consentAction) {}
   void onNoIntentActivitiesFound(String url) {}
-  void onSpFinished(SPConsent consent) {}
+  void onSpFinished(HostAPISPConsent consent) {}
 }

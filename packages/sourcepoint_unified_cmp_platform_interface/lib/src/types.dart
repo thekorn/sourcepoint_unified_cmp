@@ -25,6 +25,12 @@ class GDPRPurposeGrants {
   GDPRPurposeGrants({required this.granted, required this.purposeGrants});
   final bool granted;
   final Map<String, bool> purposeGrants;
+
+  @override
+  String toString() {
+    return 'GDPRPurposeGrants(granted: $granted, '
+        'purposeGrants: $purposeGrants)';
+  }
 }
 
 class GranularStatus {
@@ -42,6 +48,14 @@ class GranularStatus {
   final GranularState? purposeLegInt;
   final GranularState? vendorConsent;
   final GranularState? vendorLegInt;
+
+  @override
+  String toString() {
+    return 'GranularStatus(defaultConsent: $defaultConsent, '
+        'previousOptInAll: $previousOptInAll, purposeConsent: $purposeConsent, '
+        'purposeLegInt: $purposeLegInt, vendorConsent: $vendorConsent, '
+        'vendorLegInt: $vendorLegInt)';
+  }
 }
 
 class ConsentStatus {
@@ -63,6 +77,15 @@ class ConsentStatus {
   final bool? rejectedLI;
   final bool? legalBasisChanges;
   final bool? vendorListAdditions;
+
+  @override
+  String toString() {
+    return 'ConsentStatus(consentedAll: $consentedAll, '
+        'consentedToAny: $consentedToAny, granularStatus: $granularStatus, '
+        'hasConsentData: $hasConsentData, rejectedAny: $rejectedAny, '
+        'rejectedLI: $rejectedLI, legalBasisChanges: $legalBasisChanges, '
+        'vendorListAdditions: $vendorListAdditions)';
+  }
 }
 
 class GDPRConsent {
@@ -72,7 +95,7 @@ class GDPRConsent {
     required this.euconsent,
     required this.acceptedCategories,
     required this.apply,
-    required this.consentStatus,
+    this.consentStatus,
     this.uuid,
   });
   final String? uuid;
@@ -81,7 +104,14 @@ class GDPRConsent {
   final String euconsent;
   final List<String> acceptedCategories;
   final bool apply;
-  final ConsentStatus consentStatus;
+  final ConsentStatus? consentStatus;
+
+  @override
+  String toString() {
+    return 'GDPRConsent(tcData: $tcData, grants: $grants, '
+        'euconsent: $euconsent, acceptedCategories: $acceptedCategories, '
+        'apply: $apply, consentStatus: $consentStatus, uuid: $uuid)';
+  }
 }
 
 class CCPAConsent {
@@ -105,4 +135,9 @@ class SPConsent {
   SPConsent({this.gdpr, this.ccpa});
   final GDPRConsent? gdpr;
   final CCPAConsent? ccpa;
+
+  @override
+  String toString() {
+    return 'SPConsent(gdpr: $gdpr, ccpa: $ccpa)';
+  }
 }

@@ -45,22 +45,22 @@ class FlutterError (
   val details: Any? = null
 ) : Throwable()
 
-enum class PMTab(val raw: Int) {
+enum class HostAPIPMTab(val raw: Int) {
   PURPOSES(0);
 
   companion object {
-    fun ofRaw(raw: Int): PMTab? {
+    fun ofRaw(raw: Int): HostAPIPMTab? {
       return values().firstOrNull { it.raw == raw }
     }
   }
 }
 
-enum class CampaignType(val raw: Int) {
+enum class HostAPICampaignType(val raw: Int) {
   GDPR(0),
   CCPA(1);
 
   companion object {
-    fun ofRaw(raw: Int): CampaignType? {
+    fun ofRaw(raw: Int): HostAPICampaignType? {
       return values().firstOrNull { it.raw == raw }
     }
   }
@@ -78,19 +78,19 @@ enum class MessageType(val raw: Int) {
   }
 }
 
-enum class GranularState(val raw: Int) {
+enum class HostAPIGranularState(val raw: Int) {
   ALL(0),
   SOME(1),
   NONE(2);
 
   companion object {
-    fun ofRaw(raw: Int): GranularState? {
+    fun ofRaw(raw: Int): HostAPIGranularState? {
       return values().firstOrNull { it.raw == raw }
     }
   }
 }
 
-enum class ActionType(val raw: Int) {
+enum class HostAPIActionType(val raw: Int) {
   SHOWOPTIONS(0),
   REJECTALL(1),
   ACCEPTALL(2),
@@ -100,13 +100,13 @@ enum class ActionType(val raw: Int) {
   PMDISMISS(6);
 
   companion object {
-    fun ofRaw(raw: Int): ActionType? {
+    fun ofRaw(raw: Int): HostAPIActionType? {
       return values().firstOrNull { it.raw == raw }
     }
   }
 }
 
-enum class SourcepointUnifiedCmpError(val raw: Int) {
+enum class HostAPISourcepointUnifiedCmpError(val raw: Int) {
   INVALIDARGUMENTEXCEPTION(0),
   MISSINGPROPERTYEXCEPTION(1),
   INVALIDCONSENTRESPONSE(2),
@@ -116,28 +116,28 @@ enum class SourcepointUnifiedCmpError(val raw: Int) {
   INVALIDREQUESTEXCEPTION(6);
 
   companion object {
-    fun ofRaw(raw: Int): SourcepointUnifiedCmpError? {
+    fun ofRaw(raw: Int): HostAPISourcepointUnifiedCmpError? {
       return values().firstOrNull { it.raw == raw }
     }
   }
 }
 
 /** Generated class from Pigeon that represents data sent in messages. */
-data class ConsentAction (
-  val actionType: ActionType,
+data class HostAPIConsentAction (
+  val actionType: HostAPIActionType,
   val pubData: Any,
-  val campaignType: CampaignType,
+  val campaignType: HostAPICampaignType,
   val customActionId: String? = null
 
 ) {
   companion object {
     @Suppress("UNCHECKED_CAST")
-    fun fromList(list: List<Any?>): ConsentAction {
-      val actionType = ActionType.ofRaw(list[0] as Int)!!
+    fun fromList(list: List<Any?>): HostAPIConsentAction {
+      val actionType = HostAPIActionType.ofRaw(list[0] as Int)!!
       val pubData = list[1] as Any
-      val campaignType = CampaignType.ofRaw(list[2] as Int)!!
+      val campaignType = HostAPICampaignType.ofRaw(list[2] as Int)!!
       val customActionId = list[3] as String?
-      return ConsentAction(actionType, pubData, campaignType, customActionId)
+      return HostAPIConsentAction(actionType, pubData, campaignType, customActionId)
     }
   }
   fun toList(): List<Any?> {
@@ -151,17 +151,17 @@ data class ConsentAction (
 }
 
 /** Generated class from Pigeon that represents data sent in messages. */
-data class GDPRPurposeGrants (
+data class HostAPIGDPRPurposeGrants (
   val granted: Boolean,
   val purposeGrants: Map<String?, Boolean?>? = null
 
 ) {
   companion object {
     @Suppress("UNCHECKED_CAST")
-    fun fromList(list: List<Any?>): GDPRPurposeGrants {
+    fun fromList(list: List<Any?>): HostAPIGDPRPurposeGrants {
       val granted = list[0] as Boolean
       val purposeGrants = list[1] as Map<String?, Boolean?>?
-      return GDPRPurposeGrants(granted, purposeGrants)
+      return HostAPIGDPRPurposeGrants(granted, purposeGrants)
     }
   }
   fun toList(): List<Any?> {
@@ -173,33 +173,33 @@ data class GDPRPurposeGrants (
 }
 
 /** Generated class from Pigeon that represents data sent in messages. */
-data class GranularStatus (
+data class HostAPIGranularStatus (
   val defaultConsent: Boolean? = null,
   val previousOptInAll: Boolean? = null,
-  val purposeConsent: GranularState? = null,
-  val purposeLegInt: GranularState? = null,
-  val vendorConsent: GranularState? = null,
-  val vendorLegInt: GranularState? = null
+  val purposeConsent: HostAPIGranularState? = null,
+  val purposeLegInt: HostAPIGranularState? = null,
+  val vendorConsent: HostAPIGranularState? = null,
+  val vendorLegInt: HostAPIGranularState? = null
 
 ) {
   companion object {
     @Suppress("UNCHECKED_CAST")
-    fun fromList(list: List<Any?>): GranularStatus {
+    fun fromList(list: List<Any?>): HostAPIGranularStatus {
       val defaultConsent = list[0] as Boolean?
       val previousOptInAll = list[1] as Boolean?
-      val purposeConsent: GranularState? = (list[2] as Int?)?.let {
-        GranularState.ofRaw(it)
+      val purposeConsent: HostAPIGranularState? = (list[2] as Int?)?.let {
+        HostAPIGranularState.ofRaw(it)
       }
-      val purposeLegInt: GranularState? = (list[3] as Int?)?.let {
-        GranularState.ofRaw(it)
+      val purposeLegInt: HostAPIGranularState? = (list[3] as Int?)?.let {
+        HostAPIGranularState.ofRaw(it)
       }
-      val vendorConsent: GranularState? = (list[4] as Int?)?.let {
-        GranularState.ofRaw(it)
+      val vendorConsent: HostAPIGranularState? = (list[4] as Int?)?.let {
+        HostAPIGranularState.ofRaw(it)
       }
-      val vendorLegInt: GranularState? = (list[5] as Int?)?.let {
-        GranularState.ofRaw(it)
+      val vendorLegInt: HostAPIGranularState? = (list[5] as Int?)?.let {
+        HostAPIGranularState.ofRaw(it)
       }
-      return GranularStatus(defaultConsent, previousOptInAll, purposeConsent, purposeLegInt, vendorConsent, vendorLegInt)
+      return HostAPIGranularStatus(defaultConsent, previousOptInAll, purposeConsent, purposeLegInt, vendorConsent, vendorLegInt)
     }
   }
   fun toList(): List<Any?> {
@@ -215,10 +215,10 @@ data class GranularStatus (
 }
 
 /** Generated class from Pigeon that represents data sent in messages. */
-data class ConsentStatus (
+data class HostAPIConsentStatus (
   val consentedAll: Boolean? = null,
   val consentedToAny: Boolean? = null,
-  val granularStatus: GranularStatus? = null,
+  val granularStatus: HostAPIGranularStatus? = null,
   val hasConsentData: Boolean? = null,
   val rejectedAny: Boolean? = null,
   val rejectedLI: Boolean? = null,
@@ -228,18 +228,18 @@ data class ConsentStatus (
 ) {
   companion object {
     @Suppress("UNCHECKED_CAST")
-    fun fromList(list: List<Any?>): ConsentStatus {
+    fun fromList(list: List<Any?>): HostAPIConsentStatus {
       val consentedAll = list[0] as Boolean?
       val consentedToAny = list[1] as Boolean?
-      val granularStatus: GranularStatus? = (list[2] as List<Any?>?)?.let {
-        GranularStatus.fromList(it)
+      val granularStatus: HostAPIGranularStatus? = (list[2] as List<Any?>?)?.let {
+        HostAPIGranularStatus.fromList(it)
       }
       val hasConsentData = list[3] as Boolean?
       val rejectedAny = list[4] as Boolean?
       val rejectedLI = list[5] as Boolean?
       val legalBasisChanges = list[6] as Boolean?
       val vendorListAdditions = list[7] as Boolean?
-      return ConsentStatus(consentedAll, consentedToAny, granularStatus, hasConsentData, rejectedAny, rejectedLI, legalBasisChanges, vendorListAdditions)
+      return HostAPIConsentStatus(consentedAll, consentedToAny, granularStatus, hasConsentData, rejectedAny, rejectedLI, legalBasisChanges, vendorListAdditions)
     }
   }
   fun toList(): List<Any?> {
@@ -257,27 +257,29 @@ data class ConsentStatus (
 }
 
 /** Generated class from Pigeon that represents data sent in messages. */
-data class GDPRConsent (
+data class HostAPIGDPRConsent (
   val uuid: String? = null,
   val tcData: Map<String?, String?>? = null,
-  val grants: Map<String?, GDPRPurposeGrants?>? = null,
+  val grants: Map<String?, HostAPIGDPRPurposeGrants?>? = null,
   val euconsent: String,
   val acceptedCategories: List<String?>? = null,
   val apply: Boolean,
-  val consentStatus: ConsentStatus
+  val consentStatus: HostAPIConsentStatus? = null
 
 ) {
   companion object {
     @Suppress("UNCHECKED_CAST")
-    fun fromList(list: List<Any?>): GDPRConsent {
+    fun fromList(list: List<Any?>): HostAPIGDPRConsent {
       val uuid = list[0] as String?
       val tcData = list[1] as Map<String?, String?>?
-      val grants = list[2] as Map<String?, GDPRPurposeGrants?>?
+      val grants = list[2] as Map<String?, HostAPIGDPRPurposeGrants?>?
       val euconsent = list[3] as String
       val acceptedCategories = list[4] as List<String?>?
       val apply = list[5] as Boolean
-      val consentStatus = ConsentStatus.fromList(list[6] as List<Any?>)
-      return GDPRConsent(uuid, tcData, grants, euconsent, acceptedCategories, apply, consentStatus)
+      val consentStatus: HostAPIConsentStatus? = (list[6] as List<Any?>?)?.let {
+        HostAPIConsentStatus.fromList(it)
+      }
+      return HostAPIGDPRConsent(uuid, tcData, grants, euconsent, acceptedCategories, apply, consentStatus)
     }
   }
   fun toList(): List<Any?> {
@@ -288,13 +290,13 @@ data class GDPRConsent (
       euconsent,
       acceptedCategories,
       apply,
-      consentStatus.toList(),
+      consentStatus?.toList(),
     )
   }
 }
 
 /** Generated class from Pigeon that represents data sent in messages. */
-data class CCPAConsent (
+data class HostAPICCPAConsent (
   val uuid: String? = null,
   val rejectedCategories: List<String?>? = null,
   val rejectedVendors: List<String?>? = null,
@@ -305,14 +307,14 @@ data class CCPAConsent (
 ) {
   companion object {
     @Suppress("UNCHECKED_CAST")
-    fun fromList(list: List<Any?>): CCPAConsent {
+    fun fromList(list: List<Any?>): HostAPICCPAConsent {
       val uuid = list[0] as String?
       val rejectedCategories = list[1] as List<String?>?
       val rejectedVendors = list[2] as List<String?>?
       val status = list[3] as String?
       val uspstring = list[4] as String
       val apply = list[5] as Boolean
-      return CCPAConsent(uuid, rejectedCategories, rejectedVendors, status, uspstring, apply)
+      return HostAPICCPAConsent(uuid, rejectedCategories, rejectedVendors, status, uspstring, apply)
     }
   }
   fun toList(): List<Any?> {
@@ -328,21 +330,21 @@ data class CCPAConsent (
 }
 
 /** Generated class from Pigeon that represents data sent in messages. */
-data class SPConsent (
-  val gdpr: GDPRConsent? = null,
-  val ccpa: CCPAConsent? = null
+data class HostAPISPConsent (
+  val gdpr: HostAPIGDPRConsent? = null,
+  val ccpa: HostAPICCPAConsent? = null
 
 ) {
   companion object {
     @Suppress("UNCHECKED_CAST")
-    fun fromList(list: List<Any?>): SPConsent {
-      val gdpr: GDPRConsent? = (list[0] as List<Any?>?)?.let {
-        GDPRConsent.fromList(it)
+    fun fromList(list: List<Any?>): HostAPISPConsent {
+      val gdpr: HostAPIGDPRConsent? = (list[0] as List<Any?>?)?.let {
+        HostAPIGDPRConsent.fromList(it)
       }
-      val ccpa: CCPAConsent? = (list[1] as List<Any?>?)?.let {
-        CCPAConsent.fromList(it)
+      val ccpa: HostAPICCPAConsent? = (list[1] as List<Any?>?)?.let {
+        HostAPICCPAConsent.fromList(it)
       }
-      return SPConsent(gdpr, ccpa)
+      return HostAPISPConsent(gdpr, ccpa)
     }
   }
   fun toList(): List<Any?> {
@@ -353,14 +355,82 @@ data class SPConsent (
   }
 }
 
+@Suppress("UNCHECKED_CAST")
+private object SourcepointUnifiedCmpHostApiCodec : StandardMessageCodec() {
+  override fun readValueOfType(type: Byte, buffer: ByteBuffer): Any? {
+    return when (type) {
+      128.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HostAPICCPAConsent.fromList(it)
+        }
+      }
+      129.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HostAPIConsentStatus.fromList(it)
+        }
+      }
+      130.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HostAPIGDPRConsent.fromList(it)
+        }
+      }
+      131.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HostAPIGDPRPurposeGrants.fromList(it)
+        }
+      }
+      132.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HostAPIGranularStatus.fromList(it)
+        }
+      }
+      133.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HostAPISPConsent.fromList(it)
+        }
+      }
+      else -> super.readValueOfType(type, buffer)
+    }
+  }
+  override fun writeValue(stream: ByteArrayOutputStream, value: Any?)   {
+    when (value) {
+      is HostAPICCPAConsent -> {
+        stream.write(128)
+        writeValue(stream, value.toList())
+      }
+      is HostAPIConsentStatus -> {
+        stream.write(129)
+        writeValue(stream, value.toList())
+      }
+      is HostAPIGDPRConsent -> {
+        stream.write(130)
+        writeValue(stream, value.toList())
+      }
+      is HostAPIGDPRPurposeGrants -> {
+        stream.write(131)
+        writeValue(stream, value.toList())
+      }
+      is HostAPIGranularStatus -> {
+        stream.write(132)
+        writeValue(stream, value.toList())
+      }
+      is HostAPISPConsent -> {
+        stream.write(133)
+        writeValue(stream, value.toList())
+      }
+      else -> super.writeValue(stream, value)
+    }
+  }
+}
+
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface SourcepointUnifiedCmpHostApi {
-  fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, callback: (Result<Boolean>) -> Unit)
+  fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, callback: (Result<HostAPISPConsent>) -> Unit)
 
   companion object {
     /** The codec used by SourcepointUnifiedCmpHostApi. */
     val codec: MessageCodec<Any?> by lazy {
-      StandardMessageCodec()
+      SourcepointUnifiedCmpHostApiCodec
     }
     /** Sets up an instance of `SourcepointUnifiedCmpHostApi` to handle messages through the `binaryMessenger`. */
     @Suppress("UNCHECKED_CAST")
@@ -374,7 +444,7 @@ interface SourcepointUnifiedCmpHostApi {
             val propertyIdArg = args[1].let { if (it is Int) it.toLong() else it as Long }
             val propertyNameArg = args[2] as String
             val pmIdArg = args[3] as String
-            api.loadMessage(accountIdArg, propertyIdArg, propertyNameArg, pmIdArg) { result: Result<Boolean> ->
+            api.loadMessage(accountIdArg, propertyIdArg, propertyNameArg, pmIdArg) { result: Result<HostAPISPConsent> ->
               val error = result.exceptionOrNull()
               if (error != null) {
                 reply.reply(wrapError(error))
@@ -397,37 +467,37 @@ private object SourcepointUnifiedCmpFlutterApiCodec : StandardMessageCodec() {
     return when (type) {
       128.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          CCPAConsent.fromList(it)
+          HostAPICCPAConsent.fromList(it)
         }
       }
       129.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          ConsentAction.fromList(it)
+          HostAPIConsentAction.fromList(it)
         }
       }
       130.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          ConsentStatus.fromList(it)
+          HostAPIConsentStatus.fromList(it)
         }
       }
       131.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          GDPRConsent.fromList(it)
+          HostAPIGDPRConsent.fromList(it)
         }
       }
       132.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          GDPRPurposeGrants.fromList(it)
+          HostAPIGDPRPurposeGrants.fromList(it)
         }
       }
       133.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          GranularStatus.fromList(it)
+          HostAPIGranularStatus.fromList(it)
         }
       }
       134.toByte() -> {
         return (readValue(buffer) as? List<Any?>)?.let {
-          SPConsent.fromList(it)
+          HostAPISPConsent.fromList(it)
         }
       }
       else -> super.readValueOfType(type, buffer)
@@ -435,31 +505,31 @@ private object SourcepointUnifiedCmpFlutterApiCodec : StandardMessageCodec() {
   }
   override fun writeValue(stream: ByteArrayOutputStream, value: Any?)   {
     when (value) {
-      is CCPAConsent -> {
+      is HostAPICCPAConsent -> {
         stream.write(128)
         writeValue(stream, value.toList())
       }
-      is ConsentAction -> {
+      is HostAPIConsentAction -> {
         stream.write(129)
         writeValue(stream, value.toList())
       }
-      is ConsentStatus -> {
+      is HostAPIConsentStatus -> {
         stream.write(130)
         writeValue(stream, value.toList())
       }
-      is GDPRConsent -> {
+      is HostAPIGDPRConsent -> {
         stream.write(131)
         writeValue(stream, value.toList())
       }
-      is GDPRPurposeGrants -> {
+      is HostAPIGDPRPurposeGrants -> {
         stream.write(132)
         writeValue(stream, value.toList())
       }
-      is GranularStatus -> {
+      is HostAPIGranularStatus -> {
         stream.write(133)
         writeValue(stream, value.toList())
       }
-      is SPConsent -> {
+      is HostAPISPConsent -> {
         stream.write(134)
         writeValue(stream, value.toList())
       }
@@ -507,7 +577,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
       } 
     }
   }
-  fun onError(errorArg: SourcepointUnifiedCmpError, callback: (Result<Unit>) -> Unit) {
+  fun onError(errorArg: HostAPISourcepointUnifiedCmpError, callback: (Result<Unit>) -> Unit) {
     val channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError"
     val channel = BasicMessageChannel<Any?>(binaryMessenger, channelName, codec)
     channel.send(listOf(errorArg.raw)) {
@@ -522,7 +592,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
       } 
     }
   }
-  fun onConsentReady(consentArg: SPConsent, callback: (Result<Unit>) -> Unit) {
+  fun onConsentReady(consentArg: HostAPISPConsent, callback: (Result<Unit>) -> Unit) {
     val channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady"
     val channel = BasicMessageChannel<Any?>(binaryMessenger, channelName, codec)
     channel.send(listOf(consentArg)) {
@@ -537,7 +607,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
       } 
     }
   }
-  fun onAction(viewIdArg: Long, consentActionArg: ConsentAction, callback: (Result<Unit>) -> Unit) {
+  fun onAction(viewIdArg: Long, consentActionArg: HostAPIConsentAction, callback: (Result<Unit>) -> Unit) {
     val channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction"
     val channel = BasicMessageChannel<Any?>(binaryMessenger, channelName, codec)
     channel.send(listOf(viewIdArg, consentActionArg)) {
@@ -567,7 +637,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
       } 
     }
   }
-  fun onSpFinished(consentArg: SPConsent, callback: (Result<Unit>) -> Unit) {
+  fun onSpFinished(consentArg: HostAPISPConsent, callback: (Result<Unit>) -> Unit) {
     val channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished"
     val channel = BasicMessageChannel<Any?>(binaryMessenger, channelName, codec)
     channel.send(listOf(consentArg)) {
