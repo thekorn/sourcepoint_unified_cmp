@@ -4,8 +4,8 @@ import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_c
 
 /// The Android implementation of [SourcepointUnifiedCmpPlatform].
 class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
-  final messages.SourcepointUnifiedCmpApi _api =
-      messages.SourcepointUnifiedCmpApi();
+  final messages.SourcepointUnifiedCmpHostApi _api =
+      messages.SourcepointUnifiedCmpHostApi();
 
   /// Registers this class as the default instance
   /// of [SourcepointUnifiedCmpPlatform]
@@ -14,28 +14,8 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   }
 
   @override
-  Future<void> loadPrivacyManager(SPConfig config) {
-    return _api.loadPrivacyManager(
-      accountId: config.accountId,
-      propertyId: config.propertyId,
-      propertyName: config.propertyName,
-      pmId: config.pmId,
-    );
-  }
-
-  @override
-  Future<void> load(SPConfig config) {
-    return _api.loadPrivacyManager(
-      accountId: config.accountId,
-      propertyId: config.propertyId,
-      propertyName: config.propertyName,
-      pmId: config.pmId,
-    );
-  }
-
-  @override
-  Future<void> init(SPConfig config) {
-    return _api.init(
+  Future<bool> loadMessage(SPConfig config) {
+    return _api.loadMessage(
       accountId: config.accountId,
       propertyId: config.propertyId,
       propertyName: config.propertyName,

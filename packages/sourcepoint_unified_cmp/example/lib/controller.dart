@@ -1,15 +1,8 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/foundation.dart';
-import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
+import 'package:sourcepoint_unified_cmp/sourcepoint_unified_cmp.dart';
 
-export 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
-
-SourcepointUnifiedCmpPlatform get _platform =>
-    SourcepointUnifiedCmpPlatform.instance;
-
-class SourcepointController {
-  SourcepointController({required this.config});
+class MockController {
+  MockController({required this.config});
   final SPConfig config;
 
   /// Loading a Privacy Manager on demand
@@ -27,9 +20,6 @@ class SourcepointController {
   /// and returns the inital consent status
   Future<SPConsent> loadMessage() async {
     debugPrint('loadMessage');
-    final r = await _platform.loadMessage(config);
-    debugPrint('WE GOT RESULT $r');
-
     return SPConsent();
   }
 }
