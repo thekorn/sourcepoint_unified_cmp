@@ -108,6 +108,14 @@ user consent has been loaded:
   - [ ] more app samples
 
 ## resources
+
+### sourcepoint
+
+- [sourcepoint ios SDK](https://github.com/SourcePointUSA/ios-cmp-app)
+- [sourcepoint android SDK](https://github.com/SourcePointUSA/android-cmp-app)
+
+### tooling
+
 - [Flutter](https://flutter.dev/)
 - [Flutter documentation](https://flutter.dev/docs)
 - [using melos and very_good_cli](https://adityadroid.medium.com/flutter-at-scale-code-sharing-using-a-monorepo-a7a46c427141)
