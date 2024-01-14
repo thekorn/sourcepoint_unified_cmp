@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:sourcepoint_unified_cmp/sourcepoint_unified_cmp.dart';
-import 'package:sourcepoint_unified_cmp_example/types.dart';
 
 class MockController {
   MockController({required this.config});
@@ -20,7 +19,7 @@ class MockController {
   /// Loading the First Layer Message
   /// and returns the inital consent status
   Future<SPConsent> loadMessage() async {
-    debugPrint('load');
+    debugPrint('loadMessage');
     return SPConsent();
   }
 }

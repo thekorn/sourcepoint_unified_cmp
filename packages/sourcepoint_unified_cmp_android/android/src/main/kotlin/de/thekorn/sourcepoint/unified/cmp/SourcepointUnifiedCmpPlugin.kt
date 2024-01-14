@@ -1,8 +1,7 @@
 package de.thekorn.sourcepoint.unified.cmp
 
 
-import SPConfig
-import SourcepointUnifiedCmpApi
+import SourcepointUnifiedCmpHostApi
 import android.app.Activity
 import android.view.View
 import com.sourcepoint.cmplibrary.NativeMessageController
@@ -21,69 +20,27 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.BinaryMessenger
+import kotlinx.coroutines.CompletableDeferred
+import okhttp3.internal.wait
 import org.json.JSONObject
 
 
-class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUnifiedCmpApi {
-    private lateinit var binaryMessenger: BinaryMessenger;
-    private lateinit var activity: Activity;
+class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUnifiedCmpHostApi {
+    private lateinit var binaryMessenger: BinaryMessenger
+    private lateinit var activity: Activity
 
     private var spConsentLib: SpConsentLib? = null
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         Log.d("SourcepointUnifiedCmp", "attach")
-        this.binaryMessenger = flutterPluginBinding.binaryMessenger;
+        this.binaryMessenger = flutterPluginBinding.binaryMessenger
 
-        SourcepointUnifiedCmpApi.setUp(this.binaryMessenger, this)
+        SourcepointUnifiedCmpHostApi.setUp(this.binaryMessenger, this)
     }
 
     override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        Log.d("SourcepointUnifiedCmp", "dettach")
-        SourcepointUnifiedCmpApi.setUp(this.binaryMessenger, null)
-    }
-
-    override fun loadPrivacyManager(
-        accountId: Long,
-        propertyId: Long,
-        propertyName: String,
-        pmId: String,
-        callback: (kotlin.Result<Unit>) -> Unit
-    ) {
-        Log.d("SourcepointUnifiedCmp", "loadPrivacyManager $accountId")
-        //TODO("Not yet implemented")
-    }
-
-    override fun showPrivacyManager(config: SPConfig, callback: (kotlin.Result<Unit>) -> Unit) {
-        Log.d("SourcepointUnifiedCmp", "showPrivacyManager")
-        //TODO("Not yet implemented")
-    }
-
-    override fun setPlatformCmpConfig(config: SPConfig, callback: (kotlin.Result<Unit>) -> Unit) {
-        Log.d("SourcepointUnifiedCmp", "setPlatformCmpConfig")
-        //TODO("Not yet implemented")
-    }
-
-    override fun init(
-        accountId: Long,
-        propertyId: Long,
-        propertyName: String,
-        pmId: String,
-        callback: (Result<Unit>) -> Unit
-    ) {
-        Log.d("SourcepointUnifiedCmp", "INIT")
-        val cmpConfig = SpConfigDataBuilder()
-            .addAccountId(accountId.toInt())
-            .addPropertyId(propertyId.toInt())
-            .addPropertyName(propertyName)
-            .addMessageLanguage(MessageLanguage.ENGLISH) // Optional, default ENGLISH
-            .addCampaignsEnv(CampaignsEnv.PUBLIC) // Optional, default PUBLIC
-            .addMessageTimeout(4000) // Optional, default 3000ms
-            .addCampaign(CampaignType.GDPR)
-            .addCampaign(CampaignType.CCPA)
-            .build()
-        Log.d("SourcepointUnifiedCmp", "INIT DONE")
-        spConsentLib =  makeConsentLib(spConfig = cmpConfig, activity = this.activity, spClient = LocalClient())
-        spConsentLib!!.loadMessage()
+        Log.d("SourcepointUnifiedCmp", "detached")
+        SourcepointUnifiedCmpHostApi.setUp(this.binaryMessenger, null)
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
@@ -124,7 +81,12 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
         }
         override fun onError(error: Throwable) {
             Log.d("SourcepointUnifiedCmp", "onError")}
-        @Deprecated("onMessageReady callback will be removed in favor of onUIReady. Currently this callback is disabled.")
+        @Deprecated("onMessageReady callback will be removed in favor of onUIReady. Currently this callback is disabled.",
+            ReplaceWith(
+                "onUIReady",
+                "com.sourcepoint.cmplibrary.SpClient"
+            )
+        )
         override fun onMessageReady(message: JSONObject) {
             Log.d("SourcepointUnifiedCmp", "onMessageReady")}
 
@@ -135,6 +97,34 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
             Log.d("SourcepointUnifiedCmp", "onNoIntentActivitiesFound")}
         override fun onSpFinished(sPConsents: SPConsents) {
             Log.d("SourcepointUnifiedCmp", "onSpFinished") }
+    }
+
+    override fun loadMessage(
+        accountId: Long,
+        propertyId: Long,
+        propertyName: String,
+        pmId: String,
+        callback: (Result<Unit>) -> Unit
+    ) {
+        Log.d("SourcepointUnifiedCmp", "loadMessage")
+        val cmpConfig = SpConfigDataBuilder()
+            .addAccountId(accountId.toInt())
+            .addPropertyId(propertyId.toInt())
+            .addPropertyName(propertyName)
+            .addMessageLanguage(MessageLanguage.ENGLISH) // Optional, default ENGLISH
+            .addCampaignsEnv(CampaignsEnv.PUBLIC) // Optional, default PUBLIC
+            .addMessageTimeout(4000) // Optional, default 3000ms
+            .addCampaign(CampaignType.GDPR)
+            .addCampaign(CampaignType.CCPA)
+            .build()
+        Log.d("SourcepointUnifiedCmp", "loadMessage")
+        var spClient = LocalClient()
+
+        //val isInitialized: CompletableDeferred<Boolean> = CompletableDeferred()
+        //isInitialized.
+        spConsentLib =  makeConsentLib(spConfig = cmpConfig, activity = this.activity, spClient = spClient)
+        spConsentLib!!.loadMessage()
+        callback(kotlin.Result.success(Unit))
     }
 
 }
