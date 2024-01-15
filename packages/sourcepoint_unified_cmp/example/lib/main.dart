@@ -39,20 +39,20 @@ class _SourcepointunifiedCMPBuilderExampleState
       pmId: '122058',
     );
 
-    _controller = SourcepointController(config: config);
-    _controller.setEventDelegate(
-      SourcepointEventDelegate(
-        onConsentReady: (SPConsent consent) {
-          debugPrint('DELEGATE onConsentReady: Consent string: '
-              '${consent.gdpr?.euconsent}');
-        },
-        onSpFinished: (SPConsent consent) {
-          debugPrint(
-            'DELEGATE SpFinished: Consent string: ${consent.gdpr?.euconsent}',
-          );
-        },
-      ),
-    );
+    _controller = SourcepointController(config: config)
+      ..setEventDelegate(
+        SourcepointEventDelegate(
+          onConsentReady: (SPConsent consent) {
+            debugPrint('DELEGATE onConsentReady: Consent string: '
+                '${consent.gdpr?.euconsent}');
+          },
+          onSpFinished: (SPConsent consent) {
+            debugPrint(
+              'DELEGATE SpFinished: Consent string: ${consent.gdpr?.euconsent}',
+            );
+          },
+        ),
+      );
   }
 
   @override

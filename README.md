@@ -93,11 +93,30 @@ user consent has been loaded:
     euconsent: CP4X2gAP4X2gAAGABCENDgCgAL3AAEIAAAYgAHgACAB4AAgDAgAIAMggAEAGQYACADIQABABkOAAgAyKAAQAZAAA.YAAAAAAAAAAA
 ```
 
+There is also a way to react on consent changes via an event delegate:
+
+```dart
+  _controller = SourcepointController(config: config)
+    ..setEventDelegate(
+      SourcepointEventDelegate(
+        onConsentReady: (SPConsent consent) {
+          debugPrint('DELEGATE onConsentReady: Consent string: '
+              '${consent.gdpr?.euconsent}');
+        },
+        onSpFinished: (SPConsent consent) {
+          debugPrint(
+            'DELEGATE SpFinished: Consent string: ${consent.gdpr?.euconsent}',
+          );
+        },
+      ),
+    );
+```
+
 ## TODO
 - [ ] commit on an api
   - [x] the api for the initial consent loading
   - [ ] api on the on demand loading of the consent message (#5)
-  - [ ] implementation of a `SourcepointEventDelegate` which allows the flutter stack to hook onto consent events (#6)
+  - [x] implementation of a `SourcepointEventDelegate` which allows the flutter stack to hook onto consent events (#6)
   - [ ] commit on namings, at the moment the *public* api of this packages does not stick to a single rule, sometimes it's *SourcepointUnifiedCMP*, sometimes it's *SourcepointCMP*, and in other places just *Sourcepoint*
 - [ ] implementation for ios/swift (#7)
 - [ ] implementation of tests
