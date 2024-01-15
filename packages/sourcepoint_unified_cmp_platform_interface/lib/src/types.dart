@@ -150,7 +150,7 @@ class ConsentAction {
     this.customActionId,
   });
   final ActionType actionType;
-  final Object pubData;
+  final dynamic pubData;
   final CampaignType campaignType;
   final String? customActionId;
 }

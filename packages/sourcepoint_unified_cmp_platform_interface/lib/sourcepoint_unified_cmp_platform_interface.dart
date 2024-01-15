@@ -35,9 +35,23 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  /// Registers the [delegate] as the event delegate for the Sourcepoint
+  /// Unified CMP platform interface.
+  ///
+  /// The [delegate] will receive events and notifications from the
+  /// Sourcepoint Unified CMP platform.
+  /// Use this method to set a custom delegate that handles events and
+  /// notifications according to your application's needs.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// SourcepointEventDelegatePlatform delegate = MyEventDelegate();
+  /// registerEventDelegate(delegate);
+  /// ```
   void registerEventDelegate(SourcepointEventDelegatePlatform delegate) {
     throw UnimplementedError(
-        'registerEventDelegate() has not been implemented.');
+      'registerEventDelegate() has not been implemented.',
+    );
   }
 
   /// show privacy manager
@@ -46,7 +60,13 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
   }
 }
 
+/// Represents the platform interface for handling Sourcepoint event delegates.
+/// This abstract class defines the contract for implementing Sourcepoint event
+/// delegates on different platforms.
 abstract class SourcepointEventDelegatePlatform {
+  /// Represents a platform-specific delegate for handling Sourcepoint events.
+  /// This delegate is responsible for handling events related to the
+  /// Sourcepoint Unified CMP platform interface.
   SourcepointEventDelegatePlatform({
     this.onConsentReady,
     this.onUIFinished,
@@ -56,11 +76,29 @@ abstract class SourcepointEventDelegatePlatform {
     this.onNoIntentActivitiesFound,
     this.onSpFinished,
   });
+
+  /// A callback function that is called when the consent is ready.
+  ///
+  /// The [onConsentReady] function takes a single parameter of
+  /// type [SPConsent],
+  /// which represents the consent information.
   final void Function(SPConsent)? onConsentReady;
+
+  /// Callback function that is called when the UI is finished.
   final void Function(int viewId)? onUIFinished;
+
+  /// Callback function that is called when the UI is ready.
   final void Function(int viewId)? onUIReady;
+
+  /// Callback function that is called when an error occurs.
   final void Function(SourcepointUnifiedCmpError error)? onError;
+
+  /// Callback function that is called when an action occurs.
   final void Function(int viewId, ConsentAction consentAction)? onAction;
+
+  /// Callback function that is called when no intent activities are found.
   final void Function(String url)? onNoIntentActivitiesFound;
+
+  /// Callback function that is called when the Sourcepoint Unified CMP
   final void Function(SPConsent consent)? onSpFinished;
 }

@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs
-
 import 'package:flutter/foundation.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
 
@@ -8,12 +6,22 @@ export 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_c
 SourcepointUnifiedCmpPlatform get _platform =>
     SourcepointUnifiedCmpPlatform.instance;
 
+/// A controller for managing Sourcepoint functionality.
 class SourcepointController {
+  /// A controller for managing Sourcepoint consent management platform.
+  ///
+  /// The [SourcepointController] is responsible for handling the configuration
+  /// and management of the Sourcepoint consent management platform.
+  /// It requires a [config] parameter to be provided during initialization.
   SourcepointController({required this.config});
+
+  /// The configuration for the Sourcepoint consent management platform.
   final SPConfig config;
+
+  /// The delegate for handling Sourcepoint events in the Sourcepoint
   SourcepointEventDelegate? delegate;
 
-  // ignore: use_setters_to_change_properties
+  /// Registers the [delegate] as the event delegate for the Sourcepoint
   void setEventDelegate(SourcepointEventDelegate delegate) {
     _platform.registerEventDelegate(delegate);
   }
@@ -37,7 +45,10 @@ class SourcepointController {
   }
 }
 
+/// A delegate class for handling Sourcepoint events.
+/// This class implements the SourcepointEventDelegatePlatform interface.
 class SourcepointEventDelegate implements SourcepointEventDelegatePlatform {
+  /// A delegate class for handling Sourcepoint events.
   SourcepointEventDelegate({
     this.onConsentReady,
     this.onUIReady,

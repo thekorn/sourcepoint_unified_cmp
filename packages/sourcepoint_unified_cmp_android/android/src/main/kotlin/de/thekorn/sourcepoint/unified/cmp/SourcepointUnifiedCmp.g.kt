@@ -128,7 +128,7 @@ enum class HostAPISourcepointUnifiedCmpError(val raw: Int) {
 /** Generated class from Pigeon that represents data sent in messages. */
 data class HostAPIConsentAction (
   val actionType: HostAPIActionType,
-  val pubData: Any,
+  val pubData: String,
   val campaignType: HostAPICampaignType,
   val customActionId: String? = null
 
@@ -137,7 +137,7 @@ data class HostAPIConsentAction (
     @Suppress("UNCHECKED_CAST")
     fun fromList(list: List<Any?>): HostAPIConsentAction {
       val actionType = HostAPIActionType.ofRaw(list[0] as Int)!!
-      val pubData = list[1] as Any
+      val pubData = list[1] as String
       val campaignType = HostAPICampaignType.ofRaw(list[2] as Int)!!
       val customActionId = list[3] as String?
       return HostAPIConsentAction(actionType, pubData, campaignType, customActionId)
