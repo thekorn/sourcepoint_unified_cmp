@@ -198,9 +198,19 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   }
 }
 
+/// This class represents the event handler for Sourcepoint in the Android
+/// platform.
 class SourcepointEventHandler
     implements messages.SourcepointUnifiedCmpFlutterApi {
+  /// A class representing a Sourcepoint event handler.
+  ///
+  /// This class is responsible for handling events related to Sourcepoint.
+  /// It requires a [delegate] parameter, which is an object that implements the
+  /// necessary methods to handle the events.
   SourcepointEventHandler({required this.delegate});
+
+  /// The delegate for handling Sourcepoint events in the Sourcepoint
+  /// Unified CMP Android library.
   final SourcepointEventDelegatePlatform delegate;
 
   @override
