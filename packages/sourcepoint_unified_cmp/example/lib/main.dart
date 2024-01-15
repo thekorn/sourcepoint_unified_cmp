@@ -40,22 +40,19 @@ class _SourcepointunifiedCMPBuilderExampleState
     );
 
     _controller = SourcepointController(config: config);
-    //onConsentUIReady: () {
-    //  debugPrint('onConsentUIReady');
-    //},
-    //onConsentUIFinished: () {
-    //  debugPrint('onConsentUIFinished');
-    //},
-    //onConsentReady: ({GDPRUserConsent? consent}) {
-    //  debugPrint('Consent string: ${consent?.consentString}');
-    //  debugPrint('Consent action is taken and returned to Sourcepoint');
-    //},
-    //onAction: (ActionType? action) {
-    //  debugPrint('onAction(${action.toString()})');
-    //},
-    //onError: (errorCode) {
-    //  debugPrint('consentError: errorCode:$errorCode');
-    //},
+    _controller.setEventDelegate(
+      SourcepointEventDelegate(
+        onConsentReady: (SPConsent consent) {
+          debugPrint('DELEGATE onConsentReady: Consent string: '
+              '${consent.gdpr?.euconsent}');
+        },
+        onSpFinished: (SPConsent consent) {
+          debugPrint(
+            'DELEGATE SpFinished: Consent string: ${consent.gdpr?.euconsent}',
+          );
+        },
+      ),
+    );
   }
 
   @override

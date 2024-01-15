@@ -15,6 +15,77 @@ extension on messages.HostAPIGranularState {
   }
 }
 
+extension on messages.HostAPICampaignType {
+  CampaignType toCampaignType() {
+    switch (this) {
+      case messages.HostAPICampaignType.gdpr:
+        return CampaignType.gdpr;
+      case messages.HostAPICampaignType.ccpa:
+        return CampaignType.ccpa;
+    }
+  }
+}
+
+extension on messages.HostAPIActionType {
+  ActionType toActionType() {
+    switch (this) {
+      case messages.HostAPIActionType.showOptions:
+        return ActionType.showOptions;
+      case messages.HostAPIActionType.rejectAll:
+        return ActionType.rejectAll;
+      case messages.HostAPIActionType.acceptAll:
+        return ActionType.acceptAll;
+      case messages.HostAPIActionType.msgCancel:
+        return ActionType.msgCancel;
+      case messages.HostAPIActionType.custom:
+        return ActionType.custom;
+      case messages.HostAPIActionType.saveAndExit:
+        return ActionType.saveAndExit;
+      case messages.HostAPIActionType.pmDismiss:
+        return ActionType.pmDismiss;
+      case messages.HostAPIActionType.getMsgError:
+        return ActionType.getMsgError;
+      case messages.HostAPIActionType.getMessageNotCalled:
+        return ActionType.getMessageNotCalled;
+      case messages.HostAPIActionType.unknown:
+        return ActionType.unknown;
+    }
+  }
+}
+
+extension on messages.HostAPIConsentAction {
+  ConsentAction toConsentAction() {
+    return ConsentAction(
+      actionType: actionType.toActionType(),
+      pubData: pubData,
+      campaignType: campaignType.toCampaignType(),
+    );
+  }
+}
+
+extension on messages.HostAPISourcepointUnifiedCmpError {
+  SourcepointUnifiedCmpError toSourcepointUnifiedCMPError() {
+    switch (this) {
+      case messages.HostAPISourcepointUnifiedCmpError.invalidArgumentException:
+        return SourcepointUnifiedCmpError.invalidArgumentException;
+      case messages.HostAPISourcepointUnifiedCmpError.missingPropertyException:
+        return SourcepointUnifiedCmpError.missingPropertyException;
+      case messages.HostAPISourcepointUnifiedCmpError.invalidConsentResponse:
+        return SourcepointUnifiedCmpError.invalidConsentResponse;
+      case messages
+            .HostAPISourcepointUnifiedCmpError.noInternetConnectionException:
+        return SourcepointUnifiedCmpError.noInternetConnectionException;
+      case messages.HostAPISourcepointUnifiedCmpError
+            .executionInTheWrongThreadException:
+        return SourcepointUnifiedCmpError.executionInTheWrongThreadException;
+      case messages.HostAPISourcepointUnifiedCmpError.requestFailedException:
+        return SourcepointUnifiedCmpError.requestFailedException;
+      case messages.HostAPISourcepointUnifiedCmpError.invalidRequestException:
+        return SourcepointUnifiedCmpError.invalidRequestException;
+    }
+  }
+}
+
 extension on messages.HostAPIGranularStatus {
   GranularStatus toGranularStatus() {
     return GranularStatus(
@@ -106,6 +177,12 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   }
 
   @override
+  void registerEventDelegate(SourcepointEventDelegatePlatform delegate) {
+    messages.SourcepointUnifiedCmpFlutterApi.setup(
+        SourcepointEventHandler(delegate: delegate));
+  }
+
+  @override
   Future<SPConsent> loadMessage(SPConfig config) async {
     final hostConsent = await _api.loadMessage(
       accountId: config.accountId,
@@ -115,5 +192,60 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
     );
     final consent = hostConsent.toSPConsent();
     return consent;
+  }
+}
+
+class SourcepointEventHandler
+    implements messages.SourcepointUnifiedCmpFlutterApi {
+  SourcepointEventHandler({required this.delegate});
+  final SourcepointEventDelegatePlatform delegate;
+
+  @override
+  void onAction(int viewId, messages.HostAPIConsentAction consentAction) {
+    if (delegate.onAction != null) {
+      delegate.onAction?.call(viewId, consentAction.toConsentAction());
+    }
+  }
+
+  @override
+  void onConsentReady(messages.HostAPISPConsent consent) {
+    if (delegate.onConsentReady != null) {
+      delegate.onConsentReady?.call(consent.toSPConsent());
+    }
+  }
+
+  @override
+  void onError(messages.HostAPISourcepointUnifiedCmpError error) {
+    if (delegate.onError != null) {
+      delegate.onError?.call(error.toSourcepointUnifiedCMPError());
+    }
+  }
+
+  @override
+  void onNoIntentActivitiesFound(String url) {
+    if (delegate.onNoIntentActivitiesFound != null) {
+      delegate.onNoIntentActivitiesFound?.call(url);
+    }
+  }
+
+  @override
+  void onSpFinished(messages.HostAPISPConsent consent) {
+    if (delegate.onSpFinished != null) {
+      delegate.onSpFinished?.call(consent.toSPConsent());
+    }
+  }
+
+  @override
+  void onUIFinished(int viewId) {
+    if (delegate.onUIFinished != null) {
+      delegate.onUIFinished?.call(viewId);
+    }
+  }
+
+  @override
+  void onUIReady(int viewId) {
+    if (delegate.onUIReady != null) {
+      delegate.onUIReady?.call(viewId);
+    }
   }
 }

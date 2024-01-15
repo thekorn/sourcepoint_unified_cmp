@@ -35,8 +35,32 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  void registerEventDelegate(SourcepointEventDelegatePlatform delegate) {
+    throw UnimplementedError(
+        'registerEventDelegate() has not been implemented.');
+  }
+
   /// show privacy manager
   Future<SPConsent> loadMessage(SPConfig config) {
     throw UnimplementedError('loadMessage() has not been implemented.');
   }
+}
+
+abstract class SourcepointEventDelegatePlatform {
+  SourcepointEventDelegatePlatform({
+    this.onConsentReady,
+    this.onUIFinished,
+    this.onUIReady,
+    this.onError,
+    this.onAction,
+    this.onNoIntentActivitiesFound,
+    this.onSpFinished,
+  });
+  final void Function(SPConsent)? onConsentReady;
+  final void Function(int viewId)? onUIFinished;
+  final void Function(int viewId)? onUIReady;
+  final void Function(SourcepointUnifiedCmpError error)? onError;
+  final void Function(int viewId, ConsentAction consentAction)? onAction;
+  final void Function(String url)? onNoIntentActivitiesFound;
+  final void Function(SPConsent consent)? onSpFinished;
 }
