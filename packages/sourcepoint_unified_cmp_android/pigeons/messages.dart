@@ -18,6 +18,9 @@ enum HostAPIActionType {
   custom,
   saveAndExit,
   pmDismiss,
+  getMsgError,
+  getMessageNotCalled,
+  unknown,
 }
 
 enum HostAPISourcepointUnifiedCmpError {

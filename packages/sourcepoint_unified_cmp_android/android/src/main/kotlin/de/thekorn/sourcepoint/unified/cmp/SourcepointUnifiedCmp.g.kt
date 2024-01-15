@@ -97,7 +97,10 @@ enum class HostAPIActionType(val raw: Int) {
   MSGCANCEL(3),
   CUSTOM(4),
   SAVEANDEXIT(5),
-  PMDISMISS(6);
+  PMDISMISS(6),
+  GETMSGERROR(7),
+  GETMESSAGENOTCALLED(8),
+  UNKNOWN(9);
 
   companion object {
     fun ofRaw(raw: Int): HostAPIActionType? {

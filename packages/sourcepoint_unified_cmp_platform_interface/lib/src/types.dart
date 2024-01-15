@@ -141,3 +141,39 @@ class SPConsent {
     return 'SPConsent(gdpr: $gdpr, ccpa: $ccpa)';
   }
 }
+
+class ConsentAction {
+  ConsentAction({
+    required this.actionType,
+    required this.pubData,
+    required this.campaignType,
+    this.customActionId,
+  });
+  final ActionType actionType;
+  final Object pubData;
+  final CampaignType campaignType;
+  final String? customActionId;
+}
+
+enum ActionType {
+  showOptions,
+  rejectAll,
+  acceptAll,
+  msgCancel,
+  custom,
+  saveAndExit,
+  pmDismiss,
+  getMsgError,
+  getMessageNotCalled,
+  unknown,
+}
+
+enum SourcepointUnifiedCmpError {
+  invalidArgumentException,
+  missingPropertyException,
+  invalidConsentResponse,
+  noInternetConnectionException,
+  executionInTheWrongThreadException,
+  requestFailedException,
+  invalidRequestException
+}
