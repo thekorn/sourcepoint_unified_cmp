@@ -40,8 +40,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.json.JSONObject
 
 private class SourcepointFlutterApi(
-    binaryMessenger: BinaryMessenger,
-    private val activity: Activity
+        binaryMessenger: BinaryMessenger,
+        private val activity: Activity
 ) {
 
     var flutterApi: SourcepointUnifiedCmpFlutterApi? = null
@@ -62,20 +62,22 @@ private class SourcepointFlutterApi(
         flutterApi!!.onUIReady(view.id.toLong()) { callback(Result.success(Unit)) }
     }
 
-    fun callOnError(error: Throwable, callback: (Result<Unit>) -> Unit) {
+    fun callOnError(callback: (Result<Unit>) -> Unit) {
         //FIXME: need to map the throwable to the error type
         flutterApi!!.onError(HostAPISourcepointUnifiedCmpError.INVALIDARGUMENTEXCEPTION) {
             callback(
-                Result.success(Unit)
+                    Result.success(Unit)
             )
         }
     }
 
     fun callOnAction(view: View, consentAction: ConsentAction, callback: (Result<Unit>) -> Unit) {
-        flutterApi!!.onAction(view.id.toLong(), consentAction.toHostAPIConsentAction()) {
-            callback(
-                Result.success(Unit)
-            )
+        activity.runOnUiThread {
+            flutterApi!!.onAction(view.id.toLong(), consentAction.toHostAPIConsentAction()) {
+                callback(
+                        Result.success(Unit)
+                )
+            }
         }
     }
 
@@ -146,23 +148,23 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
         }
 
         override fun onNativeMessageReady(
-            message: MessageStructure,
-            messageController: NativeMessageController
+                message: MessageStructure,
+                messageController: NativeMessageController
         ) {
             Log.d("SourcepointUnifiedCmp", "onNativeMessageReady")
         }
 
         override fun onError(error: Throwable) {
             Log.d("SourcepointUnifiedCmp", "onError")
-            flutterApi.callOnError(error) {}
+            flutterApi.callOnError {}
         }
 
         @Deprecated(
-            "onMessageReady callback will be removed in favor of onUIReady. Currently this callback is disabled.",
-            ReplaceWith(
-                "onUIReady",
-                "com.sourcepoint.cmplibrary.SpClient"
-            )
+                "onMessageReady callback will be removed in favor of onUIReady. Currently this callback is disabled.",
+                ReplaceWith(
+                        "onUIReady",
+                        "com.sourcepoint.cmplibrary.SpClient"
+                )
         )
         override fun onMessageReady(message: JSONObject) {
             Log.d("SourcepointUnifiedCmp", "onMessageReady")
@@ -194,28 +196,28 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun loadMessage(
-        accountId: Long,
-        propertyId: Long,
-        propertyName: String,
-        pmId: String,
-        callback: (Result<HostAPISPConsent>) -> Unit
+            accountId: Long,
+            propertyId: Long,
+            propertyName: String,
+            pmId: String,
+            callback: (Result<HostAPISPConsent>) -> Unit
     ) {
         Log.d("SourcepointUnifiedCmp", "loadMessage")
         val cmpConfig = SpConfigDataBuilder()
-            .addAccountId(accountId.toInt())
-            .addPropertyId(propertyId.toInt())
-            .addPropertyName(propertyName)
-            .addMessageLanguage(MessageLanguage.ENGLISH) // Optional, default ENGLISH
-            .addCampaignsEnv(CampaignsEnv.PUBLIC) // Optional, default PUBLIC
-            .addMessageTimeout(4000) // Optional, default 3000ms
-            .addCampaign(CampaignType.GDPR)
-            .addCampaign(CampaignType.CCPA)
-            .build()
+                .addAccountId(accountId.toInt())
+                .addPropertyId(propertyId.toInt())
+                .addPropertyName(propertyName)
+                .addMessageLanguage(MessageLanguage.ENGLISH) // Optional, default ENGLISH
+                .addCampaignsEnv(CampaignsEnv.PUBLIC) // Optional, default PUBLIC
+                .addMessageTimeout(4000) // Optional, default 3000ms
+                .addCampaign(CampaignType.GDPR)
+                .addCampaign(CampaignType.CCPA)
+                .build()
         Log.d("SourcepointUnifiedCmp", "loadMessage")
         val spClient = LocalClient()
 
         spConsentLib =
-            makeConsentLib(spConfig = cmpConfig, activity = this.activity, spClient = spClient)
+                makeConsentLib(spConfig = cmpConfig, activity = this.activity, spClient = spClient)
         spConsentLib!!.loadMessage()
         spClient.isInitialized.invokeOnCompletion {
             callback(Result.success(spClient.isInitialized.getCompleted()))
@@ -225,19 +227,19 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
 }
 
 fun GDPRPurposeGrants.toHostAPIPurposeGrants() = HostAPIGDPRPurposeGrants(
-    granted = granted,
-    purposeGrants = purposeGrants.mapKeys { it.key }.mapValues { it.value },
+        granted = granted,
+        purposeGrants = purposeGrants.mapKeys { it.key }.mapValues { it.value },
 )
 
 
 fun SPGDPRConsent.toHostAPIGDPRConsent() = HostAPIGDPRConsent(
-    uuid = consent.uuid,
-    tcData = consent.tcData.mapKeys { it.key }.mapValues { it.value?.toString() },
-    grants = consent.grants.mapKeys { it.key }.mapValues { it.value.toHostAPIPurposeGrants() },
-    apply = consent.applies,
-    euconsent = consent.euconsent,
-    consentStatus = consent.consentStatus?.toHostAPIConsentStatus(),
-    acceptedCategories = consent.acceptedCategories,
+        uuid = consent.uuid,
+        tcData = consent.tcData.mapKeys { it.key }.mapValues { it.value?.toString() },
+        grants = consent.grants.mapKeys { it.key }.mapValues { it.value.toHostAPIPurposeGrants() },
+        apply = consent.applies,
+        euconsent = consent.euconsent,
+        consentStatus = consent.consentStatus?.toHostAPIConsentStatus(),
+        acceptedCategories = consent.acceptedCategories,
 )
 
 fun GranularState.toHostAPIGranularState() = when (this) {
@@ -247,36 +249,36 @@ fun GranularState.toHostAPIGranularState() = when (this) {
 }
 
 fun ConsentStatus.GranularStatus.toHostAPIGranularStatus() = HostAPIGranularStatus(
-    defaultConsent = defaultConsent,
-    previousOptInAll = previousOptInAll,
-    purposeConsent = purposeConsent?.toHostAPIGranularState(),
-    purposeLegInt = purposeLegInt?.toHostAPIGranularState(),
-    vendorConsent = vendorConsent?.toHostAPIGranularState(),
-    vendorLegInt = vendorLegInt?.toHostAPIGranularState(),
+        defaultConsent = defaultConsent,
+        previousOptInAll = previousOptInAll,
+        purposeConsent = purposeConsent?.toHostAPIGranularState(),
+        purposeLegInt = purposeLegInt?.toHostAPIGranularState(),
+        vendorConsent = vendorConsent?.toHostAPIGranularState(),
+        vendorLegInt = vendorLegInt?.toHostAPIGranularState(),
 )
 
 
 fun ConsentStatus.toHostAPIConsentStatus() = HostAPIConsentStatus(
-    consentedAll = consentedAll,
-    consentedToAny = consentedToAny,
-    granularStatus = granularStatus?.toHostAPIGranularStatus(),
-    hasConsentData = hasConsentData,
-    rejectedAny = rejectedAny,
-    rejectedLI = rejectedLI,
-    legalBasisChanges = legalBasisChanges,
-    vendorListAdditions = vendorListAdditions,
+        consentedAll = consentedAll,
+        consentedToAny = consentedToAny,
+        granularStatus = granularStatus?.toHostAPIGranularStatus(),
+        hasConsentData = hasConsentData,
+        rejectedAny = rejectedAny,
+        rejectedLI = rejectedLI,
+        legalBasisChanges = legalBasisChanges,
+        vendorListAdditions = vendorListAdditions,
 )
 
 
 fun SPConsents.toHostAPISPConsent() = HostAPISPConsent(
-    gdpr = gdpr?.toHostAPIGDPRConsent()
+        gdpr = gdpr?.toHostAPIGDPRConsent()
 )
 
 fun ConsentAction.toHostAPIConsentAction() = HostAPIConsentAction(
-    actionType = actionType.toHostAPIActionType(),
-    campaignType = campaignType.toHostAPICampaignType(),
-    pubData = pubData,
-    customActionId = customActionId,
+        actionType = actionType.toHostAPIActionType(),
+        campaignType = campaignType.toHostAPICampaignType(),
+        pubData = pubData.toString(),
+        customActionId = customActionId,
 )
 
 fun CampaignType.toHostAPICampaignType() = when (this) {

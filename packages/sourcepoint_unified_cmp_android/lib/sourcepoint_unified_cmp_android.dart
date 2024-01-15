@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:sourcepoint_unified_cmp_android/src/messages.g.dart'
     as messages;
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
@@ -57,7 +59,7 @@ extension on messages.HostAPIConsentAction {
   ConsentAction toConsentAction() {
     return ConsentAction(
       actionType: actionType.toActionType(),
-      pubData: pubData,
+      pubData: jsonDecode(pubData),
       campaignType: campaignType.toCampaignType(),
     );
   }
@@ -179,7 +181,8 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   @override
   void registerEventDelegate(SourcepointEventDelegatePlatform delegate) {
     messages.SourcepointUnifiedCmpFlutterApi.setup(
-        SourcepointEventHandler(delegate: delegate));
+      SourcepointEventHandler(delegate: delegate),
+    );
   }
 
   @override

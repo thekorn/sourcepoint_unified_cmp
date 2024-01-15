@@ -41,7 +41,7 @@ class HostAPIConsentAction {
     this.customActionId,
   });
   final HostAPIActionType actionType;
-  final Object pubData;
+  final String pubData;
   final HostAPICampaignType campaignType;
   final String? customActionId;
 }

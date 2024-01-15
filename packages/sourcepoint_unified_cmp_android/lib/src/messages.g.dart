@@ -80,7 +80,7 @@ class HostAPIConsentAction {
 
   HostAPIActionType actionType;
 
-  Object pubData;
+  String pubData;
 
   HostAPICampaignType campaignType;
 
@@ -99,7 +99,7 @@ class HostAPIConsentAction {
     result as List<Object?>;
     return HostAPIConsentAction(
       actionType: HostAPIActionType.values[result[0]! as int],
-      pubData: result[1]!,
+      pubData: result[1]! as String,
       campaignType: HostAPICampaignType.values[result[2]! as int],
       customActionId: result[3] as String?,
     );
