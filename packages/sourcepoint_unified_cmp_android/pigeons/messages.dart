@@ -185,7 +185,8 @@ abstract class SourcepointUnifiedCmpHostApi {
     required HostAPIMessageLanguage messageLanguage,
     required HostAPICampaignsEnv campaignsEnv,
     required int messageTimeout,
-    required List<HostAPICampaignType> campaigns,
+    required bool runGDPRCampaign,
+    required bool runCCPACampaign,
   });
 }
 

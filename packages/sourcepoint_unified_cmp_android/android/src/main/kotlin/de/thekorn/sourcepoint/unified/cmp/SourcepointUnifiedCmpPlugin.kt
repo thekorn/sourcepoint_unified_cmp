@@ -1,7 +1,6 @@
 package de.thekorn.sourcepoint.unified.cmp
 
 
-
 import HostAPICampaignType
 import HostAPICampaignsEnv
 import HostAPIMessageLanguage
@@ -191,17 +190,7 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override fun loadMessage(
-        accountId: Long,
-        propertyId: Long,
-        propertyName: String,
-        pmId: String,
-        messageLanguage: HostAPIMessageLanguage,
-        campaignsEnv: HostAPICampaignsEnv,
-        messageTimeout: Long,
-        campaigns: List<HostAPICampaignType>,
-        callback: (Result<HostAPISPConsent>) -> Unit
-    ) {
+    override fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Long, runGDPRCampaign: Boolean, runCCPACampaign: Boolean, callback: (Result<HostAPISPConsent>) -> Unit) {
         Log.d("SourcepointUnifiedCmp", "loadMessage")
         val cmpConfig = SpConfigDataBuilder()
                 .addAccountId(accountId.toInt())
@@ -210,8 +199,8 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
                 .addMessageLanguage(messageLanguage.toMessageLanguage())
                 .addCampaignsEnv(campaignsEnv.toCampaignsEnv())
                 .addMessageTimeout(messageTimeout)
-        if (campaigns.contains(HostAPICampaignType.GDPR)) cmpConfig.addCampaign(CampaignType.GDPR)
-        if (campaigns.contains(HostAPICampaignType.CCPA)) cmpConfig.addCampaign(CampaignType.CCPA)
+        if (runGDPRCampaign) cmpConfig.addCampaign(CampaignType.GDPR)
+        if (runCCPACampaign) cmpConfig.addCampaign(CampaignType.CCPA)
 
         Log.d("SourcepointUnifiedCmp", "loadMessage")
         val spClient = LocalClient()

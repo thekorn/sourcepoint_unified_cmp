@@ -455,7 +455,8 @@ class SourcepointUnifiedCmpHostApi {
     required HostAPIMessageLanguage messageLanguage,
     required HostAPICampaignsEnv campaignsEnv,
     required int messageTimeout,
-    required List<HostAPICampaignType?> campaigns,
+    required bool runGDPRCampaign,
+    required bool runCCPACampaign,
   }) async {
     const String __pigeon_channelName =
         'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadMessage';
@@ -474,7 +475,8 @@ class SourcepointUnifiedCmpHostApi {
       messageLanguage.index,
       campaignsEnv.index,
       messageTimeout,
-      campaigns
+      runGDPRCampaign,
+      runCCPACampaign
     ]) as List<Object?>?;
     if (__pigeon_replyList == null) {
       throw _createConnectionError(__pigeon_channelName);

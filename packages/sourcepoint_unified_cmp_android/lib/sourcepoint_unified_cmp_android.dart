@@ -45,17 +45,6 @@ extension on CampaignsEnv {
   }
 }
 
-extension on CampaignType {
-  messages.HostAPICampaignType toHostAPICampaignType() {
-    switch (this) {
-      case CampaignType.gdpr:
-        return messages.HostAPICampaignType.gdpr;
-      case CampaignType.ccpa:
-        return messages.HostAPICampaignType.ccpa;
-    }
-  }
-}
-
 extension on messages.HostAPICampaignType {
   CampaignType toCampaignType() {
     switch (this) {
@@ -235,9 +224,8 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
       messageLanguage: config.messageLanguage.toHostAPIMessageLanguage(),
       campaignsEnv: config.campaignsEnv.toHostAPICampaignsEnv(),
       messageTimeout: config.messageTimeout,
-      campaigns: config.campaigns
-          .map((campaign) => campaign.toHostAPICampaignType())
-          .toList(),
+      runCCPACampaign: config.campaigns.contains(CampaignType.ccpa),
+      runGDPRCampaign: config.campaigns.contains(CampaignType.gdpr),
     );
     final consent = hostConsent.toSPConsent();
     return consent;

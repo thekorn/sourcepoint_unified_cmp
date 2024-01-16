@@ -453,7 +453,7 @@ private object SourcepointUnifiedCmpHostApiCodec : StandardMessageCodec() {
 
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface SourcepointUnifiedCmpHostApi {
-  fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Long, campaigns: List<HostAPICampaignType>, callback: (Result<HostAPISPConsent>) -> Unit)
+  fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Long, runGDPRCampaign: Boolean, runCCPACampaign: Boolean, callback: (Result<HostAPISPConsent>) -> Unit)
 
   companion object {
     /** The codec used by SourcepointUnifiedCmpHostApi. */
@@ -475,8 +475,9 @@ interface SourcepointUnifiedCmpHostApi {
             val messageLanguageArg = HostAPIMessageLanguage.ofRaw(args[4] as Int)!!
             val campaignsEnvArg = HostAPICampaignsEnv.ofRaw(args[5] as Int)!!
             val messageTimeoutArg = args[6].let { if (it is Int) it.toLong() else it as Long }
-            val campaignsArg = args[7] as List<HostAPICampaignType>
-            api.loadMessage(accountIdArg, propertyIdArg, propertyNameArg, pmIdArg, messageLanguageArg, campaignsEnvArg, messageTimeoutArg, campaignsArg) { result: Result<HostAPISPConsent> ->
+            val runGDPRCampaignArg = args[7] as Boolean
+            val runCCPACampaignArg = args[8] as Boolean
+            api.loadMessage(accountIdArg, propertyIdArg, propertyNameArg, pmIdArg, messageLanguageArg, campaignsEnvArg, messageTimeoutArg, runGDPRCampaignArg, runCCPACampaignArg) { result: Result<HostAPISPConsent> ->
               val error = result.exceptionOrNull()
               if (error != null) {
                 reply.reply(wrapError(error))
