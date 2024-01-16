@@ -37,6 +37,7 @@ class _SourcepointunifiedCMPBuilderExampleState
       propertyId: 7639,
       propertyName: 'tcfv2.mobile.webview',
       pmId: '122058',
+      campaigns: [CampaignType.gdpr],
     );
 
     _controller = SourcepointController(config: config)

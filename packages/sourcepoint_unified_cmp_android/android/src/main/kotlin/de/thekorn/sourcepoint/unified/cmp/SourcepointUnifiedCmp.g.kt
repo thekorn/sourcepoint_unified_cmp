@@ -125,6 +125,31 @@ enum class HostAPISourcepointUnifiedCmpError(val raw: Int) {
   }
 }
 
+enum class HostAPIMessageLanguage(val raw: Int) {
+  ENGLISH(0),
+  FRENCH(1),
+  GERMAN(2),
+  ITALIAN(3),
+  SPANISH(4);
+
+  companion object {
+    fun ofRaw(raw: Int): HostAPIMessageLanguage? {
+      return values().firstOrNull { it.raw == raw }
+    }
+  }
+}
+
+enum class HostAPICampaignsEnv(val raw: Int) {
+  STAGE(0),
+  PUBLIC(1);
+
+  companion object {
+    fun ofRaw(raw: Int): HostAPICampaignsEnv? {
+      return values().firstOrNull { it.raw == raw }
+    }
+  }
+}
+
 /** Generated class from Pigeon that represents data sent in messages. */
 data class HostAPIConsentAction (
   val actionType: HostAPIActionType,
@@ -428,7 +453,7 @@ private object SourcepointUnifiedCmpHostApiCodec : StandardMessageCodec() {
 
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface SourcepointUnifiedCmpHostApi {
-  fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, callback: (Result<HostAPISPConsent>) -> Unit)
+  fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Long, campaigns: List<HostAPICampaignType>, callback: (Result<HostAPISPConsent>) -> Unit)
 
   companion object {
     /** The codec used by SourcepointUnifiedCmpHostApi. */
@@ -447,7 +472,11 @@ interface SourcepointUnifiedCmpHostApi {
             val propertyIdArg = args[1].let { if (it is Int) it.toLong() else it as Long }
             val propertyNameArg = args[2] as String
             val pmIdArg = args[3] as String
-            api.loadMessage(accountIdArg, propertyIdArg, propertyNameArg, pmIdArg) { result: Result<HostAPISPConsent> ->
+            val messageLanguageArg = HostAPIMessageLanguage.ofRaw(args[4] as Int)!!
+            val campaignsEnvArg = HostAPICampaignsEnv.ofRaw(args[5] as Int)!!
+            val messageTimeoutArg = args[6].let { if (it is Int) it.toLong() else it as Long }
+            val campaignsArg = args[7] as List<HostAPICampaignType>
+            api.loadMessage(accountIdArg, propertyIdArg, propertyNameArg, pmIdArg, messageLanguageArg, campaignsEnvArg, messageTimeoutArg, campaignsArg) { result: Result<HostAPISPConsent> ->
               val error = result.exceptionOrNull()
               if (error != null) {
                 reply.reply(wrapError(error))

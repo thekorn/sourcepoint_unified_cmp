@@ -70,6 +70,19 @@ enum HostAPISourcepointUnifiedCmpError {
   invalidRequestException,
 }
 
+enum HostAPIMessageLanguage {
+  english,
+  french,
+  german,
+  italian,
+  spanish,
+}
+
+enum HostAPICampaignsEnv {
+  stage,
+  public,
+}
+
 class HostAPIConsentAction {
   HostAPIConsentAction({
     required this.actionType,
@@ -439,6 +452,10 @@ class SourcepointUnifiedCmpHostApi {
     required int propertyId,
     required String propertyName,
     required String pmId,
+    required HostAPIMessageLanguage messageLanguage,
+    required HostAPICampaignsEnv campaignsEnv,
+    required int messageTimeout,
+    required List<HostAPICampaignType?> campaigns,
   }) async {
     const String __pigeon_channelName =
         'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadMessage';
@@ -448,9 +465,17 @@ class SourcepointUnifiedCmpHostApi {
       pigeonChannelCodec,
       binaryMessenger: __pigeon_binaryMessenger,
     );
-    final List<Object?>? __pigeon_replyList = await __pigeon_channel
-            .send(<Object?>[accountId, propertyId, propertyName, pmId])
-        as List<Object?>?;
+    final List<Object?>? __pigeon_replyList =
+        await __pigeon_channel.send(<Object?>[
+      accountId,
+      propertyId,
+      propertyName,
+      pmId,
+      messageLanguage.index,
+      campaignsEnv.index,
+      messageTimeout,
+      campaigns
+    ]) as List<Object?>?;
     if (__pigeon_replyList == null) {
       throw _createConnectionError(__pigeon_channelName);
     } else if (__pigeon_replyList.length > 1) {

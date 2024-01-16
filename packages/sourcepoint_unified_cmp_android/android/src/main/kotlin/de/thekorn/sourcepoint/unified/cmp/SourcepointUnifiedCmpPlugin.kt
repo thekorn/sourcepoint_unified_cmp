@@ -1,14 +1,10 @@
 package de.thekorn.sourcepoint.unified.cmp
 
 
-import HostAPIActionType
+
 import HostAPICampaignType
-import HostAPIConsentAction
-import HostAPIConsentStatus
-import HostAPIGDPRConsent
-import HostAPIGDPRPurposeGrants
-import HostAPIGranularState
-import HostAPIGranularStatus
+import HostAPICampaignsEnv
+import HostAPIMessageLanguage
 import HostAPISPConsent
 import SourcepointUnifiedCmpFlutterApi
 import SourcepointUnifiedCmpHostApi
@@ -196,105 +192,36 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun loadMessage(
-            accountId: Long,
-            propertyId: Long,
-            propertyName: String,
-            pmId: String,
-            callback: (Result<HostAPISPConsent>) -> Unit
+        accountId: Long,
+        propertyId: Long,
+        propertyName: String,
+        pmId: String,
+        messageLanguage: HostAPIMessageLanguage,
+        campaignsEnv: HostAPICampaignsEnv,
+        messageTimeout: Long,
+        campaigns: List<HostAPICampaignType>,
+        callback: (Result<HostAPISPConsent>) -> Unit
     ) {
         Log.d("SourcepointUnifiedCmp", "loadMessage")
         val cmpConfig = SpConfigDataBuilder()
                 .addAccountId(accountId.toInt())
                 .addPropertyId(propertyId.toInt())
                 .addPropertyName(propertyName)
-                .addMessageLanguage(MessageLanguage.ENGLISH) // Optional, default ENGLISH
-                .addCampaignsEnv(CampaignsEnv.PUBLIC) // Optional, default PUBLIC
-                .addMessageTimeout(4000) // Optional, default 3000ms
-                .addCampaign(CampaignType.GDPR)
-                .addCampaign(CampaignType.CCPA)
-                .build()
+                .addMessageLanguage(messageLanguage.toMessageLanguage())
+                .addCampaignsEnv(campaignsEnv.toCampaignsEnv())
+                .addMessageTimeout(messageTimeout)
+        if (campaigns.contains(HostAPICampaignType.GDPR)) cmpConfig.addCampaign(CampaignType.GDPR)
+        if (campaigns.contains(HostAPICampaignType.CCPA)) cmpConfig.addCampaign(CampaignType.CCPA)
+
         Log.d("SourcepointUnifiedCmp", "loadMessage")
         val spClient = LocalClient()
 
         spConsentLib =
-                makeConsentLib(spConfig = cmpConfig, activity = this.activity, spClient = spClient)
+                makeConsentLib(spConfig = cmpConfig.build(), activity = this.activity, spClient = spClient)
         spConsentLib!!.loadMessage()
         spClient.isInitialized.invokeOnCompletion {
             callback(Result.success(spClient.isInitialized.getCompleted()))
         }
     }
 
-}
-
-fun GDPRPurposeGrants.toHostAPIPurposeGrants() = HostAPIGDPRPurposeGrants(
-        granted = granted,
-        purposeGrants = purposeGrants.mapKeys { it.key }.mapValues { it.value },
-)
-
-
-fun SPGDPRConsent.toHostAPIGDPRConsent() = HostAPIGDPRConsent(
-        uuid = consent.uuid,
-        tcData = consent.tcData.mapKeys { it.key }.mapValues { it.value?.toString() },
-        grants = consent.grants.mapKeys { it.key }.mapValues { it.value.toHostAPIPurposeGrants() },
-        apply = consent.applies,
-        euconsent = consent.euconsent,
-        consentStatus = consent.consentStatus?.toHostAPIConsentStatus(),
-        acceptedCategories = consent.acceptedCategories,
-)
-
-fun GranularState.toHostAPIGranularState() = when (this) {
-    GranularState.ALL -> HostAPIGranularState.ALL
-    GranularState.SOME -> HostAPIGranularState.SOME
-    GranularState.NONE -> HostAPIGranularState.NONE
-}
-
-fun ConsentStatus.GranularStatus.toHostAPIGranularStatus() = HostAPIGranularStatus(
-        defaultConsent = defaultConsent,
-        previousOptInAll = previousOptInAll,
-        purposeConsent = purposeConsent?.toHostAPIGranularState(),
-        purposeLegInt = purposeLegInt?.toHostAPIGranularState(),
-        vendorConsent = vendorConsent?.toHostAPIGranularState(),
-        vendorLegInt = vendorLegInt?.toHostAPIGranularState(),
-)
-
-
-fun ConsentStatus.toHostAPIConsentStatus() = HostAPIConsentStatus(
-        consentedAll = consentedAll,
-        consentedToAny = consentedToAny,
-        granularStatus = granularStatus?.toHostAPIGranularStatus(),
-        hasConsentData = hasConsentData,
-        rejectedAny = rejectedAny,
-        rejectedLI = rejectedLI,
-        legalBasisChanges = legalBasisChanges,
-        vendorListAdditions = vendorListAdditions,
-)
-
-
-fun SPConsents.toHostAPISPConsent() = HostAPISPConsent(
-        gdpr = gdpr?.toHostAPIGDPRConsent()
-)
-
-fun ConsentAction.toHostAPIConsentAction() = HostAPIConsentAction(
-        actionType = actionType.toHostAPIActionType(),
-        campaignType = campaignType.toHostAPICampaignType(),
-        pubData = pubData.toString(),
-        customActionId = customActionId,
-)
-
-fun CampaignType.toHostAPICampaignType() = when (this) {
-    CampaignType.CCPA -> HostAPICampaignType.CCPA
-    CampaignType.GDPR -> HostAPICampaignType.GDPR
-}
-
-fun ActionType.toHostAPIActionType() = when (this) {
-    ActionType.ACCEPT_ALL -> HostAPIActionType.ACCEPTALL
-    ActionType.CUSTOM -> HostAPIActionType.CUSTOM
-    ActionType.GET_MSG_ERROR -> HostAPIActionType.GETMSGERROR
-    ActionType.GET_MSG_NOT_CALLED -> HostAPIActionType.GETMESSAGENOTCALLED
-    ActionType.MSG_CANCEL -> HostAPIActionType.MSGCANCEL
-    ActionType.PM_DISMISS -> HostAPIActionType.PMDISMISS
-    ActionType.REJECT_ALL -> HostAPIActionType.REJECTALL
-    ActionType.SAVE_AND_EXIT -> HostAPIActionType.SAVEANDEXIT
-    ActionType.SHOW_OPTIONS -> HostAPIActionType.SHOWOPTIONS
-    ActionType.UNKNOWN -> HostAPIActionType.UNKNOWN
 }
