@@ -1,7 +1,6 @@
 package de.thekorn.sourcepoint.unified.cmp
 
 
-import HostAPICampaignType
 import HostAPICampaignsEnv
 import HostAPIMessageLanguage
 import HostAPISPConsent
@@ -15,16 +14,9 @@ import com.sourcepoint.cmplibrary.SpConsentLib
 import com.sourcepoint.cmplibrary.core.nativemessage.MessageStructure
 import com.sourcepoint.cmplibrary.creation.SpConfigDataBuilder
 import com.sourcepoint.cmplibrary.creation.makeConsentLib
-import com.sourcepoint.cmplibrary.data.network.model.optimized.ConsentStatus
-import com.sourcepoint.cmplibrary.data.network.model.optimized.GranularState
-import com.sourcepoint.cmplibrary.data.network.util.CampaignsEnv
 import com.sourcepoint.cmplibrary.exception.CampaignType
 import com.sourcepoint.cmplibrary.model.ConsentAction
-import com.sourcepoint.cmplibrary.model.MessageLanguage
-import com.sourcepoint.cmplibrary.model.exposed.ActionType
-import com.sourcepoint.cmplibrary.model.exposed.GDPRPurposeGrants
 import com.sourcepoint.cmplibrary.model.exposed.SPConsents
-import com.sourcepoint.cmplibrary.model.exposed.SPGDPRConsent
 import io.flutter.Log
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
