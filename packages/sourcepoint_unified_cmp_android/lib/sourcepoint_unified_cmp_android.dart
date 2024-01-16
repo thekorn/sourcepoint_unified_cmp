@@ -17,6 +17,34 @@ extension on messages.HostAPIGranularState {
   }
 }
 
+extension on MessageLanguage {
+  messages.HostAPIMessageLanguage toHostAPIMessageLanguage() {
+    switch (this) {
+      case MessageLanguage.english:
+        return messages.HostAPIMessageLanguage.english;
+      case MessageLanguage.french:
+        return messages.HostAPIMessageLanguage.french;
+      case MessageLanguage.german:
+        return messages.HostAPIMessageLanguage.german;
+      case MessageLanguage.italian:
+        return messages.HostAPIMessageLanguage.italian;
+      case MessageLanguage.spanish:
+        return messages.HostAPIMessageLanguage.spanish;
+    }
+  }
+}
+
+extension on CampaignsEnv {
+  messages.HostAPICampaignsEnv toHostAPICampaignsEnv() {
+    switch (this) {
+      case CampaignsEnv.stage:
+        return messages.HostAPICampaignsEnv.stage;
+      case CampaignsEnv.public:
+        return messages.HostAPICampaignsEnv.public;
+    }
+  }
+}
+
 extension on messages.HostAPICampaignType {
   CampaignType toCampaignType() {
     switch (this) {
@@ -187,11 +215,17 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
 
   @override
   Future<SPConsent> loadMessage(SPConfig config) async {
+    assert(config.campaigns.isNotEmpty, 'campaigns cannot be empty');
     final hostConsent = await _api.loadMessage(
       accountId: config.accountId,
       propertyId: config.propertyId,
       propertyName: config.propertyName,
       pmId: config.pmId,
+      messageLanguage: config.messageLanguage.toHostAPIMessageLanguage(),
+      campaignsEnv: config.campaignsEnv.toHostAPICampaignsEnv(),
+      messageTimeout: config.messageTimeout,
+      runCCPACampaign: config.campaigns.contains(CampaignType.ccpa),
+      runGDPRCampaign: config.campaigns.contains(CampaignType.gdpr),
     );
     final consent = hostConsent.toSPConsent();
     return consent;

@@ -33,6 +33,16 @@ enum HostAPISourcepointUnifiedCmpError {
   invalidRequestException
 }
 
+enum HostAPIMessageLanguage {
+  english,
+  french,
+  german,
+  italian,
+  spanish,
+}
+
+enum HostAPICampaignsEnv { stage, public }
+
 class HostAPIConsentAction {
   HostAPIConsentAction({
     required this.actionType,
@@ -172,6 +182,11 @@ abstract class SourcepointUnifiedCmpHostApi {
     required int propertyId,
     required String propertyName,
     required String pmId,
+    required HostAPIMessageLanguage messageLanguage,
+    required HostAPICampaignsEnv campaignsEnv,
+    required int messageTimeout,
+    required bool runGDPRCampaign,
+    required bool runCCPACampaign,
   });
 }
 

@@ -1,16 +1,34 @@
 // ignore_for_file: public_member_api_docs
 
+enum MessageLanguage {
+  english,
+  french,
+  german,
+  italian,
+  spanish,
+}
+
+enum CampaignsEnv { stage, public }
+
 class SPConfig {
   SPConfig({
     required this.accountId,
     required this.propertyId,
     required this.propertyName,
     required this.pmId,
+    required this.campaigns,
+    this.messageLanguage = MessageLanguage.english,
+    this.campaignsEnv = CampaignsEnv.public,
+    this.messageTimeout = 30000,
   });
   final int accountId;
   final int propertyId;
   final String propertyName;
   final String pmId;
+  final MessageLanguage messageLanguage;
+  final CampaignsEnv campaignsEnv;
+  final int messageTimeout;
+  final List<CampaignType> campaigns;
 }
 
 enum PMTab { purposes }
