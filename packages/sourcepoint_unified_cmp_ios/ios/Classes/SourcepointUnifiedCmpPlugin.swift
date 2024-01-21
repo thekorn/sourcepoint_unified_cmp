@@ -31,8 +31,15 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin, Sourc
         }
     }
 
-    func loadPrivacyManager(pmId _: String, pmTab _: HostAPIPMTab, campaignType _: HostAPICampaignType, messageType _: HostAPIMessageType, completion _: @escaping (Result<Void, Error>) -> Void) {
+    func loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType, messageType _: HostAPIMessageType, completion _: @escaping (Result<Void, Error>) -> Void) {
         NSLog(">>>> WE LOAD PRIVACY MANAGER")
+        
+        switch campaignType {
+        case HostAPICampaignType.gdpr:
+            consentManager.loadGDPRPrivacyManager(withId: pmId, tab: pmTab.toSPPrivacyManagerTab())
+        case HostAPICampaignType.ccpa:
+            consentManager.loadCCPAPrivacyManager(withId: pmId, tab: pmTab.toSPPrivacyManagerTab())
+        }
     }
 
     public static func register(with registrar: FlutterPluginRegistrar) {

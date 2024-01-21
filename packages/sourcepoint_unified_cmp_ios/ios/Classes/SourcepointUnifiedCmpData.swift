@@ -94,3 +94,13 @@ extension HostAPIMessageLanguage {
         }
     }
 }
+
+
+extension HostAPIPMTab {
+    func toSPPrivacyManagerTab() -> SPPrivacyManagerTab {
+        switch self {
+        case .purposes:
+            SPPrivacyManagerTab.Purposes
+        }
+    }
+}
