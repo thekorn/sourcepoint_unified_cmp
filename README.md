@@ -162,3 +162,4 @@ DELEGATE SpFinished: Consent string: CP4u7EAP4u7EAAGABCENDgCgAAAAAAAAAAYgAAAAAAA
 - [very good dev](https://vgv.dev)
 - [melos](https://melos.invertase.dev)
 - [example melos + pigeon repo: flutterfire](https://github.com/firebase/flutterfire/)
+- [example pigeon + swift host and flutter api](https://gitlab.com/twilio-flutter/conversations/-/blob/master/ios/Classes/SwiftTwilioConversationsPlugin.swift)
