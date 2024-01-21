@@ -5,10 +5,94 @@ import UIKit
 // This extension of Error is required to do use FlutterError in any Swift code.
 extension FlutterError: Error {}
 
+class Completer<T> {
+    typealias CompletionHandler = (T) -> Void
+
+    private var completionHandler: CompletionHandler?
+
+    func complete(result: T) {
+        DispatchQueue.main.async {
+            self.completionHandler?(result)
+        }
+    }
+
+    func setCompletionHandler(_ handler: @escaping CompletionHandler) {
+        completionHandler = handler
+    }
+}
+
+enum NotImplementedError: Error {
+    case notImplemented
+}
+
+extension SPGDPRVendorGrant {
+    func toHostAPIPurposeGrants() -> HostAPIGDPRPurposeGrants {
+        return HostAPIGDPRPurposeGrants(granted: granted, purposeGrants: purposeGrants)
+    }
+}
+
+extension ConsentStatus {
+    func toHostAPIConsentStatus() -> HostAPIConsentStatus {
+        return HostAPIConsentStatus(
+            consentedAll: consentedAll,
+            consentedToAny: consentedToAny,
+            granularStatus: nil, ///granularStatus,
+            hasConsentData: nil, ///hasConsentData,
+            rejectedAny: rejectedAny,
+            rejectedLI: rejectedLI,
+            legalBasisChanges: legalBasisChanges,
+            vendorListAdditions: vendorListAdditions
+        )
+    }
+}
+
+extension SPConsent {
+    func toHostAPIGDPRConsent() throws -> HostAPIGDPRConsent {
+        if let value = self as? SPConsent<SPGDPRConsent> {
+            let tcData: [String?: String?]? = value.consents!.tcfData?.dictionaryValue?.reduce(into: [:]) { result, pair in
+                // Convert the value to String? if possible
+                let value: String? = (pair.value as? String) ?? (pair.value as? CustomStringConvertible)?.description
+
+                // Insert into the new dictionary
+                result[pair.key] = value
+            }
+            
+            let grants: [String?: HostAPIGDPRPurposeGrants?]? = value.consents?.vendorGrants.reduce(into: [:]) { result, pair in
+                // Convert the value to String? if possible
+                let value: SPGDPRVendorGrant = pair.value as SPGDPRVendorGrant
+
+                // Insert into the new dictionary
+                result[pair.key] = value.toHostAPIPurposeGrants()
+            }
+
+            return HostAPIGDPRConsent(
+                uuid: value.consents!.uuid,
+                tcData: tcData,
+                grants: grants,
+                euconsent: value.consents!.euconsent,
+                acceptedCategories: value.consents!.acceptedCategories,
+                apply: value.consents!.applies,
+                consentStatus: value.consents!.consentStatus.toHostAPIConsentStatus()
+            )
+        } else {
+            throw NotImplementedError.notImplemented
+        }
+    }
+}
+
+extension SPUserData {
+    func toHostAPISPConsent() -> HostAPISPConsent {
+        return HostAPISPConsent(
+            gdpr: try? gdpr?.toHostAPIGDPRConsent()
+        )
+    }
+}
+
 public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin, SourcepointUnifiedCmpHostApi {
     private var consentManager: SPSDK!
+    private var isInitialized: Completer<SPUserData> = .init()
 
-    func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId _: String, messageLanguage _: HostAPIMessageLanguage, campaignsEnv _: HostAPICampaignsEnv, messageTimeout _: Int64, runGDPRCampaign _: Bool, runCCPACampaign _: Bool, completion _: @escaping (Result<HostAPISPConsent, Error>) -> Void) {
+    func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId _: String, messageLanguage _: HostAPIMessageLanguage, campaignsEnv _: HostAPICampaignsEnv, messageTimeout _: Int64, runGDPRCampaign _: Bool, runCCPACampaign _: Bool, completion: @escaping (Result<HostAPISPConsent, Error>) -> Void) {
         NSLog(">>>>> WE LOAD MESSAGE")
         consentManager = SPConsentManager(
             accountId: Int(accountId),
@@ -22,6 +106,10 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin, Sourc
             delegate: self
         )
         consentManager.loadMessage()
+        isInitialized.setCompletionHandler { [completion] result in
+            NSLog("Received result: \(result)")
+            completion(.success(result.toHostAPISPConsent()))
+        }
     }
 
     func loadPrivacyManager(pmId _: String, pmTab _: HostAPIPMTab, campaignType _: HostAPICampaignType, messageType _: HostAPIMessageType, completion _: @escaping (Result<Void, Error>) -> Void) {
@@ -33,12 +121,6 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin, Sourc
         let api: SourcepointUnifiedCmpHostApi & NSObjectProtocol = SourcepointUnifiedCmpPlugin()
         SourcepointUnifiedCmpHostApiSetup.setUp(binaryMessenger: messenger, api: api)
         /// registrar.addApplicationDelegate(self)
-    }
-
-    override public func viewDidLoad() {
-        NSLog("view did load")
-        super.viewDidLoad()
-        ///consentManager.loadMessage()
     }
 }
 
@@ -84,11 +166,7 @@ extension SourcepointUnifiedCmpPlugin: SPDelegate {
     public func onConsentReady(userData: SPUserData) {
         NSLog("onConsentReady")
         NSLog("onConsentReady: \(userData)")
-        // checking if a gdpr vendor is consented
-        userData.gdpr?.consents?.vendorGrants["myVendorId"]?.granted
-
-        // checking if a ccpa vendor is rejected (on ccpa, vendors are accepted by default)
-        userData.ccpa?.consents?.rejectedVendors.contains("myVendorId")
+        isInitialized.complete(result: userData)
     }
 
     public func onError(error: SPError) {
