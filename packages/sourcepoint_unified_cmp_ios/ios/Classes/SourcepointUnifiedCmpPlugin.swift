@@ -36,8 +36,8 @@ extension ConsentStatus {
         return HostAPIConsentStatus(
             consentedAll: consentedAll,
             consentedToAny: consentedToAny,
-            granularStatus: nil, ///granularStatus,
-            hasConsentData: nil, ///hasConsentData,
+            granularStatus: nil, ///granularStatus, /// FIXME: not public in the ios sdk
+            hasConsentData: nil, ///hasConsentData,  /// FIXME: not public in the ios sdk
             rejectedAny: rejectedAny,
             rejectedLI: rejectedLI,
             legalBasisChanges: legalBasisChanges,
@@ -120,7 +120,6 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin, Sourc
         let messenger: FlutterBinaryMessenger = registrar.messenger()
         let api: SourcepointUnifiedCmpHostApi & NSObjectProtocol = SourcepointUnifiedCmpPlugin()
         SourcepointUnifiedCmpHostApiSetup.setUp(binaryMessenger: messenger, api: api)
-        /// registrar.addApplicationDelegate(self)
     }
 }
 
