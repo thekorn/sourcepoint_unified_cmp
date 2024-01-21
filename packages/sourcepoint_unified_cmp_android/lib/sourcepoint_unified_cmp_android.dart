@@ -195,6 +195,39 @@ extension on messages.HostAPISPConsent {
   }
 }
 
+extension on PMTab {
+  messages.HostAPIPMTab toHostAPIPMTab() {
+    switch (this) {
+      case PMTab.purposes:
+        return messages.HostAPIPMTab.purposes;
+    }
+  }
+}
+
+extension on CampaignType {
+  messages.HostAPICampaignType toHostAPICampaignType() {
+    switch (this) {
+      case CampaignType.gdpr:
+        return messages.HostAPICampaignType.gdpr;
+      case CampaignType.ccpa:
+        return messages.HostAPICampaignType.ccpa;
+    }
+  }
+}
+
+extension on MessageType {
+  messages.HostAPIMessageType toHostAPIMessageType() {
+    switch (this) {
+      case MessageType.mobile:
+        return messages.HostAPIMessageType.mobile;
+      case MessageType.lagacyOtt:
+        return messages.HostAPIMessageType.lagacyOtt;
+      case MessageType.ott:
+        return messages.HostAPIMessageType.ott;
+    }
+  }
+}
+
 /// The Android implementation of [SourcepointUnifiedCmpPlatform].
 class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   final messages.SourcepointUnifiedCmpHostApi _api =
@@ -229,6 +262,21 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
     );
     final consent = hostConsent.toSPConsent();
     return consent;
+  }
+
+  @override
+  Future<void> loadPrivacyManager(
+    String pmId,
+    PMTab pmTab,
+    CampaignType campaignType,
+    MessageType messageType,
+  ) async {
+    await _api.loadPrivacyManager(
+      pmId: pmId,
+      pmTab: pmTab.toHostAPIPMTab(),
+      campaignType: campaignType.toHostAPICampaignType(),
+      messageType: messageType.toHostAPIMessageType(),
+    );
   }
 }
 

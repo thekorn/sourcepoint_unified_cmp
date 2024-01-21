@@ -10,6 +10,8 @@ import HostAPIGDPRPurposeGrants
 import HostAPIGranularState
 import HostAPIGranularStatus
 import HostAPIMessageLanguage
+import HostAPIMessageType
+import HostAPIPMTab
 import HostAPISPConsent
 import com.sourcepoint.cmplibrary.data.network.model.optimized.ConsentStatus
 import com.sourcepoint.cmplibrary.data.network.model.optimized.GranularState
@@ -17,8 +19,10 @@ import com.sourcepoint.cmplibrary.data.network.util.CampaignsEnv
 import com.sourcepoint.cmplibrary.exception.CampaignType
 import com.sourcepoint.cmplibrary.model.ConsentAction
 import com.sourcepoint.cmplibrary.model.MessageLanguage
+import com.sourcepoint.cmplibrary.model.PMTab
 import com.sourcepoint.cmplibrary.model.exposed.ActionType
 import com.sourcepoint.cmplibrary.model.exposed.GDPRPurposeGrants
+import com.sourcepoint.cmplibrary.model.exposed.MessageType
 import com.sourcepoint.cmplibrary.model.exposed.SPConsents
 import com.sourcepoint.cmplibrary.model.exposed.SPGDPRConsent
 import io.flutter.Log
@@ -108,4 +112,19 @@ fun HostAPIMessageLanguage.toMessageLanguage() = when (this) {
 fun HostAPICampaignsEnv.toCampaignsEnv() = when (this) {
     HostAPICampaignsEnv.PUBLIC -> CampaignsEnv.PUBLIC
     HostAPICampaignsEnv.STAGE -> CampaignsEnv.STAGE
+}
+
+fun HostAPIPMTab.toPMTab() = when (this) {
+    HostAPIPMTab.PURPOSES -> PMTab.PURPOSES
+}
+
+fun HostAPICampaignType.toCampaignType() = when (this) {
+    HostAPICampaignType.CCPA -> CampaignType.CCPA
+    HostAPICampaignType.GDPR -> CampaignType.GDPR
+}
+
+fun HostAPIMessageType.toMessageType() = when (this) {
+    HostAPIMessageType.MOBILE -> MessageType.MOBILE
+    HostAPIMessageType.OTT -> MessageType.OTT
+    HostAPIMessageType.LAGACYOTT -> MessageType.LEGACY_OTT
 }

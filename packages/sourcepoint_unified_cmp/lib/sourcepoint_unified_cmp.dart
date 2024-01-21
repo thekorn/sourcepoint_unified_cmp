@@ -35,6 +35,12 @@ class SourcepointController {
     MessageType messageType = MessageType.mobile,
   }) async {
     debugPrint('loadPrivacyManager');
+    return _platform.loadPrivacyManager(
+      pmId,
+      pmTab,
+      campaignType,
+      messageType,
+    );
   }
 
   /// Loading the First Layer Message

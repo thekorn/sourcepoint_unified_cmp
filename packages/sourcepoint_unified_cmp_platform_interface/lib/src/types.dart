@@ -35,7 +35,7 @@ enum PMTab { purposes }
 
 enum CampaignType { gdpr, ccpa }
 
-enum MessageType { mobile, ott, lagazyOtt }
+enum MessageType { mobile, ott, lagacyOtt }
 
 enum GranularState { all, some, none }
 
