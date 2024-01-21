@@ -33,7 +33,7 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin, Sourc
 
     func loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType, messageType _: HostAPIMessageType, completion _: @escaping (Result<Void, Error>) -> Void) {
         NSLog(">>>> WE LOAD PRIVACY MANAGER")
-        
+
         switch campaignType {
         case HostAPICampaignType.gdpr:
             consentManager.loadGDPRPrivacyManager(withId: pmId, tab: pmTab.toSPPrivacyManagerTab())

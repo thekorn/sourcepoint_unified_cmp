@@ -95,7 +95,6 @@ extension HostAPIMessageLanguage {
     }
 }
 
-
 extension HostAPIPMTab {
     func toSPPrivacyManagerTab() -> SPPrivacyManagerTab {
         switch self {

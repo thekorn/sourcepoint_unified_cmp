@@ -276,12 +276,12 @@ class SourcepointUnifiedCmpIOS extends SourcepointUnifiedCmpPlatform {
     CampaignType campaignType,
     MessageType messageType,
   ) async {
-    //await _api.loadPrivacyManager(
-    //  pmId: pmId,
-    //  pmTab: pmTab.toHostAPIPMTab(),
-    //  campaignType: campaignType.toHostAPICampaignType(),
-    //  messageType: messageType.toHostAPIMessageType(),
-    //);
     debugPrint("loadPrivacyManager");
+    await _api.loadPrivacyManager(
+      pmId: pmId,
+      pmTab: pmTab.toHostAPIPMTab(),
+      campaignType: campaignType.toHostAPICampaignType(),
+      messageType: messageType.toHostAPIMessageType(),
+    );
   }
 }
