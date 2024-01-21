@@ -106,9 +106,6 @@ extension HostAPIPMTab {
 
 extension SPAction {
     func toHostAPIConsentAction() -> HostAPIConsentAction {
-
-        
-        
         return HostAPIConsentAction(
             actionType: try! type.toHostAPIActionType(),
             pubData: String(describing: publisherData),
@@ -117,7 +114,6 @@ extension SPAction {
         )
     }
 }
-
 
 extension SPCampaignType {
     func toHostAPICampaignType() throws -> HostAPICampaignType {

@@ -74,7 +74,7 @@ private class SourcepointFlutterApi {
             NSLog("done sending ui ready to flutter \($0)")
         }
     }
-    
+
     func callOnAction(controller: UIViewController, action: SPAction) {
         flutterAPI.onAction(viewId: controller.restorationIdentifier ?? "", consentAction: action.toHostAPIConsentAction()) {
             NSLog("done sendingon action to flutter \($0)")
@@ -86,15 +86,15 @@ private class SourcepointFlutterApi {
             NSLog("done sending ui finished to flutter \($0)")
         }
     }
-    
+
     func callOnSpFinished(userData: SPUserData) {
         flutterAPI.onSpFinished(consent: userData.toHostAPISPConsent()) {
             NSLog("done sending SP finished to flutter \($0)")
         }
     }
-    
-    func callOnError(error: SPError) {
-        //FIXME: need to map the throwable to the error type
+
+    func callOnError(error _: SPError) {
+        // FIXME: need to map the throwable to the error type
         flutterAPI.onError(error: HostAPISourcepointUnifiedCmpError.invalidArgumentException) {
             NSLog("done sending error to flutter \($0)")
         }
