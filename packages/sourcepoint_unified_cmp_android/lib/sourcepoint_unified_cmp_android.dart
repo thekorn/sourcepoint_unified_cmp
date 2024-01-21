@@ -93,29 +93,6 @@ extension on messages.HostAPIConsentAction {
   }
 }
 
-extension on messages.HostAPISourcepointUnifiedCmpError {
-  SourcepointUnifiedCmpError toSourcepointUnifiedCMPError() {
-    switch (this) {
-      case messages.HostAPISourcepointUnifiedCmpError.invalidArgumentException:
-        return SourcepointUnifiedCmpError.invalidArgumentException;
-      case messages.HostAPISourcepointUnifiedCmpError.missingPropertyException:
-        return SourcepointUnifiedCmpError.missingPropertyException;
-      case messages.HostAPISourcepointUnifiedCmpError.invalidConsentResponse:
-        return SourcepointUnifiedCmpError.invalidConsentResponse;
-      case messages
-            .HostAPISourcepointUnifiedCmpError.noInternetConnectionException:
-        return SourcepointUnifiedCmpError.noInternetConnectionException;
-      case messages.HostAPISourcepointUnifiedCmpError
-            .executionInTheWrongThreadException:
-        return SourcepointUnifiedCmpError.executionInTheWrongThreadException;
-      case messages.HostAPISourcepointUnifiedCmpError.requestFailedException:
-        return SourcepointUnifiedCmpError.requestFailedException;
-      case messages.HostAPISourcepointUnifiedCmpError.invalidRequestException:
-        return SourcepointUnifiedCmpError.invalidRequestException;
-    }
-  }
-}
-
 extension on messages.HostAPIGranularStatus {
   GranularStatus toGranularStatus() {
     return GranularStatus(
@@ -215,6 +192,15 @@ extension on CampaignType {
   }
 }
 
+extension on messages.HostAPISPError {
+  SPError toSPError() {
+    return SPError(
+      spCode: cause,
+      description: message,
+    );
+  }
+}
+
 extension on MessageType {
   messages.HostAPIMessageType toHostAPIMessageType() {
     switch (this) {
@@ -310,9 +296,9 @@ class SourcepointEventHandler
   }
 
   @override
-  void onError(messages.HostAPISourcepointUnifiedCmpError error) {
+  void onError(messages.HostAPISPError error) {
     if (delegate.onError != null) {
-      delegate.onError?.call(error.toSourcepointUnifiedCMPError());
+      delegate.onError?.call(error.toSPError());
     }
   }
 

@@ -79,9 +79,8 @@ private class SourcepointFlutterApi {
         flutterAPI.onSpFinished(consent: userData.toHostAPISPConsent()) { _ in }
     }
 
-    func callOnError(error _: SPError) {
-        // FIXME: need to map the throwable to the error type
-        flutterAPI.onError(error: HostAPISourcepointUnifiedCmpError.invalidArgumentException) { _ in }
+    func callOnError(error: SPError) {
+        flutterAPI.onError(error: error.toHostAPISPError()) { _ in }
     }
 }
 

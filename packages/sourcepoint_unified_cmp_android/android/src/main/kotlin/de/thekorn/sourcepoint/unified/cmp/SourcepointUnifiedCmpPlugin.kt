@@ -7,6 +7,7 @@ import HostAPIMessageLanguage
 import HostAPIMessageType
 import HostAPIPMTab
 import HostAPISPConsent
+import HostAPISPError
 import SourcepointUnifiedCmpFlutterApi
 import SourcepointUnifiedCmpHostApi
 import android.app.Activity
@@ -52,9 +53,10 @@ private class SourcepointFlutterApi(
         flutterApi!!.onUIReady(view.id.toLong()) { callback(Result.success(Unit)) }
     }
 
-    fun callOnError(callback: (Result<Unit>) -> Unit) {
-        //FIXME: need to map the throwable to the error type
-        flutterApi!!.onError(HostAPISourcepointUnifiedCmpError.INVALIDARGUMENTEXCEPTION) {
+    fun callOnError(error: Throwable, callback: (Result<Unit>) -> Unit) {
+        val message: String = error.message ?: "unknown error"
+        val cause: String = error.cause?.javaClass?.simpleName ?: message
+        flutterApi!!.onError(HostAPISPError(cause, message)) {
             callback(
                     Result.success(Unit)
             )
@@ -146,7 +148,7 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
 
         override fun onError(error: Throwable) {
             Log.d("SourcepointUnifiedCmp", "onError")
-            flutterApi.callOnError {}
+            flutterApi.callOnError(error) {}
         }
 
         @Deprecated(

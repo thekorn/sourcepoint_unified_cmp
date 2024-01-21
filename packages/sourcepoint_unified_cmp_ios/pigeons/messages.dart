@@ -23,14 +23,13 @@ enum HostAPIActionType {
   unknown,
 }
 
-enum HostAPISourcepointUnifiedCmpError {
-  invalidArgumentException,
-  missingPropertyException,
-  invalidConsentResponse,
-  noInternetConnectionException,
-  executionInTheWrongThreadException,
-  requestFailedException,
-  invalidRequestException
+class HostAPISPError {
+  HostAPISPError({
+    required this.spCode,
+    required this.description,
+  });
+  final String spCode;
+  final String description;
 }
 
 enum HostAPIMessageLanguage {
@@ -207,7 +206,7 @@ abstract class SourcepointUnifiedCmpFlutterApi {
   // FIXME: unify viewId with android, ios=string, android=int
   void onUIReady(String viewId) {}
 
-  void onError(HostAPISourcepointUnifiedCmpError error) {}
+  void onError(HostAPISPError error) {}
   void onConsentReady(HostAPISPConsent consent) {}
   // FIXME: unify viewId with android, ios=string, android=int
   void onAction(String viewId, HostAPIConsentAction consentAction) {}

@@ -109,22 +109,6 @@ enum class HostAPIActionType(val raw: Int) {
   }
 }
 
-enum class HostAPISourcepointUnifiedCmpError(val raw: Int) {
-  INVALIDARGUMENTEXCEPTION(0),
-  MISSINGPROPERTYEXCEPTION(1),
-  INVALIDCONSENTRESPONSE(2),
-  NOINTERNETCONNECTIONEXCEPTION(3),
-  EXECUTIONINTHEWRONGTHREADEXCEPTION(4),
-  REQUESTFAILEDEXCEPTION(5),
-  INVALIDREQUESTEXCEPTION(6);
-
-  companion object {
-    fun ofRaw(raw: Int): HostAPISourcepointUnifiedCmpError? {
-      return values().firstOrNull { it.raw == raw }
-    }
-  }
-}
-
 enum class HostAPIMessageLanguage(val raw: Int) {
   ENGLISH(0),
   FRENCH(1),
@@ -196,6 +180,28 @@ data class HostAPIGDPRPurposeGrants (
     return listOf<Any?>(
       granted,
       purposeGrants,
+    )
+  }
+}
+
+/** Generated class from Pigeon that represents data sent in messages. */
+data class HostAPISPError (
+  val cause: String,
+  val message: String
+
+) {
+  companion object {
+    @Suppress("UNCHECKED_CAST")
+    fun fromList(list: List<Any?>): HostAPISPError {
+      val cause = list[0] as String
+      val message = list[1] as String
+      return HostAPISPError(cause, message)
+    }
+  }
+  fun toList(): List<Any?> {
+    return listOf<Any?>(
+      cause,
+      message,
     )
   }
 }
@@ -556,6 +562,11 @@ private object SourcepointUnifiedCmpFlutterApiCodec : StandardMessageCodec() {
           HostAPISPConsent.fromList(it)
         }
       }
+      135.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          HostAPISPError.fromList(it)
+        }
+      }
       else -> super.readValueOfType(type, buffer)
     }
   }
@@ -587,6 +598,10 @@ private object SourcepointUnifiedCmpFlutterApiCodec : StandardMessageCodec() {
       }
       is HostAPISPConsent -> {
         stream.write(134)
+        writeValue(stream, value.toList())
+      }
+      is HostAPISPError -> {
+        stream.write(135)
         writeValue(stream, value.toList())
       }
       else -> super.writeValue(stream, value)
@@ -633,10 +648,10 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
       } 
     }
   }
-  fun onError(errorArg: HostAPISourcepointUnifiedCmpError, callback: (Result<Unit>) -> Unit) {
+  fun onError(errorArg: HostAPISPError, callback: (Result<Unit>) -> Unit) {
     val channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError"
     val channel = BasicMessageChannel<Any?>(binaryMessenger, channelName, codec)
-    channel.send(listOf(errorArg.raw)) {
+    channel.send(listOf(errorArg)) {
       if (it is List<*>) {
         if (it.size > 1) {
           callback(Result.failure(FlutterError(it[0] as String, it[1] as String, it[2] as String?)))

@@ -23,16 +23,6 @@ enum HostAPIActionType {
   unknown,
 }
 
-enum HostAPISourcepointUnifiedCmpError {
-  invalidArgumentException,
-  missingPropertyException,
-  invalidConsentResponse,
-  noInternetConnectionException,
-  executionInTheWrongThreadException,
-  requestFailedException,
-  invalidRequestException
-}
-
 enum HostAPIMessageLanguage {
   english,
   french,
@@ -63,6 +53,15 @@ class HostAPIGDPRPurposeGrants {
   });
   final bool granted;
   final Map<String?, bool?>? purposeGrants;
+}
+
+class HostAPISPError {
+  HostAPISPError({
+    required this.cause,
+    required this.message,
+  });
+  final String cause;
+  final String message;
 }
 
 class HostAPIGranularStatus {
@@ -203,7 +202,7 @@ abstract class SourcepointUnifiedCmpFlutterApi {
   void onUIFinished(int viewId) {}
   void onUIReady(int viewId) {}
 
-  void onError(HostAPISourcepointUnifiedCmpError error) {}
+  void onError(HostAPISPError error) {}
   void onConsentReady(HostAPISPConsent consent) {}
   void onAction(int viewId, HostAPIConsentAction consentAction) {}
   void onNoIntentActivitiesFound(String url) {}

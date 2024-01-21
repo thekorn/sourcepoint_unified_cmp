@@ -71,7 +71,7 @@ class SourcepointEventDelegate implements SourcepointEventDelegatePlatform {
   final void Function(int viewId, ConsentAction consentAction)? onAction;
 
   @override
-  final void Function(SourcepointUnifiedCmpError error)? onError;
+  final void Function(SPError error)? onError;
 
   @override
   final void Function(String url)? onNoIntentActivitiesFound;

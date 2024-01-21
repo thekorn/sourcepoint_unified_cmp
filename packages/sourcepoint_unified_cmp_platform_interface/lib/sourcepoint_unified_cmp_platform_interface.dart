@@ -101,7 +101,7 @@ abstract class SourcepointEventDelegatePlatform {
   final void Function(int viewId)? onUIReady;
 
   /// Callback function that is called when an error occurs.
-  final void Function(SourcepointUnifiedCmpError error)? onError;
+  final void Function(SPError error)? onError;
 
   /// Callback function that is called when an action occurs.
   final void Function(int viewId, ConsentAction consentAction)? onAction;

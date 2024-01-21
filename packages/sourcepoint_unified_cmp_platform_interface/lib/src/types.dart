@@ -195,3 +195,17 @@ enum SourcepointUnifiedCmpError {
   requestFailedException,
   invalidRequestException
 }
+
+class SPError {
+  SPError({
+    required this.spCode,
+    required this.description,
+  });
+  final String spCode;
+  final String description;
+
+  @override
+  String toString() {
+    return 'SPError(spCode: $spCode, description: $description)';
+  }
+}

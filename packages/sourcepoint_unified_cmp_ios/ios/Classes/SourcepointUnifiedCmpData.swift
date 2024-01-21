@@ -151,3 +151,9 @@ extension SPActionType {
         }
     }
 }
+
+extension SPError {
+    func toHostAPISPError() -> HostAPISPError {
+        return HostAPISPError(spCode: spCode, description: description)
+    }
+}

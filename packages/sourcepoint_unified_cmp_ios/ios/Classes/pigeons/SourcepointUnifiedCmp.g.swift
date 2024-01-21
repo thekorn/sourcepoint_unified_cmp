@@ -77,16 +77,6 @@ enum HostAPIActionType: Int {
     case unknown = 9
 }
 
-enum HostAPISourcepointUnifiedCmpError: Int {
-    case invalidArgumentException = 0
-    case missingPropertyException = 1
-    case invalidConsentResponse = 2
-    case noInternetConnectionException = 3
-    case executionInTheWrongThreadException = 4
-    case requestFailedException = 5
-    case invalidRequestException = 6
-}
-
 enum HostAPIMessageLanguage: Int {
     case english = 0
     case french = 1
@@ -98,6 +88,29 @@ enum HostAPIMessageLanguage: Int {
 enum HostAPICampaignsEnv: Int {
     case stage = 0
     case publicEnv = 1
+}
+
+/// Generated class from Pigeon that represents data sent in messages.
+struct HostAPISPError {
+    var spCode: String
+    var description: String
+
+    static func fromList(_ list: [Any?]) -> HostAPISPError? {
+        let spCode = list[0] as! String
+        let description = list[1] as! String
+
+        return HostAPISPError(
+            spCode: spCode,
+            description: description
+        )
+    }
+
+    func toList() -> [Any?] {
+        return [
+            spCode,
+            description,
+        ]
+    }
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
@@ -511,6 +524,8 @@ private class SourcepointUnifiedCmpFlutterApiCodecReader: FlutterStandardReader 
             return HostAPIGranularStatus.fromList(readValue() as! [Any?])
         case 134:
             return HostAPISPConsent.fromList(readValue() as! [Any?])
+        case 135:
+            return HostAPISPError.fromList(readValue() as! [Any?])
         default:
             return super.readValue(ofType: type)
         }
@@ -540,6 +555,9 @@ private class SourcepointUnifiedCmpFlutterApiCodecWriter: FlutterStandardWriter 
         } else if let value = value as? HostAPISPConsent {
             super.writeByte(134)
             super.writeValue(value.toList())
+        } else if let value = value as? HostAPISPError {
+            super.writeByte(135)
+            super.writeValue(value.toList())
         } else {
             super.writeValue(value)
         }
@@ -564,7 +582,7 @@ class SourcepointUnifiedCmpFlutterApiCodec: FlutterStandardMessageCodec {
 protocol SourcepointUnifiedCmpFlutterApiProtocol {
     func onUIFinished(viewId viewIdArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void)
     func onUIReady(viewId viewIdArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void)
-    func onError(error errorArg: HostAPISourcepointUnifiedCmpError, completion: @escaping (Result<Void, FlutterError>) -> Void)
+    func onError(error errorArg: HostAPISPError, completion: @escaping (Result<Void, FlutterError>) -> Void)
     func onConsentReady(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, FlutterError>) -> Void)
     func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction, completion: @escaping (Result<Void, FlutterError>) -> Void)
     func onNoIntentActivitiesFound(url urlArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void)
@@ -619,10 +637,10 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         }
     }
 
-    func onError(error errorArg: HostAPISourcepointUnifiedCmpError, completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    func onError(error errorArg: HostAPISPError, completion: @escaping (Result<Void, FlutterError>) -> Void) {
         let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onError"
         let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
-        channel.sendMessage([errorArg.rawValue] as [Any?]) { response in
+        channel.sendMessage([errorArg] as [Any?]) { response in
             guard let listResponse = response as? [Any?] else {
                 completion(.failure(createConnectionError(withChannelName: channelName)))
                 return

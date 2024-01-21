@@ -60,16 +60,6 @@ enum HostAPIActionType {
   unknown,
 }
 
-enum HostAPISourcepointUnifiedCmpError {
-  invalidArgumentException,
-  missingPropertyException,
-  invalidConsentResponse,
-  noInternetConnectionException,
-  executionInTheWrongThreadException,
-  requestFailedException,
-  invalidRequestException,
-}
-
 enum HostAPIMessageLanguage {
   english,
   french,
@@ -81,6 +71,32 @@ enum HostAPIMessageLanguage {
 enum HostAPICampaignsEnv {
   stage,
   publicEnv,
+}
+
+class HostAPISPError {
+  HostAPISPError({
+    required this.spCode,
+    required this.description,
+  });
+
+  String spCode;
+
+  String description;
+
+  Object encode() {
+    return <Object?>[
+      spCode,
+      description,
+    ];
+  }
+
+  static HostAPISPError decode(Object result) {
+    result as List<Object?>;
+    return HostAPISPError(
+      spCode: result[0]! as String,
+      description: result[1]! as String,
+    );
+  }
 }
 
 class HostAPIConsentAction {
@@ -552,6 +568,9 @@ class _SourcepointUnifiedCmpFlutterApiCodec extends StandardMessageCodec {
     } else if (value is HostAPISPConsent) {
       buffer.putUint8(134);
       writeValue(buffer, value.encode());
+    } else if (value is HostAPISPError) {
+      buffer.putUint8(135);
+      writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
     }
@@ -574,6 +593,8 @@ class _SourcepointUnifiedCmpFlutterApiCodec extends StandardMessageCodec {
         return HostAPIGranularStatus.decode(readValue(buffer)!);
       case 134:
         return HostAPISPConsent.decode(readValue(buffer)!);
+      case 135:
+        return HostAPISPError.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -588,7 +609,7 @@ abstract class SourcepointUnifiedCmpFlutterApi {
 
   void onUIReady(String viewId);
 
-  void onError(HostAPISourcepointUnifiedCmpError error);
+  void onError(HostAPISPError error);
 
   void onConsentReady(HostAPISPConsent consent);
 
@@ -669,11 +690,9 @@ abstract class SourcepointUnifiedCmpFlutterApi {
           assert(message != null,
               'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onError was null.');
           final List<Object?> args = (message as List<Object?>?)!;
-          final HostAPISourcepointUnifiedCmpError? arg_error = args[0] == null
-              ? null
-              : HostAPISourcepointUnifiedCmpError.values[args[0]! as int];
+          final HostAPISPError? arg_error = (args[0] as HostAPISPError?);
           assert(arg_error != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onError was null, expected non-null HostAPISourcepointUnifiedCmpError.');
+              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onError was null, expected non-null HostAPISPError.');
           try {
             api.onError(arg_error!);
             return wrapResponse(empty: true);
