@@ -12,7 +12,6 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin, Sourc
     private var flutterAPI: SourcepointFlutterApi?
 
     func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId _: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Int64, runGDPRCampaign: Bool, runCCPACampaign: Bool, completion: @escaping (Result<HostAPISPConsent, Error>) -> Void) {
-        NSLog(">>>>> WE LOAD MESSAGE")
         consentManager = SPConsentManager(
             accountId: Int(accountId),
             propertyId: Int(propertyId),
@@ -28,14 +27,11 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin, Sourc
         consentManager.messageTimeoutInSeconds = Double(messageTimeout) / 1000
         consentManager.loadMessage()
         isInitialized.setCompletionHandler { [completion] result in
-            NSLog("Received result: \(result)")
             completion(.success(result.toHostAPISPConsent()))
         }
     }
 
     func loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType, messageType _: HostAPIMessageType, completion _: @escaping (Result<Void, Error>) -> Void) {
-        NSLog(">>>> WE LOAD PRIVACY MANAGER")
-
         switch campaignType {
         case HostAPICampaignType.gdpr:
             consentManager.loadGDPRPrivacyManager(withId: pmId, tab: pmTab.toSPPrivacyManagerTab())
@@ -64,46 +60,33 @@ private class SourcepointFlutterApi {
     }
 
     func callOnConsentReady(userData: SPUserData) {
-        flutterAPI.onConsentReady(consent: userData.toHostAPISPConsent()) {
-            NSLog("done sending consent to flutter \($0)")
-        }
+        flutterAPI.onConsentReady(consent: userData.toHostAPISPConsent()) { _ in }
     }
 
     func callOnUIReady(controller: UIViewController) {
-        flutterAPI.onUIReady(viewId: controller.restorationIdentifier ?? "") {
-            NSLog("done sending ui ready to flutter \($0)")
-        }
+        flutterAPI.onUIReady(viewId: controller.restorationIdentifier ?? "") { _ in }
     }
 
     func callOnAction(controller: UIViewController, action: SPAction) {
-        flutterAPI.onAction(viewId: controller.restorationIdentifier ?? "", consentAction: action.toHostAPIConsentAction()) {
-            NSLog("done sendingon action to flutter \($0)")
-        }
+        flutterAPI.onAction(viewId: controller.restorationIdentifier ?? "", consentAction: action.toHostAPIConsentAction()) { _ in }
     }
 
     func callOnUIFinished(controller: UIViewController) {
-        flutterAPI.onUIFinished(viewId: controller.restorationIdentifier ?? "") {
-            NSLog("done sending ui finished to flutter \($0)")
-        }
+        flutterAPI.onUIFinished(viewId: controller.restorationIdentifier ?? "") { _ in }
     }
 
     func callOnSpFinished(userData: SPUserData) {
-        flutterAPI.onSpFinished(consent: userData.toHostAPISPConsent()) {
-            NSLog("done sending SP finished to flutter \($0)")
-        }
+        flutterAPI.onSpFinished(consent: userData.toHostAPISPConsent()) { _ in }
     }
 
     func callOnError(error _: SPError) {
         // FIXME: need to map the throwable to the error type
-        flutterAPI.onError(error: HostAPISourcepointUnifiedCmpError.invalidArgumentException) {
-            NSLog("done sending error to flutter \($0)")
-        }
+        flutterAPI.onError(error: HostAPISourcepointUnifiedCmpError.invalidArgumentException) { _ in }
     }
 }
 
 extension SourcepointUnifiedCmpPlugin: SPDelegate {
     public func onSPUIReady(_ controller: UIViewController) {
-        NSLog("onSPUIReady, ui view controller")
         controller.modalPresentationStyle = .overFullScreen
         DispatchQueue.main.async {
             getTopMostViewController()?.present(controller, animated: true)
@@ -112,32 +95,24 @@ extension SourcepointUnifiedCmpPlugin: SPDelegate {
     }
 
     public func onAction(_ action: SPAction, from controller: UIViewController) {
-        NSLog("onAction, ui view controller")
-        NSLog("\(action)")
         flutterAPI?.callOnAction(controller: controller, action: action)
     }
 
     public func onSPUIFinished(_ controller: UIViewController) {
-        NSLog("onSPUIFinished")
         getTopMostViewController()?.dismiss(animated: true)
         flutterAPI?.callOnUIFinished(controller: controller)
     }
 
     public func onSPFinished(userData: SPUserData) {
-        NSLog("onSPFinished")
         flutterAPI?.callOnSpFinished(userData: userData)
-        NSLog("sourcepoint sdk done")
     }
 
     public func onConsentReady(userData: SPUserData) {
-        NSLog("onConsentReady")
         isInitialized.complete(result: userData)
         flutterAPI?.callOnConsentReady(userData: userData)
     }
 
     public func onError(error: SPError) {
-        NSLog("onError")
-        NSLog("Something went wrong: ", error)
         flutterAPI?.callOnError(error: error)
     }
 

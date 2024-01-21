@@ -29,18 +29,12 @@ extension SPConsent {
     func toHostAPIGDPRConsent() throws -> HostAPIGDPRConsent {
         if let value = self as? SPConsent<SPGDPRConsent> {
             let tcData: [String?: String?]? = value.consents!.tcfData?.dictionaryValue?.reduce(into: [:]) { result, pair in
-                // Convert the value to String? if possible
                 let value: String? = (pair.value as? String) ?? (pair.value as? CustomStringConvertible)?.description
-
-                // Insert into the new dictionary
                 result[pair.key] = value
             }
 
             let grants: [String?: HostAPIGDPRPurposeGrants?]? = value.consents?.vendorGrants.reduce(into: [:]) { result, pair in
-                // Convert the value to String? if possible
                 let value: SPGDPRVendorGrant = pair.value as SPGDPRVendorGrant
-
-                // Insert into the new dictionary
                 result[pair.key] = value.toHostAPIPurposeGrants()
             }
 
