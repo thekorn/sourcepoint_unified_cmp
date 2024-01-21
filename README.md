@@ -112,10 +112,31 @@ There is also a way to react on consent changes via an event delegate:
     );
 ```
 
+with those delegates in place we can now also add a button to load the consent dialog on demand:
+
+```dart
+  TextButton(
+    onPressed: () {
+      _controller.loadPrivacyManager(
+        pmId: '122058',
+      );
+    },
+    child: const Text('Load Privacy Manager'),
+  )
+```
+
+![](./docs/images/sample-load-privacy-manager.gif)
+
+Which results in
+```
+DELEGATE onConsentReady: Consent string: CP4u7EAP4u7EAAGABCENDgCgAAAAAAAAAAYgAAAAAAAA.YAAAAAAAAAAA
+DELEGATE SpFinished: Consent string: CP4u7EAP4u7EAAGABCENDgCgAAAAAAAAAAYgAAAAAAAA.YAAAAAAAAAAA
+```
+
 ## TODO
 - [ ] commit on an api
   - [x] the api for the initial consent loading
-  - [ ] api on the on demand loading of the consent message (#5)
+  - [x] api on the on demand loading of the consent message (#5)
   - [x] implementation of a `SourcepointEventDelegate` which allows the flutter stack to hook onto consent events (#6)
   - [ ] commit on namings, at the moment the *public* api of this packages does not stick to a single rule, sometimes it's *SourcepointUnifiedCMP*, sometimes it's *SourcepointCMP*, and in other places just *Sourcepoint*
 - [ ] implementation for ios/swift (#7)
