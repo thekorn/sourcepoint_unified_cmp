@@ -1,6 +1,9 @@
 import Flutter
 import UIKit
 
+// This extension of Error is required to do use FlutterError in any Swift code.
+extension FlutterError: Error {}
+
 public class SourcepointUnifiedCmpPlugin: NSObject, FlutterPlugin {
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "sourcepoint_unified_cmp_ios", binaryMessenger: registrar.messenger())
