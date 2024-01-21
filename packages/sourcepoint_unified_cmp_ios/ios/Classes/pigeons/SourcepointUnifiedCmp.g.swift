@@ -12,7 +12,7 @@ import Foundation
 #endif
 
 private func wrapResult(_ result: Any?) -> [Any?] {
-    [result]
+    return [result]
 }
 
 private func wrapError(_ error: Any) -> [Any?] {
@@ -31,11 +31,11 @@ private func wrapError(_ error: Any) -> [Any?] {
 }
 
 private func createConnectionError(withChannelName channelName: String) -> FlutterError {
-    FlutterError(code: "channel-error", message: "Unable to establish connection on channel: '\(channelName)'.", details: "")
+    return FlutterError(code: "channel-error", message: "Unable to establish connection on channel: '\(channelName)'.", details: "")
 }
 
 private func isNullish(_ value: Any?) -> Bool {
-    value is NSNull || value == nil
+    return value is NSNull || value == nil
 }
 
 private func nilOrValue<T>(_ value: Any?) -> T? {
@@ -105,7 +105,7 @@ struct HostAPIConsentAction {
     var actionType: HostAPIActionType
     var pubData: String
     var campaignType: HostAPICampaignType
-    var customActionId: String?
+    var customActionId: String? = nil
 
     static func fromList(_ list: [Any?]) -> HostAPIConsentAction? {
         let actionType = HostAPIActionType(rawValue: list[0] as! Int)!
@@ -122,7 +122,7 @@ struct HostAPIConsentAction {
     }
 
     func toList() -> [Any?] {
-        [
+        return [
             actionType.rawValue,
             pubData,
             campaignType.rawValue,
@@ -134,7 +134,7 @@ struct HostAPIConsentAction {
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIGDPRPurposeGrants {
     var granted: Bool
-    var purposeGrants: [String?: Bool?]?
+    var purposeGrants: [String?: Bool?]? = nil
 
     static func fromList(_ list: [Any?]) -> HostAPIGDPRPurposeGrants? {
         let granted = list[0] as! Bool
@@ -147,7 +147,7 @@ struct HostAPIGDPRPurposeGrants {
     }
 
     func toList() -> [Any?] {
-        [
+        return [
             granted,
             purposeGrants,
         ]
@@ -156,12 +156,12 @@ struct HostAPIGDPRPurposeGrants {
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIGranularStatus {
-    var defaultConsent: Bool?
-    var previousOptInAll: Bool?
-    var purposeConsent: HostAPIGranularState?
-    var purposeLegInt: HostAPIGranularState?
-    var vendorConsent: HostAPIGranularState?
-    var vendorLegInt: HostAPIGranularState?
+    var defaultConsent: Bool? = nil
+    var previousOptInAll: Bool? = nil
+    var purposeConsent: HostAPIGranularState? = nil
+    var purposeLegInt: HostAPIGranularState? = nil
+    var vendorConsent: HostAPIGranularState? = nil
+    var vendorLegInt: HostAPIGranularState? = nil
 
     static func fromList(_ list: [Any?]) -> HostAPIGranularStatus? {
         let defaultConsent: Bool? = nilOrValue(list[0])
@@ -198,7 +198,7 @@ struct HostAPIGranularStatus {
     }
 
     func toList() -> [Any?] {
-        [
+        return [
             defaultConsent,
             previousOptInAll,
             purposeConsent?.rawValue,
@@ -211,14 +211,14 @@ struct HostAPIGranularStatus {
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIConsentStatus {
-    var consentedAll: Bool?
-    var consentedToAny: Bool?
-    var granularStatus: HostAPIGranularStatus?
-    var hasConsentData: Bool?
-    var rejectedAny: Bool?
-    var rejectedLI: Bool?
-    var legalBasisChanges: Bool?
-    var vendorListAdditions: Bool?
+    var consentedAll: Bool? = nil
+    var consentedToAny: Bool? = nil
+    var granularStatus: HostAPIGranularStatus? = nil
+    var hasConsentData: Bool? = nil
+    var rejectedAny: Bool? = nil
+    var rejectedLI: Bool? = nil
+    var legalBasisChanges: Bool? = nil
+    var vendorListAdditions: Bool? = nil
 
     static func fromList(_ list: [Any?]) -> HostAPIConsentStatus? {
         let consentedAll: Bool? = nilOrValue(list[0])
@@ -246,7 +246,7 @@ struct HostAPIConsentStatus {
     }
 
     func toList() -> [Any?] {
-        [
+        return [
             consentedAll,
             consentedToAny,
             granularStatus?.toList(),
@@ -261,13 +261,13 @@ struct HostAPIConsentStatus {
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIGDPRConsent {
-    var uuid: String?
-    var tcData: [String?: String?]?
-    var grants: [String?: HostAPIGDPRPurposeGrants?]?
+    var uuid: String? = nil
+    var tcData: [String?: String?]? = nil
+    var grants: [String?: HostAPIGDPRPurposeGrants?]? = nil
     var euconsent: String
-    var acceptedCategories: [String?]?
+    var acceptedCategories: [String?]? = nil
     var apply: Bool
-    var consentStatus: HostAPIConsentStatus?
+    var consentStatus: HostAPIConsentStatus? = nil
 
     static func fromList(_ list: [Any?]) -> HostAPIGDPRConsent? {
         let uuid: String? = nilOrValue(list[0])
@@ -293,7 +293,7 @@ struct HostAPIGDPRConsent {
     }
 
     func toList() -> [Any?] {
-        [
+        return [
             uuid,
             tcData,
             grants,
@@ -307,10 +307,10 @@ struct HostAPIGDPRConsent {
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPICCPAConsent {
-    var uuid: String?
-    var rejectedCategories: [String?]?
-    var rejectedVendors: [String?]?
-    var status: String?
+    var uuid: String? = nil
+    var rejectedCategories: [String?]? = nil
+    var rejectedVendors: [String?]? = nil
+    var status: String? = nil
     var uspstring: String
     var apply: Bool
 
@@ -333,7 +333,7 @@ struct HostAPICCPAConsent {
     }
 
     func toList() -> [Any?] {
-        [
+        return [
             uuid,
             rejectedCategories,
             rejectedVendors,
@@ -346,8 +346,8 @@ struct HostAPICCPAConsent {
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPISPConsent {
-    var gdpr: HostAPIGDPRConsent?
-    var ccpa: HostAPICCPAConsent?
+    var gdpr: HostAPIGDPRConsent? = nil
+    var ccpa: HostAPICCPAConsent? = nil
 
     static func fromList(_ list: [Any?]) -> HostAPISPConsent? {
         var gdpr: HostAPIGDPRConsent?
@@ -366,7 +366,7 @@ struct HostAPISPConsent {
     }
 
     func toList() -> [Any?] {
-        [
+        return [
             gdpr?.toList(),
             ccpa?.toList(),
         ]
@@ -377,19 +377,19 @@ private class SourcepointUnifiedCmpHostApiCodecReader: FlutterStandardReader {
     override func readValue(ofType type: UInt8) -> Any? {
         switch type {
         case 128:
-            HostAPICCPAConsent.fromList(readValue() as! [Any?])
+            return HostAPICCPAConsent.fromList(readValue() as! [Any?])
         case 129:
-            HostAPIConsentStatus.fromList(readValue() as! [Any?])
+            return HostAPIConsentStatus.fromList(readValue() as! [Any?])
         case 130:
-            HostAPIGDPRConsent.fromList(readValue() as! [Any?])
+            return HostAPIGDPRConsent.fromList(readValue() as! [Any?])
         case 131:
-            HostAPIGDPRPurposeGrants.fromList(readValue() as! [Any?])
+            return HostAPIGDPRPurposeGrants.fromList(readValue() as! [Any?])
         case 132:
-            HostAPIGranularStatus.fromList(readValue() as! [Any?])
+            return HostAPIGranularStatus.fromList(readValue() as! [Any?])
         case 133:
-            HostAPISPConsent.fromList(readValue() as! [Any?])
+            return HostAPISPConsent.fromList(readValue() as! [Any?])
         default:
-            super.readValue(ofType: type)
+            return super.readValue(ofType: type)
         }
     }
 }
@@ -422,11 +422,11 @@ private class SourcepointUnifiedCmpHostApiCodecWriter: FlutterStandardWriter {
 
 private class SourcepointUnifiedCmpHostApiCodecReaderWriter: FlutterStandardReaderWriter {
     override func reader(with data: Data) -> FlutterStandardReader {
-        SourcepointUnifiedCmpHostApiCodecReader(data: data)
+        return SourcepointUnifiedCmpHostApiCodecReader(data: data)
     }
 
     override func writer(with data: NSMutableData) -> FlutterStandardWriter {
-        SourcepointUnifiedCmpHostApiCodecWriter(data: data)
+        return SourcepointUnifiedCmpHostApiCodecWriter(data: data)
     }
 }
 
@@ -447,7 +447,7 @@ enum SourcepointUnifiedCmpHostApiSetup {
     /// Sets up an instance of `SourcepointUnifiedCmpHostApi` to handle messages through the `binaryMessenger`.
     static func setUp(binaryMessenger: FlutterBinaryMessenger, api: SourcepointUnifiedCmpHostApi?) {
         let loadMessageChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadMessage", binaryMessenger: binaryMessenger, codec: codec)
-        if let api {
+        if let api = api {
             loadMessageChannel.setMessageHandler { message, reply in
                 let args = message as! [Any?]
                 let accountIdArg = args[0] is Int64 ? args[0] as! Int64 : Int64(args[0] as! Int32)
@@ -472,7 +472,7 @@ enum SourcepointUnifiedCmpHostApiSetup {
             loadMessageChannel.setMessageHandler(nil)
         }
         let loadPrivacyManagerChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadPrivacyManager", binaryMessenger: binaryMessenger, codec: codec)
-        if let api {
+        if let api = api {
             loadPrivacyManagerChannel.setMessageHandler { message, reply in
                 let args = message as! [Any?]
                 let pmIdArg = args[0] as! String
@@ -498,21 +498,21 @@ private class SourcepointUnifiedCmpFlutterApiCodecReader: FlutterStandardReader 
     override func readValue(ofType type: UInt8) -> Any? {
         switch type {
         case 128:
-            HostAPICCPAConsent.fromList(readValue() as! [Any?])
+            return HostAPICCPAConsent.fromList(readValue() as! [Any?])
         case 129:
-            HostAPIConsentAction.fromList(readValue() as! [Any?])
+            return HostAPIConsentAction.fromList(readValue() as! [Any?])
         case 130:
-            HostAPIConsentStatus.fromList(readValue() as! [Any?])
+            return HostAPIConsentStatus.fromList(readValue() as! [Any?])
         case 131:
-            HostAPIGDPRConsent.fromList(readValue() as! [Any?])
+            return HostAPIGDPRConsent.fromList(readValue() as! [Any?])
         case 132:
-            HostAPIGDPRPurposeGrants.fromList(readValue() as! [Any?])
+            return HostAPIGDPRPurposeGrants.fromList(readValue() as! [Any?])
         case 133:
-            HostAPIGranularStatus.fromList(readValue() as! [Any?])
+            return HostAPIGranularStatus.fromList(readValue() as! [Any?])
         case 134:
-            HostAPISPConsent.fromList(readValue() as! [Any?])
+            return HostAPISPConsent.fromList(readValue() as! [Any?])
         default:
-            super.readValue(ofType: type)
+            return super.readValue(ofType: type)
         }
     }
 }
@@ -548,11 +548,11 @@ private class SourcepointUnifiedCmpFlutterApiCodecWriter: FlutterStandardWriter 
 
 private class SourcepointUnifiedCmpFlutterApiCodecReaderWriter: FlutterStandardReaderWriter {
     override func reader(with data: Data) -> FlutterStandardReader {
-        SourcepointUnifiedCmpFlutterApiCodecReader(data: data)
+        return SourcepointUnifiedCmpFlutterApiCodecReader(data: data)
     }
 
     override func writer(with data: NSMutableData) -> FlutterStandardWriter {
-        SourcepointUnifiedCmpFlutterApiCodecWriter(data: data)
+        return SourcepointUnifiedCmpFlutterApiCodecWriter(data: data)
     }
 }
 
@@ -578,7 +578,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
     }
 
     var codec: FlutterStandardMessageCodec {
-        SourcepointUnifiedCmpFlutterApiCodec.shared
+        return SourcepointUnifiedCmpFlutterApiCodec.shared
     }
 
     func onUIFinished(viewId viewIdArg: Int64, completion: @escaping (Result<Void, FlutterError>) -> Void) {
