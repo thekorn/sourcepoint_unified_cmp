@@ -34,23 +34,31 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin, Sourc
         SourcepointUnifiedCmpHostApiSetup.setUp(binaryMessenger: messenger, api: api)
         /// registrar.addApplicationDelegate(self)
     }
+
+    override public func viewDidLoad() {
+        NSLog("view did load")
+        super.viewDidLoad()
+        ///consentManager.loadMessage()
+    }
+}
+
+func getTopMostViewController() -> UIViewController? {
+    var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
+
+    while let presentedViewController = topMostViewController?.presentedViewController {
+        topMostViewController = presentedViewController
+    }
+
+    return topMostViewController
 }
 
 extension SourcepointUnifiedCmpPlugin: SPDelegate {
-    func onSPUIReady(_ controller: SPMessageViewController) {
-        NSLog("onSPUIReady, sp message view controller")
-        controller.modalPresentationStyle = .overFullScreen
-        present(controller, animated: true)
-    }
-
     public func onSPUIReady(_ controller: UIViewController) {
         NSLog("onSPUIReady, ui view controller")
         controller.modalPresentationStyle = .overFullScreen
-        DispatchQueue.main.async { [weak self] in
-            self?.present(controller, animated: true)
+        DispatchQueue.main.async {
+            getTopMostViewController()?.present(controller, animated: true)
         }
-        // present(controller, animated: true)
-        /// UIApplication.shared.keyWindow?.rootViewController?.present(consentManager as! UIViewController, animated: true, completion: nil)
     }
 
     func onAction(_ action: SPAction, from _: SPMessageViewController) {
@@ -63,12 +71,9 @@ extension SourcepointUnifiedCmpPlugin: SPDelegate {
         NSLog("\(action)")
     }
 
-    func onSPUIFinished(_: SPMessageViewController) {
-        dismiss(animated: true)
-    }
-
     public func onSPUIFinished(_: UIViewController) {
         NSLog("onSPUIFinished")
+        getTopMostViewController()?.dismiss(animated: true)
     }
 
     public func onSPFinished(userData _: SPUserData) {
@@ -78,7 +83,7 @@ extension SourcepointUnifiedCmpPlugin: SPDelegate {
 
     public func onConsentReady(userData: SPUserData) {
         NSLog("onConsentReady")
-        NSLog("onConsentReady:", userData)
+        NSLog("onConsentReady: \(userData)")
         // checking if a gdpr vendor is consented
         userData.gdpr?.consents?.vendorGrants["myVendorId"]?.granted
 
