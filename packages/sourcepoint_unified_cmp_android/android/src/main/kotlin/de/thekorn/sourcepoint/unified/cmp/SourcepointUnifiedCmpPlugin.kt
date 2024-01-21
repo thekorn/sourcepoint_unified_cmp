@@ -1,8 +1,11 @@
 package de.thekorn.sourcepoint.unified.cmp
 
 
+import HostAPICampaignType
 import HostAPICampaignsEnv
 import HostAPIMessageLanguage
+import HostAPIMessageType
+import HostAPIPMTab
 import HostAPISPConsent
 import SourcepointUnifiedCmpFlutterApi
 import SourcepointUnifiedCmpHostApi
@@ -203,6 +206,21 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
         spClient.isInitialized.invokeOnCompletion {
             callback(Result.success(spClient.isInitialized.getCompleted()))
         }
+    }
+
+    override fun loadPrivacyManager(
+        pmId: String,
+        pmTab: HostAPIPMTab,
+        campaignType: HostAPICampaignType,
+        messageType: HostAPIMessageType,
+        callback: (Result<Unit>) -> Unit
+    ) {
+        spConsentLib?.loadPrivacyManager(
+            pmId,
+            pmTab.toPMTab(),
+            campaignType.toCampaignType(),
+            messageType.toMessageType()
+        )
     }
 
 }

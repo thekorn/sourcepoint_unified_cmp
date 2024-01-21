@@ -58,6 +58,16 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
   Future<SPConsent> loadMessage(SPConfig config) {
     throw UnimplementedError('loadMessage() has not been implemented.');
   }
+
+  /// Loading a Privacy Manager on demand
+  Future<void> loadPrivacyManager(
+    String pmId,
+    PMTab pmTab,
+    CampaignType campaignType,
+    MessageType messageType,
+  ) {
+    throw UnimplementedError('loadPrivacyManager() has not been implemented.');
+  }
 }
 
 /// Represents the platform interface for handling Sourcepoint event delegates.

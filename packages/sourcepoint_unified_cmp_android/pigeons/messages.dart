@@ -6,7 +6,7 @@ enum HostAPIPMTab { purposes }
 
 enum HostAPICampaignType { gdpr, ccpa }
 
-enum MessageType { mobile, ott, lagazyOtt }
+enum HostAPIMessageType { mobile, ott, lagacyOtt }
 
 enum HostAPIGranularState { all, some, none }
 
@@ -187,6 +187,14 @@ abstract class SourcepointUnifiedCmpHostApi {
     required int messageTimeout,
     required bool runGDPRCampaign,
     required bool runCCPACampaign,
+  });
+
+  @async
+  void loadPrivacyManager({
+    required String pmId,
+    required HostAPIPMTab pmTab,
+    required HostAPICampaignType campaignType,
+    required HostAPIMessageType messageType,
   });
 }
 

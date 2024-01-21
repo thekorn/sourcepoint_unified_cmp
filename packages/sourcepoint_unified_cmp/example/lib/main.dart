@@ -80,6 +80,17 @@ class _SourcepointunifiedCMPBuilderExampleState
                 padding: EdgeInsets.only(top: 16),
                 child: Text('Result: we got initial consent'),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: TextButton(
+                  onPressed: () {
+                    _controller.loadPrivacyManager(
+                      pmId: '122058',
+                    );
+                  },
+                  child: const Text('Load Privacy Manager'),
+                ),
+              ),
             ];
           } else if (snapshot.hasError) {
             children = <Widget>[

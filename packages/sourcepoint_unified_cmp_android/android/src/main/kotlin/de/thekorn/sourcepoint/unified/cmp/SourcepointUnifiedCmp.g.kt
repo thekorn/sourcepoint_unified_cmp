@@ -66,13 +66,13 @@ enum class HostAPICampaignType(val raw: Int) {
   }
 }
 
-enum class MessageType(val raw: Int) {
+enum class HostAPIMessageType(val raw: Int) {
   MOBILE(0),
   OTT(1),
-  LAGAZYOTT(2);
+  LAGACYOTT(2);
 
   companion object {
-    fun ofRaw(raw: Int): MessageType? {
+    fun ofRaw(raw: Int): HostAPIMessageType? {
       return values().firstOrNull { it.raw == raw }
     }
   }
@@ -454,6 +454,7 @@ private object SourcepointUnifiedCmpHostApiCodec : StandardMessageCodec() {
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface SourcepointUnifiedCmpHostApi {
   fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Long, runGDPRCampaign: Boolean, runCCPACampaign: Boolean, callback: (Result<HostAPISPConsent>) -> Unit)
+  fun loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType, messageType: HostAPIMessageType, callback: (Result<Unit>) -> Unit)
 
   companion object {
     /** The codec used by SourcepointUnifiedCmpHostApi. */
@@ -484,6 +485,28 @@ interface SourcepointUnifiedCmpHostApi {
               } else {
                 val data = result.getOrNull()
                 reply.reply(wrapResult(data))
+              }
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadPrivacyManager", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val pmIdArg = args[0] as String
+            val pmTabArg = HostAPIPMTab.ofRaw(args[1] as Int)!!
+            val campaignTypeArg = HostAPICampaignType.ofRaw(args[2] as Int)!!
+            val messageTypeArg = HostAPIMessageType.ofRaw(args[3] as Int)!!
+            api.loadPrivacyManager(pmIdArg, pmTabArg, campaignTypeArg, messageTypeArg) { result: Result<Unit> ->
+              val error = result.exceptionOrNull()
+              if (error != null) {
+                reply.reply(wrapError(error))
+              } else {
+                reply.reply(wrapResult(null))
               }
             }
           }

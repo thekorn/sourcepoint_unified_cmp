@@ -35,10 +35,10 @@ enum HostAPICampaignType {
   ccpa,
 }
 
-enum MessageType {
+enum HostAPIMessageType {
   mobile,
   ott,
-  lagazyOtt,
+  lagacyOtt,
 }
 
 enum HostAPIGranularState {
@@ -493,6 +493,36 @@ class SourcepointUnifiedCmpHostApi {
       );
     } else {
       return (__pigeon_replyList[0] as HostAPISPConsent?)!;
+    }
+  }
+
+  Future<void> loadPrivacyManager({
+    required String pmId,
+    required HostAPIPMTab pmTab,
+    required HostAPICampaignType campaignType,
+    required HostAPIMessageType messageType,
+  }) async {
+    const String __pigeon_channelName =
+        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadPrivacyManager';
+    final BasicMessageChannel<Object?> __pigeon_channel =
+        BasicMessageChannel<Object?>(
+      __pigeon_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: __pigeon_binaryMessenger,
+    );
+    final List<Object?>? __pigeon_replyList = await __pigeon_channel.send(
+            <Object?>[pmId, pmTab.index, campaignType.index, messageType.index])
+        as List<Object?>?;
+    if (__pigeon_replyList == null) {
+      throw _createConnectionError(__pigeon_channelName);
+    } else if (__pigeon_replyList.length > 1) {
+      throw PlatformException(
+        code: __pigeon_replyList[0]! as String,
+        message: __pigeon_replyList[1] as String?,
+        details: __pigeon_replyList[2],
+      );
+    } else {
+      return;
     }
   }
 }
