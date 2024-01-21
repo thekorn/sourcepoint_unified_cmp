@@ -243,12 +243,9 @@ class SourcepointUnifiedCmpIOS extends SourcepointUnifiedCmpPlatform {
 
   @override
   void registerEventDelegate(SourcepointEventDelegatePlatform delegate) {
-    // TODO: implement registerEventDelegate
-
-    //messages.SourcepointUnifiedCmpFlutterApi.setup(
-    //  SourcepointEventHandler(delegate: delegate),
-    //);
-    debugPrint("registerEventDelegate");
+    messages.SourcepointUnifiedCmpFlutterApi.setup(
+      SourcepointEventHandler(delegate: delegate),
+    );
   }
 
   @override
@@ -283,5 +280,73 @@ class SourcepointUnifiedCmpIOS extends SourcepointUnifiedCmpPlatform {
       campaignType: campaignType.toHostAPICampaignType(),
       messageType: messageType.toHostAPIMessageType(),
     );
+  }
+}
+
+/// This class represents the event handler for Sourcepoint in the Android
+/// platform.
+class SourcepointEventHandler
+    implements messages.SourcepointUnifiedCmpFlutterApi {
+  /// A class representing a Sourcepoint event handler.
+  ///
+  /// This class is responsible for handling events related to Sourcepoint.
+  /// It requires a [delegate] parameter, which is an object that implements the
+  /// necessary methods to handle the events.
+  SourcepointEventHandler({required this.delegate});
+
+  /// The delegate for handling Sourcepoint events in the Sourcepoint
+  /// Unified CMP Android library.
+  final SourcepointEventDelegatePlatform delegate;
+
+  @override
+  void onAction(String viewId, messages.HostAPIConsentAction consentAction) {
+    if (delegate.onAction != null) {
+      // FIXME: generalize android=int, ios=string
+      delegate.onAction?.call(0, consentAction.toConsentAction());
+    }
+  }
+
+  @override
+  void onConsentReady(messages.HostAPISPConsent consent) {
+    if (delegate.onConsentReady != null) {
+      delegate.onConsentReady?.call(consent.toSPConsent());
+    }
+  }
+
+  @override
+  void onError(messages.HostAPISourcepointUnifiedCmpError error) {
+    if (delegate.onError != null) {
+      delegate.onError?.call(error.toSourcepointUnifiedCMPError());
+    }
+  }
+
+  @override
+  void onNoIntentActivitiesFound(String url) {
+    if (delegate.onNoIntentActivitiesFound != null) {
+      delegate.onNoIntentActivitiesFound?.call(url);
+    }
+  }
+
+  @override
+  void onSpFinished(messages.HostAPISPConsent consent) {
+    if (delegate.onSpFinished != null) {
+      delegate.onSpFinished?.call(consent.toSPConsent());
+    }
+  }
+
+  @override
+  void onUIFinished(String viewId) {
+    if (delegate.onUIFinished != null) {
+      // FIXME: generalize android=int, ios=string
+      delegate.onUIFinished?.call(0);
+    }
+  }
+
+  @override
+  void onUIReady(String viewId) {
+    if (delegate.onUIReady != null) {
+      // FIXME: generalize android=int, ios=string
+      delegate.onUIReady?.call(0);
+    }
   }
 }

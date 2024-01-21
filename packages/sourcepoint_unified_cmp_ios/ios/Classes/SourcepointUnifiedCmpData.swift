@@ -103,3 +103,61 @@ extension HostAPIPMTab {
         }
     }
 }
+
+extension SPAction {
+    func toHostAPIConsentAction() -> HostAPIConsentAction {
+
+        
+        
+        return HostAPIConsentAction(
+            actionType: try! type.toHostAPIActionType(),
+            pubData: String(describing: publisherData),
+            campaignType: try! campaignType.toHostAPICampaignType(),
+            customActionId: customActionId
+        )
+    }
+}
+
+
+extension SPCampaignType {
+    func toHostAPICampaignType() throws -> HostAPICampaignType {
+        switch self {
+        case .ccpa:
+            HostAPICampaignType.ccpa
+        case .gdpr:
+            HostAPICampaignType.gdpr
+        default:
+            // FIXME: add missing
+            throw NotImplementedError.notImplemented
+        }
+    }
+}
+
+extension SPActionType {
+    func toHostAPIActionType() throws -> HostAPIActionType {
+        switch self {
+        case .SaveAndExit:
+            HostAPIActionType.saveAndExit
+        case .PMCancel:
+            HostAPIActionType.msgCancel
+        case .Custom:
+            HostAPIActionType.custom
+        case .AcceptAll:
+            HostAPIActionType.acceptAll
+        case .ShowPrivacyManager:
+            throw NotImplementedError.notImplemented
+        case .RejectAll:
+            HostAPIActionType.rejectAll
+        case .Dismiss:
+            HostAPIActionType.pmDismiss
+        case .RequestATTAccess:
+            throw NotImplementedError.notImplemented
+        case .IDFAAccepted:
+            throw NotImplementedError.notImplemented
+        case .IDFADenied:
+            throw NotImplementedError.notImplemented
+        case .Unknown:
+            HostAPIActionType.unknown
+        }
+    }
+}

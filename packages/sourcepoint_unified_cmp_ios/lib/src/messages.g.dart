@@ -584,15 +584,15 @@ abstract class SourcepointUnifiedCmpFlutterApi {
   static const MessageCodec<Object?> pigeonChannelCodec =
       _SourcepointUnifiedCmpFlutterApiCodec();
 
-  void onUIFinished(int viewId);
+  void onUIFinished(String viewId);
 
-  void onUIReady(int viewId);
+  void onUIReady(String viewId);
 
   void onError(HostAPISourcepointUnifiedCmpError error);
 
   void onConsentReady(HostAPISPConsent consent);
 
-  void onAction(int viewId, HostAPIConsentAction consentAction);
+  void onAction(String viewId, HostAPIConsentAction consentAction);
 
   void onNoIntentActivitiesFound(String url);
 
@@ -613,9 +613,9 @@ abstract class SourcepointUnifiedCmpFlutterApi {
           assert(message != null,
               'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIFinished was null.');
           final List<Object?> args = (message as List<Object?>?)!;
-          final int? arg_viewId = (args[0] as int?);
+          final String? arg_viewId = (args[0] as String?);
           assert(arg_viewId != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIFinished was null, expected non-null int.');
+              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIFinished was null, expected non-null String.');
           try {
             api.onUIFinished(arg_viewId!);
             return wrapResponse(empty: true);
@@ -641,9 +641,9 @@ abstract class SourcepointUnifiedCmpFlutterApi {
           assert(message != null,
               'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIReady was null.');
           final List<Object?> args = (message as List<Object?>?)!;
-          final int? arg_viewId = (args[0] as int?);
+          final String? arg_viewId = (args[0] as String?);
           assert(arg_viewId != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIReady was null, expected non-null int.');
+              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIReady was null, expected non-null String.');
           try {
             api.onUIReady(arg_viewId!);
             return wrapResponse(empty: true);
@@ -727,9 +727,9 @@ abstract class SourcepointUnifiedCmpFlutterApi {
           assert(message != null,
               'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onAction was null.');
           final List<Object?> args = (message as List<Object?>?)!;
-          final int? arg_viewId = (args[0] as int?);
+          final String? arg_viewId = (args[0] as String?);
           assert(arg_viewId != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onAction was null, expected non-null int.');
+              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onAction was null, expected non-null String.');
           final HostAPIConsentAction? arg_consentAction =
               (args[1] as HostAPIConsentAction?);
           assert(arg_consentAction != null,

@@ -562,11 +562,11 @@ class SourcepointUnifiedCmpFlutterApiCodec: FlutterStandardMessageCodec {
 
 /// Generated protocol from Pigeon that represents Flutter messages that can be called from Swift.
 protocol SourcepointUnifiedCmpFlutterApiProtocol {
-    func onUIFinished(viewId viewIdArg: Int64, completion: @escaping (Result<Void, FlutterError>) -> Void)
-    func onUIReady(viewId viewIdArg: Int64, completion: @escaping (Result<Void, FlutterError>) -> Void)
+    func onUIFinished(viewId viewIdArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void)
+    func onUIReady(viewId viewIdArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void)
     func onError(error errorArg: HostAPISourcepointUnifiedCmpError, completion: @escaping (Result<Void, FlutterError>) -> Void)
     func onConsentReady(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, FlutterError>) -> Void)
-    func onAction(viewId viewIdArg: Int64, consentAction consentActionArg: HostAPIConsentAction, completion: @escaping (Result<Void, FlutterError>) -> Void)
+    func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction, completion: @escaping (Result<Void, FlutterError>) -> Void)
     func onNoIntentActivitiesFound(url urlArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void)
     func onSpFinished(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, FlutterError>) -> Void)
 }
@@ -581,7 +581,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         return SourcepointUnifiedCmpFlutterApiCodec.shared
     }
 
-    func onUIFinished(viewId viewIdArg: Int64, completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    func onUIFinished(viewId viewIdArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void) {
         let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIFinished"
         let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
         channel.sendMessage([viewIdArg] as [Any?]) { response in
@@ -600,7 +600,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         }
     }
 
-    func onUIReady(viewId viewIdArg: Int64, completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    func onUIReady(viewId viewIdArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void) {
         let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIReady"
         let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
         channel.sendMessage([viewIdArg] as [Any?]) { response in
@@ -657,7 +657,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         }
     }
 
-    func onAction(viewId viewIdArg: Int64, consentAction consentActionArg: HostAPIConsentAction, completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction, completion: @escaping (Result<Void, FlutterError>) -> Void) {
         let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onAction"
         let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
         channel.sendMessage([viewIdArg, consentActionArg] as [Any?]) { response in
