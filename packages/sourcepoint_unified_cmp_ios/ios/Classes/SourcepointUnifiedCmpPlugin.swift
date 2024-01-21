@@ -2,7 +2,6 @@ import ConsentViewController
 import Flutter
 import UIKit
 
-
 // This extension of Error is required to do use FlutterError in any Swift code.
 extension FlutterError: Error {}
 
@@ -10,19 +9,21 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin, Sourc
     private var consentManager: SPSDK!
     private var isInitialized: Completer<SPUserData> = .init()
 
-    func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId _: String, messageLanguage _: HostAPIMessageLanguage, campaignsEnv _: HostAPICampaignsEnv, messageTimeout _: Int64, runGDPRCampaign _: Bool, runCCPACampaign _: Bool, completion: @escaping (Result<HostAPISPConsent, Error>) -> Void) {
+    func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId _: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Int64, runGDPRCampaign: Bool, runCCPACampaign: Bool, completion: @escaping (Result<HostAPISPConsent, Error>) -> Void) {
         NSLog(">>>>> WE LOAD MESSAGE")
         consentManager = SPConsentManager(
             accountId: Int(accountId),
             propertyId: Int(propertyId),
             propertyName: try! SPPropertyName(propertyName),
             campaigns: SPCampaigns(
-                gdpr: SPCampaign(),
-                ccpa: SPCampaign(),
-                ios14: SPCampaign()
+                gdpr: runGDPRCampaign ? SPCampaign() : nil,
+                ccpa: runCCPACampaign ? SPCampaign() : nil,
+                environment: campaignsEnv.toSPCampaignEnv()
             ),
             delegate: self
         )
+        consentManager.messageLanguage = messageLanguage.toSPMessageLanguage()
+        consentManager.messageTimeoutInSeconds = Double(messageTimeout) / 1000
         consentManager.loadMessage()
         isInitialized.setCompletionHandler { [completion] result in
             NSLog("Received result: \(result)")

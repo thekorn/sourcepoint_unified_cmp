@@ -1,4 +1,5 @@
 import ConsentViewController
+
 enum NotImplementedError: Error {
     case notImplemented
 }
@@ -14,8 +15,8 @@ extension ConsentStatus {
         return HostAPIConsentStatus(
             consentedAll: consentedAll,
             consentedToAny: consentedToAny,
-            granularStatus: nil, ///granularStatus, /// FIXME: not public in the ios sdk
-            hasConsentData: nil, ///hasConsentData,  /// FIXME: not public in the ios sdk
+            granularStatus: nil, /// granularStatus, /// FIXME: not public in the ios sdk
+            hasConsentData: nil, /// hasConsentData,  /// FIXME: not public in the ios sdk
             rejectedAny: rejectedAny,
             rejectedLI: rejectedLI,
             legalBasisChanges: legalBasisChanges,
@@ -34,7 +35,7 @@ extension SPConsent {
                 // Insert into the new dictionary
                 result[pair.key] = value
             }
-            
+
             let grants: [String?: HostAPIGDPRPurposeGrants?]? = value.consents?.vendorGrants.reduce(into: [:]) { result, pair in
                 // Convert the value to String? if possible
                 let value: SPGDPRVendorGrant = pair.value as SPGDPRVendorGrant
@@ -63,5 +64,33 @@ extension SPUserData {
         return HostAPISPConsent(
             gdpr: try? gdpr?.toHostAPIGDPRConsent()
         )
+    }
+}
+
+extension HostAPICampaignsEnv {
+    func toSPCampaignEnv() -> SPCampaignEnv {
+        switch self {
+        case .stage:
+            SPCampaignEnv.Stage
+        case .publicEnv:
+            SPCampaignEnv.Public
+        }
+    }
+}
+
+extension HostAPIMessageLanguage {
+    func toSPMessageLanguage() -> SPMessageLanguage {
+        switch self {
+        case .german:
+            SPMessageLanguage.German
+        case .english:
+            SPMessageLanguage.English
+        case .french:
+            SPMessageLanguage.French
+        case .italian:
+            SPMessageLanguage.Italian
+        case .spanish:
+            SPMessageLanguage.Spanish
+        }
     }
 }
