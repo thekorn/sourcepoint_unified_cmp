@@ -12,8 +12,7 @@ class MethodChannelSourcepointUnifiedCmp extends SourcepointUnifiedCmpPlatform {
 
   @override
   Future<SPConsent> loadMessage(SPConfig config) async {
-    return (await methodChannel.invokeMethod<SPConsent>('loadMessage')) ??
-        SPConsent();
+    return methodChannel.invokeMethod<SPConsent>('loadMessage') as SPConsent;
   }
 
   @override
@@ -23,6 +22,6 @@ class MethodChannelSourcepointUnifiedCmp extends SourcepointUnifiedCmpPlatform {
     CampaignType campaignType,
     MessageType messageType,
   ) async {
-    await methodChannel.invokeMethod<SPConsent>('loadPrivacyManager');
+    await methodChannel.invokeMethod<void>('loadPrivacyManager');
   }
 }
