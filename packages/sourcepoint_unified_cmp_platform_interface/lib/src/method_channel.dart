@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:flutter/services.dart';
-import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
+import 'package:sourcepoint_unified_cmp_platform_interface/src/interface.dart';
+import 'package:sourcepoint_unified_cmp_platform_interface/src/types.dart';
 
 /// An implementation of [SourcepointUnifiedCmpPlatform] that uses method
 /// channels.
@@ -11,8 +12,8 @@ class MethodChannelSourcepointUnifiedCmp extends SourcepointUnifiedCmpPlatform {
 
   @override
   Future<SPConsent> loadMessage(SPConfig config) async {
-    return (await methodChannel.invokeMethod<SPConsent>('loadMessage')) ??
-        SPConsent();
+    return (await methodChannel
+        .invokeMethod<SPConsent>('loadMessage', [config]))!;
   }
 
   @override
@@ -22,6 +23,6 @@ class MethodChannelSourcepointUnifiedCmp extends SourcepointUnifiedCmpPlatform {
     CampaignType campaignType,
     MessageType messageType,
   ) async {
-    await methodChannel.invokeMethod<SPConsent>('loadPrivacyManager');
+    await methodChannel.invokeMethod<void>('loadPrivacyManager');
   }
 }
