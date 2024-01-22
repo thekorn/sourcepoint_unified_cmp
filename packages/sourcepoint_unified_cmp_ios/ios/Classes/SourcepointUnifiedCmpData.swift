@@ -15,8 +15,8 @@ extension ConsentStatus {
         return HostAPIConsentStatus(
             consentedAll: consentedAll,
             consentedToAny: consentedToAny,
-            granularStatus: nil, /// granularStatus, /// FIXME: not public in the ios sdk
-            hasConsentData: nil, /// hasConsentData,  /// FIXME: not public in the ios sdk
+            granularStatus: nil, /// NOTE: granularStatus is not public in the ios sdk
+            hasConsentData: nil, /// NOTE: hasConsentData is not public in the ios sdk
             rejectedAny: rejectedAny,
             rejectedLI: rejectedLI,
             legalBasisChanges: legalBasisChanges,
@@ -117,7 +117,7 @@ extension SPCampaignType {
         case .gdpr:
             HostAPICampaignType.gdpr
         default:
-            // FIXME: add missing
+            // NOTE: there is no support for all other campaign types
             throw NotImplementedError.notImplemented
         }
     }

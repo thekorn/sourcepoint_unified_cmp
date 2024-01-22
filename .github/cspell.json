@@ -19,6 +19,9 @@
     "fluttium",
     "sourcepoint",
     "swiftformat",
-    "flutterfire"
+    "flutterfire",
+    "tcfv",
+    "euconsent",
+    "webview"
   ]
 }

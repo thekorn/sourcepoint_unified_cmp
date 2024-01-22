@@ -36,7 +36,7 @@ However there are two main concepts:
 For a running examples please check the sample app at [example/lib/main.dart](packages/sourcepoint_unified_cmp/example/lib/main.dart) - the sample app can be run using `melos run run:example -- -d sdk` (android only atm).
 
 ```dart
-// init the controler with the account config
+// init the controller with the account config
 final config = SPConfig(
     accountId: 22,
     propertyId: 7639,
@@ -47,7 +47,7 @@ final config = SPConfig(
 _controller = SourcepointController(config: config);
 ```
 
-in the widget tree, the conset can initially be loaded using the `SourcepointUnifiedCMPBuilder`:
+in the widget tree, the consent can initially be loaded using the `SourcepointUnifiedCMPBuilder`:
 
 ```dart
 SourcepointUnifiedCMPBuilder(
@@ -144,7 +144,7 @@ DELEGATE SpFinished: Consent string: CP4u7EAP4u7EAAGABCENDgCgAAAAAAAAAAYgAAAAAAA
 - [ ] open source this as a proper flutter package.
   - [ ] add proper (dart) documentation
 - [ ] additional apis:
-  - [ ] ingesting consent into platforms webviews
+  - [ ] ingesting consent into platforms webview
   - [ ] more app samples
 
 ## resources
