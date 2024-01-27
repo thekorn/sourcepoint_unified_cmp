@@ -1,34 +1,25 @@
-//import 'package:flutter_test/flutter_test.dart';
-//import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
+import 'package:sourcepoint_unified_cmp_platform_interface/src/method_channel.dart';
 
-//class SourcepointUnifiedCmpMock extends SourcepointUnifiedCmpPlatform {
-//  static const mockPlatformName = 'Mock';
-//
-//  @override
-//  Future<void> loadPrivacyManager() async => mockPlatformName;
-//}
-//
-//void main() {
-//  TestWidgetsFlutterBinding.ensureInitialized();
-//  group('SourcepointUnifiedCmpPlatformInterface', () {
-//    late SourcepointUnifiedCmpPlatform sourcepointUnifiedCmpPlatform;
-//
-//    setUp(() {
-//      sourcepointUnifiedCmpPlatform = SourcepointUnifiedCmpMock();
-//      SourcepointUnifiedCmpPlatform.instance = sourcepointUnifiedCmpPlatform;
-//    });
-//
-//    group('getPlatformName', () {
-//      test('returns correct name', () async {
-//        expect(
-//          () async =>
-//              SourcepointUnifiedCmpPlatform.instance.loadPrivacyManager(),
-//          isA<void>(),
-//        );
-//      });
-//    });
-//  });
-//}
-//
+@GenerateNiceMocks([MockSpec<MethodChannelSourcepointUnifiedCmp>()])
+import 'sourcepoint_unified_cmp_platform_interface_test.mocks.dart';
 
-void main() {}
+void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  late MockMethodChannelSourcepointUnifiedCmp api;
+
+  setUp(() {
+    api = MockMethodChannelSourcepointUnifiedCmp();
+  });
+
+  test('loadMessage', () async {
+    when(
+      api.loadMessage(null),
+    ).thenAnswer((_) async => SPConsent());
+    final consent = await api.loadMessage(null);
+    expect(consent, isNotNull);
+  });
+}
