@@ -1,5 +1,7 @@
 # sourcepoint_unified_cmp_platform_interface
 
+![sourcepoint_unified_cmp_platform_interface workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/sourcepoint_unified_cmp_platform_interface.yaml/badge.svg)
+
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 
 A common platform interface for the `sourcepoint_unified_cmp` plugin.

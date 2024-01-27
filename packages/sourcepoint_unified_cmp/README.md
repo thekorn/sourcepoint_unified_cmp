@@ -1,5 +1,7 @@
 # sourcepoint unified cmp
 
+![sourcepoint_unified_cmp workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/sourcepoint_unified_cmp.yaml/badge.svg) ![ci workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/ci.yaml/badge.svg)
+
 **NOTE: this is a work in progress - see TODO section for more details**
 
 This is the flutter integration for sourcepoint's unified CMP sdk.
@@ -142,8 +144,8 @@ DELEGATE SpFinished: Consent string: CP4u7EAP4u7EAAGABCENDgCgAAAAAAAAAAYgAAAAAAA
   - [ ] commit on namings, at the moment the *public* api of this packages does not stick to a single rule, sometimes it's *SourcepointUnifiedCMP*, sometimes it's *SourcepointCMP*, and in other places just *Sourcepoint*
 - [x] implementation for ios/swift (#7)
 - [ ] implementation of tests
-- [ ] open source this as a proper flutter package.
-  - [ ] add proper (dart) documentation
+- [x] open source this as a proper flutter package.
+  - [x] add proper (dart) documentation
 - [ ] additional apis:
   - [ ] ingesting consent into platforms webview
   - [ ] more app samples

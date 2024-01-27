@@ -1,5 +1,7 @@
 # sourcepoint_unified_cmp_android
 
+![sourcepoint_unified_cmp_android workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/sourcepoint_unified_cmp_android.yaml/badge.svg)
+
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 
 The Android implementation of `sourcepoint_unified_cmp`.

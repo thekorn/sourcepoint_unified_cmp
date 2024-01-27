@@ -1,5 +1,7 @@
 # sourcepoint unified cmp
 
+![sourcepoint_unified_cmp workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/sourcepoint_unified_cmp.yaml/badge.svg) ![ci workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/ci.yaml/badge.svg)
+
 **NOTE: this is a work in progress - see TODO section for more details**
 
 This is the flutter integration for sourcepoint's unified CMP sdk.
