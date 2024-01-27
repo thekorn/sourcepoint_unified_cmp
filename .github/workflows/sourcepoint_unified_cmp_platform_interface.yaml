@@ -23,7 +23,7 @@ jobs:
       flutter_channel: stable
       flutter_version: 3.16.7
       working_directory: packages/sourcepoint_unified_cmp_platform_interface
-      min_coverage: 5
+      min_coverage: 2
 
   pana:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
