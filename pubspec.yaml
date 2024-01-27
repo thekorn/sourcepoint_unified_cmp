@@ -1,4 +1,5 @@
 name: sourcepoint_unified_cmp
+homepage: https://github.com/thekorn/sourcepoint_unified_cmp
 
 environment:
   sdk: '>=3.2.3 <4.0.0'

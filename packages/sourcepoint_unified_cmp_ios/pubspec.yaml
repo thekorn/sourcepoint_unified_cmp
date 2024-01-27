@@ -1,6 +1,7 @@
 name: sourcepoint_unified_cmp_ios
 description: iOS implementation of the sourcepoint_unified_cmp plugin
 version: 0.1.1
+homepage: https://github.com/thekorn/sourcepoint_unified_cmp
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
