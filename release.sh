@@ -13,6 +13,7 @@ fi
 echo "copy docs to sourcepoint_unified_cmp..."
 
 cp README.md packages/sourcepoint_unified_cmp/README.md
+cp CONTRIBUTING.md packages/sourcepoint_unified_cmp/CONTRIBUTING.md
 cp -r docs packages/sourcepoint_unified_cmp/
 
 git add .
