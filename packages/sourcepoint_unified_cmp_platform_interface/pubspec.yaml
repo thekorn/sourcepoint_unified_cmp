@@ -1,7 +1,9 @@
 name: sourcepoint_unified_cmp_platform_interface
-description: A common platform interface for the sourcepoint_unified_cmp plugin.
+description: flutter plugin for the sourcepoint unified CMP,
+  with integrations for Android and iOS - platform interface
 version: 0.1.1
 homepage: https://github.com/thekorn/sourcepoint_unified_cmp
+repository: https://github.com/thekorn/sourcepoint_unified_cmp/tree/main/packages/sourcepoint_unified_cmp_platform_interface
 
 environment:
   sdk: ">=3.0.0 <4.0.0"

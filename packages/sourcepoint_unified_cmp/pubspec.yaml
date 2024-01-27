@@ -1,7 +1,9 @@
 name: sourcepoint_unified_cmp
-description: sourcepoint unified cmp plugin for flutter
+description: flutter plugin for the sourcepoint unified CMP,
+  with integrations for Android and iOS
 version: 0.1.1
 homepage: https://github.com/thekorn/sourcepoint_unified_cmp
+repository: https://github.com/thekorn/sourcepoint_unified_cmp
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
