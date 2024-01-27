@@ -22,7 +22,7 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  sourcepoint_unified_cmp_platform_interface: ^0.1.1
+  sourcepoint_unified_cmp_platform_interface: ^0.1.2
 
 dev_dependencies:
   flutter_test:

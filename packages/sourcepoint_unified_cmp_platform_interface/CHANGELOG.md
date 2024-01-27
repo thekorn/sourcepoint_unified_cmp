@@ -1,3 +1,5 @@
+## 0.1.2
+
 ## 0.1.1
 
  - **REFACTOR**(sourcepoint_unified_cmp_platform_interface): move interface implementation to separate file for better code organization.
