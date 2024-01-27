@@ -21,7 +21,7 @@ dependencies:
   flutter:
     sdk: flutter
   sourcepoint_unified_cmp_android: ^0.1.2
-  sourcepoint_unified_cmp_ios: ^0.1.1
+  sourcepoint_unified_cmp_ios: ^0.1.2
   sourcepoint_unified_cmp_platform_interface: ^0.1.1
 
 dev_dependencies:
