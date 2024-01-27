@@ -38,7 +38,7 @@ enum HostAPICampaignType {
 enum HostAPIMessageType {
   mobile,
   ott,
-  lagacyOtt,
+  legacyOtt,
 }
 
 enum HostAPIGranularState {

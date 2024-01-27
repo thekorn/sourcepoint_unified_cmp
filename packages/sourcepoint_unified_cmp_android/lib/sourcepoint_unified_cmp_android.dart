@@ -206,8 +206,8 @@ extension on MessageType {
     switch (this) {
       case MessageType.mobile:
         return messages.HostAPIMessageType.mobile;
-      case MessageType.lagacyOtt:
-        return messages.HostAPIMessageType.lagacyOtt;
+      case MessageType.legacyOtt:
+        return messages.HostAPIMessageType.legacyOtt;
       case MessageType.ott:
         return messages.HostAPIMessageType.ott;
     }

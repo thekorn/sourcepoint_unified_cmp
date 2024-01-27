@@ -129,6 +129,7 @@ with those delegates in place we can now also add a button to load the consent d
 
 Which results in
 ```
+
 DELEGATE onConsentReady: Consent string: CP4u7EAP4u7EAAGABCENDgCgAAAAAAAAAAYgAAAAAAAA.YAAAAAAAAAAA
 DELEGATE SpFinished: Consent string: CP4u7EAP4u7EAAGABCENDgCgAAAAAAAAAAYgAAAAAAAA.YAAAAAAAAAAA
 ```
@@ -141,8 +142,8 @@ DELEGATE SpFinished: Consent string: CP4u7EAP4u7EAAGABCENDgCgAAAAAAAAAAYgAAAAAAA
   - [ ] commit on namings, at the moment the *public* api of this packages does not stick to a single rule, sometimes it's *SourcepointUnifiedCMP*, sometimes it's *SourcepointCMP*, and in other places just *Sourcepoint*
 - [x] implementation for ios/swift (#7)
 - [ ] implementation of tests
-- [ ] open source this as a proper flutter package.
-  - [ ] add proper (dart) documentation
+- [x] open source this as a proper flutter package.
+  - [x] add proper (dart) documentation
 - [ ] additional apis:
   - [ ] ingesting consent into platforms webview
   - [ ] more app samples

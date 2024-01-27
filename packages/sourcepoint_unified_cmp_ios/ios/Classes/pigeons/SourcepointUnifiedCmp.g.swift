@@ -55,7 +55,7 @@ enum HostAPICampaignType: Int {
 enum HostAPIMessageType: Int {
     case mobile = 0
     case ott = 1
-    case lagacyOtt = 2
+    case legacyOtt = 2
 }
 
 enum HostAPIGranularState: Int {

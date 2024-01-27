@@ -126,5 +126,5 @@ fun HostAPICampaignType.toCampaignType() = when (this) {
 fun HostAPIMessageType.toMessageType() = when (this) {
     HostAPIMessageType.MOBILE -> MessageType.MOBILE
     HostAPIMessageType.OTT -> MessageType.OTT
-    HostAPIMessageType.LAGACYOTT -> MessageType.LEGACY_OTT
+    HostAPIMessageType.LEGACYOTT -> MessageType.LEGACY_OTT
 }

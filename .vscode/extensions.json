@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "blaugold.melos-code",
-        "dart-code.flutter"
+        "dart-code.flutter",
+        "streetsidesoftware.code-spell-checker"
     ]
 }

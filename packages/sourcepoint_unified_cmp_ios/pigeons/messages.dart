@@ -6,7 +6,7 @@ enum HostAPIPMTab { purposes }
 
 enum HostAPICampaignType { gdpr, ccpa }
 
-enum HostAPIMessageType { mobile, ott, lagacyOtt }
+enum HostAPIMessageType { mobile, ott, legacyOtt }
 
 enum HostAPIGranularState { all, some, none }
 
@@ -41,7 +41,7 @@ enum HostAPIMessageLanguage {
 }
 
 //FIXME: publicEnv is used because public is reserved in swift
-//  needs to be unifid with android version if we want to put those in a
+//  needs to be unified with android version if we want to put those in a
 //  central place
 enum HostAPICampaignsEnv { stage, publicEnv }
 

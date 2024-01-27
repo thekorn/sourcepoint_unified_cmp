@@ -97,7 +97,7 @@ enum CampaignType {
   /// mobile devices. Click here to learn more about implementing U.S.
   /// Multi-State Privacy on OTT.
   ///usnat
-  // TODO(thekorn): add missing iOs specific campaignes
+  // TODO(thekorn): add missing iOs specific campaigns
 }
 
 /// message type - android only
@@ -109,7 +109,7 @@ enum MessageType {
   ott,
 
   /// LEGACY_OTT: it presents the legacy layout and operates on TV devices.
-  lagacyOtt
+  legacyOtt
 }
 
 // ignore: public_member_api_docs
@@ -392,7 +392,7 @@ enum ActionType {
   /// message ready - ios only
   getMessageNotCalled,
 
-  /// unknwon action - ios only
+  /// unknown action - ios only
   unknown,
 }
 
@@ -408,7 +408,7 @@ class SPError {
   /// short representation of the error
   final String spCode;
 
-  /// longer, enduser frindly description of the error
+  /// longer, end-user friendly description of the error
   final String description;
 
   @override
