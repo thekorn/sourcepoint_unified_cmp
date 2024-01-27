@@ -1,3 +1,5 @@
+## 0.1.2
+
 ## 0.1.1
 
  - **REFACTOR**(sourcepoint_unified_cmp): replace HostAPISourcepointUnifiedCmpError with HostAPISPError for better error handling.

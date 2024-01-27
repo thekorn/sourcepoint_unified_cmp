@@ -15,6 +15,25 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sourcepoint_unified_cmp` - `v0.1.2`](#sourcepoint_unified_cmp---v012)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.2`
+
+
+## 2024-01-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sourcepoint_unified_cmp` - `v0.1.1`](#sourcepoint_unified_cmp---v011)
  - [`sourcepoint_unified_cmp_android` - `v0.1.1`](#sourcepoint_unified_cmp_android---v011)
  - [`sourcepoint_unified_cmp_ios` - `v0.1.1`](#sourcepoint_unified_cmp_ios---v011)
