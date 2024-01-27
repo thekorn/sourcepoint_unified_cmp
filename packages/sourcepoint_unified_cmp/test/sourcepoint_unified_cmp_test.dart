@@ -1,30 +1,25 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
+import 'package:sourcepoint_unified_cmp_platform_interface/src/method_channel.dart';
 
-class MockSourcepointUnifiedCmpPlatform extends Mock
-    with MockPlatformInterfaceMixin
-    implements SourcepointUnifiedCmpPlatform {}
+@GenerateNiceMocks([MockSpec<MethodChannelSourcepointUnifiedCmp>()])
+import 'sourcepoint_unified_cmp_test.mocks.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+  late MockMethodChannelSourcepointUnifiedCmp api;
 
-  group('SourcepointUnifiedCmp', () {
-    late SourcepointUnifiedCmpPlatform sourcepointUnifiedCmpPlatform;
+  setUp(() {
+    api = MockMethodChannelSourcepointUnifiedCmp();
+  });
 
-    setUp(() {
-      sourcepointUnifiedCmpPlatform = MockSourcepointUnifiedCmpPlatform();
-      SourcepointUnifiedCmpPlatform.instance = sourcepointUnifiedCmpPlatform;
-    });
-
-    //group('loadPrivacyManager', () {
-    //  test('load the privacy manager', () async {
-    //    when(
-    //      () => sourcepointUnifiedCmpPlatform.loadPrivacyManager(),
-    //    ).thenAnswer((_) async {});
-    //    expect(() async => loadPrivacyManager(), isA<void>());
-    //  });
-    //});
+  test('loadMessage', () async {
+    when(
+      api.loadMessage(null),
+    ).thenAnswer((_) async => SPConsent());
+    final consent = await api.loadMessage(null);
+    expect(consent, isNotNull);
   });
 }

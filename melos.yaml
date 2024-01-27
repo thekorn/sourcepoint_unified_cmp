@@ -60,6 +60,15 @@ scripts:
       fileExists: 'pigeons/messages.dart'
     description: Generate the pigeon messages for all the supported packages.
 
+  generate:mocks:
+    run: |
+      melos exec -- "fvm flutter pub run build_runner build" && \
+      melos run format --no-select
+    packageFilters:
+      dependsOn:
+        - build_runner
+    description: Generate mocks for tests.
+
   run:example:
     run: fvm flutter run
     description: Run the example app.
