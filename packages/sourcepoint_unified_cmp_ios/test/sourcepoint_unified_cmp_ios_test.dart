@@ -1,22 +1,10 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:sourcepoint_unified_cmp_ios/src/messages.g.dart';
 
-class MockMethodChannel extends Mock implements MethodChannel {
-  MockMethodChannel(this.mockBinaryMessenger);
-  final MockBinaryMessenger mockBinaryMessenger;
-
-  @override
-  BinaryMessenger get binaryMessenger {
-    return mockBinaryMessenger;
-  }
-}
-
-class MockBinaryMessenger extends Mock implements BinaryMessenger {}
-
-class MockSourcepointUnifiedCmpHostApi extends Mock
-    implements SourcepointUnifiedCmpHostApi {}
+@GenerateNiceMocks([MockSpec<SourcepointUnifiedCmpHostApi>()])
+import 'sourcepoint_unified_cmp_ios_test.mocks.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
