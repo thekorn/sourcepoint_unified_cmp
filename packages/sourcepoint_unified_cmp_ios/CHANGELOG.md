@@ -1,3 +1,7 @@
+## 0.1.3
+
+ - version bump
+
 ## 0.1.2+1
 
  - **FIX**(typos): Correct various typos across multiple files.

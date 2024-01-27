@@ -15,6 +15,42 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sourcepoint_unified_cmp` - `v0.1.3`](#sourcepoint_unified_cmp---v013)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.3`](#sourcepoint_unified_cmp_android---v013)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.3`](#sourcepoint_unified_cmp_ios---v013)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.3`](#sourcepoint_unified_cmp_platform_interface---v013)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.3`
+
+ - update docs
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.3`
+
+ - version bump
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.3`
+
+ - version bump
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.3`
+
+ - version bump
+
+
+## 2024-01-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sourcepoint_unified_cmp_android` - `v0.1.2+1`](#sourcepoint_unified_cmp_android---v0121)
  - [`sourcepoint_unified_cmp_ios` - `v0.1.2+1`](#sourcepoint_unified_cmp_ios---v0121)
  - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.2+1`](#sourcepoint_unified_cmp_platform_interface---v0121)
