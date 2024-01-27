@@ -2,23 +2,11 @@
 
 ![sourcepoint_unified_cmp workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/sourcepoint_unified_cmp.yaml/badge.svg) ![ci workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/ci.yaml/badge.svg)
 
-**NOTE: this is a work in progress - see TODO section for more details**
-
 This is the flutter integration for sourcepoint's unified CMP sdk.
 
-## requirements
+## Contributing to the project
 
-Packages:
-- dart
-- flutter
-- swiftformat
-
-```bash
-dart pub global activate melos
-dart pub global activate very_good_cli
-dart pub global activate pana
-dart pub global activate flutter_plugin_tools
-```
+Please the [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## example usage:
 
@@ -135,34 +123,3 @@ Which results in
 DELEGATE onConsentReady: Consent string: CP4u7EAP4u7EAAGABCENDgCgAAAAAAAAAAYgAAAAAAAA.YAAAAAAAAAAA
 DELEGATE SpFinished: Consent string: CP4u7EAP4u7EAAGABCENDgCgAAAAAAAAAAYgAAAAAAAA.YAAAAAAAAAAA
 ```
-
-## TODO
-- [ ] commit on an api
-  - [x] the api for the initial consent loading
-  - [x] api on the on demand loading of the consent message (#5)
-  - [x] implementation of a `SourcepointEventDelegate` which allows the flutter stack to hook onto consent events (#6)
-  - [ ] commit on namings, at the moment the *public* api of this packages does not stick to a single rule, sometimes it's *SourcepointUnifiedCMP*, sometimes it's *SourcepointCMP*, and in other places just *Sourcepoint*
-- [x] implementation for ios/swift (#7)
-- [ ] implementation of tests
-- [x] open source this as a proper flutter package.
-  - [x] add proper (dart) documentation
-- [ ] additional apis:
-  - [ ] ingesting consent into platforms webview
-  - [ ] more app samples
-
-## resources
-
-### sourcepoint
-
-- [sourcepoint ios SDK](https://github.com/SourcePointUSA/ios-cmp-app)
-- [sourcepoint android SDK](https://github.com/SourcePointUSA/android-cmp-app)
-
-### tooling
-
-- [Flutter](https://flutter.dev/)
-- [Flutter documentation](https://flutter.dev/docs)
-- [using melos and very_good_cli](https://adityadroid.medium.com/flutter-at-scale-code-sharing-using-a-monorepo-a7a46c427141)
-- [very good dev](https://vgv.dev)
-- [melos](https://melos.invertase.dev)
-- [example melos + pigeon repo: flutterfire](https://github.com/firebase/flutterfire/)
-- [example pigeon + swift host and flutter api](https://gitlab.com/twilio-flutter/conversations/-/blob/master/ios/Classes/SwiftTwilioConversationsPlugin.swift)
