@@ -23,6 +23,7 @@ jobs:
       flutter_channel: stable
       flutter_version: 3.16.7
       working_directory: packages/sourcepoint_unified_cmp_ios
+      coverage_excludes: "lib/src/*.g.dart"
 
   pana:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
