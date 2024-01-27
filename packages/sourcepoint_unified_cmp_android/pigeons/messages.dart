@@ -6,7 +6,7 @@ enum HostAPIPMTab { purposes }
 
 enum HostAPICampaignType { gdpr, ccpa }
 
-enum HostAPIMessageType { mobile, ott, lagacyOtt }
+enum HostAPIMessageType { mobile, ott, legacyOtt }
 
 enum HostAPIGranularState { all, some, none }
 

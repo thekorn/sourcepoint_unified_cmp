@@ -69,7 +69,7 @@ enum class HostAPICampaignType(val raw: Int) {
 enum class HostAPIMessageType(val raw: Int) {
   MOBILE(0),
   OTT(1),
-  LAGACYOTT(2);
+  LEGACYOTT(2);
 
   companion object {
     fun ofRaw(raw: Int): HostAPIMessageType? {

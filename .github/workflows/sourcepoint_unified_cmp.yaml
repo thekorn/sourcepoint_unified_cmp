@@ -25,6 +25,7 @@ jobs:
         !brick/**/*.md
         .*/**/*.md
       modified_files_only: false
+      config: cspell.json
 
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
