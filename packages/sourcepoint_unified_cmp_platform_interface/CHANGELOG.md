@@ -1,3 +1,8 @@
+## 0.1.4
+
+ - **REFACTOR**(sourcepoint_unified_cmp_platform_interface): update test setup and dependencies.
+ - **DOCS**: add workflow status badges to README files for better visibility of project status.
+
 ## 0.1.3
 
  - version bump

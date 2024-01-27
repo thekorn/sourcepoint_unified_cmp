@@ -15,6 +15,48 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sourcepoint_unified_cmp` - `v0.1.4`](#sourcepoint_unified_cmp---v014)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.4`](#sourcepoint_unified_cmp_android---v014)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.4`](#sourcepoint_unified_cmp_ios---v014)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.4`](#sourcepoint_unified_cmp_platform_interface---v014)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.4`
+
+ - update documentation
+
+ - **DOCS**: create CONTRIBUTING.md to guide contributors.
+ - **DOCS**: add workflow status badges to README files for better visibility of project status.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.4`
+
+ - **FEAT**(sourcepoint_unified_cmp_android): add build_runner and mockito to dev_dependencies for testing.
+ - **DOCS**: add workflow status badges to README files for better visibility of project status.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.4`
+
+ - **FEAT**(sourcepoint_unified_cmp_ios): add mockito for unit testing.
+ - **DOCS**: add workflow status badges to README files for better visibility of project status.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.4`
+
+ - **REFACTOR**(sourcepoint_unified_cmp_platform_interface): update test setup and dependencies.
+ - **DOCS**: add workflow status badges to README files for better visibility of project status.
+
+
+## 2024-01-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sourcepoint_unified_cmp` - `v0.1.3`](#sourcepoint_unified_cmp---v013)
  - [`sourcepoint_unified_cmp_android` - `v0.1.3`](#sourcepoint_unified_cmp_android---v013)
  - [`sourcepoint_unified_cmp_ios` - `v0.1.3`](#sourcepoint_unified_cmp_ios---v013)

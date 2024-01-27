@@ -1,3 +1,8 @@
+## 0.1.4
+
+ - **FEAT**(sourcepoint_unified_cmp_android): add build_runner and mockito to dev_dependencies for testing.
+ - **DOCS**: add workflow status badges to README files for better visibility of project status.
+
 ## 0.1.3
 
  - version bump

@@ -1,3 +1,10 @@
+## 0.1.4
+
+ - update documentation
+
+ - **DOCS**: create CONTRIBUTING.md to guide contributors.
+ - **DOCS**: add workflow status badges to README files for better visibility of project status.
+
 ## 0.1.3
 
  - update docs
