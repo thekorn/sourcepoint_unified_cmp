@@ -1,6 +1,5 @@
 package de.thekorn.sourcepoint.unified.cmp
 
-
 import HostAPICampaignType
 import HostAPICampaignsEnv
 import HostAPIMessageLanguage
@@ -31,8 +30,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.json.JSONObject
 
 private class SourcepointFlutterApi(
-        binaryMessenger: BinaryMessenger,
-        private val activity: Activity
+    binaryMessenger: BinaryMessenger,
+    private val activity: Activity
 ) {
 
     var flutterApi: SourcepointUnifiedCmpFlutterApi? = null
@@ -58,7 +57,7 @@ private class SourcepointFlutterApi(
         val cause: String = error.cause?.javaClass?.simpleName ?: message
         flutterApi!!.onError(HostAPISPError(cause, message)) {
             callback(
-                    Result.success(Unit)
+                Result.success(Unit)
             )
         }
     }
@@ -67,7 +66,7 @@ private class SourcepointFlutterApi(
         activity.runOnUiThread {
             flutterApi!!.onAction(view.id.toLong(), consentAction.toHostAPIConsentAction()) {
                 callback(
-                        Result.success(Unit)
+                    Result.success(Unit)
                 )
             }
         }
@@ -79,7 +78,9 @@ private class SourcepointFlutterApi(
 
     fun callOnSpFinished(consent: SPConsents, callback: (Result<Unit>) -> Unit) {
         activity.runOnUiThread {
-            flutterApi!!.onSpFinished(consent.toHostAPISPConsent()) { callback(Result.success(Unit)) }
+            flutterApi!!.onSpFinished(
+                consent.toHostAPISPConsent()
+            ) { callback(Result.success(Unit)) }
         }
     }
 }
@@ -111,19 +112,18 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
 
     override fun onDetachedFromActivityForConfigChanges() {
         Log.d("SourcepointUnifiedCmp", "onDetachedFromActivityForConfigChanges")
-        //TODO("Not yet implemented")
+        // TODO("Not yet implemented")
     }
 
     override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
         Log.d("SourcepointUnifiedCmp", "onReattachedToActivityForConfigChanges")
-        ///TODO("Not yet implemented")
+        // /TODO("Not yet implemented")
     }
 
     override fun onDetachedFromActivity() {
         Log.d("SourcepointUnifiedCmp", "onDetachedFromActivity")
-        //TODO("Not yet implemented")
+        // TODO("Not yet implemented")
     }
-
 
     internal inner class LocalClient : SpClient {
         val isInitialized: CompletableDeferred<HostAPISPConsent> = CompletableDeferred()
@@ -140,8 +140,8 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
         }
 
         override fun onNativeMessageReady(
-                message: MessageStructure,
-                messageController: NativeMessageController
+            message: MessageStructure,
+            messageController: NativeMessageController
         ) {
             Log.d("SourcepointUnifiedCmp", "onNativeMessageReady")
         }
@@ -152,11 +152,12 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
         }
 
         @Deprecated(
-                "onMessageReady callback will be removed in favor of onUIReady. Currently this callback is disabled.",
-                ReplaceWith(
-                        "onUIReady",
-                        "com.sourcepoint.cmplibrary.SpClient"
-                )
+            "onMessageReady callback will be removed in favor of onUIReady. " +
+                "Currently this callback is disabled.",
+            ReplaceWith(
+                "onUIReady",
+                "com.sourcepoint.cmplibrary.SpClient"
+            )
         )
         override fun onMessageReady(message: JSONObject) {
             Log.d("SourcepointUnifiedCmp", "onMessageReady")
@@ -187,15 +188,26 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Long, runGDPRCampaign: Boolean, runCCPACampaign: Boolean, callback: (Result<HostAPISPConsent>) -> Unit) {
+    override fun loadMessage(
+        accountId: Long,
+        propertyId: Long,
+        propertyName: String,
+        pmId: String,
+        messageLanguage: HostAPIMessageLanguage,
+        campaignsEnv: HostAPICampaignsEnv,
+        messageTimeout: Long,
+        runGDPRCampaign: Boolean,
+        runCCPACampaign: Boolean,
+        callback: (Result<HostAPISPConsent>) -> Unit
+    ) {
         Log.d("SourcepointUnifiedCmp", "loadMessage")
         val cmpConfig = SpConfigDataBuilder()
-                .addAccountId(accountId.toInt())
-                .addPropertyId(propertyId.toInt())
-                .addPropertyName(propertyName)
-                .addMessageLanguage(messageLanguage.toMessageLanguage())
-                .addCampaignsEnv(campaignsEnv.toCampaignsEnv())
-                .addMessageTimeout(messageTimeout)
+            .addAccountId(accountId.toInt())
+            .addPropertyId(propertyId.toInt())
+            .addPropertyName(propertyName)
+            .addMessageLanguage(messageLanguage.toMessageLanguage())
+            .addCampaignsEnv(campaignsEnv.toCampaignsEnv())
+            .addMessageTimeout(messageTimeout)
         if (runGDPRCampaign) cmpConfig.addCampaign(CampaignType.GDPR)
         if (runCCPACampaign) cmpConfig.addCampaign(CampaignType.CCPA)
 
@@ -203,7 +215,11 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
         val spClient = LocalClient()
 
         spConsentLib =
-                makeConsentLib(spConfig = cmpConfig.build(), activity = this.activity, spClient = spClient)
+            makeConsentLib(
+                spConfig = cmpConfig.build(),
+                activity = this.activity,
+                spClient = spClient
+            )
         spConsentLib!!.loadMessage()
         spClient.isInitialized.invokeOnCompletion {
             callback(Result.success(spClient.isInitialized.getCompleted()))
@@ -224,5 +240,4 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
             messageType.toMessageType()
         )
     }
-
 }

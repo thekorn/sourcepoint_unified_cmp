@@ -6,6 +6,7 @@ Packages:
 - dart
 - flutter
 - swiftformat
+- ktlint
 
 ```bash
 dart pub global activate melos

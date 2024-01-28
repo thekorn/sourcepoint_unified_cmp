@@ -25,14 +25,11 @@ import com.sourcepoint.cmplibrary.model.exposed.GDPRPurposeGrants
 import com.sourcepoint.cmplibrary.model.exposed.MessageType
 import com.sourcepoint.cmplibrary.model.exposed.SPConsents
 import com.sourcepoint.cmplibrary.model.exposed.SPGDPRConsent
-import io.flutter.Log
-
 
 fun GDPRPurposeGrants.toHostAPIPurposeGrants() = HostAPIGDPRPurposeGrants(
     granted = granted,
-    purposeGrants = purposeGrants.mapKeys { it.key }.mapValues { it.value },
+    purposeGrants = purposeGrants.mapKeys { it.key }.mapValues { it.value }
 )
-
 
 fun SPGDPRConsent.toHostAPIGDPRConsent() = HostAPIGDPRConsent(
     uuid = consent.uuid,
@@ -41,7 +38,7 @@ fun SPGDPRConsent.toHostAPIGDPRConsent() = HostAPIGDPRConsent(
     apply = consent.applies,
     euconsent = consent.euconsent,
     consentStatus = consent.consentStatus?.toHostAPIConsentStatus(),
-    acceptedCategories = consent.acceptedCategories,
+    acceptedCategories = consent.acceptedCategories
 )
 
 fun GranularState.toHostAPIGranularState() = when (this) {
@@ -56,9 +53,8 @@ fun ConsentStatus.GranularStatus.toHostAPIGranularStatus() = HostAPIGranularStat
     purposeConsent = purposeConsent?.toHostAPIGranularState(),
     purposeLegInt = purposeLegInt?.toHostAPIGranularState(),
     vendorConsent = vendorConsent?.toHostAPIGranularState(),
-    vendorLegInt = vendorLegInt?.toHostAPIGranularState(),
+    vendorLegInt = vendorLegInt?.toHostAPIGranularState()
 )
-
 
 fun ConsentStatus.toHostAPIConsentStatus() = HostAPIConsentStatus(
     consentedAll = consentedAll,
@@ -68,9 +64,8 @@ fun ConsentStatus.toHostAPIConsentStatus() = HostAPIConsentStatus(
     rejectedAny = rejectedAny,
     rejectedLI = rejectedLI,
     legalBasisChanges = legalBasisChanges,
-    vendorListAdditions = vendorListAdditions,
+    vendorListAdditions = vendorListAdditions
 )
-
 
 fun SPConsents.toHostAPISPConsent() = HostAPISPConsent(
     gdpr = gdpr?.toHostAPIGDPRConsent()
@@ -80,7 +75,7 @@ fun ConsentAction.toHostAPIConsentAction() = HostAPIConsentAction(
     actionType = actionType.toHostAPIActionType(),
     campaignType = campaignType.toHostAPICampaignType(),
     pubData = pubData.toString(),
-    customActionId = customActionId,
+    customActionId = customActionId
 )
 
 fun CampaignType.toHostAPICampaignType() = when (this) {
