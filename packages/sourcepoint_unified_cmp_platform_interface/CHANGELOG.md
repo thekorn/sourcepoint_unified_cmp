@@ -1,3 +1,7 @@
+## 0.1.5
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.5`.
+
 ## 0.1.4
 
  - **REFACTOR**(sourcepoint_unified_cmp_platform_interface): update test setup and dependencies.

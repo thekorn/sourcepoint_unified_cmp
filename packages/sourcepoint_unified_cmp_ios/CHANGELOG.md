@@ -1,3 +1,7 @@
+## 0.1.5
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.5`.
+
 ## 0.1.4
 
  - **FEAT**(sourcepoint_unified_cmp_ios): add mockito for unit testing.
