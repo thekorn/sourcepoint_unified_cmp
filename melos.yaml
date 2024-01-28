@@ -31,9 +31,11 @@ scripts:
   format:
     run: |
       fvm dart pub global run flutter_plugin_tools format && \
-      swiftformat --swiftversion 5 .
+      swiftformat --swiftversion 5 . && \
+      ktlint --format '**/*.kt' '**/*.kts' '!**/*.g.kt' 
     description: |
        - Requires `swiftformat` (can be installed via Brew on macOS).
+       - Requires `ktlint` (can be installed via Brew on macOS).
 
   test:all:
     run: |
