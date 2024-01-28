@@ -23,7 +23,7 @@ However there are two main concepts:
 
 ### sample code:
 
-For a running examples please check the sample app at [example/lib/main.dart](packages/sourcepoint_unified_cmp/example/lib/main.dart) - the sample app can be run using `melos run run:example -- -d sdk` (android only atm).
+For a running examples please check the sample app at [example/lib/main.dart](packages/sourcepoint_unified_cmp/example/lib/main.dart) - the sample app can be run using `melos run run:example -- -d sdk` (android) or `melos run run:example -- -d IPhone` (ios).
 
 ```dart
 // init the controller with the account config
