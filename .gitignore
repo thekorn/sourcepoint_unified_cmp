@@ -46,4 +46,5 @@ build/
 .classpath
 .settings
 
-.fvm/flutter_sdk
+# FVM Version Cache
+.fvm/
