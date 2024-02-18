@@ -27,7 +27,7 @@ class SourcepointController {
   }
 
   /// Loading a Privacy Manager on demand
-  /// consent chnages will propagated via controller
+  /// consent changes will propagated via controller
   Future<void> loadPrivacyManager({
     required String pmId,
     PMTab pmTab = PMTab.purposes,
@@ -44,7 +44,7 @@ class SourcepointController {
   }
 
   /// Loading the First Layer Message
-  /// and returns the inital consent status
+  /// and returns the initial consent status
   Future<SPConsent> loadMessage() async {
     debugPrint('loadMessage');
     return _platform.loadMessage(config);
