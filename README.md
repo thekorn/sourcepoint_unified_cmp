@@ -1,6 +1,6 @@
 # sourcepoint unified cmp
 
-![sourcepoint_unified_cmp workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/sourcepoint_unified_cmp.yaml/badge.svg) ![ci workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/ci.yaml/badge.svg)
+![sourcepoint_unified_cmp workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/sourcepoint_unified_cmp.yaml/badge.svg) ![ci workflow](https://github.com/thekorn/sourcepoint_unified_cmp/actions/workflows/ci.yaml/badge.svg) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=thekorn_sourcepoint_unified_cmp&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=thekorn_sourcepoint_unified_cmp)
 
 This is the flutter integration for sourcepoint's unified CMP sdk.
 
