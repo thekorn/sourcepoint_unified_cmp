@@ -26,6 +26,10 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle" 
-    directory: "/packages/sourcepoint_unified_cmp_android" 
+    directory: "/packages/sourcepoint_unified_cmp_android/android" 
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "swift" 
+    directory: "/packages/sourcepoint_unified_cmp_ios/ios" 
     schedule:
       interval: "daily"
