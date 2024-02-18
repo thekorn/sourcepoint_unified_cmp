@@ -198,6 +198,7 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
         messageTimeout: Long,
         runGDPRCampaign: Boolean,
         runCCPACampaign: Boolean,
+        runUSNATCampaign: Boolean,
         callback: (Result<HostAPISPConsent>) -> Unit
     ) {
         Log.d("SourcepointUnifiedCmp", "loadMessage")
@@ -210,6 +211,7 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
             .addMessageTimeout(messageTimeout)
         if (runGDPRCampaign) cmpConfig.addCampaign(CampaignType.GDPR)
         if (runCCPACampaign) cmpConfig.addCampaign(CampaignType.CCPA)
+        if (runUSNATCampaign) cmpConfig.addCampaign(CampaignType.USNAT)
 
         Log.d("SourcepointUnifiedCmp", "loadMessage")
         val spClient = LocalClient()

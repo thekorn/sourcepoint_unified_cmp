@@ -81,6 +81,7 @@ fun ConsentAction.toHostAPIConsentAction() = HostAPIConsentAction(
 fun CampaignType.toHostAPICampaignType() = when (this) {
     CampaignType.CCPA -> HostAPICampaignType.CCPA
     CampaignType.GDPR -> HostAPICampaignType.GDPR
+    CampaignType.USNAT -> HostAPICampaignType.USNAT
 }
 
 fun ActionType.toHostAPIActionType() = when (this) {
@@ -116,6 +117,7 @@ fun HostAPIPMTab.toPMTab() = when (this) {
 fun HostAPICampaignType.toCampaignType() = when (this) {
     HostAPICampaignType.CCPA -> CampaignType.CCPA
     HostAPICampaignType.GDPR -> CampaignType.GDPR
+    HostAPICampaignType.USNAT -> CampaignType.USNAT
 }
 
 fun HostAPIMessageType.toMessageType() = when (this) {

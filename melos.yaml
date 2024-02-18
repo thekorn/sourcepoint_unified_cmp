@@ -64,7 +64,7 @@ scripts:
 
   generate:mocks:
     run: |
-      melos exec -- "fvm flutter pub run build_runner build" && \
+      melos exec -- "fvm flutter pub run build_runner build --delete-conflicting-outputs" && \
       melos run format --no-select
     packageFilters:
       dependsOn:
