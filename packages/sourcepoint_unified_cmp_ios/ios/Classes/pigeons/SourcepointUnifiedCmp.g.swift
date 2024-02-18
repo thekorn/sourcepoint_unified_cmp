@@ -4,731 +4,820 @@
 import Foundation
 
 #if os(iOS)
-    import Flutter
+  import Flutter
 #elseif os(macOS)
-    import FlutterMacOS
+  import FlutterMacOS
 #else
-    #error("Unsupported platform.")
+  #error("Unsupported platform.")
 #endif
 
 private func wrapResult(_ result: Any?) -> [Any?] {
-    return [result]
+  [result]
 }
 
 private func wrapError(_ error: Any) -> [Any?] {
-    if let flutterError = error as? FlutterError {
-        return [
-            flutterError.code,
-            flutterError.message,
-            flutterError.details,
-        ]
-    }
+  if let flutterError = error as? FlutterError {
     return [
-        "\(error)",
-        "\(type(of: error))",
-        "Stacktrace: \(Thread.callStackSymbols)",
+      flutterError.code,
+      flutterError.message,
+      flutterError.details,
     ]
+  }
+  return [
+    "\(error)",
+    "\(type(of: error))",
+    "Stacktrace: \(Thread.callStackSymbols)",
+  ]
 }
 
 private func createConnectionError(withChannelName channelName: String) -> FlutterError {
-    return FlutterError(code: "channel-error", message: "Unable to establish connection on channel: '\(channelName)'.", details: "")
+  FlutterError(
+    code: "channel-error",
+    message: "Unable to establish connection on channel: '\(channelName)'.",
+    details: ""
+  )
 }
 
 private func isNullish(_ value: Any?) -> Bool {
-    return value is NSNull || value == nil
+  value is NSNull || value == nil
 }
 
 private func nilOrValue<T>(_ value: Any?) -> T? {
-    if value is NSNull { return nil }
-    return value as! T?
+  if value is NSNull { return nil }
+  return value as! T?
 }
 
 enum HostAPIPMTab: Int {
-    case purposes = 0
+  case purposes = 0
 }
 
 enum HostAPICampaignType: Int {
-    case gdpr = 0
-    case ccpa = 1
+  case gdpr = 0
+  case ccpa = 1
 }
 
 enum HostAPIMessageType: Int {
-    case mobile = 0
-    case ott = 1
-    case legacyOtt = 2
+  case mobile = 0
+  case ott = 1
+  case legacyOtt = 2
 }
 
 enum HostAPIGranularState: Int {
-    case all = 0
-    case some = 1
-    case none = 2
+  case all = 0
+  case some = 1
+  case none = 2
 }
 
 enum HostAPIActionType: Int {
-    case showOptions = 0
-    case rejectAll = 1
-    case acceptAll = 2
-    case msgCancel = 3
-    case custom = 4
-    case saveAndExit = 5
-    case pmDismiss = 6
-    case getMsgError = 7
-    case getMessageNotCalled = 8
-    case unknown = 9
+  case showOptions = 0
+  case rejectAll = 1
+  case acceptAll = 2
+  case msgCancel = 3
+  case custom = 4
+  case saveAndExit = 5
+  case pmDismiss = 6
+  case getMsgError = 7
+  case getMessageNotCalled = 8
+  case unknown = 9
 }
 
 enum HostAPIMessageLanguage: Int {
-    case english = 0
-    case french = 1
-    case german = 2
-    case italian = 3
-    case spanish = 4
+  case english = 0
+  case french = 1
+  case german = 2
+  case italian = 3
+  case spanish = 4
 }
 
 enum HostAPICampaignsEnv: Int {
-    case stage = 0
-    case publicEnv = 1
+  case stage = 0
+  case publicEnv = 1
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPISPError {
-    var spCode: String
-    var description: String
+  var spCode: String
+  var description: String
 
-    static func fromList(_ list: [Any?]) -> HostAPISPError? {
-        let spCode = list[0] as! String
-        let description = list[1] as! String
+  static func fromList(_ list: [Any?]) -> HostAPISPError? {
+    let spCode = list[0] as! String
+    let description = list[1] as! String
 
-        return HostAPISPError(
-            spCode: spCode,
-            description: description
-        )
-    }
+    return HostAPISPError(
+      spCode: spCode,
+      description: description
+    )
+  }
 
-    func toList() -> [Any?] {
-        return [
-            spCode,
-            description,
-        ]
-    }
+  func toList() -> [Any?] {
+    [
+      spCode,
+      description,
+    ]
+  }
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIConsentAction {
-    var actionType: HostAPIActionType
-    var pubData: String
-    var campaignType: HostAPICampaignType
-    var customActionId: String? = nil
+  var actionType: HostAPIActionType
+  var pubData: String
+  var campaignType: HostAPICampaignType
+  var customActionId: String?
 
-    static func fromList(_ list: [Any?]) -> HostAPIConsentAction? {
-        let actionType = HostAPIActionType(rawValue: list[0] as! Int)!
-        let pubData = list[1] as! String
-        let campaignType = HostAPICampaignType(rawValue: list[2] as! Int)!
-        let customActionId: String? = nilOrValue(list[3])
+  static func fromList(_ list: [Any?]) -> HostAPIConsentAction? {
+    let actionType = HostAPIActionType(rawValue: list[0] as! Int)!
+    let pubData = list[1] as! String
+    let campaignType = HostAPICampaignType(rawValue: list[2] as! Int)!
+    let customActionId: String? = nilOrValue(list[3])
 
-        return HostAPIConsentAction(
-            actionType: actionType,
-            pubData: pubData,
-            campaignType: campaignType,
-            customActionId: customActionId
-        )
-    }
+    return HostAPIConsentAction(
+      actionType: actionType,
+      pubData: pubData,
+      campaignType: campaignType,
+      customActionId: customActionId
+    )
+  }
 
-    func toList() -> [Any?] {
-        return [
-            actionType.rawValue,
-            pubData,
-            campaignType.rawValue,
-            customActionId,
-        ]
-    }
+  func toList() -> [Any?] {
+    [
+      actionType.rawValue,
+      pubData,
+      campaignType.rawValue,
+      customActionId,
+    ]
+  }
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIGDPRPurposeGrants {
-    var granted: Bool
-    var purposeGrants: [String?: Bool?]? = nil
+  var granted: Bool
+  var purposeGrants: [String?: Bool?]?
 
-    static func fromList(_ list: [Any?]) -> HostAPIGDPRPurposeGrants? {
-        let granted = list[0] as! Bool
-        let purposeGrants: [String?: Bool?]? = nilOrValue(list[1])
+  static func fromList(_ list: [Any?]) -> HostAPIGDPRPurposeGrants? {
+    let granted = list[0] as! Bool
+    let purposeGrants: [String?: Bool?]? = nilOrValue(list[1])
 
-        return HostAPIGDPRPurposeGrants(
-            granted: granted,
-            purposeGrants: purposeGrants
-        )
-    }
+    return HostAPIGDPRPurposeGrants(
+      granted: granted,
+      purposeGrants: purposeGrants
+    )
+  }
 
-    func toList() -> [Any?] {
-        return [
-            granted,
-            purposeGrants,
-        ]
-    }
+  func toList() -> [Any?] {
+    [
+      granted,
+      purposeGrants,
+    ]
+  }
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIGranularStatus {
-    var defaultConsent: Bool? = nil
-    var previousOptInAll: Bool? = nil
-    var purposeConsent: HostAPIGranularState? = nil
-    var purposeLegInt: HostAPIGranularState? = nil
-    var vendorConsent: HostAPIGranularState? = nil
-    var vendorLegInt: HostAPIGranularState? = nil
+  var defaultConsent: Bool?
+  var previousOptInAll: Bool?
+  var purposeConsent: HostAPIGranularState?
+  var purposeLegInt: HostAPIGranularState?
+  var vendorConsent: HostAPIGranularState?
+  var vendorLegInt: HostAPIGranularState?
 
-    static func fromList(_ list: [Any?]) -> HostAPIGranularStatus? {
-        let defaultConsent: Bool? = nilOrValue(list[0])
-        let previousOptInAll: Bool? = nilOrValue(list[1])
-        var purposeConsent: HostAPIGranularState?
-        let purposeConsentEnumVal: Int? = nilOrValue(list[2])
-        if let purposeConsentRawValue = purposeConsentEnumVal {
-            purposeConsent = HostAPIGranularState(rawValue: purposeConsentRawValue)!
-        }
-        var purposeLegInt: HostAPIGranularState?
-        let purposeLegIntEnumVal: Int? = nilOrValue(list[3])
-        if let purposeLegIntRawValue = purposeLegIntEnumVal {
-            purposeLegInt = HostAPIGranularState(rawValue: purposeLegIntRawValue)!
-        }
-        var vendorConsent: HostAPIGranularState?
-        let vendorConsentEnumVal: Int? = nilOrValue(list[4])
-        if let vendorConsentRawValue = vendorConsentEnumVal {
-            vendorConsent = HostAPIGranularState(rawValue: vendorConsentRawValue)!
-        }
-        var vendorLegInt: HostAPIGranularState?
-        let vendorLegIntEnumVal: Int? = nilOrValue(list[5])
-        if let vendorLegIntRawValue = vendorLegIntEnumVal {
-            vendorLegInt = HostAPIGranularState(rawValue: vendorLegIntRawValue)!
-        }
-
-        return HostAPIGranularStatus(
-            defaultConsent: defaultConsent,
-            previousOptInAll: previousOptInAll,
-            purposeConsent: purposeConsent,
-            purposeLegInt: purposeLegInt,
-            vendorConsent: vendorConsent,
-            vendorLegInt: vendorLegInt
-        )
+  static func fromList(_ list: [Any?]) -> HostAPIGranularStatus? {
+    let defaultConsent: Bool? = nilOrValue(list[0])
+    let previousOptInAll: Bool? = nilOrValue(list[1])
+    var purposeConsent: HostAPIGranularState?
+    let purposeConsentEnumVal: Int? = nilOrValue(list[2])
+    if let purposeConsentRawValue = purposeConsentEnumVal {
+      purposeConsent = HostAPIGranularState(rawValue: purposeConsentRawValue)!
+    }
+    var purposeLegInt: HostAPIGranularState?
+    let purposeLegIntEnumVal: Int? = nilOrValue(list[3])
+    if let purposeLegIntRawValue = purposeLegIntEnumVal {
+      purposeLegInt = HostAPIGranularState(rawValue: purposeLegIntRawValue)!
+    }
+    var vendorConsent: HostAPIGranularState?
+    let vendorConsentEnumVal: Int? = nilOrValue(list[4])
+    if let vendorConsentRawValue = vendorConsentEnumVal {
+      vendorConsent = HostAPIGranularState(rawValue: vendorConsentRawValue)!
+    }
+    var vendorLegInt: HostAPIGranularState?
+    let vendorLegIntEnumVal: Int? = nilOrValue(list[5])
+    if let vendorLegIntRawValue = vendorLegIntEnumVal {
+      vendorLegInt = HostAPIGranularState(rawValue: vendorLegIntRawValue)!
     }
 
-    func toList() -> [Any?] {
-        return [
-            defaultConsent,
-            previousOptInAll,
-            purposeConsent?.rawValue,
-            purposeLegInt?.rawValue,
-            vendorConsent?.rawValue,
-            vendorLegInt?.rawValue,
-        ]
-    }
+    return HostAPIGranularStatus(
+      defaultConsent: defaultConsent,
+      previousOptInAll: previousOptInAll,
+      purposeConsent: purposeConsent,
+      purposeLegInt: purposeLegInt,
+      vendorConsent: vendorConsent,
+      vendorLegInt: vendorLegInt
+    )
+  }
+
+  func toList() -> [Any?] {
+    [
+      defaultConsent,
+      previousOptInAll,
+      purposeConsent?.rawValue,
+      purposeLegInt?.rawValue,
+      vendorConsent?.rawValue,
+      vendorLegInt?.rawValue,
+    ]
+  }
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIConsentStatus {
-    var consentedAll: Bool? = nil
-    var consentedToAny: Bool? = nil
-    var granularStatus: HostAPIGranularStatus? = nil
-    var hasConsentData: Bool? = nil
-    var rejectedAny: Bool? = nil
-    var rejectedLI: Bool? = nil
-    var legalBasisChanges: Bool? = nil
-    var vendorListAdditions: Bool? = nil
+  var consentedAll: Bool?
+  var consentedToAny: Bool?
+  var granularStatus: HostAPIGranularStatus?
+  var hasConsentData: Bool?
+  var rejectedAny: Bool?
+  var rejectedLI: Bool?
+  var legalBasisChanges: Bool?
+  var vendorListAdditions: Bool?
 
-    static func fromList(_ list: [Any?]) -> HostAPIConsentStatus? {
-        let consentedAll: Bool? = nilOrValue(list[0])
-        let consentedToAny: Bool? = nilOrValue(list[1])
-        var granularStatus: HostAPIGranularStatus?
-        if let granularStatusList: [Any?] = nilOrValue(list[2]) {
-            granularStatus = HostAPIGranularStatus.fromList(granularStatusList)
-        }
-        let hasConsentData: Bool? = nilOrValue(list[3])
-        let rejectedAny: Bool? = nilOrValue(list[4])
-        let rejectedLI: Bool? = nilOrValue(list[5])
-        let legalBasisChanges: Bool? = nilOrValue(list[6])
-        let vendorListAdditions: Bool? = nilOrValue(list[7])
-
-        return HostAPIConsentStatus(
-            consentedAll: consentedAll,
-            consentedToAny: consentedToAny,
-            granularStatus: granularStatus,
-            hasConsentData: hasConsentData,
-            rejectedAny: rejectedAny,
-            rejectedLI: rejectedLI,
-            legalBasisChanges: legalBasisChanges,
-            vendorListAdditions: vendorListAdditions
-        )
+  static func fromList(_ list: [Any?]) -> HostAPIConsentStatus? {
+    let consentedAll: Bool? = nilOrValue(list[0])
+    let consentedToAny: Bool? = nilOrValue(list[1])
+    var granularStatus: HostAPIGranularStatus?
+    if let granularStatusList: [Any?] = nilOrValue(list[2]) {
+      granularStatus = HostAPIGranularStatus.fromList(granularStatusList)
     }
+    let hasConsentData: Bool? = nilOrValue(list[3])
+    let rejectedAny: Bool? = nilOrValue(list[4])
+    let rejectedLI: Bool? = nilOrValue(list[5])
+    let legalBasisChanges: Bool? = nilOrValue(list[6])
+    let vendorListAdditions: Bool? = nilOrValue(list[7])
 
-    func toList() -> [Any?] {
-        return [
-            consentedAll,
-            consentedToAny,
-            granularStatus?.toList(),
-            hasConsentData,
-            rejectedAny,
-            rejectedLI,
-            legalBasisChanges,
-            vendorListAdditions,
-        ]
-    }
+    return HostAPIConsentStatus(
+      consentedAll: consentedAll,
+      consentedToAny: consentedToAny,
+      granularStatus: granularStatus,
+      hasConsentData: hasConsentData,
+      rejectedAny: rejectedAny,
+      rejectedLI: rejectedLI,
+      legalBasisChanges: legalBasisChanges,
+      vendorListAdditions: vendorListAdditions
+    )
+  }
+
+  func toList() -> [Any?] {
+    [
+      consentedAll,
+      consentedToAny,
+      granularStatus?.toList(),
+      hasConsentData,
+      rejectedAny,
+      rejectedLI,
+      legalBasisChanges,
+      vendorListAdditions,
+    ]
+  }
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIGDPRConsent {
-    var uuid: String? = nil
-    var tcData: [String?: String?]? = nil
-    var grants: [String?: HostAPIGDPRPurposeGrants?]? = nil
-    var euconsent: String
-    var acceptedCategories: [String?]? = nil
-    var apply: Bool
-    var consentStatus: HostAPIConsentStatus? = nil
+  var uuid: String?
+  var tcData: [String?: String?]?
+  var grants: [String?: HostAPIGDPRPurposeGrants?]?
+  var euconsent: String
+  var acceptedCategories: [String?]?
+  var apply: Bool
+  var consentStatus: HostAPIConsentStatus?
 
-    static func fromList(_ list: [Any?]) -> HostAPIGDPRConsent? {
-        let uuid: String? = nilOrValue(list[0])
-        let tcData: [String?: String?]? = nilOrValue(list[1])
-        let grants: [String?: HostAPIGDPRPurposeGrants?]? = nilOrValue(list[2])
-        let euconsent = list[3] as! String
-        let acceptedCategories: [String?]? = nilOrValue(list[4])
-        let apply = list[5] as! Bool
-        var consentStatus: HostAPIConsentStatus?
-        if let consentStatusList: [Any?] = nilOrValue(list[6]) {
-            consentStatus = HostAPIConsentStatus.fromList(consentStatusList)
-        }
-
-        return HostAPIGDPRConsent(
-            uuid: uuid,
-            tcData: tcData,
-            grants: grants,
-            euconsent: euconsent,
-            acceptedCategories: acceptedCategories,
-            apply: apply,
-            consentStatus: consentStatus
-        )
+  static func fromList(_ list: [Any?]) -> HostAPIGDPRConsent? {
+    let uuid: String? = nilOrValue(list[0])
+    let tcData: [String?: String?]? = nilOrValue(list[1])
+    let grants: [String?: HostAPIGDPRPurposeGrants?]? = nilOrValue(list[2])
+    let euconsent = list[3] as! String
+    let acceptedCategories: [String?]? = nilOrValue(list[4])
+    let apply = list[5] as! Bool
+    var consentStatus: HostAPIConsentStatus?
+    if let consentStatusList: [Any?] = nilOrValue(list[6]) {
+      consentStatus = HostAPIConsentStatus.fromList(consentStatusList)
     }
 
-    func toList() -> [Any?] {
-        return [
-            uuid,
-            tcData,
-            grants,
-            euconsent,
-            acceptedCategories,
-            apply,
-            consentStatus?.toList(),
-        ]
-    }
+    return HostAPIGDPRConsent(
+      uuid: uuid,
+      tcData: tcData,
+      grants: grants,
+      euconsent: euconsent,
+      acceptedCategories: acceptedCategories,
+      apply: apply,
+      consentStatus: consentStatus
+    )
+  }
+
+  func toList() -> [Any?] {
+    [
+      uuid,
+      tcData,
+      grants,
+      euconsent,
+      acceptedCategories,
+      apply,
+      consentStatus?.toList(),
+    ]
+  }
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPICCPAConsent {
-    var uuid: String? = nil
-    var rejectedCategories: [String?]? = nil
-    var rejectedVendors: [String?]? = nil
-    var status: String? = nil
-    var uspstring: String
-    var apply: Bool
+  var uuid: String?
+  var rejectedCategories: [String?]?
+  var rejectedVendors: [String?]?
+  var status: String?
+  var uspstring: String
+  var apply: Bool
 
-    static func fromList(_ list: [Any?]) -> HostAPICCPAConsent? {
-        let uuid: String? = nilOrValue(list[0])
-        let rejectedCategories: [String?]? = nilOrValue(list[1])
-        let rejectedVendors: [String?]? = nilOrValue(list[2])
-        let status: String? = nilOrValue(list[3])
-        let uspstring = list[4] as! String
-        let apply = list[5] as! Bool
+  static func fromList(_ list: [Any?]) -> HostAPICCPAConsent? {
+    let uuid: String? = nilOrValue(list[0])
+    let rejectedCategories: [String?]? = nilOrValue(list[1])
+    let rejectedVendors: [String?]? = nilOrValue(list[2])
+    let status: String? = nilOrValue(list[3])
+    let uspstring = list[4] as! String
+    let apply = list[5] as! Bool
 
-        return HostAPICCPAConsent(
-            uuid: uuid,
-            rejectedCategories: rejectedCategories,
-            rejectedVendors: rejectedVendors,
-            status: status,
-            uspstring: uspstring,
-            apply: apply
-        )
-    }
+    return HostAPICCPAConsent(
+      uuid: uuid,
+      rejectedCategories: rejectedCategories,
+      rejectedVendors: rejectedVendors,
+      status: status,
+      uspstring: uspstring,
+      apply: apply
+    )
+  }
 
-    func toList() -> [Any?] {
-        return [
-            uuid,
-            rejectedCategories,
-            rejectedVendors,
-            status,
-            uspstring,
-            apply,
-        ]
-    }
+  func toList() -> [Any?] {
+    [
+      uuid,
+      rejectedCategories,
+      rejectedVendors,
+      status,
+      uspstring,
+      apply,
+    ]
+  }
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPISPConsent {
-    var gdpr: HostAPIGDPRConsent? = nil
-    var ccpa: HostAPICCPAConsent? = nil
+  var gdpr: HostAPIGDPRConsent?
+  var ccpa: HostAPICCPAConsent?
 
-    static func fromList(_ list: [Any?]) -> HostAPISPConsent? {
-        var gdpr: HostAPIGDPRConsent?
-        if let gdprList: [Any?] = nilOrValue(list[0]) {
-            gdpr = HostAPIGDPRConsent.fromList(gdprList)
-        }
-        var ccpa: HostAPICCPAConsent?
-        if let ccpaList: [Any?] = nilOrValue(list[1]) {
-            ccpa = HostAPICCPAConsent.fromList(ccpaList)
-        }
-
-        return HostAPISPConsent(
-            gdpr: gdpr,
-            ccpa: ccpa
-        )
+  static func fromList(_ list: [Any?]) -> HostAPISPConsent? {
+    var gdpr: HostAPIGDPRConsent?
+    if let gdprList: [Any?] = nilOrValue(list[0]) {
+      gdpr = HostAPIGDPRConsent.fromList(gdprList)
+    }
+    var ccpa: HostAPICCPAConsent?
+    if let ccpaList: [Any?] = nilOrValue(list[1]) {
+      ccpa = HostAPICCPAConsent.fromList(ccpaList)
     }
 
-    func toList() -> [Any?] {
-        return [
-            gdpr?.toList(),
-            ccpa?.toList(),
-        ]
-    }
+    return HostAPISPConsent(
+      gdpr: gdpr,
+      ccpa: ccpa
+    )
+  }
+
+  func toList() -> [Any?] {
+    [
+      gdpr?.toList(),
+      ccpa?.toList(),
+    ]
+  }
 }
 
 private class SourcepointUnifiedCmpHostApiCodecReader: FlutterStandardReader {
-    override func readValue(ofType type: UInt8) -> Any? {
-        switch type {
-        case 128:
-            return HostAPICCPAConsent.fromList(readValue() as! [Any?])
-        case 129:
-            return HostAPIConsentStatus.fromList(readValue() as! [Any?])
-        case 130:
-            return HostAPIGDPRConsent.fromList(readValue() as! [Any?])
-        case 131:
-            return HostAPIGDPRPurposeGrants.fromList(readValue() as! [Any?])
-        case 132:
-            return HostAPIGranularStatus.fromList(readValue() as! [Any?])
-        case 133:
-            return HostAPISPConsent.fromList(readValue() as! [Any?])
-        default:
-            return super.readValue(ofType: type)
-        }
+  override func readValue(ofType type: UInt8) -> Any? {
+    switch type {
+    case 128:
+      return HostAPICCPAConsent.fromList(readValue() as! [Any?])
+    case 129:
+      return HostAPIConsentStatus.fromList(readValue() as! [Any?])
+    case 130:
+      return HostAPIGDPRConsent.fromList(readValue() as! [Any?])
+    case 131:
+      return HostAPIGDPRPurposeGrants.fromList(readValue() as! [Any?])
+    case 132:
+      return HostAPIGranularStatus.fromList(readValue() as! [Any?])
+    case 133:
+      return HostAPISPConsent.fromList(readValue() as! [Any?])
+    default:
+      return super.readValue(ofType: type)
     }
+  }
 }
 
 private class SourcepointUnifiedCmpHostApiCodecWriter: FlutterStandardWriter {
-    override func writeValue(_ value: Any) {
-        if let value = value as? HostAPICCPAConsent {
-            super.writeByte(128)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPIConsentStatus {
-            super.writeByte(129)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPIGDPRConsent {
-            super.writeByte(130)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPIGDPRPurposeGrants {
-            super.writeByte(131)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPIGranularStatus {
-            super.writeByte(132)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPISPConsent {
-            super.writeByte(133)
-            super.writeValue(value.toList())
-        } else {
-            super.writeValue(value)
-        }
+  override func writeValue(_ value: Any) {
+    if let value = value as? HostAPICCPAConsent {
+      super.writeByte(128)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPIConsentStatus {
+      super.writeByte(129)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPIGDPRConsent {
+      super.writeByte(130)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPIGDPRPurposeGrants {
+      super.writeByte(131)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPIGranularStatus {
+      super.writeByte(132)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPISPConsent {
+      super.writeByte(133)
+      super.writeValue(value.toList())
+    } else {
+      super.writeValue(value)
     }
+  }
 }
 
 private class SourcepointUnifiedCmpHostApiCodecReaderWriter: FlutterStandardReaderWriter {
-    override func reader(with data: Data) -> FlutterStandardReader {
-        return SourcepointUnifiedCmpHostApiCodecReader(data: data)
-    }
+  override func reader(with data: Data) -> FlutterStandardReader {
+    SourcepointUnifiedCmpHostApiCodecReader(data: data)
+  }
 
-    override func writer(with data: NSMutableData) -> FlutterStandardWriter {
-        return SourcepointUnifiedCmpHostApiCodecWriter(data: data)
-    }
+  override func writer(with data: NSMutableData) -> FlutterStandardWriter {
+    SourcepointUnifiedCmpHostApiCodecWriter(data: data)
+  }
 }
 
 class SourcepointUnifiedCmpHostApiCodec: FlutterStandardMessageCodec {
-    static let shared = SourcepointUnifiedCmpHostApiCodec(readerWriter: SourcepointUnifiedCmpHostApiCodecReaderWriter())
+  static let shared =
+    SourcepointUnifiedCmpHostApiCodec(
+      readerWriter: SourcepointUnifiedCmpHostApiCodecReaderWriter()
+    )
 }
 
 /// Generated protocol from Pigeon that represents a handler of messages from Flutter.
 protocol SourcepointUnifiedCmpHostApi {
-    func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Int64, runGDPRCampaign: Bool, runCCPACampaign: Bool, completion: @escaping (Result<HostAPISPConsent, Error>) -> Void)
-    func loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType, messageType: HostAPIMessageType, completion: @escaping (Result<Void, Error>) -> Void)
+  func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId: String,
+                   messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv,
+                   messageTimeout: Int64, runGDPRCampaign: Bool, runCCPACampaign: Bool,
+                   completion: @escaping (Result<HostAPISPConsent, Error>) -> Void)
+  func loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType,
+                          messageType: HostAPIMessageType,
+                          completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 /// Generated setup class from Pigeon to handle messages through the `binaryMessenger`.
 enum SourcepointUnifiedCmpHostApiSetup {
-    /// The codec used by SourcepointUnifiedCmpHostApi.
-    static var codec: FlutterStandardMessageCodec { SourcepointUnifiedCmpHostApiCodec.shared }
-    /// Sets up an instance of `SourcepointUnifiedCmpHostApi` to handle messages through the `binaryMessenger`.
-    static func setUp(binaryMessenger: FlutterBinaryMessenger, api: SourcepointUnifiedCmpHostApi?) {
-        let loadMessageChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadMessage", binaryMessenger: binaryMessenger, codec: codec)
-        if let api = api {
-            loadMessageChannel.setMessageHandler { message, reply in
-                let args = message as! [Any?]
-                let accountIdArg = args[0] is Int64 ? args[0] as! Int64 : Int64(args[0] as! Int32)
-                let propertyIdArg = args[1] is Int64 ? args[1] as! Int64 : Int64(args[1] as! Int32)
-                let propertyNameArg = args[2] as! String
-                let pmIdArg = args[3] as! String
-                let messageLanguageArg = HostAPIMessageLanguage(rawValue: args[4] as! Int)!
-                let campaignsEnvArg = HostAPICampaignsEnv(rawValue: args[5] as! Int)!
-                let messageTimeoutArg = args[6] is Int64 ? args[6] as! Int64 : Int64(args[6] as! Int32)
-                let runGDPRCampaignArg = args[7] as! Bool
-                let runCCPACampaignArg = args[8] as! Bool
-                api.loadMessage(accountId: accountIdArg, propertyId: propertyIdArg, propertyName: propertyNameArg, pmId: pmIdArg, messageLanguage: messageLanguageArg, campaignsEnv: campaignsEnvArg, messageTimeout: messageTimeoutArg, runGDPRCampaign: runGDPRCampaignArg, runCCPACampaign: runCCPACampaignArg) { result in
-                    switch result {
-                    case let .success(res):
-                        reply(wrapResult(res))
-                    case let .failure(error):
-                        reply(wrapError(error))
-                    }
-                }
-            }
-        } else {
-            loadMessageChannel.setMessageHandler(nil)
+  /// The codec used by SourcepointUnifiedCmpHostApi.
+  static var codec: FlutterStandardMessageCodec { SourcepointUnifiedCmpHostApiCodec.shared }
+  /// Sets up an instance of `SourcepointUnifiedCmpHostApi` to handle messages through the
+  /// `binaryMessenger`.
+  static func setUp(binaryMessenger: FlutterBinaryMessenger, api: SourcepointUnifiedCmpHostApi?) {
+    let loadMessageChannel = FlutterBasicMessageChannel(
+      name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadMessage",
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    if let api {
+      loadMessageChannel.setMessageHandler { message, reply in
+        let args = message as! [Any?]
+        let accountIdArg = args[0] is Int64 ? args[0] as! Int64 : Int64(args[0] as! Int32)
+        let propertyIdArg = args[1] is Int64 ? args[1] as! Int64 : Int64(args[1] as! Int32)
+        let propertyNameArg = args[2] as! String
+        let pmIdArg = args[3] as! String
+        let messageLanguageArg = HostAPIMessageLanguage(rawValue: args[4] as! Int)!
+        let campaignsEnvArg = HostAPICampaignsEnv(rawValue: args[5] as! Int)!
+        let messageTimeoutArg = args[6] is Int64 ? args[6] as! Int64 :
+          Int64(args[6] as! Int32)
+        let runGDPRCampaignArg = args[7] as! Bool
+        let runCCPACampaignArg = args[8] as! Bool
+        api.loadMessage(
+          accountId: accountIdArg,
+          propertyId: propertyIdArg,
+          propertyName: propertyNameArg,
+          pmId: pmIdArg,
+          messageLanguage: messageLanguageArg,
+          campaignsEnv: campaignsEnvArg,
+          messageTimeout: messageTimeoutArg,
+          runGDPRCampaign: runGDPRCampaignArg,
+          runCCPACampaign: runCCPACampaignArg
+        ) { result in
+          switch result {
+          case let .success(res):
+            reply(wrapResult(res))
+          case let .failure(error):
+            reply(wrapError(error))
+          }
         }
-        let loadPrivacyManagerChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadPrivacyManager", binaryMessenger: binaryMessenger, codec: codec)
-        if let api = api {
-            loadPrivacyManagerChannel.setMessageHandler { message, reply in
-                let args = message as! [Any?]
-                let pmIdArg = args[0] as! String
-                let pmTabArg = HostAPIPMTab(rawValue: args[1] as! Int)!
-                let campaignTypeArg = HostAPICampaignType(rawValue: args[2] as! Int)!
-                let messageTypeArg = HostAPIMessageType(rawValue: args[3] as! Int)!
-                api.loadPrivacyManager(pmId: pmIdArg, pmTab: pmTabArg, campaignType: campaignTypeArg, messageType: messageTypeArg) { result in
-                    switch result {
-                    case .success:
-                        reply(wrapResult(nil))
-                    case let .failure(error):
-                        reply(wrapError(error))
-                    }
-                }
-            }
-        } else {
-            loadPrivacyManagerChannel.setMessageHandler(nil)
-        }
+      }
+    } else {
+      loadMessageChannel.setMessageHandler(nil)
     }
+    let loadPrivacyManagerChannel = FlutterBasicMessageChannel(
+      name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadPrivacyManager",
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    if let api {
+      loadPrivacyManagerChannel.setMessageHandler { message, reply in
+        let args = message as! [Any?]
+        let pmIdArg = args[0] as! String
+        let pmTabArg = HostAPIPMTab(rawValue: args[1] as! Int)!
+        let campaignTypeArg = HostAPICampaignType(rawValue: args[2] as! Int)!
+        let messageTypeArg = HostAPIMessageType(rawValue: args[3] as! Int)!
+        api.loadPrivacyManager(
+          pmId: pmIdArg,
+          pmTab: pmTabArg,
+          campaignType: campaignTypeArg,
+          messageType: messageTypeArg
+        ) { result in
+          switch result {
+          case .success:
+            reply(wrapResult(nil))
+          case let .failure(error):
+            reply(wrapError(error))
+          }
+        }
+      }
+    } else {
+      loadPrivacyManagerChannel.setMessageHandler(nil)
+    }
+  }
 }
 
 private class SourcepointUnifiedCmpFlutterApiCodecReader: FlutterStandardReader {
-    override func readValue(ofType type: UInt8) -> Any? {
-        switch type {
-        case 128:
-            return HostAPICCPAConsent.fromList(readValue() as! [Any?])
-        case 129:
-            return HostAPIConsentAction.fromList(readValue() as! [Any?])
-        case 130:
-            return HostAPIConsentStatus.fromList(readValue() as! [Any?])
-        case 131:
-            return HostAPIGDPRConsent.fromList(readValue() as! [Any?])
-        case 132:
-            return HostAPIGDPRPurposeGrants.fromList(readValue() as! [Any?])
-        case 133:
-            return HostAPIGranularStatus.fromList(readValue() as! [Any?])
-        case 134:
-            return HostAPISPConsent.fromList(readValue() as! [Any?])
-        case 135:
-            return HostAPISPError.fromList(readValue() as! [Any?])
-        default:
-            return super.readValue(ofType: type)
-        }
+  override func readValue(ofType type: UInt8) -> Any? {
+    switch type {
+    case 128:
+      return HostAPICCPAConsent.fromList(readValue() as! [Any?])
+    case 129:
+      return HostAPIConsentAction.fromList(readValue() as! [Any?])
+    case 130:
+      return HostAPIConsentStatus.fromList(readValue() as! [Any?])
+    case 131:
+      return HostAPIGDPRConsent.fromList(readValue() as! [Any?])
+    case 132:
+      return HostAPIGDPRPurposeGrants.fromList(readValue() as! [Any?])
+    case 133:
+      return HostAPIGranularStatus.fromList(readValue() as! [Any?])
+    case 134:
+      return HostAPISPConsent.fromList(readValue() as! [Any?])
+    case 135:
+      return HostAPISPError.fromList(readValue() as! [Any?])
+    default:
+      return super.readValue(ofType: type)
     }
+  }
 }
 
 private class SourcepointUnifiedCmpFlutterApiCodecWriter: FlutterStandardWriter {
-    override func writeValue(_ value: Any) {
-        if let value = value as? HostAPICCPAConsent {
-            super.writeByte(128)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPIConsentAction {
-            super.writeByte(129)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPIConsentStatus {
-            super.writeByte(130)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPIGDPRConsent {
-            super.writeByte(131)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPIGDPRPurposeGrants {
-            super.writeByte(132)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPIGranularStatus {
-            super.writeByte(133)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPISPConsent {
-            super.writeByte(134)
-            super.writeValue(value.toList())
-        } else if let value = value as? HostAPISPError {
-            super.writeByte(135)
-            super.writeValue(value.toList())
-        } else {
-            super.writeValue(value)
-        }
+  override func writeValue(_ value: Any) {
+    if let value = value as? HostAPICCPAConsent {
+      super.writeByte(128)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPIConsentAction {
+      super.writeByte(129)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPIConsentStatus {
+      super.writeByte(130)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPIGDPRConsent {
+      super.writeByte(131)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPIGDPRPurposeGrants {
+      super.writeByte(132)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPIGranularStatus {
+      super.writeByte(133)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPISPConsent {
+      super.writeByte(134)
+      super.writeValue(value.toList())
+    } else if let value = value as? HostAPISPError {
+      super.writeByte(135)
+      super.writeValue(value.toList())
+    } else {
+      super.writeValue(value)
     }
+  }
 }
 
 private class SourcepointUnifiedCmpFlutterApiCodecReaderWriter: FlutterStandardReaderWriter {
-    override func reader(with data: Data) -> FlutterStandardReader {
-        return SourcepointUnifiedCmpFlutterApiCodecReader(data: data)
-    }
+  override func reader(with data: Data) -> FlutterStandardReader {
+    SourcepointUnifiedCmpFlutterApiCodecReader(data: data)
+  }
 
-    override func writer(with data: NSMutableData) -> FlutterStandardWriter {
-        return SourcepointUnifiedCmpFlutterApiCodecWriter(data: data)
-    }
+  override func writer(with data: NSMutableData) -> FlutterStandardWriter {
+    SourcepointUnifiedCmpFlutterApiCodecWriter(data: data)
+  }
 }
 
 class SourcepointUnifiedCmpFlutterApiCodec: FlutterStandardMessageCodec {
-    static let shared = SourcepointUnifiedCmpFlutterApiCodec(readerWriter: SourcepointUnifiedCmpFlutterApiCodecReaderWriter())
+  static let shared =
+    SourcepointUnifiedCmpFlutterApiCodec(
+      readerWriter: SourcepointUnifiedCmpFlutterApiCodecReaderWriter()
+    )
 }
 
 /// Generated protocol from Pigeon that represents Flutter messages that can be called from Swift.
 protocol SourcepointUnifiedCmpFlutterApiProtocol {
-    func onUIFinished(viewId viewIdArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void)
-    func onUIReady(viewId viewIdArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void)
-    func onError(error errorArg: HostAPISPError, completion: @escaping (Result<Void, FlutterError>) -> Void)
-    func onConsentReady(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, FlutterError>) -> Void)
-    func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction, completion: @escaping (Result<Void, FlutterError>) -> Void)
-    func onNoIntentActivitiesFound(url urlArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void)
-    func onSpFinished(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, FlutterError>) -> Void)
+  func onUIFinished(viewId viewIdArg: String,
+                    completion: @escaping (Result<Void, FlutterError>) -> Void)
+  func onUIReady(viewId viewIdArg: String,
+                 completion: @escaping (Result<Void, FlutterError>) -> Void)
+  func onError(error errorArg: HostAPISPError,
+               completion: @escaping (Result<Void, FlutterError>) -> Void)
+  func onConsentReady(consent consentArg: HostAPISPConsent,
+                      completion: @escaping (Result<Void, FlutterError>) -> Void)
+  func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction,
+                completion: @escaping (Result<Void, FlutterError>) -> Void)
+  func onNoIntentActivitiesFound(url urlArg: String,
+                                 completion: @escaping (Result<Void, FlutterError>) -> Void)
+  func onSpFinished(consent consentArg: HostAPISPConsent,
+                    completion: @escaping (Result<Void, FlutterError>) -> Void)
 }
 
 class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
-    private let binaryMessenger: FlutterBinaryMessenger
-    init(binaryMessenger: FlutterBinaryMessenger) {
-        self.binaryMessenger = binaryMessenger
-    }
+  private let binaryMessenger: FlutterBinaryMessenger
+  init(binaryMessenger: FlutterBinaryMessenger) {
+    self.binaryMessenger = binaryMessenger
+  }
 
-    var codec: FlutterStandardMessageCodec {
-        return SourcepointUnifiedCmpFlutterApiCodec.shared
-    }
+  var codec: FlutterStandardMessageCodec {
+    SourcepointUnifiedCmpFlutterApiCodec.shared
+  }
 
-    func onUIFinished(viewId viewIdArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void) {
-        let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIFinished"
-        let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
-        channel.sendMessage([viewIdArg] as [Any?]) { response in
-            guard let listResponse = response as? [Any?] else {
-                completion(.failure(createConnectionError(withChannelName: channelName)))
-                return
-            }
-            if listResponse.count > 1 {
-                let code: String = listResponse[0] as! String
-                let message: String? = nilOrValue(listResponse[1])
-                let details: String? = nilOrValue(listResponse[2])
-                completion(.failure(FlutterError(code: code, message: message, details: details)))
-            } else {
-                completion(.success(()))
-            }
-        }
+  func onUIFinished(viewId viewIdArg: String,
+                    completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    let channelName =
+      "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIFinished"
+    let channel = FlutterBasicMessageChannel(
+      name: channelName,
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    channel.sendMessage([viewIdArg] as [Any?]) { response in
+      guard let listResponse = response as? [Any?] else {
+        completion(.failure(createConnectionError(withChannelName: channelName)))
+        return
+      }
+      if listResponse.count > 1 {
+        let code: String = listResponse[0] as! String
+        let message: String? = nilOrValue(listResponse[1])
+        let details: String? = nilOrValue(listResponse[2])
+        completion(.failure(FlutterError(code: code, message: message, details: details)))
+      } else {
+        completion(.success(()))
+      }
     }
+  }
 
-    func onUIReady(viewId viewIdArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void) {
-        let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIReady"
-        let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
-        channel.sendMessage([viewIdArg] as [Any?]) { response in
-            guard let listResponse = response as? [Any?] else {
-                completion(.failure(createConnectionError(withChannelName: channelName)))
-                return
-            }
-            if listResponse.count > 1 {
-                let code: String = listResponse[0] as! String
-                let message: String? = nilOrValue(listResponse[1])
-                let details: String? = nilOrValue(listResponse[2])
-                completion(.failure(FlutterError(code: code, message: message, details: details)))
-            } else {
-                completion(.success(()))
-            }
-        }
+  func onUIReady(viewId viewIdArg: String,
+                 completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    let channelName =
+      "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIReady"
+    let channel = FlutterBasicMessageChannel(
+      name: channelName,
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    channel.sendMessage([viewIdArg] as [Any?]) { response in
+      guard let listResponse = response as? [Any?] else {
+        completion(.failure(createConnectionError(withChannelName: channelName)))
+        return
+      }
+      if listResponse.count > 1 {
+        let code: String = listResponse[0] as! String
+        let message: String? = nilOrValue(listResponse[1])
+        let details: String? = nilOrValue(listResponse[2])
+        completion(.failure(FlutterError(code: code, message: message, details: details)))
+      } else {
+        completion(.success(()))
+      }
     }
+  }
 
-    func onError(error errorArg: HostAPISPError, completion: @escaping (Result<Void, FlutterError>) -> Void) {
-        let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onError"
-        let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
-        channel.sendMessage([errorArg] as [Any?]) { response in
-            guard let listResponse = response as? [Any?] else {
-                completion(.failure(createConnectionError(withChannelName: channelName)))
-                return
-            }
-            if listResponse.count > 1 {
-                let code: String = listResponse[0] as! String
-                let message: String? = nilOrValue(listResponse[1])
-                let details: String? = nilOrValue(listResponse[2])
-                completion(.failure(FlutterError(code: code, message: message, details: details)))
-            } else {
-                completion(.success(()))
-            }
-        }
+  func onError(error errorArg: HostAPISPError,
+               completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    let channelName =
+      "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onError"
+    let channel = FlutterBasicMessageChannel(
+      name: channelName,
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    channel.sendMessage([errorArg] as [Any?]) { response in
+      guard let listResponse = response as? [Any?] else {
+        completion(.failure(createConnectionError(withChannelName: channelName)))
+        return
+      }
+      if listResponse.count > 1 {
+        let code: String = listResponse[0] as! String
+        let message: String? = nilOrValue(listResponse[1])
+        let details: String? = nilOrValue(listResponse[2])
+        completion(.failure(FlutterError(code: code, message: message, details: details)))
+      } else {
+        completion(.success(()))
+      }
     }
+  }
 
-    func onConsentReady(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, FlutterError>) -> Void) {
-        let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onConsentReady"
-        let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
-        channel.sendMessage([consentArg] as [Any?]) { response in
-            guard let listResponse = response as? [Any?] else {
-                completion(.failure(createConnectionError(withChannelName: channelName)))
-                return
-            }
-            if listResponse.count > 1 {
-                let code: String = listResponse[0] as! String
-                let message: String? = nilOrValue(listResponse[1])
-                let details: String? = nilOrValue(listResponse[2])
-                completion(.failure(FlutterError(code: code, message: message, details: details)))
-            } else {
-                completion(.success(()))
-            }
-        }
+  func onConsentReady(consent consentArg: HostAPISPConsent,
+                      completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    let channelName =
+      "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onConsentReady"
+    let channel = FlutterBasicMessageChannel(
+      name: channelName,
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    channel.sendMessage([consentArg] as [Any?]) { response in
+      guard let listResponse = response as? [Any?] else {
+        completion(.failure(createConnectionError(withChannelName: channelName)))
+        return
+      }
+      if listResponse.count > 1 {
+        let code: String = listResponse[0] as! String
+        let message: String? = nilOrValue(listResponse[1])
+        let details: String? = nilOrValue(listResponse[2])
+        completion(.failure(FlutterError(code: code, message: message, details: details)))
+      } else {
+        completion(.success(()))
+      }
     }
+  }
 
-    func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction, completion: @escaping (Result<Void, FlutterError>) -> Void) {
-        let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onAction"
-        let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
-        channel.sendMessage([viewIdArg, consentActionArg] as [Any?]) { response in
-            guard let listResponse = response as? [Any?] else {
-                completion(.failure(createConnectionError(withChannelName: channelName)))
-                return
-            }
-            if listResponse.count > 1 {
-                let code: String = listResponse[0] as! String
-                let message: String? = nilOrValue(listResponse[1])
-                let details: String? = nilOrValue(listResponse[2])
-                completion(.failure(FlutterError(code: code, message: message, details: details)))
-            } else {
-                completion(.success(()))
-            }
-        }
+  func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction,
+                completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    let channelName =
+      "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onAction"
+    let channel = FlutterBasicMessageChannel(
+      name: channelName,
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    channel.sendMessage([viewIdArg, consentActionArg] as [Any?]) { response in
+      guard let listResponse = response as? [Any?] else {
+        completion(.failure(createConnectionError(withChannelName: channelName)))
+        return
+      }
+      if listResponse.count > 1 {
+        let code: String = listResponse[0] as! String
+        let message: String? = nilOrValue(listResponse[1])
+        let details: String? = nilOrValue(listResponse[2])
+        completion(.failure(FlutterError(code: code, message: message, details: details)))
+      } else {
+        completion(.success(()))
+      }
     }
+  }
 
-    func onNoIntentActivitiesFound(url urlArg: String, completion: @escaping (Result<Void, FlutterError>) -> Void) {
-        let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound"
-        let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
-        channel.sendMessage([urlArg] as [Any?]) { response in
-            guard let listResponse = response as? [Any?] else {
-                completion(.failure(createConnectionError(withChannelName: channelName)))
-                return
-            }
-            if listResponse.count > 1 {
-                let code: String = listResponse[0] as! String
-                let message: String? = nilOrValue(listResponse[1])
-                let details: String? = nilOrValue(listResponse[2])
-                completion(.failure(FlutterError(code: code, message: message, details: details)))
-            } else {
-                completion(.success(()))
-            }
-        }
+  func onNoIntentActivitiesFound(url urlArg: String,
+                                 completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    let channelName =
+      "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound"
+    let channel = FlutterBasicMessageChannel(
+      name: channelName,
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    channel.sendMessage([urlArg] as [Any?]) { response in
+      guard let listResponse = response as? [Any?] else {
+        completion(.failure(createConnectionError(withChannelName: channelName)))
+        return
+      }
+      if listResponse.count > 1 {
+        let code: String = listResponse[0] as! String
+        let message: String? = nilOrValue(listResponse[1])
+        let details: String? = nilOrValue(listResponse[2])
+        completion(.failure(FlutterError(code: code, message: message, details: details)))
+      } else {
+        completion(.success(()))
+      }
     }
+  }
 
-    func onSpFinished(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, FlutterError>) -> Void) {
-        let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onSpFinished"
-        let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
-        channel.sendMessage([consentArg] as [Any?]) { response in
-            guard let listResponse = response as? [Any?] else {
-                completion(.failure(createConnectionError(withChannelName: channelName)))
-                return
-            }
-            if listResponse.count > 1 {
-                let code: String = listResponse[0] as! String
-                let message: String? = nilOrValue(listResponse[1])
-                let details: String? = nilOrValue(listResponse[2])
-                completion(.failure(FlutterError(code: code, message: message, details: details)))
-            } else {
-                completion(.success(()))
-            }
-        }
+  func onSpFinished(consent consentArg: HostAPISPConsent,
+                    completion: @escaping (Result<Void, FlutterError>) -> Void) {
+    let channelName =
+      "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onSpFinished"
+    let channel = FlutterBasicMessageChannel(
+      name: channelName,
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    channel.sendMessage([consentArg] as [Any?]) { response in
+      guard let listResponse = response as? [Any?] else {
+        completion(.failure(createConnectionError(withChannelName: channelName)))
+        return
+      }
+      if listResponse.count > 1 {
+        let code: String = listResponse[0] as! String
+        let message: String? = nilOrValue(listResponse[1])
+        let details: String? = nilOrValue(listResponse[2])
+        completion(.failure(FlutterError(code: code, message: message, details: details)))
+      } else {
+        completion(.success(()))
+      }
     }
+  }
 }
