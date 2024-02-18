@@ -87,7 +87,8 @@ enum CampaignType {
   /// Used if your property runs a U.S. Privacy (Legacy) campaign
   ccpa,
 
-  // TODO(thekorn): add missing USNAT
+  /// Represents the United States National Advertising Initiative (USNAT).
+  usnat,
 
   /// Used if your property runs a U.S. Multi-State Privacy campaign.
   /// Please do not attempt to utilize both CCPA and USNAT simultaneously as

@@ -4,7 +4,7 @@ import 'package:pigeon/pigeon.dart';
 
 enum HostAPIPMTab { purposes }
 
-enum HostAPICampaignType { gdpr, ccpa }
+enum HostAPICampaignType { gdpr, ccpa, usnat }
 
 enum HostAPIMessageType { mobile, ott, legacyOtt }
 
@@ -186,6 +186,7 @@ abstract class SourcepointUnifiedCmpHostApi {
     required int messageTimeout,
     required bool runGDPRCampaign,
     required bool runCCPACampaign,
+    required bool runUSNATCampaign,
   });
 
   @async

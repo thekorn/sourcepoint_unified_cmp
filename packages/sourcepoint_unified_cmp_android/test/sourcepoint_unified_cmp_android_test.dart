@@ -26,6 +26,7 @@ void main() {
         messageTimeout: 10000,
         runGDPRCampaign: true,
         runCCPACampaign: false,
+        runUSNATCampaign: false,
       ),
     ).thenAnswer((_) async => HostAPISPConsent());
     final consent = await api.loadMessage(
@@ -38,6 +39,7 @@ void main() {
       messageTimeout: 10000,
       runGDPRCampaign: true,
       runCCPACampaign: false,
+      runUSNATCampaign: false,
     );
     expect(consent, isNotNull);
   });

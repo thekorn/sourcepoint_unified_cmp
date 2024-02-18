@@ -52,6 +52,8 @@ extension on messages.HostAPICampaignType {
         return CampaignType.gdpr;
       case messages.HostAPICampaignType.ccpa:
         return CampaignType.ccpa;
+      case messages.HostAPICampaignType.usnat:
+        return CampaignType.usnat;
     }
   }
 }
@@ -188,6 +190,8 @@ extension on CampaignType {
         return messages.HostAPICampaignType.gdpr;
       case CampaignType.ccpa:
         return messages.HostAPICampaignType.ccpa;
+      case CampaignType.usnat:
+        return messages.HostAPICampaignType.usnat;
     }
   }
 }
@@ -245,6 +249,7 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
       messageTimeout: config.messageTimeout,
       runCCPACampaign: config.campaigns.contains(CampaignType.ccpa),
       runGDPRCampaign: config.campaigns.contains(CampaignType.gdpr),
+      runUSNATCampaign: config.campaigns.contains(CampaignType.usnat),
     );
     final consent = hostConsent.toSPConsent();
     return consent;

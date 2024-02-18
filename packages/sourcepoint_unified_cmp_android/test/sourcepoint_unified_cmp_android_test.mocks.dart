@@ -48,6 +48,7 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
     required int? messageTimeout,
     required bool? runGDPRCampaign,
     required bool? runCCPACampaign,
+    required bool? runUSNATCampaign,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -63,6 +64,7 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
             #messageTimeout: messageTimeout,
             #runGDPRCampaign: runGDPRCampaign,
             #runCCPACampaign: runCCPACampaign,
+            #runUSNATCampaign: runUSNATCampaign,
           },
         ),
         returnValue:
@@ -81,6 +83,7 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
               #messageTimeout: messageTimeout,
               #runGDPRCampaign: runGDPRCampaign,
               #runCCPACampaign: runCCPACampaign,
+              #runUSNATCampaign: runUSNATCampaign,
             },
           ),
         )),
@@ -100,6 +103,7 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
               #messageTimeout: messageTimeout,
               #runGDPRCampaign: runGDPRCampaign,
               #runCCPACampaign: runCCPACampaign,
+              #runUSNATCampaign: runUSNATCampaign,
             },
           ),
         )),
