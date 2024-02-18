@@ -6,22 +6,26 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
-    directory: "/sourcepoint_unified_cmp"
+    directory: "/packages/sourcepoint_unified_cmp"
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
-    directory: "/sourcepoint_unified_cmp/example"
+    directory: "/packages/sourcepoint_unified_cmp/example"
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
-    directory: "/sourcepoint_unified_cmp_platform_interface"
+    directory: "/packages/sourcepoint_unified_cmp_platform_interface"
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
-    directory: "/sourcepoint_unified_cmp_android"
+    directory: "/packages/sourcepoint_unified_cmp_android"
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
-    directory: "/sourcepoint_unified_cmp_ios"
+    directory: "/packages/sourcepoint_unified_cmp_ios"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gradle" 
+    directory: "/packages/sourcepoint_unified_cmp_android" 
     schedule:
       interval: "daily"
