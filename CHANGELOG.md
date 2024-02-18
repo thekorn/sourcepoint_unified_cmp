@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.6`](#sourcepoint_unified_cmp---v016)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.6`](#sourcepoint_unified_cmp_android---v016)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.6`](#sourcepoint_unified_cmp_ios---v016)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.6`](#sourcepoint_unified_cmp_platform_interface---v016)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.6`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.6`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.6`
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.6`.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.6`
+
+ - **REFACTOR**(sourcepoint_unified_cmp_ios): update analysis_options.yaml to exclude generated files.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.6`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.6`.
+
+
 ## 2024-01-28
 
 ### Changes
