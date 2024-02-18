@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/src/method_channel.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/src/types.dart';
@@ -30,6 +31,12 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
   /// themselves.
   static set instance(SourcepointUnifiedCmpPlatform instance) {
     PlatformInterface.verify(instance, _token);
+    _instance = instance;
+  }
+
+  @visibleForTesting
+  // ignore: public_member_api_docs, use_setters_to_change_properties
+  static void setInstanceUnverified(SourcepointUnifiedCmpPlatform instance) {
     _instance = instance;
   }
 
