@@ -70,11 +70,11 @@ SourcepointUnifiedCMPBuilder(
 
 When opening the app for the first time, the consent dialog will be shown:
 
-![](./docs/images/sample-android-1st-run.gif) ![](./docs/images/sample-ios-1st-run.gif)
+![](./doc/images/sample-android-1st-run.gif) ![](./doc/images/sample-ios-1st-run.gif)
 
 Any subsequent run will load the consent from cache:
 
-![](./docs/images/sample-android-2nd-run.gif) ![](./docs/images/sample-ios-2nd-run.gif)
+![](./doc/images/sample-android-2nd-run.gif) ![](./doc/images/sample-ios-2nd-run.gif)
 
 In both cases we get this consent output:
 ```
@@ -115,7 +115,7 @@ with those delegates in place we can now also add a button to load the consent d
   )
 ```
 
-![](./docs/images/sample-android-load-privacy-manager.gif) ![](./docs/images/sample-ios-load-privacy-manager.gif)
+![](./doc/images/sample-android-load-privacy-manager.gif) ![](./doc/images/sample-ios-load-privacy-manager.gif)
 
 Which results in
 ```

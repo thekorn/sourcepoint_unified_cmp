@@ -10,11 +10,11 @@ if [[ "$1" != "patch" && "$1" != "minor" && "$1" != "major" ]]; then
 fi
 
 
-echo "copy docs to sourcepoint_unified_cmp..."
+echo "copy doc/ to sourcepoint_unified_cmp..."
 
 cp README.md packages/sourcepoint_unified_cmp/README.md
 cp CONTRIBUTING.md packages/sourcepoint_unified_cmp/CONTRIBUTING.md
-cp -r docs packages/sourcepoint_unified_cmp/
+cp -r doc packages/sourcepoint_unified_cmp/
 
 git add .
 
