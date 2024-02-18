@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.8`](#sourcepoint_unified_cmp---v018)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.8`](#sourcepoint_unified_cmp_android---v018)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.8`](#sourcepoint_unified_cmp_ios---v018)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.8`](#sourcepoint_unified_cmp_platform_interface---v018)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.8`
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.8`
+
+ - **REFACTOR**(sourcepoint_unified_cmp_android): update enum values to use snake case for better readability.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.8`
+
+ - **REFACTOR**(sourcepoint_unified_cmp_android): update enum values to use snake case for better readability.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.8`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.8`.
+
+
 ## 2024-02-18
 
 ### Changes

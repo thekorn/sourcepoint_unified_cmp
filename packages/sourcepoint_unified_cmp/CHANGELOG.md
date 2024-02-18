@@ -1,3 +1,5 @@
+## 0.1.8
+
 ## 0.1.7
 
  - **DOCS**: update image paths in README.md and sourcepoint_unified_cmp/README.md.
