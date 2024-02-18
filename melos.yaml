@@ -60,6 +60,11 @@ scripts:
       melos run format --no-select
     packageFilters:
       fileExists: 'pigeons/messages.dart'
+    description: Generate the pigeon messages for supported packages.
+
+  generate:pigeon:all:
+    run: |
+      melos run generate:pigeon --no-select
     description: Generate the pigeon messages for all the supported packages.
 
   generate:mocks:
@@ -70,6 +75,11 @@ scripts:
       dependsOn:
         - build_runner
     description: Generate mocks for tests.
+
+  generate:mocks:all:
+    run: |
+      melos run generate:mocks --no-select
+    description: Generate mocks for all tests.
 
   run:example:
     run: fvm flutter run

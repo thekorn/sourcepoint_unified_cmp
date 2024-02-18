@@ -17,6 +17,6 @@
     "packages/sourcepoint_unified_cmp/coverage/",
     "packages/sourcepoint_unified_cmp_android/coverage/",
     "packages/sourcepoint_unified_cmp_ios/coverage/",
-    "packages/sourcepoint_unified_cmp_platform_interface/coverage/",
+    "packages/sourcepoint_unified_cmp_platform_interface/coverage/"
   ]
 }

@@ -85,15 +85,15 @@ fun CampaignType.toHostAPICampaignType() = when (this) {
 }
 
 fun ActionType.toHostAPIActionType() = when (this) {
-    ActionType.ACCEPT_ALL -> HostAPIActionType.ACCEPTALL
+    ActionType.ACCEPT_ALL -> HostAPIActionType.ACCEPT_ALL
     ActionType.CUSTOM -> HostAPIActionType.CUSTOM
-    ActionType.GET_MSG_ERROR -> HostAPIActionType.GETMSGERROR
-    ActionType.GET_MSG_NOT_CALLED -> HostAPIActionType.GETMESSAGENOTCALLED
-    ActionType.MSG_CANCEL -> HostAPIActionType.MSGCANCEL
-    ActionType.PM_DISMISS -> HostAPIActionType.PMDISMISS
-    ActionType.REJECT_ALL -> HostAPIActionType.REJECTALL
-    ActionType.SAVE_AND_EXIT -> HostAPIActionType.SAVEANDEXIT
-    ActionType.SHOW_OPTIONS -> HostAPIActionType.SHOWOPTIONS
+    ActionType.GET_MSG_ERROR -> HostAPIActionType.GET_MSG_ERROR
+    ActionType.GET_MSG_NOT_CALLED -> HostAPIActionType.GET_MESSAGE_NOT_CALLED
+    ActionType.MSG_CANCEL -> HostAPIActionType.MSG_CANCEL
+    ActionType.PM_DISMISS -> HostAPIActionType.PM_DISMISS
+    ActionType.REJECT_ALL -> HostAPIActionType.REJECT_ALL
+    ActionType.SAVE_AND_EXIT -> HostAPIActionType.SAVE_AND_EXIT
+    ActionType.SHOW_OPTIONS -> HostAPIActionType.SHOW_OPTIONS
     ActionType.UNKNOWN -> HostAPIActionType.UNKNOWN
 }
 
@@ -123,5 +123,5 @@ fun HostAPICampaignType.toCampaignType() = when (this) {
 fun HostAPIMessageType.toMessageType() = when (this) {
     HostAPIMessageType.MOBILE -> MessageType.MOBILE
     HostAPIMessageType.OTT -> MessageType.OTT
-    HostAPIMessageType.LEGACYOTT -> MessageType.LEGACY_OTT
+    HostAPIMessageType.LEGACY_OTT -> MessageType.LEGACY_OTT
 }
