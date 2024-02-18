@@ -14,7 +14,9 @@
   "editor.bracketPairColorization.enabled": true,
   "dart.flutterSdkPath": ".fvm/versions/3.16.7",
   "flutter-coverage.coverageFilePaths": [
-    "packages/sourcepoint_unified_cmp/coverage",
-    "coverage"
+    "packages/sourcepoint_unified_cmp/coverage/",
+    "packages/sourcepoint_unified_cmp_android/coverage/",
+    "packages/sourcepoint_unified_cmp_ios/coverage/",
+    "packages/sourcepoint_unified_cmp_platform_interface/coverage/",
   ]
 }
