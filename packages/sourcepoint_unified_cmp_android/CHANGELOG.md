@@ -1,3 +1,7 @@
+## 0.1.9
+
+ - use a custom error class in the generated kotlin code
+
 ## 0.1.8
 
  - **REFACTOR**(sourcepoint_unified_cmp_android): update enum values to use snake case for better readability.

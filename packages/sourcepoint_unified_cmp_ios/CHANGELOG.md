@@ -1,3 +1,7 @@
+## 0.1.9
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.9`.
+
 ## 0.1.8
 
  - **REFACTOR**(sourcepoint_unified_cmp_android): update enum values to use snake case for better readability.

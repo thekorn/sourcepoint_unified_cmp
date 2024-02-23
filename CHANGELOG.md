@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.9`](#sourcepoint_unified_cmp---v019)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.9`](#sourcepoint_unified_cmp_android---v019)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.9`](#sourcepoint_unified_cmp_ios---v019)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.9`](#sourcepoint_unified_cmp_platform_interface---v019)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.9`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.9`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.9`
+
+ - use a custom error class in the generated kotlin code
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.9`
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.9`.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.9`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.9`.
+
+
 ## 2024-02-19
 
 ### Changes
