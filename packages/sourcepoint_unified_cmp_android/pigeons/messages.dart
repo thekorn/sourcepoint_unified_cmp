@@ -170,7 +170,7 @@ class SPConfig {
     ),
     kotlinOut:
         'android/src/main/kotlin/de/thekorn/sourcepoint/unified/cmp/SourcepointUnifiedCmp.g.kt',
-    kotlinOptions: KotlinOptions(),
+    kotlinOptions: KotlinOptions(errorClassName: 'HostApiFlutterError'),
   ),
 )
 @HostApi()

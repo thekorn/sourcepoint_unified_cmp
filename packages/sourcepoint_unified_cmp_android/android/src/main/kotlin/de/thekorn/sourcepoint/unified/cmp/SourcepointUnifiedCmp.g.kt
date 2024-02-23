@@ -15,7 +15,7 @@ private fun wrapResult(result: Any?): List<Any?> {
 }
 
 private fun wrapError(exception: Throwable): List<Any?> {
-  if (exception is FlutterError) {
+  if (exception is HostApiFlutterError) {
     return listOf(
       exception.code,
       exception.message,
@@ -30,8 +30,8 @@ private fun wrapError(exception: Throwable): List<Any?> {
   }
 }
 
-private fun createConnectionError(channelName: String): FlutterError {
-  return FlutterError("channel-error",  "Unable to establish connection on channel: '$channelName'.", "")}
+private fun createConnectionError(channelName: String): HostApiFlutterError {
+  return HostApiFlutterError("channel-error",  "Unable to establish connection on channel: '$channelName'.", "")}
 
 /**
  * Error class for passing custom error details to Flutter via a thrown PlatformException.
@@ -39,7 +39,7 @@ private fun createConnectionError(channelName: String): FlutterError {
  * @property message The error message.
  * @property details The error details. Must be a datatype supported by the api codec.
  */
-class FlutterError (
+class HostApiFlutterError (
   val code: String,
   override val message: String? = null,
   val details: Any? = null
@@ -627,7 +627,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
     channel.send(listOf(viewIdArg)) {
       if (it is List<*>) {
         if (it.size > 1) {
-          callback(Result.failure(FlutterError(it[0] as String, it[1] as String, it[2] as String?)))
+          callback(Result.failure(HostApiFlutterError(it[0] as String, it[1] as String, it[2] as String?)))
         } else {
           callback(Result.success(Unit))
         }
@@ -643,7 +643,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
     channel.send(listOf(viewIdArg)) {
       if (it is List<*>) {
         if (it.size > 1) {
-          callback(Result.failure(FlutterError(it[0] as String, it[1] as String, it[2] as String?)))
+          callback(Result.failure(HostApiFlutterError(it[0] as String, it[1] as String, it[2] as String?)))
         } else {
           callback(Result.success(Unit))
         }
@@ -659,7 +659,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
     channel.send(listOf(errorArg)) {
       if (it is List<*>) {
         if (it.size > 1) {
-          callback(Result.failure(FlutterError(it[0] as String, it[1] as String, it[2] as String?)))
+          callback(Result.failure(HostApiFlutterError(it[0] as String, it[1] as String, it[2] as String?)))
         } else {
           callback(Result.success(Unit))
         }
@@ -675,7 +675,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
     channel.send(listOf(consentArg)) {
       if (it is List<*>) {
         if (it.size > 1) {
-          callback(Result.failure(FlutterError(it[0] as String, it[1] as String, it[2] as String?)))
+          callback(Result.failure(HostApiFlutterError(it[0] as String, it[1] as String, it[2] as String?)))
         } else {
           callback(Result.success(Unit))
         }
@@ -691,7 +691,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
     channel.send(listOf(viewIdArg, consentActionArg)) {
       if (it is List<*>) {
         if (it.size > 1) {
-          callback(Result.failure(FlutterError(it[0] as String, it[1] as String, it[2] as String?)))
+          callback(Result.failure(HostApiFlutterError(it[0] as String, it[1] as String, it[2] as String?)))
         } else {
           callback(Result.success(Unit))
         }
@@ -707,7 +707,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
     channel.send(listOf(urlArg)) {
       if (it is List<*>) {
         if (it.size > 1) {
-          callback(Result.failure(FlutterError(it[0] as String, it[1] as String, it[2] as String?)))
+          callback(Result.failure(HostApiFlutterError(it[0] as String, it[1] as String, it[2] as String?)))
         } else {
           callback(Result.success(Unit))
         }
@@ -723,7 +723,7 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
     channel.send(listOf(consentArg)) {
       if (it is List<*>) {
         if (it.size > 1) {
-          callback(Result.failure(FlutterError(it[0] as String, it[1] as String, it[2] as String?)))
+          callback(Result.failure(HostApiFlutterError(it[0] as String, it[1] as String, it[2] as String?)))
         } else {
           callback(Result.success(Unit))
         }
