@@ -1,0 +1,15 @@
+name: sourcepoint_unified_cmp_flutter_webview_extension
+description: Flutter webview extension to preload consent
+version: 0.1.0+1
+
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  very_good_analysis: ^5.1.0
