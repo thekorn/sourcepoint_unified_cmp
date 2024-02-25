@@ -42,7 +42,9 @@ private class SourcepointFlutterApi(
 
     fun callOnConsentReady(consent: SPConsents, callback: (Result<Unit>) -> Unit) {
         activity.runOnUiThread {
-            flutterApi!!.onConsentReady(consent.toHostAPISPConsent()) { callback(Result.success(Unit)) }
+            flutterApi!!.onConsentReady(
+                consent.toHostAPISPConsent()
+            ) { callback(Result.success(Unit)) }
         }
     }
 
@@ -158,10 +160,9 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
 
         override fun onError(error: Throwable) {
             Log.d("SourcepointUnifiedCmp", "onError $error")
-            //if (!isInitialized.isCompleted) {
-            //    isInitialized.com
-            //    isInitialized.completeExceptionally(error)
-            //}
+            if (!isInitialized.isCompleted) {
+                isInitialized.completeExceptionally(error)
+            }
             flutterApi.callOnError(error) {}
         }
 
@@ -238,10 +239,14 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
             )
         spConsentLib!!.loadMessage()
         spClient.isInitialized.invokeOnCompletion {
-            callback(Result.success(spClient.isInitialized.getCompleted()))
+            if (it != null) {
+                Log.d("SourcepointUnifiedCmp", "initial loadMessage error thrown: $it")
+                callback(Result.failure(it))
+            } else {
+                callback(Result.success(spClient.isInitialized.getCompleted()))
+            }
         }
     }
-
     override fun loadPrivacyManager(
         pmId: String,
         pmTab: HostAPIPMTab,

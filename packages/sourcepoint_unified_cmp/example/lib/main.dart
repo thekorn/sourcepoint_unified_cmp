@@ -92,15 +92,17 @@ class _SourcepointUnifiedCMPBuilderExampleState
               ),
             ];
           } else if (snapshot.hasError) {
+            debugPrint('error loading user consent:');
+            debugPrint('error: ${snapshot.error}');
             children = <Widget>[
               const Icon(
                 Icons.error_outline,
                 color: Colors.red,
                 size: 60,
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: Text('Error: ${snapshot.error}'),
+              const Padding(
+                padding: EdgeInsets.only(top: 16),
+                child: Text('Error: error loading the consent'),
               ),
             ];
           } else {
