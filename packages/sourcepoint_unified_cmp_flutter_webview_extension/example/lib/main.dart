@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sourcepoint_unified_cmp/sourcepoint_unified_cmp.dart';
-import 'package:sourcepoint_unified_cmp_flutter_webview_extension_example/widget.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
