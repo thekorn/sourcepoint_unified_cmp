@@ -65,8 +65,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
 
     _webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(Colors.white)
-      ..loadRequest(Uri.parse('https://m.focus.de?_sp_pass_consent=true'));
+      ..setBackgroundColor(Colors.white);
   }
 
   @override
@@ -86,6 +85,9 @@ class _SourcepointUnifiedCMPBuilderExampleState
               debugPrint('user consent has been loaded:');
               debugPrint('   grants: ${consent?.gdpr?.grants}');
               debugPrint('euconsent: ${consent?.gdpr?.euconsent}');
+              _webViewController.loadRequest(
+                Uri.parse('https://m.focus.de?_sp_pass_consent=true'),
+              );
               return WebViewWidget(controller: _webViewController);
             } else if (snapshot.hasError) {
               children = <Widget>[
