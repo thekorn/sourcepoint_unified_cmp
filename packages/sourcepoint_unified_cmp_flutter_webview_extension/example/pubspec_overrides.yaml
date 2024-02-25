@@ -1,9 +1,11 @@
-# melos_managed_dependency_overrides: sourcepoint_unified_cmp,sourcepoint_unified_cmp_android,sourcepoint_unified_cmp_ios,sourcepoint_unified_cmp_platform_interface
+# melos_managed_dependency_overrides: sourcepoint_unified_cmp,sourcepoint_unified_cmp_android,sourcepoint_unified_cmp_ios,sourcepoint_unified_cmp_platform_interface,sourcepoint_unified_cmp_flutter_webview_extension
 dependency_overrides:
   sourcepoint_unified_cmp:
     path: ../../sourcepoint_unified_cmp
   sourcepoint_unified_cmp_android:
     path: ../../sourcepoint_unified_cmp_android
+  sourcepoint_unified_cmp_flutter_webview_extension:
+    path: ..
   sourcepoint_unified_cmp_ios:
     path: ../../sourcepoint_unified_cmp_ios
   sourcepoint_unified_cmp_platform_interface:
