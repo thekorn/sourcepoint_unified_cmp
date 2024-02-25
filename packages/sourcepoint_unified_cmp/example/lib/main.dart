@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sourcepoint_unified_cmp/sourcepoint_unified_cmp.dart';
-import 'package:sourcepoint_unified_cmp_example/widget.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,20 +11,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: SourcepointunifiedCMPBuilderExample());
+    return const MaterialApp(home: SourcepointUnifiedCMPBuilderExample());
   }
 }
 
-class SourcepointunifiedCMPBuilderExample extends StatefulWidget {
-  const SourcepointunifiedCMPBuilderExample({super.key});
+class SourcepointUnifiedCMPBuilderExample extends StatefulWidget {
+  const SourcepointUnifiedCMPBuilderExample({super.key});
 
   @override
-  State<SourcepointunifiedCMPBuilderExample> createState() =>
-      _SourcepointunifiedCMPBuilderExampleState();
+  State<SourcepointUnifiedCMPBuilderExample> createState() =>
+      _SourcepointUnifiedCMPBuilderExampleState();
 }
 
-class _SourcepointunifiedCMPBuilderExampleState
-    extends State<SourcepointunifiedCMPBuilderExample> {
+class _SourcepointUnifiedCMPBuilderExampleState
+    extends State<SourcepointUnifiedCMPBuilderExample> {
   late final SourcepointController _controller;
 
   @override
