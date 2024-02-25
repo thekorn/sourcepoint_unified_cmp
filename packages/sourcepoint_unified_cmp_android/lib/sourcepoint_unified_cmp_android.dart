@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:sourcepoint_unified_cmp_android/src/messages.g.dart'
     as messages;
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
@@ -302,6 +303,7 @@ class SourcepointEventHandler
 
   @override
   void onError(messages.HostAPISPError error) {
+    debugPrint('onError: $error');
     if (delegate.onError != null) {
       delegate.onError?.call(error.toSPError());
     }
