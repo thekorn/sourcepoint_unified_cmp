@@ -41,24 +41,34 @@ private class SourcepointFlutterApi(
     }
 
     fun callOnConsentReady(consent: SPConsents, callback: (Result<Unit>) -> Unit) {
-        flutterApi!!.onConsentReady(consent.toHostAPISPConsent()) { callback(Result.success(Unit)) }
+        activity.runOnUiThread {
+            flutterApi!!.onConsentReady(
+                consent.toHostAPISPConsent()
+            ) { callback(Result.success(Unit)) }
+        }
     }
 
     fun callOnUIFinished(view: View, callback: (Result<Unit>) -> Unit) {
-        flutterApi!!.onUIFinished(view.id.toLong()) { callback(Result.success(Unit)) }
+        activity.runOnUiThread {
+            flutterApi!!.onUIFinished(view.id.toLong()) { callback(Result.success(Unit)) }
+        }
     }
 
     fun callOnUIReady(view: View, callback: (Result<Unit>) -> Unit) {
-        flutterApi!!.onUIReady(view.id.toLong()) { callback(Result.success(Unit)) }
+        activity.runOnUiThread {
+            flutterApi!!.onUIReady(view.id.toLong()) { callback(Result.success(Unit)) }
+        }
     }
 
     fun callOnError(error: Throwable, callback: (Result<Unit>) -> Unit) {
         val message: String = error.message ?: "unknown error"
         val cause: String = error.cause?.javaClass?.simpleName ?: message
-        flutterApi!!.onError(HostAPISPError(cause, message)) {
-            callback(
-                Result.success(Unit)
-            )
+        activity.runOnUiThread {
+            flutterApi!!.onError(HostAPISPError(cause, message)) {
+                callback(
+                    Result.success(Unit)
+                )
+            }
         }
     }
 
@@ -73,7 +83,9 @@ private class SourcepointFlutterApi(
     }
 
     fun callOnNoIntentActivitiesFound(url: String, callback: (Result<Unit>) -> Unit) {
-        flutterApi!!.onNoIntentActivitiesFound(url) { callback(Result.success(Unit)) }
+        activity.runOnUiThread {
+            flutterApi!!.onNoIntentActivitiesFound(url) { callback(Result.success(Unit)) }
+        }
     }
 
     fun callOnSpFinished(consent: SPConsents, callback: (Result<Unit>) -> Unit) {
@@ -147,7 +159,10 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
         }
 
         override fun onError(error: Throwable) {
-            Log.d("SourcepointUnifiedCmp", "onError")
+            Log.d("SourcepointUnifiedCmp", "onError $error")
+            if (!isInitialized.isCompleted) {
+                isInitialized.completeExceptionally(error)
+            }
             flutterApi.callOnError(error) {}
         }
 
@@ -224,10 +239,14 @@ class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUni
             )
         spConsentLib!!.loadMessage()
         spClient.isInitialized.invokeOnCompletion {
-            callback(Result.success(spClient.isInitialized.getCompleted()))
+            if (it != null) {
+                Log.d("SourcepointUnifiedCmp", "initial loadMessage error thrown: $it")
+                callback(Result.failure(it))
+            } else {
+                callback(Result.success(spClient.isInitialized.getCompleted()))
+            }
         }
     }
-
     override fun loadPrivacyManager(
         pmId: String,
         pmTab: HostAPIPMTab,
