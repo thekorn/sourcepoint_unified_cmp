@@ -1,56 +1,56 @@
 const gdprPayload = 
 {
   actions: [
-    {
-      _id: '65ddc2c607bada060da85296',
-      type: 'google_consent_mode',
-      url: '',
-      js: '',
-      tagManager: {
-        _id: '65ddc2c607bada060da85297',
-        name: 'consent',
-        key: 'analytics_storage',
-        value: 'granted'
-      }
-    },
-    {
-      _id: '65ddc2c607bada060da8529f',
-      type: 'google_consent_mode',
-      url: '',
-      js: '',
-      tagManager: {
-        _id: '65ddc2c607bada060da852a0',
-        name: 'consent',
-        key: 'ad_storage',
-        value: 'granted'
-      }
-    },
-    {
-      _id: '65ddc2c607bada060da852a8',
-      type: 'google_consent_mode',
-      url: '',
-      js: '',
-      tagManager: {
-        _id: '65ddc2c607bada060da852a9',
-        name: 'consent',
-        key: 'ad_user_data',
-        value: 'granted'
-      }
-    },
-    {
-      _id: '65ddc2c607bada060da852b1',
-      type: 'google_consent_mode',
-      url: '',
-      js: '',
-      tagManager: {
-        _id: '65ddc2c607bada060da852b2',
-        name: 'consent',
-        key: 'ad_personalization',
-        value: 'granted'
-      }
-    }
+  //  {
+  //    _id: '65ddc2c607bada060da85296',
+  //    type: 'google_consent_mode',
+  //    url: '',
+  //    js: '',
+  //    tagManager: {
+  //      _id: '65ddc2c607bada060da85297',
+  //      name: 'consent',
+  //      key: 'analytics_storage',
+  //      value: 'granted'
+  //    }
+  //  },
+  //  {
+  //    _id: '65ddc2c607bada060da8529f',
+  //    type: 'google_consent_mode',
+  //    url: '',
+  //    js: '',
+  //    tagManager: {
+  //      _id: '65ddc2c607bada060da852a0',
+  //      name: 'consent',
+  //      key: 'ad_storage',
+  //      value: 'granted'
+  //    }
+  //  },
+  //  {
+  //    _id: '65ddc2c607bada060da852a8',
+  //    type: 'google_consent_mode',
+  //    url: '',
+  //    js: '',
+  //    tagManager: {
+  //      _id: '65ddc2c607bada060da852a9',
+  //      name: 'consent',
+  //      key: 'ad_user_data',
+  //      value: 'granted'
+  //    }
+  //  },
+  //  {
+  //    _id: '65ddc2c607bada060da852b1',
+  //    type: 'google_consent_mode',
+  //    url: '',
+  //    js: '',
+  //    tagManager: {
+  //      _id: '65ddc2c607bada060da852b2',
+  //      name: 'consent',
+  //      key: 'ad_personalization',
+  //      value: 'granted'
+  //    }
+  //  }
   ],
-  addtlConsent: '1~899',
+  //addtlConsent: '1~899',
   cookies: [],
   consentStatus: {
     rejectedAny: false,
@@ -183,3 +183,5 @@ window.postMessage({
       name: "sp.loadConsent",
       consent: consentsJsonObject
       }, "*")
+
+///"CP65WcAP65WcAAGABCENAqEsAPCAAEAAAAYgASAAAAAAQAAACBAAIAJBAAEAEg4ACACQoABABIAA.YAAAAAAAAAAA"
