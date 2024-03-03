@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sourcepoint_unified_cmp/sourcepoint_unified_cmp.dart';
+import 'package:sourcepoint_unified_cmp_flutter_webview_extension/sourcepoint_unified_cmp_flutter_webview_extension.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
@@ -41,9 +42,9 @@ class _SourcepointUnifiedCMPBuilderExampleState
     super.initState();
 
     final config = SPConfig(
-      accountId: 217,
-      propertyId: 278,
-      propertyName: 'https://m.focus.de/',
+      accountId: 22,
+      propertyId: 31007,
+      propertyName: 'https://sdks-auth-consent-test-page',
       pmId: '122058',
       campaigns: [CampaignType.gdpr],
     );
@@ -85,9 +86,13 @@ class _SourcepointUnifiedCMPBuilderExampleState
               debugPrint('user consent has been loaded:');
               debugPrint('   grants: ${consent?.gdpr?.grants}');
               debugPrint('euconsent: ${consent?.gdpr?.euconsent}');
-              _webViewController.loadRequest(
-                Uri.parse('https://m.focus.de?_sp_pass_consent=true'),
-              );
+              _webViewController
+                ..preloadConsent(consent: consent!)
+                ..loadRequest(
+                  Uri.parse(
+                    'https://sourcepointusa.github.io/sdks-auth-consent-test-page/?_sp_version=4.9.0&_sp_pass_consent=true',
+                  ),
+                );
               return WebViewWidget(controller: _webViewController);
             } else if (snapshot.hasError) {
               children = <Widget>[

@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sourcepoint_unified_cmp_platform_interface: ^0.1.9
+  webview_flutter: ^4.7.0
 
 dev_dependencies:
   very_good_analysis: ^5.1.0
