@@ -87,7 +87,13 @@ class _SourcepointUnifiedCMPBuilderExampleState
               debugPrint('   grants: ${consent?.gdpr?.grants}');
               debugPrint('euconsent: ${consent?.gdpr?.euconsent}');
               _webViewController
-                ..preloadConsent(consent: consent!)
+                ..setNavigationDelegate(
+                  NavigationDelegate(
+                    onPageFinished: (String url) {
+                      _webViewController.preloadConsent(consent: consent!);
+                    },
+                  ),
+                )
                 ..loadRequest(
                   Uri.parse(
                     'https://sourcepointusa.github.io/sdks-auth-consent-test-page/?_sp_version=4.9.0&_sp_pass_consent=true',

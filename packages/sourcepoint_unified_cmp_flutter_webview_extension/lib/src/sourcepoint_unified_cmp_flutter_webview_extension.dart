@@ -11,6 +11,8 @@ const _eventSPReady = 'sp.readyForConsent';
 
 extension SourcepointUnifiedCmpWebViewController on WebViewController {
   Future<void> preloadConsent({required SPConsent consent}) async {
+    // TODO: we need the webconsent payload here!
+    // best is to let the platform implementation expose this field
     final consentsJsonObject = {
       "gdpr": {
         "uuid": "9204af52-ec36-42c4-bf56-cd539ad5028c_29",
@@ -40,7 +42,6 @@ extension SourcepointUnifiedCmpWebViewController on WebViewController {
         })
     """
         .trim();
-
-    debugPrint('>>>> $jsString');
+    await runJavaScript(jsString);
   }
 }
