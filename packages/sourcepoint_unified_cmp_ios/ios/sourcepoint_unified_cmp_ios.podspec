@@ -8,9 +8,9 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
   An iOS implementation of the sourcepoint_unified_cmp plugin.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/thekorn/sourcepoint_unified_cmp'
   s.license          = { :type => 'BSD', :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Markus Korn' => 'markus.korn@gmail.com' }
   s.source           = { :path => '.' }  
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
