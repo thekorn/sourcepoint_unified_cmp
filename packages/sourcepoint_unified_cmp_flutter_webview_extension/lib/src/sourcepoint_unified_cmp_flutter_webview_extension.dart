@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_single_quotes, avoid_escaping_inner_quotes, lines_longer_than_80_chars
 
 import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
