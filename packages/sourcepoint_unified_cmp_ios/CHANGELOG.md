@@ -1,3 +1,7 @@
+## 0.1.10
+
+ - update cmplib to 7.6.5
+
 ## 0.1.9
 
  - Bump "sourcepoint_unified_cmp_ios" to `0.1.9`.

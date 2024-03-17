@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-03-17
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.10`](#sourcepoint_unified_cmp---v0110)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.10`](#sourcepoint_unified_cmp_android---v0110)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.10`](#sourcepoint_unified_cmp_ios---v0110)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.10`](#sourcepoint_unified_cmp_platform_interface---v0110)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.10`
+
+ - **REFACTOR**(sourcepoint_unified_cmp): split large sourcepoint_unified_cmp.dart into smaller files for better maintainability.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.10`
+
+ - update cmplibrary to 7.8.0
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.10`
+
+ - update cmplib to 7.6.5
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.10`
+
+ - **REFACTOR**(sourcepoint_unified_cmp): split large sourcepoint_unified_cmp.dart into smaller files for better maintainability.
+
+
 ## 2024-02-23
 
 ### Changes

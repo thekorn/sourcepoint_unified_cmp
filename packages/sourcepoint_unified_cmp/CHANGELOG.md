@@ -1,3 +1,7 @@
+## 0.1.10
+
+ - **REFACTOR**(sourcepoint_unified_cmp): split large sourcepoint_unified_cmp.dart into smaller files for better maintainability.
+
 ## 0.1.9
 
  - Bump "sourcepoint_unified_cmp" to `0.1.9`.

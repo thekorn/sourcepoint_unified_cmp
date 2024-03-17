@@ -1,3 +1,7 @@
+## 0.1.10
+
+ - update cmplibrary to 7.8.0
+
 ## 0.1.9
 
  - use a custom error class in the generated kotlin code
