@@ -32,7 +32,7 @@ Packages with other changes:
 
 #### `sourcepoint_unified_cmp_ios` - `v0.1.10`
 
- - update cmplib to 7.6.5
+ - update ConsentViewController to 7.6.5
 
 #### `sourcepoint_unified_cmp_platform_interface` - `v0.1.10`
 
