@@ -126,7 +126,6 @@ extension SPCampaignType {
   }
 }
 
-
 // FIXME(thekorn) the anddroid and the ios sdk are actually diverging here.
 //   ios is using newer and more granular action types, whereas
 //   android is still using the old ones
@@ -143,7 +142,7 @@ extension SPActionType {
     case .AcceptAll:
       HostAPIActionType.acceptAll
     case .ShowPrivacyManager:
-        HostAPIActionType.showOptions
+      HostAPIActionType.showOptions
     case .RejectAll:
       HostAPIActionType.rejectAll
     case .Dismiss:

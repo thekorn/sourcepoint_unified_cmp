@@ -114,7 +114,7 @@ enum MessageType {
 }
 
 // ignore: public_member_api_docs
-enum GranularState { all, some, none }
+enum GranularState { all, some, none, emptyVl }
 
 /// Represents the GDPR purpose grants.
 class GDPRPurposeGrants {

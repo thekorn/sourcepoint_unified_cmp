@@ -45,6 +45,7 @@ fun GranularState.toHostAPIGranularState() = when (this) {
     GranularState.ALL -> HostAPIGranularState.ALL
     GranularState.SOME -> HostAPIGranularState.SOME
     GranularState.NONE -> HostAPIGranularState.NONE
+    GranularState.EMPTY_VL -> HostAPIGranularState.EMPTY_VL
 }
 
 fun ConsentStatus.GranularStatus.toHostAPIGranularStatus() = HostAPIGranularStatus(

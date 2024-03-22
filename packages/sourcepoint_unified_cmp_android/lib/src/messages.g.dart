@@ -46,6 +46,7 @@ enum HostAPIGranularState {
   all,
   some,
   none,
+  emptyVl,
 }
 
 enum HostAPIActionType {

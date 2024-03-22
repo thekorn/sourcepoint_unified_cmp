@@ -82,7 +82,8 @@ enum class HostAPIMessageType(val raw: Int) {
 enum class HostAPIGranularState(val raw: Int) {
   ALL(0),
   SOME(1),
-  NONE(2);
+  NONE(2),
+  EMPTY_VL(3);
 
   companion object {
     fun ofRaw(raw: Int): HostAPIGranularState? {
