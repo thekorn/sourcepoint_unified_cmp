@@ -67,7 +67,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('webview sample'),
+        title: const Text('consent sample'),
       ),
       body: Center(
         child: SourcepointUnifiedCMPBuilder(

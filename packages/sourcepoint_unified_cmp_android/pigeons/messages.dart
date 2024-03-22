@@ -8,7 +8,7 @@ enum HostAPICampaignType { gdpr, ccpa, usnat }
 
 enum HostAPIMessageType { mobile, ott, legacyOtt }
 
-enum HostAPIGranularState { all, some, none }
+enum HostAPIGranularState { all, some, none, emptyVl }
 
 enum HostAPIActionType {
   showOptions,

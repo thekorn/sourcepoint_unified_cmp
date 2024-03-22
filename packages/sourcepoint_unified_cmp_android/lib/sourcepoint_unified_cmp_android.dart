@@ -14,6 +14,8 @@ extension on messages.HostAPIGranularState {
         return GranularState.some;
       case messages.HostAPIGranularState.none:
         return GranularState.none;
+      case messages.HostAPIGranularState.emptyVl:
+        return GranularState.emptyVl;
     }
   }
 }
