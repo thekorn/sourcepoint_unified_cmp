@@ -88,3 +88,11 @@ scripts:
       concurrency: 1
     packageFilters:
         scope: 'sourcepoint_unified_cmp_example'
+
+  run:example:flutter_webview:
+    run: fvm flutter run
+    description: Run the example flutter webview app.
+    exec:
+      concurrency: 1
+    packageFilters:
+        scope: 'sourcepoint_unified_cmp_flutter_webview_extension_example'
