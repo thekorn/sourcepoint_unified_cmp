@@ -1,3 +1,7 @@
+## 0.1.11+5
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.11+5`.
+
 ## 0.1.11+4
 
 ## 0.1.11+3
