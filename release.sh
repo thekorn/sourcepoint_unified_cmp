@@ -26,3 +26,4 @@ melos version \
     -r
 
 melos publish --no-dry-run
+git push
