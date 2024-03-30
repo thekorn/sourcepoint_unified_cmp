@@ -1,3 +1,7 @@
+## 0.1.11+2
+
+ - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
+
 ## 0.1.11+1
 
  - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.1.

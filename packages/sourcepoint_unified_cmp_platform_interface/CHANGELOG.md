@@ -1,3 +1,7 @@
+## 0.1.11+2
+
+ - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
+
 ## 0.1.11+1
 
 ## 0.1.10+1

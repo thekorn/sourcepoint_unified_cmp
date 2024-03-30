@@ -15,6 +15,42 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sourcepoint_unified_cmp` - `v0.1.11+2`](#sourcepoint_unified_cmp---v01112)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.11+2`](#sourcepoint_unified_cmp_android---v01112)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.11+2`](#sourcepoint_unified_cmp_ios---v01112)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.11+2`](#sourcepoint_unified_cmp_platform_interface---v01112)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.11+2`
+
+ - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.11+2`
+
+ - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.11+2`
+
+ - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.11+2`
+
+ - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
+
+
+## 2024-03-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sourcepoint_unified_cmp` - `v0.1.11+1`](#sourcepoint_unified_cmp---v01111)
  - [`sourcepoint_unified_cmp_android` - `v0.1.11+1`](#sourcepoint_unified_cmp_android---v01111)
  - [`sourcepoint_unified_cmp_ios` - `v0.1.11+1`](#sourcepoint_unified_cmp_ios---v01111)
