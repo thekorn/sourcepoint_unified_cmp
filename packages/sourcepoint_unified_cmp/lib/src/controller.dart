@@ -5,23 +5,29 @@ SourcepointUnifiedCmpPlatform get _platform =>
     SourcepointUnifiedCmpPlatform.instance;
 
 /// A controller for managing Sourcepoint functionality.
-class SourcepointController {
+class SourcepointController extends ConsentChangeNotifier {
   /// A controller for managing Sourcepoint consent management platform.
   ///
   /// The [SourcepointController] is responsible for handling the configuration
   /// and management of the Sourcepoint consent management platform.
   /// It requires a [config] parameter to be provided during initialization.
-  SourcepointController({required this.config});
+  SourcepointController({required this.config}) {
+    _platform.registerConsentChangeNotifier(this);
+  }
 
   /// The configuration for the Sourcepoint consent management platform.
   final SPConfig config;
 
-  /// The delegate for handling Sourcepoint events in the Sourcepoint
-  SourcepointEventDelegatePlatform? delegate;
+  SourcepointEventDelegatePlatform? _delegate;
 
   /// Registers the [delegate] as the event delegate for the Sourcepoint
   void setEventDelegate(SourcepointEventDelegatePlatform delegate) {
+    assert(
+      _delegate == null,
+      'EventDelegate already set, you can only have one delegate at a time.',
+    );
     _platform.registerEventDelegate(delegate);
+    _delegate = delegate;
   }
 
   /// Loading a Privacy Manager on demand

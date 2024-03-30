@@ -59,7 +59,11 @@ class _SourcepointUnifiedCMPBuilderExampleState
             );
           },
         ),
-      );
+      )
+      ..addListener(() {
+        debugPrint('CONSENT CHANGE NOTIFIER: Consent string: '
+            '${_controller.consent?.gdpr?.euconsent}');
+      });
   }
 
   @override
