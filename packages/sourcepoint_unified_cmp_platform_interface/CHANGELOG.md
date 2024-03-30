@@ -1,3 +1,7 @@
+## 0.1.11+3
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.11+3`.
+
 ## 0.1.11+2
 
  - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
