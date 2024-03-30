@@ -17,10 +17,10 @@ class SourcepointController {
   final SPConfig config;
 
   /// The delegate for handling Sourcepoint events in the Sourcepoint
-  SourcepointEventDelegate? delegate;
+  SourcepointEventDelegatePlatform? delegate;
 
   /// Registers the [delegate] as the event delegate for the Sourcepoint
-  void setEventDelegate(SourcepointEventDelegate delegate) {
+  void setEventDelegate(SourcepointEventDelegatePlatform delegate) {
     _platform.registerEventDelegate(delegate);
   }
 
