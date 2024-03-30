@@ -226,6 +226,7 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   final messages.SourcepointUnifiedCmpHostApi _api =
       messages.SourcepointUnifiedCmpHostApi();
   ConsentChangeNotifier? _notifier;
+  SourcepointEventDelegatePlatform? _delegate;
 
   /// Registers this class as the default instance
   /// of [SourcepointUnifiedCmpPlatform]
@@ -235,12 +236,17 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
 
   @override
   void registerEventDelegate(SourcepointEventDelegatePlatform delegate) {
+    assert(
+      _delegate == null,
+      'EventDelegate already set, you can only have one delegate at a time.',
+    );
     messages.SourcepointUnifiedCmpFlutterApi.setup(
       SourcepointEventHandler(
         delegate: delegate,
         consentChangeNotifier: _notifier,
       ),
     );
+    _delegate = delegate;
   }
 
   @override
@@ -280,6 +286,12 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   @override
   void registerConsentChangeNotifier(ConsentChangeNotifier notifier) {
     assert(_notifier == null, 'ConsentChangeNotifier already set');
+    messages.SourcepointUnifiedCmpFlutterApi.setup(
+      SourcepointEventHandler(
+        delegate: _delegate,
+        consentChangeNotifier: notifier,
+      ),
+    );
     _notifier = notifier;
   }
 }
@@ -294,23 +306,24 @@ class SourcepointEventHandler
   /// It requires a [delegate] parameter, which is an object that implements the
   /// necessary methods to handle the events.
   SourcepointEventHandler({
-    required this.delegate,
+    SourcepointEventDelegatePlatform? delegate,
     ConsentChangeNotifier? consentChangeNotifier,
-  }) : _consentChangeNotifier = consentChangeNotifier;
+  })  : _consentChangeNotifier = consentChangeNotifier,
+        _delegate = delegate;
 
   /// The delegate for handling Sourcepoint events in the Sourcepoint
   /// Unified CMP Android library.
-  final SourcepointEventDelegatePlatform delegate;
+  final SourcepointEventDelegatePlatform? _delegate;
   final ConsentChangeNotifier? _consentChangeNotifier;
 
   @override
   void onAction(int viewId, messages.HostAPIConsentAction consentAction) {
-    delegate.onAction?.call(viewId, consentAction.toConsentAction());
+    _delegate?.onAction?.call(viewId, consentAction.toConsentAction());
   }
 
   @override
   void onConsentReady(messages.HostAPISPConsent consent) {
-    delegate.onConsentReady?.call(consent.toSPConsent());
+    _delegate?.onConsentReady?.call(consent.toSPConsent());
     // Also notify the consent change notifier about the new consent
     _consentChangeNotifier?.updateConsent(consent.toSPConsent());
   }
@@ -318,26 +331,26 @@ class SourcepointEventHandler
   @override
   void onError(messages.HostAPISPError error) {
     debugPrint('onError: $error');
-    delegate.onError?.call(error.toSPError());
+    _delegate?.onError?.call(error.toSPError());
   }
 
   @override
   void onNoIntentActivitiesFound(String url) {
-    delegate.onNoIntentActivitiesFound?.call(url);
+    _delegate?.onNoIntentActivitiesFound?.call(url);
   }
 
   @override
   void onSpFinished(messages.HostAPISPConsent consent) {
-    delegate.onSpFinished?.call(consent.toSPConsent());
+    _delegate?.onSpFinished?.call(consent.toSPConsent());
   }
 
   @override
   void onUIFinished(int viewId) {
-    delegate.onUIFinished?.call(viewId);
+    _delegate?.onUIFinished?.call(viewId);
   }
 
   @override
   void onUIReady(int viewId) {
-    delegate.onUIReady?.call(viewId);
+    _delegate?.onUIReady?.call(viewId);
   }
 }
