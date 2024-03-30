@@ -60,19 +60,19 @@ Packages with other changes:
 
 #### `sourcepoint_unified_cmp` - `v0.1.11+2`
 
- - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
 
 #### `sourcepoint_unified_cmp_android` - `v0.1.11+2`
 
- - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
 
 #### `sourcepoint_unified_cmp_ios` - `v0.1.11+2`
 
- - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
 
 #### `sourcepoint_unified_cmp_platform_interface` - `v0.1.11+2`
 
- - **FEAT**: SourcepointControler - its now a `ChangeNotifier` for SPConsent.
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
 
 
 ## 2024-03-30
