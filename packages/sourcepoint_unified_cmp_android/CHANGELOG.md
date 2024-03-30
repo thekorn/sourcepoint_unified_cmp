@@ -1,3 +1,7 @@
+## 0.1.10+1
+
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.1.
+
 ## 0.1.10
 
  - update cmplibrary to 7.8.0
