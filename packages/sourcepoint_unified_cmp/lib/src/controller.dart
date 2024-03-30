@@ -5,7 +5,8 @@ SourcepointUnifiedCmpPlatform get _platform =>
     SourcepointUnifiedCmpPlatform.instance;
 
 /// A controller for managing Sourcepoint functionality.
-class SourcepointController extends ConsentChangeNotifier {
+class SourcepointController extends ConsentChangeNotifier
+    implements AbstractSourcepointConsentController {
   /// A controller for managing Sourcepoint consent management platform.
   ///
   /// The [SourcepointController] is responsible for handling the configuration
@@ -16,15 +17,18 @@ class SourcepointController extends ConsentChangeNotifier {
   }
 
   /// The configuration for the Sourcepoint consent management platform.
+  @override
   final SPConfig config;
 
   /// Registers the [delegate] as the event delegate for the Sourcepoint
+  @override
   void setEventDelegate(SourcepointEventDelegatePlatform delegate) {
     _platform.registerEventDelegate(delegate);
   }
 
   /// Loading a Privacy Manager on demand
   /// consent changes will propagated via controller
+  @override
   Future<void> loadPrivacyManager({
     required String pmId,
     PMTab pmTab = PMTab.purposes,
@@ -42,6 +46,7 @@ class SourcepointController extends ConsentChangeNotifier {
 
   /// Loading the First Layer Message
   /// and returns the initial consent status
+  @override
   Future<SPConsent> loadMessage() async {
     debugPrint('loadMessage');
     return _platform.loadMessage(config);
