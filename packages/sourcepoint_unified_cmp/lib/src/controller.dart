@@ -16,12 +16,16 @@ class SourcepointController {
   /// The configuration for the Sourcepoint consent management platform.
   final SPConfig config;
 
-  /// The delegate for handling Sourcepoint events in the Sourcepoint
-  SourcepointEventDelegatePlatform? delegate;
+  SourcepointEventDelegatePlatform? _delegate;
 
   /// Registers the [delegate] as the event delegate for the Sourcepoint
   void setEventDelegate(SourcepointEventDelegatePlatform delegate) {
+    assert(
+      _delegate == null,
+      'EventDelegate already set, you can only have one delegate at a time.',
+    );
     _platform.registerEventDelegate(delegate);
+    _delegate = delegate;
   }
 
   /// Loading a Privacy Manager on demand
