@@ -2,6 +2,10 @@
 
  - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.10+1`.
 
+## 0.1.11
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.11`.
+
 ## 0.1.10
 
  - **REFACTOR**(sourcepoint_unified_cmp): split large sourcepoint_unified_cmp.dart into smaller files for better maintainability.

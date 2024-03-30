@@ -2,6 +2,10 @@
 
  - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.1.
 
+## 0.1.11
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.11`.
+
 ## 0.1.10
 
  - update cmplibrary to 7.8.0
