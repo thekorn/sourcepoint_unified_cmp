@@ -1,3 +1,7 @@
+## 0.1.12
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.12`.
+
 ## 0.1.11+5
 
  - Bump "sourcepoint_unified_cmp_ios" to `0.1.11+5`.
