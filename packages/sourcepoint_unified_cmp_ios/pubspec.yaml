@@ -27,6 +27,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^5.4.4
-  pigeon: ">=16.0.0 <18.0.0"
+  pigeon: "<19.0.0"
   plugin_platform_interface: ^2.0.0
   very_good_analysis: ^5.1.0
