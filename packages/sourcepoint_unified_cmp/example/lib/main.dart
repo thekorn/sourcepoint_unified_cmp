@@ -99,6 +99,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
                     onPressed: () {
                       _controller.loadPrivacyManager(
                         pmId: '122058',
+                        pmTab: PMTab.vendors,
                       );
                     },
                     child: const Text('Load Privacy Manager'),
