@@ -113,6 +113,9 @@ fun HostAPICampaignsEnv.toCampaignsEnv() = when (this) {
 
 fun HostAPIPMTab.toPMTab() = when (this) {
     HostAPIPMTab.PURPOSES -> PMTab.PURPOSES
+    HostAPIPMTab.DEFAULTS -> PMTab.DEFAULT
+    HostAPIPMTab.VENDORS -> PMTab.VENDORS
+    HostAPIPMTab.FEATURES -> PMTab.FEATURES
 }
 
 fun HostAPICampaignType.toCampaignType() = when (this) {

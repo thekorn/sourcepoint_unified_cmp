@@ -97,6 +97,12 @@ extension HostAPIPMTab {
     switch self {
     case .purposes:
       SPPrivacyManagerTab.Purposes
+    case .defaults:
+      SPPrivacyManagerTab.Default
+    case .vendors:
+      SPPrivacyManagerTab.Vendors
+    case .features:
+      SPPrivacyManagerTab.Features
     }
   }
 }

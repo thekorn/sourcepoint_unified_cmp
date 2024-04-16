@@ -187,6 +187,12 @@ extension on PMTab {
     switch (this) {
       case PMTab.purposes:
         return messages.HostAPIPMTab.purposes;
+      case PMTab.defaults:
+        return messages.HostAPIPMTab.defaults;
+      case PMTab.vendors:
+        return messages.HostAPIPMTab.vendors;
+      case PMTab.features:
+        return messages.HostAPIPMTab.features;
     }
   }
 }
@@ -237,7 +243,7 @@ class SourcepointUnifiedCmpIOS extends SourcepointUnifiedCmpPlatform {
       _delegate == null,
       'EventDelegate already set, you can only have one delegate at a time.',
     );
-    messages.SourcepointUnifiedCmpFlutterApi.setup(
+    messages.SourcepointUnifiedCmpFlutterApi.setUp(
       SourcepointEventHandler(
         delegate: delegate,
         consentChangeNotifier: _notifier,
@@ -283,7 +289,7 @@ class SourcepointUnifiedCmpIOS extends SourcepointUnifiedCmpPlatform {
   @override
   void registerConsentChangeNotifier(ConsentChangeNotifier notifier) {
     assert(_notifier == null, 'ConsentChangeNotifier already set');
-    messages.SourcepointUnifiedCmpFlutterApi.setup(
+    messages.SourcepointUnifiedCmpFlutterApi.setUp(
       SourcepointEventHandler(
         delegate: _delegate,
         consentChangeNotifier: notifier,
