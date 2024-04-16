@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-04-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.13`](#sourcepoint_unified_cmp---v0113)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.13`](#sourcepoint_unified_cmp_android---v0113)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.13`](#sourcepoint_unified_cmp_ios---v0113)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.13`](#sourcepoint_unified_cmp_platform_interface---v0113)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.13`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.13`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.13`
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.3.2.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.13`
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.13`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.13`.
+
+
 ## 2024-04-02
 
 ### Changes
