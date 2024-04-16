@@ -1,3 +1,7 @@
+## 0.1.14
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.14`.
+
 ## 0.1.13
 
  - Bump "sourcepoint_unified_cmp" to `0.1.13`.
