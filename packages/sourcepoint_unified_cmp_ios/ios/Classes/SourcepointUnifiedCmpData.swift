@@ -56,10 +56,16 @@ extension SPConsent {
   }
 }
 
+func encodeWebConsents(webConsents: SPWebConsents) -> String? {
+  guard let consentsData = try? JSONEncoder().encode(webConsents) else { return nil }
+  return String(data: consentsData, encoding: .utf8)
+}
+
 extension SPUserData {
   func toHostAPISPConsent() -> HostAPISPConsent {
     HostAPISPConsent(
-      gdpr: try? gdpr?.toHostAPIGDPRConsent()
+      gdpr: try? gdpr?.toHostAPIGDPRConsent(),
+      webConsents: encodeWebConsents(webConsents: webConsents)
     )
   }
 }

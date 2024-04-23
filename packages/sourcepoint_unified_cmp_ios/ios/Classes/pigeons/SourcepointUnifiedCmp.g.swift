@@ -368,6 +368,7 @@ struct HostAPICCPAConsent {
 struct HostAPISPConsent {
   var gdpr: HostAPIGDPRConsent?
   var ccpa: HostAPICCPAConsent?
+  var webConsents: String?
 
   static func fromList(_ list: [Any?]) -> HostAPISPConsent? {
     var gdpr: HostAPIGDPRConsent?
@@ -378,10 +379,12 @@ struct HostAPISPConsent {
     if let ccpaList: [Any?] = nilOrValue(list[1]) {
       ccpa = HostAPICCPAConsent.fromList(ccpaList)
     }
+    let webConsents: String? = nilOrValue(list[2])
 
     return HostAPISPConsent(
       gdpr: gdpr,
-      ccpa: ccpa
+      ccpa: ccpa,
+      webConsents: webConsents
     )
   }
 
@@ -389,6 +392,7 @@ struct HostAPISPConsent {
     [
       gdpr?.toList(),
       ccpa?.toList(),
+      webConsents,
     ]
   }
 }

@@ -371,7 +371,8 @@ data class HostAPICCPAConsent (
 /** Generated class from Pigeon that represents data sent in messages. */
 data class HostAPISPConsent (
   val gdpr: HostAPIGDPRConsent? = null,
-  val ccpa: HostAPICCPAConsent? = null
+  val ccpa: HostAPICCPAConsent? = null,
+  val webConsents: String? = null
 
 ) {
   companion object {
@@ -383,13 +384,15 @@ data class HostAPISPConsent (
       val ccpa: HostAPICCPAConsent? = (list[1] as List<Any?>?)?.let {
         HostAPICCPAConsent.fromList(it)
       }
-      return HostAPISPConsent(gdpr, ccpa)
+      val webConsents = list[2] as String?
+      return HostAPISPConsent(gdpr, ccpa, webConsents)
     }
   }
   fun toList(): List<Any?> {
     return listOf<Any?>(
       gdpr?.toList(),
       ccpa?.toList(),
+      webConsents,
     )
   }
 }
