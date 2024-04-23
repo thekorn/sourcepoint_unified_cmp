@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'package:sourcepoint_unified_cmp_platform_interface/src/change_notifier.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/src/method_channel.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/src/types.dart';
 
@@ -56,6 +57,18 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
   void registerEventDelegate(SourcepointEventDelegatePlatform delegate) {
     throw UnimplementedError(
       'registerEventDelegate() has not been implemented.',
+    );
+  }
+
+  /// Registers a [ConsentChangeNotifier] to receive notifications when the
+  /// consent changes.
+  ///
+  /// The [notifier] parameter is the [ConsentChangeNotifier] instance that
+  /// will be registered. When the consent changes, the
+  /// [ConsentChangeNotifier]'s listeners will be notified.
+  void registerConsentChangeNotifier(ConsentChangeNotifier notifier) {
+    throw UnimplementedError(
+      'registerConsentChangeNotifier() has not been implemented.',
     );
   }
 

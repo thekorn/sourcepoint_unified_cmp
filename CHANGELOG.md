@@ -3,6 +3,382 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-04-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.14`](#sourcepoint_unified_cmp---v0114)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.14`](#sourcepoint_unified_cmp_android---v0114)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.14`](#sourcepoint_unified_cmp_ios---v0114)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.14`](#sourcepoint_unified_cmp_platform_interface---v0114)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.14`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.14`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.14`
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.14`.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.14`
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.14`.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.14`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.14`.
+
+
+## 2024-04-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.13`](#sourcepoint_unified_cmp---v0113)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.13`](#sourcepoint_unified_cmp_android---v0113)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.13`](#sourcepoint_unified_cmp_ios---v0113)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.13`](#sourcepoint_unified_cmp_platform_interface---v0113)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.13`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.13`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.13`
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.3.2.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.13`
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.13`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.13`.
+
+
+## 2024-04-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.12`](#sourcepoint_unified_cmp---v0112)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.12`](#sourcepoint_unified_cmp_android---v0112)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.12`](#sourcepoint_unified_cmp_ios---v0112)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.12`](#sourcepoint_unified_cmp_platform_interface---v0112)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.12`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.12`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.12`
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.12`.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.12`
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.12`.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.12`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.12`.
+
+
+## 2024-03-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.11+5`](#sourcepoint_unified_cmp---v01115)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.11+5`](#sourcepoint_unified_cmp_android---v01115)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.11+5`](#sourcepoint_unified_cmp_ios---v01115)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.11+5`](#sourcepoint_unified_cmp_platform_interface---v01115)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.11+5`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.11+5`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.11+5`
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.11+5`.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.11+5`
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.11+5`.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.11+5`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.11+5`.
+
+
+## 2024-03-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.11+4`](#sourcepoint_unified_cmp---v01114)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.11+4`](#sourcepoint_unified_cmp_android---v01114)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.11+4`](#sourcepoint_unified_cmp_ios---v01114)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.11+4`](#sourcepoint_unified_cmp_platform_interface---v01114)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.11+4`
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.11+4`
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.11+4`
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.11+4`
+
+
+## 2024-03-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.11+3`](#sourcepoint_unified_cmp---v01113)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.11+3`](#sourcepoint_unified_cmp_android---v01113)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.11+3`](#sourcepoint_unified_cmp_ios---v01113)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.11+3`](#sourcepoint_unified_cmp_platform_interface---v01113)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.11+3`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.11+3`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.11+3`
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.11+3`.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.11+3`
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.11+3`.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.11+3`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.11+3`.
+
+
+## 2024-03-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.11+2`](#sourcepoint_unified_cmp---v01112)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.11+2`](#sourcepoint_unified_cmp_android---v01112)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.11+2`](#sourcepoint_unified_cmp_ios---v01112)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.11+2`](#sourcepoint_unified_cmp_platform_interface---v01112)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.11+2`
+
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.11+2`
+
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.11+2`
+
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.11+2`
+
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
+
+
+## 2024-03-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.11+1`](#sourcepoint_unified_cmp---v01111)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.11+1`](#sourcepoint_unified_cmp_android---v01111)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.11+1`](#sourcepoint_unified_cmp_ios---v01111)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.11+1`](#sourcepoint_unified_cmp_platform_interface---v01111)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.11+1`
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.11+1`
+
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.1.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.11+1`
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.11+1`
+
+
+## 2024-03-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.11`](#sourcepoint_unified_cmp---v0111)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.11`](#sourcepoint_unified_cmp_android---v0111)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.11`](#sourcepoint_unified_cmp_ios---v0111)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.11`](#sourcepoint_unified_cmp_platform_interface---v0111)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.11`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.11`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.11`
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.11`
+
+ - add missing SPActionType mapping from .ShowPrivacyManager to .showOptions
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.11`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.11`.
+
+
+## 2024-03-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.10+1`](#sourcepoint_unified_cmp---v01101)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.10+1`](#sourcepoint_unified_cmp_android---v01101)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.10+1`](#sourcepoint_unified_cmp_ios---v01101)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.10+1`](#sourcepoint_unified_cmp_platform_interface---v01101)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.10+1`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.10+1`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.10+1`
+
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.1.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.10+1`
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.10+1`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.10+1`.
+
+
+## 2024-03-17
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.10`](#sourcepoint_unified_cmp---v0110)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.10`](#sourcepoint_unified_cmp_android---v0110)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.10`](#sourcepoint_unified_cmp_ios---v0110)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.10`](#sourcepoint_unified_cmp_platform_interface---v0110)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.10`
+
+ - **REFACTOR**(sourcepoint_unified_cmp): split large sourcepoint_unified_cmp.dart into smaller files for better maintainability.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.10`
+
+ - update cmplibrary to 7.8.0
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.10`
+
+ - update ConsentViewController to 7.6.5
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.10`
+
+ - **REFACTOR**(sourcepoint_unified_cmp): split large sourcepoint_unified_cmp.dart into smaller files for better maintainability.
+
+
 ## 2024-02-23
 
 ### Changes

@@ -12,7 +12,6 @@ Packages:
 dart pub global activate melos
 dart pub global activate very_good_cli
 dart pub global activate pana
-dart pub global activate flutter_plugin_tools
 ```
 
 ## important commands

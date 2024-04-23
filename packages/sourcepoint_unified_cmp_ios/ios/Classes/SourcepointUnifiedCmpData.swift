@@ -97,6 +97,12 @@ extension HostAPIPMTab {
     switch self {
     case .purposes:
       SPPrivacyManagerTab.Purposes
+    case .defaults:
+      SPPrivacyManagerTab.Default
+    case .vendors:
+      SPPrivacyManagerTab.Vendors
+    case .features:
+      SPPrivacyManagerTab.Features
     }
   }
 }
@@ -126,6 +132,10 @@ extension SPCampaignType {
   }
 }
 
+// FIXME(thekorn) the anddroid and the ios sdk are actually diverging here.
+//   ios is using newer and more granular action types, whereas
+//   android is still using the old ones
+//   once android is catching up we need to unify
 extension SPActionType {
   func toHostAPIActionType() throws -> HostAPIActionType {
     switch self {
@@ -138,7 +148,7 @@ extension SPActionType {
     case .AcceptAll:
       HostAPIActionType.acceptAll
     case .ShowPrivacyManager:
-      throw NotImplementedError.notImplemented
+      HostAPIActionType.showOptions
     case .RejectAll:
       HostAPIActionType.rejectAll
     case .Dismiss:

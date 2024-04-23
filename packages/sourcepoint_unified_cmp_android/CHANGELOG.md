@@ -1,3 +1,45 @@
+## 0.1.14
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.14`.
+
+## 0.1.13
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.3.2.
+
+## 0.1.12
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.12`.
+
+## 0.1.11+5
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.11+5`.
+
+## 0.1.11+4
+
+## 0.1.11+3
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.11+3`.
+
+## 0.1.11+2
+
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
+
+## 0.1.11+1
+
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.1.
+
+## 0.1.10+1
+
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.1.
+
+## 0.1.11
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.11`.
+
+## 0.1.10
+
+ - update cmplibrary to 7.8.0
+
 ## 0.1.9
 
  - use a custom error class in the generated kotlin code

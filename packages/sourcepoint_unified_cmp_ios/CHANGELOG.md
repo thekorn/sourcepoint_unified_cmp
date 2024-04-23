@@ -1,3 +1,41 @@
+## 0.1.14
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.14`.
+
+## 0.1.13
+
+## 0.1.12
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.12`.
+
+## 0.1.11+5
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.11+5`.
+
+## 0.1.11+4
+
+## 0.1.11+3
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.11+3`.
+
+## 0.1.11+2
+
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
+
+## 0.1.11+1
+
+## 0.1.10+1
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.10+1`.
+
+## 0.1.11
+
+ - add missing SPActionType mapping from .ShowPrivacyManager to .showOptions
+
+## 0.1.10
+
+ - update cmplib to 7.6.5
+
 ## 0.1.9
 
  - Bump "sourcepoint_unified_cmp_ios" to `0.1.9`.

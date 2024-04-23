@@ -59,7 +59,11 @@ class _SourcepointUnifiedCMPBuilderExampleState
             );
           },
         ),
-      );
+      )
+      ..addListener(() {
+        debugPrint('CONSENT CHANGE NOTIFIER: Consent string: '
+            '${_controller.consent?.gdpr?.euconsent}');
+      });
   }
 
   @override
@@ -67,7 +71,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('webview sample'),
+        title: const Text('consent sample'),
       ),
       body: Center(
         child: SourcepointUnifiedCMPBuilder(
@@ -95,6 +99,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
                     onPressed: () {
                       _controller.loadPrivacyManager(
                         pmId: '122058',
+                        pmTab: PMTab.vendors,
                       );
                     },
                     child: const Text('Load Privacy Manager'),

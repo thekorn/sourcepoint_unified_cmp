@@ -1,3 +1,43 @@
+## 0.1.14
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.14`.
+
+## 0.1.13
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.13`.
+
+## 0.1.12
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.12`.
+
+## 0.1.11+5
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.11+5`.
+
+## 0.1.11+4
+
+## 0.1.11+3
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.11+3`.
+
+## 0.1.11+2
+
+ - **FEAT**: SourcepointController - its now a `ChangeNotifier` for SPConsent.
+
+## 0.1.11+1
+
+## 0.1.10+1
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.10+1`.
+  
+## 0.1.11
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.11`.
+
+## 0.1.10
+
+ - **REFACTOR**(sourcepoint_unified_cmp): split large sourcepoint_unified_cmp.dart into smaller files for better maintainability.
+
 ## 0.1.9
 
  - Bump "sourcepoint_unified_cmp" to `0.1.9`.

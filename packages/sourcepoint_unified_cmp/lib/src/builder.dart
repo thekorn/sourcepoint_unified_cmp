@@ -33,7 +33,7 @@ class SourcepointUnifiedCMPBuilder extends FutureBuilder<SPConsent> {
   /// necessary parameters for the CMP.
   SourcepointUnifiedCMPBuilder({
     required super.builder,
-    required SourcepointController controller,
+    required AbstractSourcepointConsentController controller,
     super.key,
   }) : super(future: controller.loadMessage());
 }

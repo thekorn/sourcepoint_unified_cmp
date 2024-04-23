@@ -74,9 +74,16 @@ class SPConfig {
 /// Selected tab within the privacy manager.
 enum PMTab {
   /// purposes tab
-  purposes
+  purposes,
 
-  // TODO(thekorn): add missing tabs
+  /// default tab
+  defaults,
+
+  /// vendors tab
+  vendors,
+
+  /// features tab
+  features,
 }
 
 /// Consent categories.
@@ -114,7 +121,7 @@ enum MessageType {
 }
 
 // ignore: public_member_api_docs
-enum GranularState { all, some, none }
+enum GranularState { all, some, none, emptyVl }
 
 /// Represents the GDPR purpose grants.
 class GDPRPurposeGrants {
