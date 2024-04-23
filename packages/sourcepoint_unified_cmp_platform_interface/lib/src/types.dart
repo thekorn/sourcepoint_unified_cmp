@@ -327,7 +327,7 @@ class CCPAConsent {
 ///        |-- apply: Boolean
 class SPConsent {
   // ignore: public_member_api_docs
-  SPConsent({this.gdpr, this.ccpa});
+  SPConsent({this.gdpr, this.ccpa, this.webConsents});
 
   /// The GDPR consent
   final GDPRConsent? gdpr;
@@ -335,9 +335,12 @@ class SPConsent {
   /// The CCPA consent
   final CCPAConsent? ccpa;
 
+  /// consent representations which is injectable to webview
+  final String? webConsents;
+
   @override
   String toString() {
-    return 'SPConsent(gdpr: $gdpr, ccpa: $ccpa)';
+    return 'SPConsent(gdpr: $gdpr, ccpa: $ccpa, webConsents: $webConsents)';
   }
 }
 
