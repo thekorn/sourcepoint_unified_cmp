@@ -383,16 +383,20 @@ class HostAPISPConsent {
   HostAPISPConsent({
     this.gdpr,
     this.ccpa,
+    this.webConsents,
   });
 
   HostAPIGDPRConsent? gdpr;
 
   HostAPICCPAConsent? ccpa;
 
+  String? webConsents;
+
   Object encode() {
     return <Object?>[
       gdpr?.encode(),
       ccpa?.encode(),
+      webConsents,
     ];
   }
 
@@ -405,6 +409,7 @@ class HostAPISPConsent {
       ccpa: result[1] != null
           ? HostAPICCPAConsent.decode(result[1]! as List<Object?>)
           : null,
+      webConsents: result[2] as String?,
     );
   }
 }

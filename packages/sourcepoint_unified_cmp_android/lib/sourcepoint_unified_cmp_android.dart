@@ -173,6 +173,7 @@ extension on messages.HostAPISPConsent {
   SPConsent toSPConsent() {
     return SPConsent(
       gdpr: gdpr?.toGDPRConsent(),
+      webConsents: webConsents,
     );
   }
 }

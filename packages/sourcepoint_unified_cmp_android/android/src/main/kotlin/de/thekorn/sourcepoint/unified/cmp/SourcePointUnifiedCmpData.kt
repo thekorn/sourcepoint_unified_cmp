@@ -70,6 +70,9 @@ fun ConsentStatus.toHostAPIConsentStatus() = HostAPIConsentStatus(
 
 fun SPConsents.toHostAPISPConsent() = HostAPISPConsent(
     gdpr = gdpr?.toHostAPIGDPRConsent()
+    // FIXME: add web consents
+    // webConsents = toWebViewConsentsJsonObject()
+
 )
 
 fun ConsentAction.toHostAPIConsentAction() = HostAPIConsentAction(
