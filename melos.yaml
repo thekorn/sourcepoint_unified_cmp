@@ -1,4 +1,3 @@
-
 name: sourcepoint_unified_cmp
 
 packages:
@@ -20,7 +19,7 @@ command:
     # branch: master
     # Additionally build a changelog at the root of the workspace.
     workspaceChangelog: true
-    
+
 scripts:
   analyze:
     exec: fvm flutter analyze .
@@ -32,10 +31,10 @@ scripts:
     run: |
       melos format && \
       swiftformat . && \
-      ktlint --format '**/*.kt' '**/*.kts' '!**/*.g.kt' 
+      ktlint --format '**/*.kt' '**/*.kts' '!**/*.g.kt'
     description: |
-       - Requires `swiftformat` (can be installed via Brew on macOS).
-       - Requires `ktlint` (can be installed via Brew on macOS).
+      - Requires `swiftformat` (can be installed via Brew on macOS).
+      - Requires `ktlint` (can be installed via Brew on macOS).
 
   test:all:
     run: |
@@ -52,14 +51,14 @@ scripts:
       dirExists:
         - test
       ignore:
-        - '*example*'
+        - "*example*"
 
   generate:pigeon:
     run: |
       melos exec -- "fvm flutter pub run pigeon --input ./pigeons/messages.dart" && \
       melos run format --no-select
     packageFilters:
-      fileExists: 'pigeons/messages.dart'
+      fileExists: "pigeons/messages.dart"
     description: Generate the pigeon messages for supported packages.
 
   generate:pigeon:all:
@@ -87,4 +86,4 @@ scripts:
     exec:
       concurrency: 1
     packageFilters:
-        scope: 'sourcepoint_unified_cmp_example'
+      scope: "sourcepoint_unified_cmp_example"
