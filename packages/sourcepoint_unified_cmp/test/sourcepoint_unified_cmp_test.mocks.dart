@@ -7,6 +7,8 @@ import 'dart:async' as _i5;
 
 import 'package:flutter/services.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:sourcepoint_unified_cmp_platform_interface/src/change_notifier.dart'
+    as _i7;
 import 'package:sourcepoint_unified_cmp_platform_interface/src/interface.dart'
     as _i6;
 import 'package:sourcepoint_unified_cmp_platform_interface/src/method_channel.dart'
@@ -116,6 +118,16 @@ class MockMethodChannelSourcepointUnifiedCmp extends _i1.Mock
         Invocation.method(
           #registerEventDelegate,
           [delegate],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void registerConsentChangeNotifier(_i7.ConsentChangeNotifier? notifier) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #registerConsentChangeNotifier,
+          [notifier],
         ),
         returnValueForMissingStub: null,
       );
