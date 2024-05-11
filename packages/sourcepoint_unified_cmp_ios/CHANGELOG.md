@@ -1,3 +1,7 @@
+## 0.1.15
+
+ - **FEAT**: Upgrade ConsentViewController dependency from 7.6.5 to 7.6.6 for better performance and bug fixes.
+
 ## 0.1.14
 
  - Bump "sourcepoint_unified_cmp_ios" to `0.1.14`.

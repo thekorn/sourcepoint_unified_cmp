@@ -83,20 +83,31 @@ user consent has been loaded:
     euconsent: CP4X2gAP4X2gAAGABCENDgCgAL3AAEIAAAYgAHgACAB4AAgDAgAIAMggAEAGQYACADIQABABkOAAgAyKAAQAZAAA.YAAAAAAAAAAA
 ```
 
-There is also a way to react on consent changes via an event delegate:
+There two ways to react on consent changes:
+
+1. by registering event listener. This allows you to get notified with the `SPConsent` object whenever the consent changes:
+
+```
+    _controller = SourcepointController(config: config)
+      ..addListener(() {
+        debugPrint('CONSENT CHANGE NOTIFIER: Consent string: '
+            '${_controller.consent?.gdpr?.euconsent}');
+      });
+```
+
+2. by using an event delegate. Besides being able to get notified about consent changes, you can also get more fine grained events from the consent dialog, like `onUIReady`, `onError`, `onAction`, `onConsentReady`, `onConsentChanged`, `onSpFinished`:
 
 ```dart
   _controller = SourcepointController(config: config)
-    ..setEventDelegate(
-      SourcepointEventDelegate(
+    ..setEventListener(
+      SourcepointEventListener(
         onConsentReady: (SPConsent consent) {
-          debugPrint('DELEGATE onConsentReady: Consent string: '
+          debugPrint('EVENT onConsentReady: Consent string: '
               '${consent.gdpr?.euconsent}');
         },
-        onSpFinished: (SPConsent consent) {
-          debugPrint(
-            'DELEGATE SpFinished: Consent string: ${consent.gdpr?.euconsent}',
-          );
+        onConsentChanged: (SPConsent consent) {
+          debugPrint('EVENT onConsentChanged: Consent string: '
+              '${consent.gdpr?.euconsent}');
         },
       ),
     );

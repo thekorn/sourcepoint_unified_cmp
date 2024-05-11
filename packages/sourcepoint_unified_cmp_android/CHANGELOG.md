@@ -1,3 +1,9 @@
+## 0.1.15
+
+ - **FIX**(deps): update kotlin monorepo to v1.9.24.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.2.
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.4.0.
+
 ## 0.1.14
 
  - Bump "sourcepoint_unified_cmp_android" to `0.1.14`.

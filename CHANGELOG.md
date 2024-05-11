@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-05-11
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.15`](#sourcepoint_unified_cmp---v0115)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.15`](#sourcepoint_unified_cmp_android---v0115)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.15`](#sourcepoint_unified_cmp_ios---v0115)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.15`](#sourcepoint_unified_cmp_platform_interface---v0115)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.15`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.15`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.15`
+
+ - **FIX**(deps): update kotlin monorepo to v1.9.24.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.2.
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.4.0.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.15`
+
+ - **FEAT**: Upgrade ConsentViewController dependency from 7.6.5 to 7.6.6 for better performance and bug fixes.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.15`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.15`.
+
+
 ## 2024-04-16
 
 ### Changes
