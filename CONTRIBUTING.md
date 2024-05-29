@@ -8,6 +8,7 @@ Packages:
 - flutter
 - swiftformat
 - ktlint
+- Xcode >= 15.3 with Swift >= 5.10
 
 ```bash
 dart pub global activate melos
