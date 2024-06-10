@@ -31,7 +31,7 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
       flutter_channel: stable
-      flutter_version: 3.22.1
+      flutter_version: 3.22.2
       working_directory: packages/sourcepoint_unified_cmp
       min_coverage: 40
 
