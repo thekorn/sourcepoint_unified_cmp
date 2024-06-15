@@ -17,11 +17,20 @@ on:
       - "packages/sourcepoint_unified_cmp_platform_interface/**"
 
 jobs:
+  fvmrc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: get fvmrc
+        id: fvmrc
+        uses: ActionsTools/read-json-action@v1.0.5
+        with:
+          file_path: ".fvmrc"
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
       flutter_channel: stable
-      flutter_version: 3.22.2
+      flutter_version: ${{needs.fvmrc.outputs.flutter}}
       working_directory: packages/sourcepoint_unified_cmp_platform_interface
       min_coverage: 1
 
