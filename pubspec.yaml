@@ -3,7 +3,8 @@ homepage: https://github.com/thekorn/sourcepoint_unified_cmp
 repository: https://github.com/thekorn/sourcepoint_unified_cmp
 
 environment:
-  sdk: '>=3.2.3 <4.0.0'
-  flutter: '>=3.0.0'
+  sdk: ">=3.2.3 <4.0.0"
+  flutter: ">=3.0.0"
 dev_dependencies:
   melos: ^6.0.0
+  pana: ^0.22.6

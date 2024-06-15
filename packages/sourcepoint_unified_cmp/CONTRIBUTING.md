@@ -12,7 +12,6 @@ Packages:
 ```bash
 dart pub global activate melos
 dart pub global activate very_good_cli
-dart pub global activate pana
 ```
 
 ## important commands
