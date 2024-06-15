@@ -6,6 +6,7 @@ Packages:
 
 - dart
 - flutter
+- fvm >= 3.0.0
 - swiftformat
 - ktlint
 - Xcode >= 15.3 with Swift >= 5.10
