@@ -97,7 +97,10 @@ private class SourcepointFlutterApi(
     }
 }
 
-class SourcepointUnifiedCmpPlugin : FlutterPlugin, ActivityAware, SourcepointUnifiedCmpHostApi {
+class SourcepointUnifiedCmpPlugin :
+    FlutterPlugin,
+    ActivityAware,
+    SourcepointUnifiedCmpHostApi {
     private lateinit var binaryMessenger: BinaryMessenger
     private lateinit var activity: Activity
     private lateinit var flutterApi: SourcepointFlutterApi
