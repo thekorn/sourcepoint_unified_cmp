@@ -28,12 +28,19 @@ jobs:
       config: cspell.json
 
   build:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
-    with:
-      flutter_channel: stable
-      flutter_version: 3.22.2
-      working_directory: packages/sourcepoint_unified_cmp
-      min_coverage: 40
+    runs-on: ubuntu-latest
+    steps:
+      - name: get fvmrc
+        id: fvmrc
+        uses: ActionsTools/read-json-action@v1.0.5
+        with:
+          file_path: ".fvmrc"
+      - uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+        with:
+          flutter_channel: stable
+          flutter_version: ${{steps.fvmrc.outputs.flutter}}
+          working_directory: packages/sourcepoint_unified_cmp
+          min_coverage: 40
 
   pana:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
