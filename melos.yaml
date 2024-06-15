@@ -21,16 +21,14 @@ command:
     workspaceChangelog: true
 
 scripts:
-  analyze:
-    exec: fvm flutter analyze .
+  analyze: fvm flutter analyze .
 
-  pana:
-    exec: fvm exec pana . --no-warning
+  pana: fvm dart run pana . --exit-code-threshold 40 2>&1
 
   format:
     run: |
       melos format && \
-      swiftformat . && \
+      swiftformat . 2>&1 && \
       ktlint --format '**/*.kt' '**/*.kts' '!**/*.g.kt'
     description: |
       - Requires `swiftformat` (can be installed via Brew on macOS).
