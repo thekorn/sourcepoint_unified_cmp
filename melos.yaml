@@ -28,7 +28,7 @@ scripts:
   format:
     run: |
       melos format && \
-      swiftformat . && \
+      swiftformat . 2>&1 && \
       ktlint --format '**/*.kt' '**/*.kts' '!**/*.g.kt'
     description: |
       - Requires `swiftformat` (can be installed via Brew on macOS).
