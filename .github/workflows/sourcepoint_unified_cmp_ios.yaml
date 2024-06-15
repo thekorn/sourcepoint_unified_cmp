@@ -28,6 +28,7 @@ jobs:
           file_path: ".fvmrc"
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    needs: fvmrc
     with:
       flutter_channel: stable
       flutter_version: ${{needs.fvmrc.outputs.flutter}}
