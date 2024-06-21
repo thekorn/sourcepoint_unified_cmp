@@ -36,7 +36,8 @@ scripts:
 
   test:all:
     run: |
-      melos run test --no-select
+      melos run test --no-select && \
+      npx cspell "**/*.md" 2>&1
     description: |
       Run all tests available.
 
