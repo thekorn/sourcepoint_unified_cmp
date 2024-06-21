@@ -1,3 +1,7 @@
+## 0.1.16
+
+ - **FEAT**: :⬆️ Update Flutter version from 3.19.3 to 3.22.0 in GitHub workflows and VSCode settings for better compatibility and performance improvements.
+
 ## 0.1.15
 
  - **FEAT**: Upgrade ConsentViewController dependency from 7.6.5 to 7.6.6 for better performance and bug fixes.

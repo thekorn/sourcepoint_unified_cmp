@@ -12,9 +12,10 @@ fi
 
 echo "copy doc/ to sourcepoint_unified_cmp..."
 
-cp README.md packages/sourcepoint_unified_cmp/README.md
-cp CONTRIBUTING.md packages/sourcepoint_unified_cmp/CONTRIBUTING.md
-cp -r doc packages/sourcepoint_unified_cmp/
+# serve static files within documentation from github
+# this reduced package size 
+sed  's/(\.\/doc\/images\//(https\:\/\/github\.com\/thekorn\/sourcepoint_unified_cmp\/raw\/main\/doc\/images\//g' README.md > packages/sourcepoint_unified_cmp/README.md
+sed  's/(\.\/doc\/images\//(https\:\/\/github\.com\/thekorn\/sourcepoint_unified_cmp\/raw\/main\/doc\/images\//g' CONTRIBUTING.md > packages/sourcepoint_unified_cmp/CONTRIBUTING.md
 
 git add .
 

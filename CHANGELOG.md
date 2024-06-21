@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-06-22
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.16`](#sourcepoint_unified_cmp---v0116)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.16`](#sourcepoint_unified_cmp_android---v0116)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.16`](#sourcepoint_unified_cmp_ios---v0116)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.16`](#sourcepoint_unified_cmp_platform_interface---v0116)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.16`
+
+ - **FEAT**: Update Flutter version from 3.22.0 to 3.22.1 in GitHub workflows and VSCode settings for better compatibility and performance.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.16`
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.5.0.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.3.
+ - **FIX**(deps): update kotlin monorepo to v2.
+ - **FEAT**: :⬆️ Update Flutter version from 3.19.3 to 3.22.0 in GitHub workflows and VSCode settings for better compatibility and performance improvements.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.16`
+
+ - **FEAT**: :⬆️ Update Flutter version from 3.19.3 to 3.22.0 in GitHub workflows and VSCode settings for better compatibility and performance improvements.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.16`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.16`.
+
+
 ## 2024-05-11
 
 ### Changes
