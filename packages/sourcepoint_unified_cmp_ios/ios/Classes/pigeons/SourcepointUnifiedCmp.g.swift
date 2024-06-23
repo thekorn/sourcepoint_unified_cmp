@@ -12,7 +12,7 @@ import Foundation
 #endif
 
 /// Error class for passing custom error details to Dart side.
-final class PigeonError: Error {
+final class HostApiFlutterError: Error {
   let code: String
   let message: String?
   let details: Any?
@@ -24,7 +24,7 @@ final class PigeonError: Error {
   }
 
   var localizedDescription: String {
-    "PigeonError(code: \(code), message: \(message ?? "<nil>"), details: \(details ?? "<nil>")"
+    "HostApiFlutterError(code: \(code), message: \(message ?? "<nil>"), details: \(details ?? "<nil>")"
   }
 }
 
@@ -33,7 +33,7 @@ private func wrapResult(_ result: Any?) -> [Any?] {
 }
 
 private func wrapError(_ error: Any) -> [Any?] {
-  if let pigeonError = error as? PigeonError {
+  if let pigeonError = error as? HostApiFlutterError {
     return [
       pigeonError.code,
       pigeonError.message,
@@ -54,8 +54,8 @@ private func wrapError(_ error: Any) -> [Any?] {
   ]
 }
 
-private func createConnectionError(withChannelName channelName: String) -> PigeonError {
-  PigeonError(
+private func createConnectionError(withChannelName channelName: String) -> HostApiFlutterError {
+  HostApiFlutterError(
     code: "channel-error",
     message: "Unable to establish connection on channel: '\(channelName)'.",
     details: ""
@@ -632,19 +632,19 @@ class SourcepointUnifiedCmpHostApiSetup {
 /// Generated protocol from Pigeon that represents Flutter messages that can be called from Swift.
 protocol SourcepointUnifiedCmpFlutterApiProtocol {
   func onUIFinished(viewId viewIdArg: String,
-                    completion: @escaping (Result<Void, PigeonError>) -> Void)
+                    completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
   func onUIReady(viewId viewIdArg: String,
-                 completion: @escaping (Result<Void, PigeonError>) -> Void)
+                 completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
   func onError(error errorArg: HostAPISPError,
-               completion: @escaping (Result<Void, PigeonError>) -> Void)
+               completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
   func onConsentReady(consent consentArg: HostAPISPConsent,
-                      completion: @escaping (Result<Void, PigeonError>) -> Void)
+                      completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
   func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction,
-                completion: @escaping (Result<Void, PigeonError>) -> Void)
+                completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
   func onNoIntentActivitiesFound(url urlArg: String,
-                                 completion: @escaping (Result<Void, PigeonError>) -> Void)
+                                 completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
   func onSpFinished(consent consentArg: HostAPISPConsent,
-                    completion: @escaping (Result<Void, PigeonError>) -> Void)
+                    completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
 }
 
 class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
@@ -660,7 +660,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
   }
 
   func onUIFinished(viewId viewIdArg: String,
-                    completion: @escaping (Result<Void, PigeonError>) -> Void) {
+                    completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
     let channelName =
       "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIFinished\(messageChannelSuffix)"
     let channel = FlutterBasicMessageChannel(
@@ -677,7 +677,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         let code: String = listResponse[0] as! String
         let message: String? = nilOrValue(listResponse[1])
         let details: String? = nilOrValue(listResponse[2])
-        completion(.failure(PigeonError(code: code, message: message, details: details)))
+        completion(.failure(HostApiFlutterError(code: code, message: message, details: details)))
       } else {
         completion(.success(()))
       }
@@ -685,7 +685,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
   }
 
   func onUIReady(viewId viewIdArg: String,
-                 completion: @escaping (Result<Void, PigeonError>) -> Void) {
+                 completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
     let channelName =
       "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIReady\(messageChannelSuffix)"
     let channel = FlutterBasicMessageChannel(
@@ -702,7 +702,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         let code: String = listResponse[0] as! String
         let message: String? = nilOrValue(listResponse[1])
         let details: String? = nilOrValue(listResponse[2])
-        completion(.failure(PigeonError(code: code, message: message, details: details)))
+        completion(.failure(HostApiFlutterError(code: code, message: message, details: details)))
       } else {
         completion(.success(()))
       }
@@ -710,7 +710,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
   }
 
   func onError(error errorArg: HostAPISPError,
-               completion: @escaping (Result<Void, PigeonError>) -> Void) {
+               completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
     let channelName =
       "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onError\(messageChannelSuffix)"
     let channel = FlutterBasicMessageChannel(
@@ -727,7 +727,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         let code: String = listResponse[0] as! String
         let message: String? = nilOrValue(listResponse[1])
         let details: String? = nilOrValue(listResponse[2])
-        completion(.failure(PigeonError(code: code, message: message, details: details)))
+        completion(.failure(HostApiFlutterError(code: code, message: message, details: details)))
       } else {
         completion(.success(()))
       }
@@ -735,7 +735,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
   }
 
   func onConsentReady(consent consentArg: HostAPISPConsent,
-                      completion: @escaping (Result<Void, PigeonError>) -> Void) {
+                      completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
     let channelName =
       "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onConsentReady\(messageChannelSuffix)"
     let channel = FlutterBasicMessageChannel(
@@ -752,7 +752,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         let code: String = listResponse[0] as! String
         let message: String? = nilOrValue(listResponse[1])
         let details: String? = nilOrValue(listResponse[2])
-        completion(.failure(PigeonError(code: code, message: message, details: details)))
+        completion(.failure(HostApiFlutterError(code: code, message: message, details: details)))
       } else {
         completion(.success(()))
       }
@@ -760,7 +760,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
   }
 
   func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction,
-                completion: @escaping (Result<Void, PigeonError>) -> Void) {
+                completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
     let channelName =
       "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onAction\(messageChannelSuffix)"
     let channel = FlutterBasicMessageChannel(
@@ -777,7 +777,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         let code: String = listResponse[0] as! String
         let message: String? = nilOrValue(listResponse[1])
         let details: String? = nilOrValue(listResponse[2])
-        completion(.failure(PigeonError(code: code, message: message, details: details)))
+        completion(.failure(HostApiFlutterError(code: code, message: message, details: details)))
       } else {
         completion(.success(()))
       }
@@ -785,7 +785,8 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
   }
 
   func onNoIntentActivitiesFound(url urlArg: String,
-                                 completion: @escaping (Result<Void, PigeonError>) -> Void) {
+                                 completion: @escaping (Result<Void, HostApiFlutterError>)
+                                   -> Void) {
     let channelName =
       "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound\(messageChannelSuffix)"
     let channel = FlutterBasicMessageChannel(
@@ -802,7 +803,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         let code: String = listResponse[0] as! String
         let message: String? = nilOrValue(listResponse[1])
         let details: String? = nilOrValue(listResponse[2])
-        completion(.failure(PigeonError(code: code, message: message, details: details)))
+        completion(.failure(HostApiFlutterError(code: code, message: message, details: details)))
       } else {
         completion(.success(()))
       }
@@ -810,7 +811,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
   }
 
   func onSpFinished(consent consentArg: HostAPISPConsent,
-                    completion: @escaping (Result<Void, PigeonError>) -> Void) {
+                    completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
     let channelName =
       "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onSpFinished\(messageChannelSuffix)"
     let channel = FlutterBasicMessageChannel(
@@ -827,7 +828,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
         let code: String = listResponse[0] as! String
         let message: String? = nilOrValue(listResponse[1])
         let details: String? = nilOrValue(listResponse[2])
-        completion(.failure(PigeonError(code: code, message: message, details: details)))
+        completion(.failure(HostApiFlutterError(code: code, message: message, details: details)))
       } else {
         completion(.success(()))
       }

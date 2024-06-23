@@ -177,7 +177,7 @@ class SPConfig {
       ],
     ),
     swiftOut: 'ios/Classes/pigeons/SourcepointUnifiedCmp.g.swift',
-    swiftOptions: SwiftOptions(),
+    swiftOptions: SwiftOptions(errorClassName: 'HostApiFlutterError'),
   ),
 )
 @HostApi()
