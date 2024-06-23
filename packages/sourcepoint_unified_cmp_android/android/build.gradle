@@ -25,7 +25,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdk 31
+    compileSdk 34
 
     namespace "de.thekorn.sourcepoint.unified.cmp"
 
