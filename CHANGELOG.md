@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-06-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.17`](#sourcepoint_unified_cmp---v0117)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.17`](#sourcepoint_unified_cmp_android---v0117)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.17`](#sourcepoint_unified_cmp_ios---v0117)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.17`](#sourcepoint_unified_cmp_platform_interface---v0117)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.17`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.17`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.17`
+
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.4.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.17`
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.17`.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.17`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.17`.
+
+
 ## 2024-06-22
 
 ### Changes

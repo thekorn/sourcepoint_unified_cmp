@@ -1,3 +1,7 @@
+## 0.1.17
+
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.4.
+
 ## 0.1.16
 
  - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.5.0.

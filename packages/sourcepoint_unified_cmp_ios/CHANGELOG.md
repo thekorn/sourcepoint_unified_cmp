@@ -1,3 +1,7 @@
+## 0.1.17
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.17`.
+
 ## 0.1.16
 
  - **FEAT**: :⬆️ Update Flutter version from 3.19.3 to 3.22.0 in GitHub workflows and VSCode settings for better compatibility and performance improvements.
