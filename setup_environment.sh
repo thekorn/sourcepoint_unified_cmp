@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+MELOS_VERSION="6.1.0"
+FVM_VERSION="3.1.7"
+
 function isInstalled() {
     command -v "$1" >/dev/null 2>&1
 }
@@ -15,19 +18,19 @@ isInstalled "fvm" || {
     exit 1
 }
 
-if [ $(version $(fvm --version)) -lt $(version "3.0.0") ]; then
-    echo "fvm is installed but needs to be updated to version 3.0.0 or higher."
+if [ $(version $(fvm --version)) -lt $(version "$FVM_VERSION") ]; then
+    echo "fvm is installed but needs to be updated to version '$FVM_VERSION' or higher."
     exit 1
 fi
 
 isInstalled "melos" || {
-    echo "melos is not installed."
-    exit 1
+    echo "melos is not installed, installing..."
+    dart pub global activate melos $MELOS_VERSION
 }
 
-if [ $(version $(melos --version)) -lt $(version "6.0.0") ]; then
-    echo "melos is installed but needs to be updated to version 6.0.0 or higher."
-    exit 1
+if [ $(version $(melos --version)) -ne $(version "$MELOS_VERSION") ]; then
+    echo "melos is installed but needs to be installed at version '$MELOS_VERSION', updating..."
+    dart pub global activate melos $MELOS_VERSION
 fi
 
 isInstalled "git" || {
