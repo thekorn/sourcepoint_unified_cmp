@@ -3,6 +3,7 @@ set -e
 
 MELOS_VERSION="6.1.0"
 FVM_VERSION="3.1.7"
+POD_VERSION="1.15.2"
 
 function isInstalled() {
     command -v "$1" >/dev/null 2>&1
@@ -33,6 +34,16 @@ if [ $(version $(melos --version)) -ne $(version "$MELOS_VERSION") ]; then
     dart pub global activate melos $MELOS_VERSION
 fi
 
+isInstalled "pod" || {
+    echo "CocoaPods is not installed."
+    exit 1
+}
+
+if [ $(version $(pod --version)) -ne $(version "$POD_VERSION") ]; then
+    echo "CocoaPods is installed but needs to be installed at version '$POD_VERSION', please update."
+    exit 1
+fi
+
 isInstalled "git" || {
     echo "git is not installed."
     exit 1
@@ -45,4 +56,9 @@ else
     fvm use
     melos clean
 fi
+
+echo "bootstrapping monorepo..."
 melos bootstrap
+
+echo "update CocoaPods..."
+pod repo update
