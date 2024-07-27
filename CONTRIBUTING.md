@@ -3,15 +3,17 @@
 ## requirements
 
 Packages:
+
 - dart
 - flutter
+- fvm >= 3.0.0
 - swiftformat
 - ktlint
+- Xcode >= 15.3 with Swift >= 5.10
 
 ```bash
 dart pub global activate melos
 dart pub global activate very_good_cli
-dart pub global activate pana
 ```
 
 ## important commands
@@ -32,6 +34,9 @@ melos run test
 # run sample app
 melos run run:example -- -d sdk     # android
 melos run run:example -- -d IPhone  # ios
+
+# setup a clean local environment
+./setup_environment.sh
 ```
 
 ## resources

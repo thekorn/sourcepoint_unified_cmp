@@ -11,10 +11,10 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/thekorn/sourcepoint_unified_cmp'
   s.license          = { :type => 'BSD', :file => '../LICENSE' }
   s.author           = { 'Markus Korn' => 'markus.korn@gmail.com' }
-  s.source           = { :path => '.' }  
+  s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'ConsentViewController', '7.6.6'
+  s.dependency 'ConsentViewController', '7.6.10'
   s.platform = :ios, '9.0'
 
   # Flutter.framework does not contain a i386 slice.

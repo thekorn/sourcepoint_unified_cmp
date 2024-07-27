@@ -1,7 +1,7 @@
 name: sourcepoint_unified_cmp_platform_interface
 description: flutter plugin for the sourcepoint unified CMP,
   with integrations for Android and iOS - platform interface
-version: 0.1.14
+version: 0.1.17
 homepage: https://github.com/thekorn/sourcepoint_unified_cmp
 repository: https://github.com/thekorn/sourcepoint_unified_cmp/tree/main/packages/sourcepoint_unified_cmp_platform_interface
 
@@ -19,4 +19,4 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^5.4.4
-  very_good_analysis: ^5.1.0
+  very_good_analysis: ^6.0.0
