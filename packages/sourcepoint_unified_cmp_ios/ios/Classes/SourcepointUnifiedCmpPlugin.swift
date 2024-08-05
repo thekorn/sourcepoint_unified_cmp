@@ -125,6 +125,6 @@ extension SourcepointUnifiedCmpPlugin: SPDelegate {
   }
 
   public func onSPNativeMessageReady(_: SPNativeMessage) {
-      logger.debug(message: "onSPNativeMessageReady")
+    logger.debug(message: "onSPNativeMessageReady")
   }
 }
