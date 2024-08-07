@@ -25,6 +25,7 @@ import com.sourcepoint.cmplibrary.model.exposed.GDPRPurposeGrants
 import com.sourcepoint.cmplibrary.model.exposed.MessageType
 import com.sourcepoint.cmplibrary.model.exposed.SPConsents
 import com.sourcepoint.cmplibrary.model.exposed.SPGDPRConsent
+import com.sourcepoint.cmplibrary.model.exposed.toWebViewConsentsJsonObject
 
 fun GDPRPurposeGrants.toHostAPIPurposeGrants() = HostAPIGDPRPurposeGrants(
     granted = granted,
@@ -69,10 +70,8 @@ fun ConsentStatus.toHostAPIConsentStatus() = HostAPIConsentStatus(
 )
 
 fun SPConsents.toHostAPISPConsent() = HostAPISPConsent(
-    gdpr = gdpr?.toHostAPIGDPRConsent()
-    // FIXME: add web consents
-    // webConsents = toWebViewConsentsJsonObject()
-
+    gdpr = gdpr?.toHostAPIGDPRConsent(),
+    webConsents = this.toWebViewConsentsJsonObject().toString()
 )
 
 fun ConsentAction.toHostAPIConsentAction() = HostAPIConsentAction(
