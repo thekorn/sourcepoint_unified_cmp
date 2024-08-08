@@ -1,3 +1,7 @@
+## 0.1.20
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.20`.
+
 ## 0.1.19
 
  - Bump "sourcepoint_unified_cmp_android" to `0.1.19`.
