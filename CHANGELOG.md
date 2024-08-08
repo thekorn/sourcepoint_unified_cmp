@@ -15,6 +15,47 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`sourcepoint_unified_cmp` - `v0.1.20+1`](#sourcepoint_unified_cmp---v01201)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.20+1`](#sourcepoint_unified_cmp_android---v01201)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.20+1`](#sourcepoint_unified_cmp_ios---v01201)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.20+1`](#sourcepoint_unified_cmp_platform_interface---v01201)
+ - [`sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.20+1`](#sourcepoint_unified_cmp_flutter_webview_extension---v01201)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.20+1`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.20+1`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.20+1`
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.20+1`.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.20+1`
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.20+1`.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.20+1`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.20+1`.
+
+#### `sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.20+1`
+
+ - Bump "sourcepoint_unified_cmp_flutter_webview_extension" to `0.1.20+1`.
+
+
+## 2024-08-08
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`sourcepoint_unified_cmp` - `v0.1.20`](#sourcepoint_unified_cmp---v0120)
  - [`sourcepoint_unified_cmp_android` - `v0.1.20`](#sourcepoint_unified_cmp_android---v0120)
  - [`sourcepoint_unified_cmp_ios` - `v0.1.20`](#sourcepoint_unified_cmp_ios---v0120)
