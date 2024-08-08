@@ -17,7 +17,7 @@ In order to use this extension please make sure to implement `sourcepoint_unifie
 
 ### sample code:
 
-For a running examples please check the sample app at [example/lib/main.dart](packages/sourcepoint_unified_cmp_flutter_webview_extension/example/lib/main.dart) - the sample app can be run using `melos run run:example:flutter_webview -- -d sdk` (android) or `melos run run:example:flutter_webview -- -d IPhone` (ios).
+For a running examples please check the sample app at [example/lib/main.dart](https://github.com/thekorn/sourcepoint_unified_cmp/blob/main/packages/sourcepoint_unified_cmp_flutter_webview_extension/example/lib/main.dart) - the sample app can be run using `melos run run:example:flutter_webview -- -d sdk` (android) or `melos run run:example:flutter_webview -- -d IPhone` (ios).
 
 Important bits of the implementation are:
 
