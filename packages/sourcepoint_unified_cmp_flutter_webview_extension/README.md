@@ -17,7 +17,7 @@ In order to use this extension please make sure to implement `sourcepoint_unifie
 
 ### sample code:
 
-For a running examples please check the sample app at [example/lib/main.dart](packages/sourcepoint_unified_cmp_flutter_webview_extension/example/lib/main.dart) - the sample app can be run using `melos run run:example:flutter_webview -- -d sdk` (android) or `melos run run:example:flutter_webview -- -d IPhone` (ios). **Please note:** the android implementation is currently awaiting an upstream release of a required feature, and thus not working.
+For a running examples please check the sample app at [example/lib/main.dart](packages/sourcepoint_unified_cmp_flutter_webview_extension/example/lib/main.dart) - the sample app can be run using `melos run run:example:flutter_webview -- -d sdk` (android) or `melos run run:example:flutter_webview -- -d IPhone` (ios).
 
 Important bits of the implementation are:
 
@@ -34,7 +34,7 @@ Initialize and configure the sourcepoint controller
     final config = SPConfig(
       accountId: 22,
       propertyId: 31007,
-      propertyName: 'https://sdks-auth-consent-test-page',
+      propertyName: 'sdks-auth-consent-test-page',
       pmId: '122058',
       campaigns: [CampaignType.gdpr],
     );

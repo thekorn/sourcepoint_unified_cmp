@@ -44,7 +44,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
     final config = SPConfig(
       accountId: 22,
       propertyId: 31007,
-      propertyName: 'https://sdks-auth-consent-test-page',
+      propertyName: 'sdks-auth-consent-test-page',
       pmId: '122058',
       campaigns: [CampaignType.gdpr],
     );
