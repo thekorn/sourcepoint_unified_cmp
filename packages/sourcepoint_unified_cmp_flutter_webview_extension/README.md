@@ -79,4 +79,4 @@ return WebViewWidget(controller: _webViewController);
 
 **Result:**
 
-![](https://github.com/thekorn/sourcepoint_unified_cmp/raw/main/packages/sourcepoint_unified_cmp_flutter_webview_extension/doc/images/webview-ios.gif)
+![](https://github.com/thekorn/sourcepoint_unified_cmp/raw/main/doc/images/webview-ios.gif)
