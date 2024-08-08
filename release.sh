@@ -24,6 +24,7 @@ melos version \
     -V sourcepoint_unified_cmp_android:$1 \
     -V sourcepoint_unified_cmp_ios:$1 \
     -V sourcepoint_unified_cmp_platform_interface:$1 \
+    -V sourcepoint_unified_cmp_flutter_webview_extension:$1 \
     -r
 
 melos publish --no-dry-run

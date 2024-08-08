@@ -147,9 +147,10 @@ class HostAPICCPAConsent {
 }
 
 class HostAPISPConsent {
-  HostAPISPConsent({this.gdpr, this.ccpa});
+  HostAPISPConsent({this.gdpr, this.ccpa, this.webConsents});
   final HostAPIGDPRConsent? gdpr;
   final HostAPICCPAConsent? ccpa;
+  final String? webConsents;
 }
 
 class SPConfig {
