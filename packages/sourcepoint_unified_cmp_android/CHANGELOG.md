@@ -1,3 +1,10 @@
+## 0.1.18
+
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.9.0.
+ - **FIX**(deps): update kotlin monorepo to v2.0.10.
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.5.1.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.5.
+
 ## 0.1.17
 
  - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.4.

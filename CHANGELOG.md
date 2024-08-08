@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-08-08
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.18`](#sourcepoint_unified_cmp---v0118)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.18`](#sourcepoint_unified_cmp_android---v0118)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.18`](#sourcepoint_unified_cmp_ios---v0118)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.18`](#sourcepoint_unified_cmp_platform_interface---v0118)
+ - [`sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.18`](#sourcepoint_unified_cmp_flutter_webview_extension---v0118)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.18`
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.18`
+
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.9.0.
+ - **FIX**(deps): update kotlin monorepo to v2.0.10.
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.5.1.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.8.5.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.18`
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.18`
+
+#### `sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.18`
+
+ - initial release
+
+ - **FEAT**: Enhance Sourcepoint CMP WebViewController integration.
+ - **FEAT**: initial bootstrapping of the sourcepoint_unified_cmp_flutter_webview_extension extension.
+ - **DOCS**: add sp_preload_example.js to provide an example of GDPR and CCPA consent payloads.
+
+
 ## 2024-06-23
 
 ### Changes
