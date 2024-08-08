@@ -1,3 +1,7 @@
+## 0.1.19
+
+ - add LICENSE file
+
 ## 0.1.18
 
  - initial release

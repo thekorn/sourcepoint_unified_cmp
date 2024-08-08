@@ -1,3 +1,7 @@
+## 0.1.19
+
+ - Bump "sourcepoint_unified_cmp_android" to `0.1.19`.
+
 ## 0.1.18
 
  - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.9.0.

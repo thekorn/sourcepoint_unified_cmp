@@ -1,3 +1,7 @@
+## 0.1.19
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.1.19`.
+
 ## 0.1.18
 
 ## 0.1.17
