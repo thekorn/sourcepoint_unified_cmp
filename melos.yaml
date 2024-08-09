@@ -9,9 +9,7 @@ sdkPath: .fvm/flutter_sdk
 command:
   clean:
     hooks:
-      # Runs "flutter clean" in all Flutter packages (`--flutter`)
-      # with a concurrency of 3 at a time (`--concurrency=3`).
-      post: melos exec --flutter --concurrency=3 -- "fvm flutter clean"
+      post: melos exec --flutter --concurrency=1 -- "fvm flutter clean"
   version:
     # Generate commit links in package changelogs.
     #linkToCommits: true
@@ -54,7 +52,7 @@ scripts:
 
   generate:pigeon:
     run: |
-      melos exec -- "fvm flutter pub run pigeon --input ./pigeons/messages.dart" && \
+      melos exec --concurrency=1 -- "fvm flutter pub run pigeon --input ./pigeons/messages.dart" && \
       melos run format --no-select
     packageFilters:
       fileExists: "pigeons/messages.dart"
@@ -67,7 +65,7 @@ scripts:
 
   generate:mocks:
     run: |
-      melos exec -- "fvm flutter pub run build_runner build --delete-conflicting-outputs" && \
+      melos exec --concurrency=1 -- "fvm flutter pub run build_runner build --delete-conflicting-outputs" && \
       melos run format --no-select
     packageFilters:
       dependsOn:
