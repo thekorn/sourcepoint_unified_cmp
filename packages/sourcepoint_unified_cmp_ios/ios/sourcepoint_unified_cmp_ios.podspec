@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'BSD', :file => '../LICENSE' }
   s.author           = { 'Markus Korn' => 'markus.korn@gmail.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'ios/sourcepoint_unified_cmp_ios/Sources/sourcepoint_unified_cmp_ios/**/*'
+  s.source_files = 'sourcepoint_unified_cmp_ios/Sources/sourcepoint_unified_cmp_ios/**/*'
   s.dependency 'Flutter'
   s.dependency 'ConsentViewController', '7.7.0'
   s.platform = :ios, '9.0'
