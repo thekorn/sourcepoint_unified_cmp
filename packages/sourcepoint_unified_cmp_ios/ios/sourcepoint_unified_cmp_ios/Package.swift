@@ -15,6 +15,7 @@ let package = Package(
     ],
     dependencies: [
         .package(
+            name:"ConsentViewController",
             url: "https://github.com/SourcePointUSA/ios-cmp-app",
                 .upToNextMinor(from: "7.7.0")
         ),
