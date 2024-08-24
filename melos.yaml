@@ -42,7 +42,7 @@ scripts:
 
   test:
     run: |
-      melos exec -c 6 --fail-fast -- \
+      melos exec -c 1 --fail-fast -- \
         "fvm flutter test --coverage"
     description: Run `flutter test` for a specific package.
     packageFilters:
