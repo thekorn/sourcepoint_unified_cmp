@@ -34,6 +34,7 @@ jobs:
       flutter_version: ${{needs.fvmrc.outputs.flutter}}
       working_directory: packages/sourcepoint_unified_cmp_flutter_webview_extension
       min_coverage: 1
+      analyze_directories: "lib"
 
   pana:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
