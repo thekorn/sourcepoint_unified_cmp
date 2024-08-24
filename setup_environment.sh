@@ -34,6 +34,11 @@ if [ $(version $(melos --version)) -ne $(version "$MELOS_VERSION") ]; then
     dart pub global activate melos $MELOS_VERSION
 fi
 
+isInstalled "coverde" || {
+    echo "coverde is not installed, installing..."
+    dart pub global activate coverde
+}
+
 isInstalled "pod" || {
     echo "CocoaPods is not installed."
     exit 1
