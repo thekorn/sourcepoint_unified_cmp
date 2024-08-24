@@ -3,9 +3,10 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i3;
 import 'package:sourcepoint_unified_cmp_android/src/messages.g.dart' as _i2;
 
 // ignore_for_file: type=lint
@@ -38,7 +39,20 @@ class _FakeHostAPISPConsent_0 extends _i1.SmartFake
 class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
     implements _i2.SourcepointUnifiedCmpHostApi {
   @override
-  _i3.Future<_i2.HostAPISPConsent> loadMessage({
+  String get pigeonVar_messageChannelSuffix => (super.noSuchMethod(
+        Invocation.getter(#pigeonVar_messageChannelSuffix),
+        returnValue: _i3.dummyValue<String>(
+          this,
+          Invocation.getter(#pigeonVar_messageChannelSuffix),
+        ),
+        returnValueForMissingStub: _i3.dummyValue<String>(
+          this,
+          Invocation.getter(#pigeonVar_messageChannelSuffix),
+        ),
+      ) as String);
+
+  @override
+  _i4.Future<_i2.HostAPISPConsent> loadMessage({
     required int? accountId,
     required int? propertyId,
     required String? propertyName,
@@ -68,7 +82,7 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
           },
         ),
         returnValue:
-            _i3.Future<_i2.HostAPISPConsent>.value(_FakeHostAPISPConsent_0(
+            _i4.Future<_i2.HostAPISPConsent>.value(_FakeHostAPISPConsent_0(
           this,
           Invocation.method(
             #loadMessage,
@@ -88,7 +102,7 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i3.Future<_i2.HostAPISPConsent>.value(_FakeHostAPISPConsent_0(
+            _i4.Future<_i2.HostAPISPConsent>.value(_FakeHostAPISPConsent_0(
           this,
           Invocation.method(
             #loadMessage,
@@ -107,10 +121,10 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
             },
           ),
         )),
-      ) as _i3.Future<_i2.HostAPISPConsent>);
+      ) as _i4.Future<_i2.HostAPISPConsent>);
 
   @override
-  _i3.Future<void> loadPrivacyManager({
+  _i4.Future<void> loadPrivacyManager({
     required String? pmId,
     required _i2.HostAPIPMTab? pmTab,
     required _i2.HostAPICampaignType? campaignType,
@@ -127,7 +141,7 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
             #messageType: messageType,
           },
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }
