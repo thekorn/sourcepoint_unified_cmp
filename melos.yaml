@@ -35,7 +35,8 @@ scripts:
   test:all:
     run: |
       melos run test --no-select && \
-      npx cspell "**/*.md" 2>&1
+      npx cspell "**/*.md" 2>&1 && \
+      melos run check-coverage
     description: |
       Run all tests available.
 
@@ -49,6 +50,17 @@ scripts:
         - test
       ignore:
         - "*example*"
+
+  merge-trace-files:
+    description: Merge all packages coverage trace files ignoring data related to generated files.
+    run: >
+      coverde rm MELOS_ROOT_PATH/coverage/filtered.lcov.info &&
+      melos exec --file-exists=coverage/lcov.info -- "coverde filter --input ./coverage/lcov.info --output MELOS_ROOT_PATH/coverage/filtered.lcov.info --paths-parent MELOS_PACKAGE_PATH --filters '\.g\.dart'"
+
+  check-coverage:
+    description: Check the coverage of the packages.
+    run: >
+      coverde check -i MELOS_ROOT_PATH/coverage/filtered.lcov.info 10
 
   generate:pigeon:
     run: |
