@@ -16,7 +16,7 @@ String generatePostMessageString(SPConsent consent) {
   return '''
     window.postMessage({
         name: "$_eventSPPreload",
-        consent: $consent
+        consent: ${consent.webConsents}
     }, "*")
   '''
       .trim();
