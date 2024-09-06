@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:sourcepoint_unified_cmp/sourcepoint_unified_cmp.dart';
 import 'package:sourcepoint_unified_cmp_flutter_inappwebview_extension/sourcepoint_unified_cmp_flutter_inappwebview_extension.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
