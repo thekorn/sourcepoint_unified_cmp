@@ -12,7 +12,7 @@
     "editor.wordBasedSuggestions": "off"
   },
   "editor.bracketPairColorization.enabled": true,
-  "dart.flutterSdkPath": ".fvm/versions/3.24.1",
+  "dart.flutterSdkPath": ".fvm/versions/3.24.2",
   "flutter-coverage.coverageFilePaths": [
     "packages/sourcepoint_unified_cmp/coverage/",
     "packages/sourcepoint_unified_cmp_android/coverage/",
