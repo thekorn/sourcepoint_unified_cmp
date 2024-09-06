@@ -104,3 +104,11 @@ scripts:
       concurrency: 1
     packageFilters:
       scope: 'sourcepoint_unified_cmp_flutter_webview_extension_example'
+
+  run:example:flutter_inappwebview:
+    run: fvm flutter run
+    description: Run the example flutter inappwebview app.
+    exec:
+      concurrency: 1
+    packageFilters:
+      scope: 'sourcepoint_unified_cmp_flutter_inappwebview_extension_example'

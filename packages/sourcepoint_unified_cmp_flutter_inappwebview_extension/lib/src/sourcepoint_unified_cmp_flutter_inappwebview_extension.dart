@@ -1,5 +1,5 @@
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 const _eventSPPreload = 'sp.loadConsent';
 const _eventSPReady = 'sp.readyForConsent';
@@ -43,12 +43,13 @@ String generateJSString(String postMessageString) {
       .trim();
 }
 
-/// Extension on [WebViewController] to provide additional functionality for
-/// Sourcepoint Unified CMP.
+/// Extension on [InAppWebViewController] to provide additional functionality
+/// for Sourcepoint Unified CMP.
 /// This extension adds a method to inject the [SPConsent] to the
-/// [WebViewController] class.
-extension SourcepointUnifiedCmpWebViewController on WebViewController {
-  /// Preloads the consent for the Sourcepoint Unified CMP Flutter WebView.
+/// [InAppWebViewController] class.
+extension SourcepointUnifiedCmpInAppWebViewController
+    on InAppWebViewController {
+  /// Preloads the consent for the Sourcepoint Unified CMP Flutter InAppWebView.
   ///
   /// This method asynchronously preloads the Sourcepoint Unified Consent.
   /// The [consent] parameter is required and represents the consent to be
@@ -60,6 +61,6 @@ extension SourcepointUnifiedCmpWebViewController on WebViewController {
     final postMessageString = generatePostMessageString(consent);
 
     final jsString = generateJSString(postMessageString);
-    await runJavaScript(jsString);
+    await evaluateJavascript(source: jsString);
   }
 }

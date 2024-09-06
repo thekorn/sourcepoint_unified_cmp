@@ -1,0 +1,41 @@
+name: sourcepoint_unified_cmp_flutter_inappwebview_extension
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/sourcepoint_unified_cmp_flutter_inappwebview_extension.yaml"
+      - "packages/sourcepoint_unified_cmp_flutter_inappwebview_extension/**"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/sourcepoint_unified_cmp_flutter_inappwebview_extension.yaml"
+      - "packages/sourcepoint_unified_cmp_flutter_inappwebview_extension/**"
+
+jobs:
+  fvmrc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: get fvmrc
+        id: fvmrc
+        uses: ActionsTools/read-json-action@v1.0.5
+        with:
+          file_path: ".fvmrc"
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    needs: fvmrc
+    with:
+      flutter_channel: stable
+      flutter_version: ${{needs.fvmrc.outputs.flutter}}
+      working_directory: packages/sourcepoint_unified_cmp_flutter_inappwebview_extension
+      min_coverage: 40
+
+  pana:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
+    with:
+      min_score: 120
