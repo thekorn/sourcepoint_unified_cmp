@@ -14,7 +14,7 @@ void main() {
     final expectedPostMessageString = '''
     window.postMessage({
         name: "sp.loadConsent",
-        consent: $consent
+        consent: ${consent.webConsents}
     }, "*")
     '''
         .trim();
