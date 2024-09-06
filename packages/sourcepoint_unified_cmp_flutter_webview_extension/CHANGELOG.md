@@ -1,3 +1,7 @@
+## 0.1.21
+
+ - fix bug in the JS to inject the consent
+
 ## 0.1.20+2
 
 ## 0.1.20+1

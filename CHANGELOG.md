@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-09-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.21`](#sourcepoint_unified_cmp---v0121)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.21`](#sourcepoint_unified_cmp_android---v0121)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.21`](#sourcepoint_unified_cmp_ios---v0121)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.21`](#sourcepoint_unified_cmp_platform_interface---v0121)
+ - [`sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.21`](#sourcepoint_unified_cmp_flutter_webview_extension---v0121)
+ - [`sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.1.21`](#sourcepoint_unified_cmp_flutter_inappwebview_extension---v0121)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.21`
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.21`
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.6.0.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.10.1.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.10.0.
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.5.2.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.21`
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.21`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.21`.
+
+#### `sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.21`
+
+ - fix bug in the JS to inject the consent
+
+#### `sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.1.21`
+
+ - initial release
+
+ - **FEAT**: initial creation of an extensions package to flutter_inappwebview (fixes #163).
+
+
 ## 2024-08-08
 
 ### Changes

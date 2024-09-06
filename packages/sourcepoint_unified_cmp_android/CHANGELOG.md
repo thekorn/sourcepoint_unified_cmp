@@ -1,3 +1,10 @@
+## 0.1.21
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.6.0.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.10.1.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.10.0.
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.5.2.
+
 ## 0.1.20+2
 
  - Bump "sourcepoint_unified_cmp_android" to `0.1.20+2`.
