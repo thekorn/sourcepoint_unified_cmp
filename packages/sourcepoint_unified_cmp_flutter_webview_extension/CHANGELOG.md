@@ -1,3 +1,7 @@
+## 0.1.22
+
+ - Bump "sourcepoint_unified_cmp_flutter_webview_extension" to `0.1.22`.
+
 ## 0.1.21
 
  - fix bug in the JS to inject the consent

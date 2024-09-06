@@ -1,6 +1,6 @@
 name: sourcepoint_unified_cmp_flutter_inappwebview_extension
 description: Flutter webview extension to preload the sourcepoint unified CMP consent
-version: 0.1.21
+version: 0.1.22
 homepage: https://github.com/thekorn/sourcepoint_unified_cmp
 repository: https://github.com/thekorn/sourcepoint_unified_cmp/tree/main/packages/sourcepoint_unified_cmp_flutter_inappwebview_extension 
 
@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_inappwebview: ^6.0.0
-  sourcepoint_unified_cmp_platform_interface: ^0.1.21
+  sourcepoint_unified_cmp_platform_interface: ^0.1.22
 
 dev_dependencies: 
   flutter_test:
