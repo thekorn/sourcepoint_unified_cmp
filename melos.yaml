@@ -9,7 +9,7 @@ sdkPath: .fvm/flutter_sdk
 command:
   clean:
     hooks:
-      post: melos exec --flutter --concurrency=1 -- "fvm flutter clean"
+      post: melos exec --concurrency=1 -- "fvm flutter clean"
   version:
     # Generate commit links in package changelogs.
     #linkToCommits: true
@@ -95,7 +95,7 @@ scripts:
     exec:
       concurrency: 1
     packageFilters:
-      scope: 'sourcepoint_unified_cmp_example'
+      scope: "sourcepoint_unified_cmp_example"
 
   run:example:flutter_webview:
     run: fvm flutter run
@@ -103,7 +103,7 @@ scripts:
     exec:
       concurrency: 1
     packageFilters:
-      scope: 'sourcepoint_unified_cmp_flutter_webview_extension_example'
+      scope: "sourcepoint_unified_cmp_flutter_webview_extension_example"
 
   run:example:flutter_inappwebview:
     run: fvm flutter run
@@ -111,4 +111,4 @@ scripts:
     exec:
       concurrency: 1
     packageFilters:
-      scope: 'sourcepoint_unified_cmp_flutter_inappwebview_extension_example'
+      scope: "sourcepoint_unified_cmp_flutter_inappwebview_extension_example"
