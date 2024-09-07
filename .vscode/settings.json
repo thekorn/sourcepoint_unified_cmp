@@ -2,9 +2,7 @@
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
-    "editor.rulers": [
-      80
-    ],
+    "editor.rulers": [80],
     "editor.selectionHighlight": false,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
@@ -18,5 +16,12 @@
     "packages/sourcepoint_unified_cmp_android/coverage/",
     "packages/sourcepoint_unified_cmp_ios/coverage/",
     "packages/sourcepoint_unified_cmp_platform_interface/coverage/"
-  ]
+  ],
+  "dart.runPubGetOnPubspecChanges": "never",
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
+  "search.exclude": {
+    "**/.fvm": true
+  }
 }
