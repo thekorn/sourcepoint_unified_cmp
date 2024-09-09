@@ -598,12 +598,12 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
       SourcepointUnifiedCmpPigeonCodec
     }
   }
-  fun onUIFinished(viewIdArg: Long, callback: (Result<Unit>) -> Unit)
+  fun onUIFinished(callback: (Result<Unit>) -> Unit)
 {
     val separatedMessageChannelSuffix = if (messageChannelSuffix.isNotEmpty()) ".$messageChannelSuffix" else ""
     val channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onUIFinished$separatedMessageChannelSuffix"
     val channel = BasicMessageChannel<Any?>(binaryMessenger, channelName, codec)
-    channel.send(listOf(viewIdArg)) {
+    channel.send(null) {
       if (it is List<*>) {
         if (it.size > 1) {
           callback(Result.failure(HostApiFlutterError(it[0] as String, it[1] as String, it[2] as String?)))
@@ -615,12 +615,12 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
       } 
     }
   }
-  fun onUIReady(viewIdArg: Long, callback: (Result<Unit>) -> Unit)
+  fun onUIReady(callback: (Result<Unit>) -> Unit)
 {
     val separatedMessageChannelSuffix = if (messageChannelSuffix.isNotEmpty()) ".$messageChannelSuffix" else ""
     val channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onUIReady$separatedMessageChannelSuffix"
     val channel = BasicMessageChannel<Any?>(binaryMessenger, channelName, codec)
-    channel.send(listOf(viewIdArg)) {
+    channel.send(null) {
       if (it is List<*>) {
         if (it.size > 1) {
           callback(Result.failure(HostApiFlutterError(it[0] as String, it[1] as String, it[2] as String?)))
@@ -666,12 +666,12 @@ class SourcepointUnifiedCmpFlutterApi(private val binaryMessenger: BinaryMesseng
       } 
     }
   }
-  fun onAction(viewIdArg: Long, consentActionArg: HostAPIConsentAction, callback: (Result<Unit>) -> Unit)
+  fun onAction(consentActionArg: HostAPIConsentAction, callback: (Result<Unit>) -> Unit)
 {
     val separatedMessageChannelSuffix = if (messageChannelSuffix.isNotEmpty()) ".$messageChannelSuffix" else ""
     val channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction$separatedMessageChannelSuffix"
     val channel = BasicMessageChannel<Any?>(binaryMessenger, channelName, codec)
-    channel.send(listOf(viewIdArg, consentActionArg)) {
+    channel.send(listOf(consentActionArg)) {
       if (it is List<*>) {
         if (it.size > 1) {
           callback(Result.failure(HostApiFlutterError(it[0] as String, it[1] as String, it[2] as String?)))

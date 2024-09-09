@@ -628,15 +628,13 @@ class SourcepointUnifiedCmpHostApiSetup {
 
 /// Generated protocol from Pigeon that represents Flutter messages that can be called from Swift.
 protocol SourcepointUnifiedCmpFlutterApiProtocol {
-  func onUIFinished(viewId viewIdArg: String,
-                    completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
-  func onUIReady(viewId viewIdArg: String,
-                 completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
+  func onUIFinished(completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
+  func onUIReady(completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
   func onError(error errorArg: HostAPISPError,
                completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
   func onConsentReady(consent consentArg: HostAPISPConsent,
                       completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
-  func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction,
+  func onAction(consentAction consentActionArg: HostAPIConsentAction,
                 completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
   func onNoIntentActivitiesFound(url urlArg: String,
                                  completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
@@ -656,8 +654,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
     SourcepointUnifiedCmpPigeonCodec.shared
   }
 
-  func onUIFinished(viewId viewIdArg: String,
-                    completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
+  func onUIFinished(completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
     let channelName =
       "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIFinished\(messageChannelSuffix)"
     let channel = FlutterBasicMessageChannel(
@@ -665,7 +662,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
       binaryMessenger: binaryMessenger,
       codec: codec
     )
-    channel.sendMessage([viewIdArg] as [Any?]) { response in
+    channel.sendMessage(nil) { response in
       guard let listResponse = response as? [Any?] else {
         completion(.failure(createConnectionError(withChannelName: channelName)))
         return
@@ -681,8 +678,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
     }
   }
 
-  func onUIReady(viewId viewIdArg: String,
-                 completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
+  func onUIReady(completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
     let channelName =
       "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIReady\(messageChannelSuffix)"
     let channel = FlutterBasicMessageChannel(
@@ -690,7 +686,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
       binaryMessenger: binaryMessenger,
       codec: codec
     )
-    channel.sendMessage([viewIdArg] as [Any?]) { response in
+    channel.sendMessage(nil) { response in
       guard let listResponse = response as? [Any?] else {
         completion(.failure(createConnectionError(withChannelName: channelName)))
         return
@@ -756,7 +752,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
     }
   }
 
-  func onAction(viewId viewIdArg: String, consentAction consentActionArg: HostAPIConsentAction,
+  func onAction(consentAction consentActionArg: HostAPIConsentAction,
                 completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
     let channelName =
       "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onAction\(messageChannelSuffix)"
@@ -765,7 +761,7 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
       binaryMessenger: binaryMessenger,
       codec: codec
     )
-    channel.sendMessage([viewIdArg, consentActionArg] as [Any?]) { response in
+    channel.sendMessage([consentActionArg] as [Any?]) { response in
       guard let listResponse = response as? [Any?] else {
         completion(.failure(createConnectionError(withChannelName: channelName)))
         return

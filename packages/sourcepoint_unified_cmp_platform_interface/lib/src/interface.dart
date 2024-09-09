@@ -113,16 +113,16 @@ abstract class SourcepointEventDelegatePlatform {
   final void Function(SPConsent)? onConsentReady;
 
   /// Callback function that is called when the UI is finished.
-  final void Function(int viewId)? onUIFinished;
+  final void Function()? onUIFinished;
 
   /// Callback function that is called when the UI is ready.
-  final void Function(int viewId)? onUIReady;
+  final void Function()? onUIReady;
 
   /// Callback function that is called when an error occurs.
   final void Function(SPError error)? onError;
 
   /// Callback function that is called when an action occurs.
-  final void Function(int viewId, ConsentAction consentAction)? onAction;
+  final void Function(ConsentAction consentAction)? onAction;
 
   /// Callback function that is called when no intent activities are found.
   final void Function(String url)? onNoIntentActivitiesFound;
