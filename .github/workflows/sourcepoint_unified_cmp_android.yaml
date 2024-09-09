@@ -30,9 +30,6 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     needs: fvmrc
     with:
-      setup: |
-        flutter pub global activate melos
-        melos bootstrap
       flutter_channel: stable
       flutter_version: ${{needs.fvmrc.outputs.flutter}}
       working_directory: packages/sourcepoint_unified_cmp_android
