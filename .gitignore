@@ -10,7 +10,10 @@ flutter_export_environment.sh
 coverage/
 
 Podfile.lock
-pubspec_overrides.yaml
+# FIXME: those overrides should be removed once the following issue is fixed:
+#  https://github.com/VeryGoodOpenSource/very_good_cli/issues/1118
+# also, (6dbbda3) should be re-applied to run melos bootstrap in github actions
+#pubspec_overrides.yaml
 Pods/
 .symlinks/
 **/Flutter/App.framework/
