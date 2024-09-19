@@ -49,7 +49,7 @@ jobs:
         sed -i 's/^\(sdkPath:.*\)$/# \1/' ../../melos.yaml
         echo "removing fvm from melos.yaml... Done"
         echo "melos.yaml content:"
-        cat melos.yaml
+        cat ../../melos.yaml
         echo "melos.yaml content... Done"
         echo "bootstraping packages..."
         melos bootstrap
