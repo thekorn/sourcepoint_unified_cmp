@@ -10,7 +10,8 @@ flutter_export_environment.sh
 coverage/
 
 Podfile.lock
-pubspec_overrides.yaml
+# git ignoring them breaks current github actions setup
+#pubspec_overrides.yaml
 Pods/
 .symlinks/
 **/Flutter/App.framework/

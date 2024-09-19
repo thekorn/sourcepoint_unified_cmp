@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   sourcepoint_unified_cmp_platform_interface: ^0.1.22
-  webview_flutter: ^4.7.0
+  webview_flutter: ^4.9.0
 
 dev_dependencies: 
   flutter_test:

@@ -6,5 +6,5 @@ environment:
   sdk: ">=3.2.3 <4.0.0"
   flutter: ">=3.0.0"
 dev_dependencies:
-  melos: ^6.0.0
-  pana: ^0.22.6
+  melos: ^6.1.0
+  pana: ^0.22.12
