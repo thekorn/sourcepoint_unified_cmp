@@ -45,6 +45,8 @@ jobs:
         echo "Setup Melos..."
         dart pub global activate melos
         echo "Setup Melos... Done"
+        pwd
+        ls -la
         echo "removing fvm from melos.yaml"
         sed -i 's/^\(sdkPath:.*\)$/# \1/' melos.yaml
         echo "removing fvm from melos.yaml... Done"
