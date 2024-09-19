@@ -23,7 +23,7 @@ dependencies:
     # The example app is bundled with the plugin so we use a path dependency on
     # the parent directory to use the current plugin's version.
     path: ../
-  webview_flutter: ^4.9.0
+  webview_flutter: ^4.7.0
 
 dev_dependencies:
   very_good_analysis: ^6.0.0
