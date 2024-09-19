@@ -3,3 +3,4 @@ export 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_c
 export 'src/builder.dart';
 export 'src/controller.dart';
 export 'src/delegate.dart';
+export 'src/webview.dart';
