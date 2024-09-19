@@ -36,6 +36,7 @@ scripts:
     run: |
       melos run test --no-select && \
       npx cspell "**/*.md" 2>&1 && \
+      melos run merge-trace-files && \
       melos run check-coverage
     description: |
       Run all tests available.
