@@ -17,7 +17,7 @@ class SourcepointEventDelegate implements SourcepointEventDelegatePlatform {
   final void Function(SPConsent)? onConsentReady;
 
   @override
-  final void Function(int viewId, ConsentAction consentAction)? onAction;
+  final void Function(ConsentAction consentAction)? onAction;
 
   @override
   final void Function(SPError error)? onError;
@@ -29,8 +29,8 @@ class SourcepointEventDelegate implements SourcepointEventDelegatePlatform {
   final void Function(SPConsent consent)? onSpFinished;
 
   @override
-  final void Function(int viewId)? onUIFinished;
+  final void Function()? onUIFinished;
 
   @override
-  final void Function(int viewId)? onUIReady;
+  final void Function()? onUIReady;
 }

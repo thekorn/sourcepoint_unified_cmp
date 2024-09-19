@@ -324,8 +324,8 @@ class SourcepointEventHandler
   final ConsentChangeNotifier? _consentChangeNotifier;
 
   @override
-  void onAction(int viewId, messages.HostAPIConsentAction consentAction) {
-    _delegate?.onAction?.call(viewId, consentAction.toConsentAction());
+  void onAction(messages.HostAPIConsentAction consentAction) {
+    _delegate?.onAction?.call(consentAction.toConsentAction());
   }
 
   @override
@@ -352,12 +352,12 @@ class SourcepointEventHandler
   }
 
   @override
-  void onUIFinished(int viewId) {
-    _delegate?.onUIFinished?.call(viewId);
+  void onUIFinished() {
+    _delegate?.onUIFinished?.call();
   }
 
   @override
-  void onUIReady(int viewId) {
-    _delegate?.onUIReady?.call(viewId);
+  void onUIReady() {
+    _delegate?.onUIReady?.call();
   }
 }

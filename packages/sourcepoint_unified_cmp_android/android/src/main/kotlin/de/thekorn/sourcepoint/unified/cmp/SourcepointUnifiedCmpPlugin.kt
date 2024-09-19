@@ -48,15 +48,15 @@ private class SourcepointFlutterApi(
         }
     }
 
-    fun callOnUIFinished(view: View, callback: (Result<Unit>) -> Unit) {
+    fun callOnUIFinished(callback: (Result<Unit>) -> Unit) {
         activity.runOnUiThread {
-            flutterApi!!.onUIFinished(view.id.toLong()) { callback(Result.success(Unit)) }
+            flutterApi!!.onUIFinished { callback(Result.success(Unit)) }
         }
     }
 
-    fun callOnUIReady(view: View, callback: (Result<Unit>) -> Unit) {
+    fun callOnUIReady(callback: (Result<Unit>) -> Unit) {
         activity.runOnUiThread {
-            flutterApi!!.onUIReady(view.id.toLong()) { callback(Result.success(Unit)) }
+            flutterApi!!.onUIReady { callback(Result.success(Unit)) }
         }
     }
 
@@ -72,9 +72,9 @@ private class SourcepointFlutterApi(
         }
     }
 
-    fun callOnAction(view: View, consentAction: ConsentAction, callback: (Result<Unit>) -> Unit) {
+    fun callOnAction(consentAction: ConsentAction, callback: (Result<Unit>) -> Unit) {
         activity.runOnUiThread {
-            flutterApi!!.onAction(view.id.toLong(), consentAction.toHostAPIConsentAction()) {
+            flutterApi!!.onAction(consentAction.toHostAPIConsentAction()) {
                 callback(
                     Result.success(Unit)
                 )
@@ -145,13 +145,13 @@ class SourcepointUnifiedCmpPlugin :
         override fun onUIFinished(view: View) {
             Log.d("SourcepointUnifiedCmp", "onUIFinished")
             spConsentLib?.removeView(view)
-            flutterApi.callOnUIFinished(view) {}
+            flutterApi.callOnUIFinished {}
         }
 
         override fun onUIReady(view: View) {
             Log.d("SourcepointUnifiedCmp", "onUIReady")
             spConsentLib?.showView(view)
-            flutterApi.callOnUIReady(view) {}
+            flutterApi.callOnUIReady {}
         }
 
         override fun onNativeMessageReady(
@@ -190,7 +190,7 @@ class SourcepointUnifiedCmpPlugin :
 
         override fun onAction(view: View, consentAction: ConsentAction): ConsentAction {
             Log.d("SourcepointUnifiedCmp", "onAction $consentAction")
-            flutterApi.callOnAction(view, consentAction) {}
+            flutterApi.callOnAction(consentAction) {}
             return consentAction
         }
 
