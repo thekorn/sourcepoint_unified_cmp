@@ -70,18 +70,17 @@ private class SourcepointFlutterApi {
   }
 
   func callOnUIReady(controller: UIViewController) {
-    flutterAPI.onUIReady(viewId: controller.restorationIdentifier ?? "") { _ in }
+    flutterAPI.onUIReady { _ in }
   }
 
   func callOnAction(controller: UIViewController, action: SPAction) {
     flutterAPI.onAction(
-      viewId: controller.restorationIdentifier ?? "",
       consentAction: action.toHostAPIConsentAction()
     ) { _ in }
   }
 
   func callOnUIFinished(controller: UIViewController) {
-    flutterAPI.onUIFinished(viewId: controller.restorationIdentifier ?? "") { _ in }
+    flutterAPI.onUIFinished { _ in }
   }
 
   func callOnSpFinished(userData: SPUserData) {

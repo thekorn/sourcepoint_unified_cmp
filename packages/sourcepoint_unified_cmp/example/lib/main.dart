@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
 import 'package:sourcepoint_unified_cmp/sourcepoint_unified_cmp.dart';
 

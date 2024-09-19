@@ -198,12 +198,12 @@ abstract class SourcepointUnifiedCmpHostApi {
 
 @FlutterApi()
 abstract class SourcepointUnifiedCmpFlutterApi {
-  void onUIFinished(int viewId) {}
-  void onUIReady(int viewId) {}
+  void onUIFinished() {}
+  void onUIReady() {}
 
   void onError(HostAPISPError error) {}
   void onConsentReady(HostAPISPConsent consent) {}
-  void onAction(int viewId, HostAPIConsentAction consentAction) {}
+  void onAction(HostAPIConsentAction consentAction) {}
   void onNoIntentActivitiesFound(String url) {}
   void onSpFinished(HostAPISPConsent consent) {}
 }

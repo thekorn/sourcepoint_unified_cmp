@@ -30,6 +30,16 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     needs: fvmrc
     with:
+      setup: |
+        echo "Setup Melos..."
+        dart pub global activate melos
+        echo "Setup Melos... Done"
+        echo "removing fvm from melos.yaml"
+        sed -i 's/^\(sdkPath:.*\)$/# \1/' ../../melos.yaml
+        echo "removing fvm from melos.yaml... Done"
+        echo "bootstraping packages..."
+        melos bootstrap
+        echo "bootstraping packages... Done"
       flutter_channel: stable
       flutter_version: ${{needs.fvmrc.outputs.flutter}}
       working_directory: packages/sourcepoint_unified_cmp_flutter_inappwebview_extension

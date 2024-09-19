@@ -199,15 +199,11 @@ abstract class SourcepointUnifiedCmpHostApi {
 
 @FlutterApi()
 abstract class SourcepointUnifiedCmpFlutterApi {
-  // FIXME: unify viewId with android, ios=string, android=int
-  void onUIFinished(String viewId) {}
-  // FIXME: unify viewId with android, ios=string, android=int
-  void onUIReady(String viewId) {}
-
+  void onUIFinished() {}
+  void onUIReady() {}
   void onError(HostAPISPError error) {}
   void onConsentReady(HostAPISPConsent consent) {}
-  // FIXME: unify viewId with android, ios=string, android=int
-  void onAction(String viewId, HostAPIConsentAction consentAction) {}
+  void onAction(HostAPIConsentAction consentAction) {}
   void onNoIntentActivitiesFound(String url) {}
   void onSpFinished(HostAPISPConsent consent) {}
 }

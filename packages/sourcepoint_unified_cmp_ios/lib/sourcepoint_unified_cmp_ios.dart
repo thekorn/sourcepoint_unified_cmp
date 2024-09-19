@@ -321,9 +321,8 @@ class SourcepointEventHandler
   final ConsentChangeNotifier? _consentChangeNotifier;
 
   @override
-  void onAction(String viewId, messages.HostAPIConsentAction consentAction) {
-    // FIXME: generalize android=int, ios=string
-    _delegate?.onAction?.call(0, consentAction.toConsentAction());
+  void onAction(messages.HostAPIConsentAction consentAction) {
+    _delegate?.onAction?.call(consentAction.toConsentAction());
   }
 
   @override
@@ -349,14 +348,12 @@ class SourcepointEventHandler
   }
 
   @override
-  void onUIFinished(String viewId) {
-    // FIXME: generalize android=int, ios=string
-    _delegate?.onUIFinished?.call(0);
+  void onUIFinished() {
+    _delegate?.onUIFinished?.call();
   }
 
   @override
-  void onUIReady(String viewId) {
-    // FIXME: generalize android=int, ios=string
-    _delegate?.onUIReady?.call(0);
+  void onUIReady() {
+    _delegate?.onUIReady?.call();
   }
 }
