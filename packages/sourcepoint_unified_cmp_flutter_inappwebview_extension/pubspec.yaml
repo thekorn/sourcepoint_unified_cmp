@@ -15,7 +15,9 @@ dependencies:
   flutter_inappwebview: ^6.0.0
   sourcepoint_unified_cmp: ^0.1.22
 
-dev_dependencies: 
+dev_dependencies:
+  build_runner: ^2.4.8
+  flutter_inappwebview_platform_interface: ^1.0.10
   flutter_test:
     sdk: flutter
   mockito: ^5.4.4
