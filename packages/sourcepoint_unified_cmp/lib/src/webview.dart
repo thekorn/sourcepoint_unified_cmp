@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
 
 const _eventSPPreload = 'sp.loadConsent';
@@ -40,4 +41,18 @@ String generateJSString(String postMessageString) {
         })
     """
       .trim();
+}
+
+/// Generates a JavaScript string to preload consent data into a web view.
+///
+/// This function takes an [SPConsent] object and converts it into a JavaScript
+/// string that can be injected into a web view to preload the consent data.
+///
+/// - Parameter consent: An [SPConsent] object containing the consent data.
+/// - Returns: A JavaScript string that preloads the consent data.
+String generatePreloadJSString(SPConsent consent) {
+  assert(consent.webConsents != null, 'webConsents cannot be null');
+  final postMessageString = generatePostMessageString(consent);
+
+  return generateJSString(postMessageString);
 }

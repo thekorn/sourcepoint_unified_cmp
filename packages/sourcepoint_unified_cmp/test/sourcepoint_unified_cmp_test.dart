@@ -33,39 +33,39 @@ void main() {
   });
 
   group('WebView Utils', () {
-    test(
-        // ignore: lines_longer_than_80_chars
-        'generatePostMessageString should return the correct post message string',
+    test('generatePreloadJSString should return the correct JavaScript string',
         () {
-      final consent = SPConsent(); // Provide necessary SPConsent object
-      final expectedPostMessageString = '''
-    window.postMessage({
-        name: "sp.loadConsent",
-        consent: ${consent.webConsents}
-    }, "*")
-    '''
+      final consent = SPConsent(webConsents: 'boo');
+      final expectedGeneratePreloadJSString = '''
+          window.postMessage({
+              name: "sp.loadConsent",
+              consent: boo
+          }, "*")
+          window.addEventListener('message', (event) => {
+              if (event && event.data && event.data.name === "sp.readyForConsent") {
+                  window.postMessage({
+                      name: "sp.loadConsent",
+                      consent: boo
+                  }, "*")
+              }
+          })
+        '''
+          .replaceAll(' ', '')
           .trim();
 
-      final postMessageString = generatePostMessageString(consent);
+      final jsString = generatePreloadJSString(consent);
 
-      expect(postMessageString, expectedPostMessageString);
+      expect(jsString.replaceAll(' ', ''), expectedGeneratePreloadJSString);
     });
 
-    test('generateJSString should return the correct JavaScript string', () {
-      const postMessageString = '...'; // Provide necessary postMessageString
-      final expectedJSString = """
-        $postMessageString
-        window.addEventListener('message', (event) => {
-            if (event && event.data && event.data.name === "sp.readyForConsent") {
-                $postMessageString
-            }
-        })
-    """
-          .trim();
+    test(
+        // ignore: lines_longer_than_80_chars
+        'generatePreloadJSString should throw an AssertionError when webConsents is null',
+        () {
+      // ignore: avoid_redundant_argument_values
+      final consent = SPConsent(webConsents: null);
 
-      final jsString = generateJSString(postMessageString);
-
-      expect(jsString, expectedJSString);
+      expect(() => generatePreloadJSString(consent), throwsAssertionError);
     });
   });
 }

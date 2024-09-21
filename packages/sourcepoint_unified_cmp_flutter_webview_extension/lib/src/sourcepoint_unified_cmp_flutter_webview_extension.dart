@@ -14,10 +14,7 @@ extension SourcepointUnifiedCmpWebViewController on WebViewController {
   ///
   /// Throws an exception if an error occurs during the preloading process.
   Future<void> preloadConsent({required SPConsent consent}) async {
-    assert(consent.webConsents != null, 'webConsents cannot be null');
-    final postMessageString = generatePostMessageString(consent);
-
-    final jsString = generateJSString(postMessageString);
+    final jsString = generatePreloadJSString(consent);
     await runJavaScript(jsString);
   }
 }
