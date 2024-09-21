@@ -31,4 +31,41 @@ void main() {
     final r = await controller.loadMessage();
     expect(r, isNotNull);
   });
+
+  group('WebView Utils', () {
+    test('generatePreloadJSString should return the correct JavaScript string',
+        () {
+      final consent = SPConsent(webConsents: 'boo');
+      final expectedGeneratePreloadJSString = '''
+          window.postMessage({
+              name: "sp.loadConsent",
+              consent: boo
+          }, "*")
+          window.addEventListener('message', (event) => {
+              if (event && event.data && event.data.name === "sp.readyForConsent") {
+                  window.postMessage({
+                      name: "sp.loadConsent",
+                      consent: boo
+                  }, "*")
+              }
+          })
+        '''
+          .replaceAll(' ', '')
+          .trim();
+
+      final jsString = generatePreloadJSString(consent);
+
+      expect(jsString.replaceAll(' ', ''), expectedGeneratePreloadJSString);
+    });
+
+    test(
+        // ignore: lines_longer_than_80_chars
+        'generatePreloadJSString should throw an AssertionError when webConsents is null',
+        () {
+      // ignore: avoid_redundant_argument_values
+      final consent = SPConsent(webConsents: null);
+
+      expect(() => generatePreloadJSString(consent), throwsAssertionError);
+    });
+  });
 }

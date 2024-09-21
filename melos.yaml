@@ -53,15 +53,17 @@ scripts:
         - "*example*"
 
   merge-trace-files:
+    # Merge all packages coverage trace files ignoring data related to generated files.
+    # FIXME: include all webview extension packages once they ship tests
     description: Merge all packages coverage trace files ignoring data related to generated files.
     run: >
       coverde rm MELOS_ROOT_PATH/coverage/filtered.lcov.info &&
-      melos exec --file-exists=coverage/lcov.info -- "coverde filter --input ./coverage/lcov.info --output MELOS_ROOT_PATH/coverage/filtered.lcov.info --paths-parent MELOS_PACKAGE_PATH --filters '\.g\.dart'"
+      melos exec --ignore="webview" --file-exists=coverage/lcov.info -- "coverde filter --input ./coverage/lcov.info --output MELOS_ROOT_PATH/coverage/filtered.lcov.info --paths-parent MELOS_PACKAGE_PATH --filters '\.g\.dart'"
 
   check-coverage:
     description: Check the coverage of the packages.
     run: >
-      coverde check -i MELOS_ROOT_PATH/coverage/filtered.lcov.info 10
+      coverde check -i MELOS_ROOT_PATH/coverage/filtered.lcov.info 25
 
   generate:pigeon:
     run: |

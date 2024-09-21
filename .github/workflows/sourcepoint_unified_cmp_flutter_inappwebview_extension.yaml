@@ -43,7 +43,7 @@ jobs:
       flutter_channel: stable
       flutter_version: ${{needs.fvmrc.outputs.flutter}}
       working_directory: packages/sourcepoint_unified_cmp_flutter_inappwebview_extension
-      min_coverage: 40
+      min_coverage: 80
 
   pana:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
