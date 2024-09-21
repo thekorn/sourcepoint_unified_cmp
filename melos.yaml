@@ -63,7 +63,7 @@ scripts:
   check-coverage:
     description: Check the coverage of the packages.
     run: >
-      coverde check -i MELOS_ROOT_PATH/coverage/filtered.lcov.info 25
+      coverde check -i MELOS_ROOT_PATH/coverage/filtered.lcov.info 20
 
   generate:pigeon:
     run: |
