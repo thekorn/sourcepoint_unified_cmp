@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
 
 const _eventSPPreload = 'sp.loadConsent';
