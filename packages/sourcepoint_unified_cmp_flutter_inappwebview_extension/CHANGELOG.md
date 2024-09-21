@@ -1,3 +1,5 @@
+## 0.1.23
+
 ## 0.1.22
 
  - **DOCS**: fix docs for the inappwebview extension.

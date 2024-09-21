@@ -1,3 +1,10 @@
+## 0.1.23
+
+> Note: This release has breaking changes.
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.6.1.
+ - **BREAKING** **FEAT**: remove viewId from event delegate.
+
 ## 0.1.22
 
  - Bump "sourcepoint_unified_cmp_android" to `0.1.22`.

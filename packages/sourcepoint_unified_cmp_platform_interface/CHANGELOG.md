@@ -1,3 +1,9 @@
+## 0.1.23
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**: remove viewId from event delegate.
+
 ## 0.1.22
 
  - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.22`.

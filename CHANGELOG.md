@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-09-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.23`](#sourcepoint_unified_cmp---v0123)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.23`](#sourcepoint_unified_cmp_android---v0123)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.23`](#sourcepoint_unified_cmp_ios---v0123)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.23`](#sourcepoint_unified_cmp_platform_interface---v0123)
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.23`](#sourcepoint_unified_cmp_flutter_webview_extension---v0123)
+ - [`sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.1.23`](#sourcepoint_unified_cmp_flutter_inappwebview_extension---v0123)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.23`
+
+ - **BREAKING** **FEAT**: remove viewId from event delegate.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.23`
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.6.1.
+ - **BREAKING** **FEAT**: remove viewId from event delegate.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.23`
+
+ - **BREAKING** **FEAT**: remove viewId from event delegate.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.23`
+
+ - **BREAKING** **FEAT**: remove viewId from event delegate.
+
+#### `sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.23`
+
+#### `sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.1.23`
+
+
 ## 2024-09-06
 
 ### Changes
