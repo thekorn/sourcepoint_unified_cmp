@@ -34,6 +34,7 @@ void main() {
 
   group('WebView Utils', () {
     test(
+        // ignore: lines_longer_than_80_chars
         'generatePostMessageString should return the correct post message string',
         () {
       final consent = SPConsent(); // Provide necessary SPConsent object
