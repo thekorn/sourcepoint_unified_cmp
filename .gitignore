@@ -10,8 +10,8 @@ flutter_export_environment.sh
 coverage/
 
 Podfile.lock
-## to make github actions happy, temporary workarounnd
-#pubspec_overrides.yaml
+pubspec_overrides.yaml
+!**/example/pubspec_overrides.yaml
 Pods/
 .symlinks/
 **/Flutter/App.framework/
