@@ -11,6 +11,7 @@ coverage/
 
 Podfile.lock
 pubspec_overrides.yaml
+!**/example/pubspec_overrides.yaml
 Pods/
 .symlinks/
 **/Flutter/App.framework/
