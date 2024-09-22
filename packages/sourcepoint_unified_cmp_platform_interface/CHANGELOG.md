@@ -1,3 +1,7 @@
+## 0.1.24
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.24`.
+
 ## 0.1.23
 
 > Note: This release has breaking changes.
