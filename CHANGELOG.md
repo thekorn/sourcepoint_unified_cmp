@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-11-11
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.26`](#sourcepoint_unified_cmp---v0126)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.26`](#sourcepoint_unified_cmp_android---v0126)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.26`](#sourcepoint_unified_cmp_ios---v0126)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.26`](#sourcepoint_unified_cmp_platform_interface---v0126)
+ - [`sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.26`](#sourcepoint_unified_cmp_flutter_webview_extension---v0126)
+ - [`sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.1.26`](#sourcepoint_unified_cmp_flutter_inappwebview_extension---v0126)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.26`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.26`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.26`
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.7.2.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.11.0.
+ - **FIX**(deps): update kotlin monorepo to v2.0.21.
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.7.0.
+ - **FIX**(deps): update dependency com.sourcepoint.cmplibrary:cmplibrary to v7.10.2.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.26`
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.26`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.26`.
+
+#### `sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.26`
+
+ - Bump "sourcepoint_unified_cmp_flutter_webview_extension" to `0.1.26`.
+
+#### `sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.1.26`
+
+ - Bump "sourcepoint_unified_cmp_flutter_inappwebview_extension" to `0.1.26`.
+
+
 ## 2024-09-22
 
 ### Changes
