@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-MELOS_VERSION="6.1.0"
-FVM_VERSION="3.1.7"
-POD_VERSION="1.15.2"
+MELOS_VERSION="6.2.0"
+FVM_VERSION="3.2.1"
+POD_VERSION="1.16.2"
 
 function isInstalled() {
     command -v "$1" >/dev/null 2>&1
