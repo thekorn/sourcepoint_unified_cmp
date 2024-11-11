@@ -169,7 +169,8 @@ class SPConfig {
 @ConfigurePigeon(
   PigeonOptions(
     dartOut: 'lib/src/messages.g.dart',
-    swiftOut: 'ios/Classes/pigeons/SourcepointUnifiedCmp.g.swift',
+    swiftOut:
+        'ios/sourcepoint_unified_cmp_ios/Sources/sourcepoint_unified_cmp_ios/pigeons/SourcepointUnifiedCmp.g.swift',
     swiftOptions: SwiftOptions(errorClassName: 'HostApiFlutterError'),
   ),
 )
