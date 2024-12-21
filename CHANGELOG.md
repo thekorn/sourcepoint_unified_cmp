@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-12-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.27`](#sourcepoint_unified_cmp---v0127)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.27`](#sourcepoint_unified_cmp_android---v0127)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.27`](#sourcepoint_unified_cmp_ios---v0127)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.27`](#sourcepoint_unified_cmp_platform_interface---v0127)
+ - [`sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.27`](#sourcepoint_unified_cmp_flutter_webview_extension---v0127)
+ - [`sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.1.27`](#sourcepoint_unified_cmp_flutter_inappwebview_extension---v0127)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.27`
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.27`
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.7.3.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.27`
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.27`
+
+#### `sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.27`
+
+#### `sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.1.27`
+
+
 ## 2024-11-11
 
 ### Changes

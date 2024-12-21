@@ -1,3 +1,7 @@
+## 0.1.27
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.7.3.
+
 ## 0.1.26
 
  - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.7.2.
