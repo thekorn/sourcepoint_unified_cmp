@@ -20,5 +20,5 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^5.4.4
-  very_good_analysis: ^6.0.0
+  very_good_analysis: ^7.0.0
   webview_flutter_platform_interface: ^2.10.0
