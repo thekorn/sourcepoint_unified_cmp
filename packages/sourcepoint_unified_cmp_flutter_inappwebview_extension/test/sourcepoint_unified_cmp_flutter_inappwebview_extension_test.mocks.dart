@@ -1280,65 +1280,6 @@ class MockPlatformInAppWebViewController extends _i1.Mock
       ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> openDevTools() => (super.noSuchMethod(
-        Invocation.method(
-          #openDevTools,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
-
-  @override
-  _i4.Future<dynamic> callDevToolsProtocolMethod({
-    required String? methodName,
-    Map<String, dynamic>? parameters,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #callDevToolsProtocolMethod,
-          [],
-          {
-            #methodName: methodName,
-            #parameters: parameters,
-          },
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-        returnValueForMissingStub: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
-
-  @override
-  _i4.Future<void> addDevToolsProtocolEventListener({
-    required String? eventName,
-    required dynamic Function(dynamic)? callback,
-  }) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #addDevToolsProtocolEventListener,
-          [],
-          {
-            #eventName: eventName,
-            #callback: callback,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
-
-  @override
-  _i4.Future<void> removeDevToolsProtocolEventListener(
-          {required String? eventName}) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #removeDevToolsProtocolEventListener,
-          [],
-          {#eventName: eventName},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
-
-  @override
   _i4.Future<String?> getIFrameId() => (super.noSuchMethod(
         Invocation.method(
           #getIFrameId,
