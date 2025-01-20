@@ -33,6 +33,8 @@ extension on MessageLanguage {
         return messages.HostAPIMessageLanguage.italian;
       case MessageLanguage.spanish:
         return messages.HostAPIMessageLanguage.spanish;
+      case MessageLanguage.dutch:
+        return messages.HostAPIMessageLanguage.dutch;
     }
   }
 }

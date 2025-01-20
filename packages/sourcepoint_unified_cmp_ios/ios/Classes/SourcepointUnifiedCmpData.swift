@@ -94,6 +94,8 @@ extension HostAPIMessageLanguage {
       SPMessageLanguage.Italian
     case .spanish:
       SPMessageLanguage.Spanish
+    case .dutch:
+      SPMessageLanguage.Dutch
     }
   }
 }

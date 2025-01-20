@@ -14,6 +14,9 @@ enum MessageLanguage {
 
   /// Spanish
   spanish,
+
+  /// Dutch
+  dutch,
 }
 
 /// Sourcepoint campaign environment.
