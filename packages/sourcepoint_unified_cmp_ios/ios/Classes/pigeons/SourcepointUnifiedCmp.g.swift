@@ -114,6 +114,7 @@ enum HostAPIMessageLanguage: Int {
   case german = 2
   case italian = 3
   case spanish = 4
+  case dutch = 5
 }
 
 enum HostAPICampaignsEnv: Int {

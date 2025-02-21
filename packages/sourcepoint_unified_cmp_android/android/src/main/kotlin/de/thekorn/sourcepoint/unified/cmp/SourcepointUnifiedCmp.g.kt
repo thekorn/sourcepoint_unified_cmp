@@ -122,7 +122,8 @@ enum class HostAPIMessageLanguage(val raw: Int) {
   FRENCH(1),
   GERMAN(2),
   ITALIAN(3),
-  SPANISH(4);
+  SPANISH(4),
+  DUTCH(5);
 
   companion object {
     fun ofRaw(raw: Int): HostAPIMessageLanguage? {
