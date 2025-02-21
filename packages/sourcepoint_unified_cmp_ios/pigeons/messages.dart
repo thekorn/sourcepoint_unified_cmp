@@ -43,6 +43,7 @@ enum HostAPIMessageLanguage {
   german,
   italian,
   spanish,
+  dutch,
 }
 
 //FIXME: publicEnv is used because public is reserved in swift

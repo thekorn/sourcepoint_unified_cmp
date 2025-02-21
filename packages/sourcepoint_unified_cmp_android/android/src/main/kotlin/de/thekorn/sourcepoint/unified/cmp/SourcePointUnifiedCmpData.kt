@@ -106,6 +106,7 @@ fun HostAPIMessageLanguage.toMessageLanguage() = when (this) {
     HostAPIMessageLanguage.SPANISH -> MessageLanguage.SPANISH
     HostAPIMessageLanguage.FRENCH -> MessageLanguage.FRENCH
     HostAPIMessageLanguage.ITALIAN -> MessageLanguage.ITALIAN
+    HostAPIMessageLanguage.DUTCH -> MessageLanguage.DUTCH
 }
 
 fun HostAPICampaignsEnv.toCampaignsEnv() = when (this) {

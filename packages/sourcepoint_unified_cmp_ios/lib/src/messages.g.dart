@@ -69,6 +69,7 @@ enum HostAPIMessageLanguage {
   german,
   italian,
   spanish,
+  dutch,
 }
 
 enum HostAPICampaignsEnv {
