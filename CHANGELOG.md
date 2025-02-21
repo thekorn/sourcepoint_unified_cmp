@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-02-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.1.28`](#sourcepoint_unified_cmp---v0128)
+ - [`sourcepoint_unified_cmp_android` - `v0.1.28`](#sourcepoint_unified_cmp_android---v0128)
+ - [`sourcepoint_unified_cmp_ios` - `v0.1.28`](#sourcepoint_unified_cmp_ios---v0128)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.1.28`](#sourcepoint_unified_cmp_platform_interface---v0128)
+ - [`sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.28`](#sourcepoint_unified_cmp_flutter_webview_extension---v0128)
+ - [`sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.1.28`](#sourcepoint_unified_cmp_flutter_inappwebview_extension---v0128)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.1.28`
+
+ - Bump "sourcepoint_unified_cmp" to `0.1.28`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.1.28`
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.8.1.
+ - **FIX**(deps): update dependency org.jetbrains.kotlin:kotlin-stdlib-jdk7 to v2.1.10.
+
+#### `sourcepoint_unified_cmp_ios` - `v0.1.28`
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.1.28`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.1.28`.
+
+#### `sourcepoint_unified_cmp_flutter_webview_extension` - `v0.1.28`
+
+ - Bump "sourcepoint_unified_cmp_flutter_webview_extension" to `0.1.28`.
+
+#### `sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.1.28`
+
+ - Bump "sourcepoint_unified_cmp_flutter_inappwebview_extension" to `0.1.28`.
+
+
 ## 2024-12-21
 
 ### Changes

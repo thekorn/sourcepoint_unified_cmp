@@ -1,3 +1,7 @@
+## 0.1.28
+
+ - Bump "sourcepoint_unified_cmp_flutter_webview_extension" to `0.1.28`.
+
 ## 0.1.27
 
 ## 0.1.26

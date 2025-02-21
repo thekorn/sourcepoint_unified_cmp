@@ -1,3 +1,8 @@
+## 0.1.28
+
+ - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.8.1.
+ - **FIX**(deps): update dependency org.jetbrains.kotlin:kotlin-stdlib-jdk7 to v2.1.10.
+
 ## 0.1.27
 
  - **FIX**(deps): update dependency com.android.tools.build:gradle to v8.7.3.
