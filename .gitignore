@@ -51,3 +51,6 @@ build/
 
 # FVM Version Cache
 .fvm/
+
+# android
+**/android/app/.cxx/

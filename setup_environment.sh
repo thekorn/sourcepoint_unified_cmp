@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-MELOS_VERSION="6.2.0"
+MELOS_VERSION="6.3.2"
 FVM_VERSION="3.2.1"
 POD_VERSION="1.16.2"
 
