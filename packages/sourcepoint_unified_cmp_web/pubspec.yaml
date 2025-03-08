@@ -1,0 +1,29 @@
+name: sourcepoint_unified_cmp_web
+description: flutter plugin for the sourcepoint unified CMP,
+  with integrations for Android, iOS and web - web implementation
+version: 0.1.29
+homepage: https://github.com/thekorn/sourcepoint_unified_cmp
+repository: https://github.com/thekorn/sourcepoint_unified_cmp/tree/main/packages/sourcepoint_unified_cmp_web
+
+environment:
+  sdk: ^3.5.0
+
+flutter:
+  plugin:
+    implements: sourcepoint_unified_cmp
+    platforms:
+      web:
+        pluginClass: SourcepointUnifiedCmpWeb
+        fileName: sourcepoint_unified_cmp_web.dart
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  sourcepoint_unified_cmp_platform_interface: ^0.1.29
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^7.0.0
