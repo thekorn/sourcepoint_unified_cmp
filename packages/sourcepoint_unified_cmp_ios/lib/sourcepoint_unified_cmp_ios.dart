@@ -302,7 +302,7 @@ class SourcepointUnifiedCmpIOS extends SourcepointUnifiedCmpPlatform {
   }
 }
 
-/// This class represents the event handler for Sourcepoint in the Android
+/// This class represents the event handler for Sourcepoint in the iOS
 /// platform.
 class SourcepointEventHandler
     implements messages.SourcepointUnifiedCmpFlutterApi {
@@ -318,7 +318,7 @@ class SourcepointEventHandler
         _delegate = delegate;
 
   /// The delegate for handling Sourcepoint events in the Sourcepoint
-  /// Unified CMP Android library.
+  /// Unified CMP iOS library.
   final SourcepointEventDelegatePlatform? _delegate;
   final ConsentChangeNotifier? _consentChangeNotifier;
 

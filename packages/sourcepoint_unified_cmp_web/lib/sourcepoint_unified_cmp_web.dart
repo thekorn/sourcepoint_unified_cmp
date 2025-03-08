@@ -3,6 +3,9 @@ import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_c
 
 /// The Web implementation of [SourcepointUnifiedCmpPlatform].
 class SourcepointUnifiedCmpWeb extends SourcepointUnifiedCmpPlatform {
+  ConsentChangeNotifier? _notifier;
+  SourcepointEventDelegatePlatform? _delegate;
+
   /// Registers this class as the default instance
   /// of [SourcepointUnifiedCmpPlatform]
   static void registerWith([Object? registrar]) {
@@ -11,9 +14,17 @@ class SourcepointUnifiedCmpWeb extends SourcepointUnifiedCmpPlatform {
 
   @override
   void registerEventDelegate(SourcepointEventDelegatePlatform delegate) {
-    throw UnimplementedError(
-      'registerEventDelegate is not implemented for web',
+    assert(
+      _delegate == null,
+      'EventDelegate already set, you can only have one delegate at a time.',
     );
+    //messages.SourcepointUnifiedCmpFlutterApi.setUp(
+    //  SourcepointEventHandler(
+    //    delegate: delegate,
+    //    consentChangeNotifier: _notifier,
+    //  ),
+    //);
+    _delegate = delegate;
   }
 
   @override
@@ -34,8 +45,13 @@ class SourcepointUnifiedCmpWeb extends SourcepointUnifiedCmpPlatform {
 
   @override
   void registerConsentChangeNotifier(ConsentChangeNotifier notifier) {
-    throw UnimplementedError(
-      'registerConsentChangeNotifier is not implemented for web',
-    );
+    assert(_notifier == null, 'ConsentChangeNotifier already set');
+    //messages.SourcepointUnifiedCmpFlutterApi.setUp(
+    //  SourcepointEventHandler(
+    //    delegate: _delegate,
+    //    consentChangeNotifier: notifier,
+    //  ),
+    //);
+    _notifier = notifier;
   }
 }
