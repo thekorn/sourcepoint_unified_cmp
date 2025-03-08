@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
+import 'package:sourcepoint_unified_cmp_web/js_loader.dart';
 
 /// The Web implementation of [SourcepointUnifiedCmpPlatform].
 class SourcepointUnifiedCmpWeb extends SourcepointUnifiedCmpPlatform {
@@ -29,6 +30,7 @@ class SourcepointUnifiedCmpWeb extends SourcepointUnifiedCmpPlatform {
 
   @override
   Future<SPConsent> loadMessage(SPConfig config) async {
+    await loadWebSdk();
     throw UnimplementedError('loadMessage is not implemented for web');
   }
 
