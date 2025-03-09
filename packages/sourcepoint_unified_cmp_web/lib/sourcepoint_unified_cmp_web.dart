@@ -4,6 +4,7 @@ import 'package:sourcepoint_unified_cmp_web/js_loader.dart';
 
 /// The Web implementation of [SourcepointUnifiedCmpPlatform].
 class SourcepointUnifiedCmpWeb extends SourcepointUnifiedCmpPlatform {
+  late SPWebApi _webApi;
   ConsentChangeNotifier? _notifier;
   SourcepointEventDelegatePlatform? _delegate;
 
@@ -19,18 +20,19 @@ class SourcepointUnifiedCmpWeb extends SourcepointUnifiedCmpPlatform {
       _delegate == null,
       'EventDelegate already set, you can only have one delegate at a time.',
     );
-    //messages.SourcepointUnifiedCmpFlutterApi.setUp(
-    //  SourcepointEventHandler(
-    //    delegate: delegate,
-    //    consentChangeNotifier: _notifier,
-    //  ),
-    //);
+    SPWebApi.setUp(
+      SourcepointEventHandler(
+        delegate: delegate,
+        consentChangeNotifier: _notifier,
+      ),
+    );
     _delegate = delegate;
   }
 
   @override
   Future<SPConsent> loadMessage(SPConfig config) async {
-    final consent = await loadWebSdk(config);
+    _webApi = SPWebApi(config);
+    final consent = await _webApi.loadMessage();
     return consent;
   }
 
@@ -42,18 +44,18 @@ class SourcepointUnifiedCmpWeb extends SourcepointUnifiedCmpPlatform {
     MessageType messageType,
   ) async {
     debugPrint('loadPrivacyManager');
-    throw UnimplementedError('loadPrivacyManager is not implemented for web');
+    await _webApi.loadPrivacyManager(pmId, pmTab, campaignType, messageType);
   }
 
   @override
   void registerConsentChangeNotifier(ConsentChangeNotifier notifier) {
     assert(_notifier == null, 'ConsentChangeNotifier already set');
-    //messages.SourcepointUnifiedCmpFlutterApi.setUp(
-    //  SourcepointEventHandler(
-    //    delegate: _delegate,
-    //    consentChangeNotifier: notifier,
-    //  ),
-    //);
+    SPWebApi.setUp(
+      SourcepointEventHandler(
+        delegate: _delegate,
+        consentChangeNotifier: notifier,
+      ),
+    );
     _notifier = notifier;
   }
 }

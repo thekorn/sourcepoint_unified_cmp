@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:js_interop';
 
 import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
@@ -9,7 +8,7 @@ import 'package:web/web.dart' as web;
 external set exportedConfig(JSObject value);
 
 @JS('_sp_.loadPrivacyManagerModal')
-external void _loadPrivacyManagerModal(int id);
+external void _loadPrivacyManagerModal(String pmId, String? pmTab);
 
 @JS('__tcfapi')
 external void _tcfapi(String command, int id, JSFunction callback);
@@ -17,11 +16,14 @@ external void _tcfapi(String command, int id, JSFunction callback);
 @JS('JSON.stringify')
 external String _jsonStringify(JSObject value);
 
+@JS('_sp_.config.events.onSPPMObjectReady')
+external set exportedonSPPMObjectReady(JSFunction value);
+
 @JSExport()
 class SPWebEvents {
-  Completer<SPConsent> resultCompleter;
+  SPConfig _config;
 
-  SPWebEvents(Completer<SPConsent> this.resultCompleter);
+  SPWebEvents(SPConfig cfg) : _config = cfg;
 
   void onMessageReady() {
     print('onMessageReady YEAH ');
@@ -60,8 +62,6 @@ class SPWebEvents {
     //final gdpr = GDPRConsent();
 
     _tcfapi('addEventListener', 2, _printStringEventListener.toJS);
-
-    resultCompleter.complete(SPConsent(webConsents: euconsent));
   }
 
   void onPMCancel() {
@@ -75,7 +75,8 @@ class SPWebEvents {
 
   void onSPPMObjectReady() {
     print('onSPPMObjectReady YEAH 1111');
-    _loadPrivacyManagerModal(122058);
+    final pmTab = PMTab.defaults;
+    _loadPrivacyManagerModal(_config.pmId, pmTab.getTabIdentifier());
     //_tcfapi('getCustomVendorConsents', 2, _printString.toJS);
   }
 
@@ -102,11 +103,11 @@ class SPInnerWebConfig {
   String propertyName; //= 'tcfv2.mobile.webview';
   JSObject events; // = createJSInteropWrapper(SPWebEvents());
 
-  SPInnerWebConfig(SPConfig cfg, Completer<SPConsent> resultCompleter)
+  SPInnerWebConfig(SPConfig cfg)
       : accountId = cfg.accountId,
         propertyId = cfg.propertyId,
         propertyName = cfg.propertyName,
-        events = createJSInteropWrapper(SPWebEvents(resultCompleter));
+        events = createJSInteropWrapper(SPWebEvents(cfg));
 }
 
 // Export the class so it is accessible in JavaScript
@@ -114,8 +115,7 @@ class SPInnerWebConfig {
 class SPWebConfig {
   SPInnerWebConfig config;
 
-  SPWebConfig(SPConfig cfg, Completer<SPConsent> resultCompleter)
-      : config = SPInnerWebConfig(cfg, resultCompleter);
+  SPWebConfig(SPConfig cfg) : config = SPInnerWebConfig(cfg);
 }
 
 // The URL from which the script should be downloaded.
@@ -183,23 +183,126 @@ String _loadScript = '''
     };
 ''';
 
-Future<SPConsent> loadWebSdk(SPConfig config) async {
-  final result_completer = Completer<SPConsent>();
+extension WebPMTab on PMTab {
+  String? getTabIdentifier() {
+    switch (this) {
+      case PMTab.defaults:
+        return null;
+      case PMTab.purposes:
+        return 'purposes';
+      case PMTab.vendors:
+        return 'vendors';
+      case PMTab.features:
+        return 'features';
+    }
+  }
+}
 
-  final spWebConfig = SPWebConfig(config, result_completer);
+void handler() {
+  print("onSPPMObjectReady");
+}
 
-  final export = createJSInteropWrapper(spWebConfig);
-  exportedConfig = export;
+class SPWebApi {
+  SPWebApi._(SPConfig config) : _config = config;
 
-  final stubScript = web.HTMLScriptElement()..text = _sourcepointStub;
-  web.document.head?.appendChild(stubScript);
+  static SPWebApi? _instance;
+  static late SourcepointEventHandler _handler;
 
-  final script = web.HTMLScriptElement()
-    ..async = true
-    ..defer = true
-    ..src = _url;
+  SPConfig _config;
 
-  web.document.head?.appendChild(script);
+  factory SPWebApi(SPConfig config) {
+    _instance ??= SPWebApi._(config);
+    return _instance!;
+  }
 
-  return result_completer.future;
+  Future<SPConsent> loadMessage() async {
+    final result_completer = Completer<SPConsent>();
+
+    final spWebConfig = SPWebConfig(_config);
+
+    final export = createJSInteropWrapper(spWebConfig);
+    exportedConfig = export;
+
+    exportedonSPPMObjectReady = handler.toJS;
+
+    final stubScript = web.HTMLScriptElement()..text = _sourcepointStub;
+    web.document.head?.appendChild(stubScript);
+
+    final script = web.HTMLScriptElement()
+      ..async = true
+      ..defer = true
+      ..src = _url;
+
+    web.document.head?.appendChild(script);
+
+    return result_completer.future;
+  }
+
+  Future<void> loadPrivacyManager(
+    String pmId,
+    PMTab pmTab,
+    CampaignType campaignType,
+    MessageType messageType,
+  ) async {
+    print('loadPrivacyManager');
+
+    _loadPrivacyManagerModal(pmId, pmTab.getTabIdentifier());
+  }
+
+  static setUp(SourcepointEventHandler handler) {
+    _handler = handler;
+  }
+}
+
+typedef WebAPIConsentAction = JSObject;
+typedef WebAPISPConsent = JSObject;
+typedef WebAPISPError = JSObject;
+
+class SourcepointEventHandler {
+  /// A class representing a Sourcepoint event handler.
+  ///
+  /// This class is responsible for handling events related to Sourcepoint.
+  /// It requires a [delegate] parameter, which is an object that implements the
+  /// necessary methods to handle the events.
+  SourcepointEventHandler({
+    SourcepointEventDelegatePlatform? delegate,
+    ConsentChangeNotifier? consentChangeNotifier,
+  })  : _consentChangeNotifier = consentChangeNotifier,
+        _delegate = delegate;
+
+  /// The delegate for handling Sourcepoint events in the Sourcepoint
+  /// Unified CMP Android library.
+  final SourcepointEventDelegatePlatform? _delegate;
+  final ConsentChangeNotifier? _consentChangeNotifier;
+
+  void onAction(WebAPIConsentAction consentAction) {
+    //_delegate?.onAction?.call(consentAction.toConsentAction());
+  }
+
+  void onConsentReady(WebAPISPConsent consent) {
+    //_delegate?.onConsentReady?.call(consent.toSPConsent());
+    //// Also notify the consent change notifier about the new consent
+    //_consentChangeNotifier?.updateConsent(consent.toSPConsent());
+  }
+
+  void onError(WebAPISPError error) {
+    print('onError: $error');
+    //_delegate?.onError?.call(error.toSPError());
+  }
+
+  void onNoIntentActivitiesFound(String url) {
+    _delegate?.onNoIntentActivitiesFound?.call(url);
+  }
+
+  void onSpFinished(WebAPISPConsent consent) {
+    //_delegate?.onSpFinished?.call(consent.toSPConsent());
+  }
+
+  void onUIFinished() {
+    _delegate?.onUIFinished?.call();
+  }
+
+  void onUIReady() {
+    _delegate?.onUIReady?.call();
+  }
 }
