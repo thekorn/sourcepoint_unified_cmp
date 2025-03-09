@@ -48,7 +48,7 @@ class SPWebEvents {
   }
 
   void onConsentReady(
-    String consentUUID,
+    String? consentUUID, // consentUUID can be null
     String euconsent,
     JSObject info,
   ) {
