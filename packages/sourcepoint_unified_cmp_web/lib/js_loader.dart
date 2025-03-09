@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:js_interop';
 
+import 'package:sourcepoint_unified_cmp_platform_interface/sourcepoint_unified_cmp_platform_interface.dart';
 import 'package:web/web.dart' as web;
 
 @JS('_sp_')
@@ -9,9 +11,17 @@ external set exportedConfig(JSObject value);
 @JS('_sp_.loadPrivacyManagerModal')
 external void _loadPrivacyManagerModal(int id);
 
+@JS('__tcfapi')
+external void _tcfapi(String command, int id, JSFunction callback);
+
+@JS('JSON.stringify')
+external String _jsonStringify(JSObject value);
+
 @JSExport()
 class SPWebEvents {
-  SPWebEvents();
+  Completer<SPConsent> resultCompleter;
+
+  SPWebEvents(Completer<SPConsent> this.resultCompleter);
 
   void onMessageReady() {
     print('onMessageReady YEAH ');
@@ -37,10 +47,21 @@ class SPWebEvents {
     print('onMessageChoiceError: $err');
   }
 
-  void onConsentReady(String consentUUID, String euconsent) {
+  void onConsentReady(
+    String consentUUID,
+    String euconsent,
+    JSObject info,
+  ) {
     print('onConsentReady');
     print('consentUUID: $consentUUID');
     print('euconsent: $euconsent');
+    print('info : ${info.dartify()}');
+
+    //final gdpr = GDPRConsent();
+
+    _tcfapi('addEventListener', 2, _printStringEventListener.toJS);
+
+    resultCompleter.complete(SPConsent(webConsents: euconsent));
   }
 
   void onPMCancel() {
@@ -48,13 +69,26 @@ class SPWebEvents {
   }
 
   void onMessageReceiveData(JSObject data) {
-    print('onMessageReceiveData: $data');
+    print('onMessageReceiveData: ${data.dartify()}');
     //print(JSON.stringify(data));
   }
 
   void onSPPMObjectReady() {
     print('onSPPMObjectReady YEAH 1111');
     _loadPrivacyManagerModal(122058);
+    //_tcfapi('getCustomVendorConsents', 2, _printString.toJS);
+  }
+
+  void _printString(JSObject data, JSBoolean success) {
+    print("we got vendor consent");
+    print(data.dartify());
+    print(success.toDart);
+  }
+
+  void _printStringEventListener(JSObject data, JSBoolean success) {
+    print("EVENT LISTENER RESULT");
+    print(_jsonStringify(data));
+    print(success.toDart);
   }
 }
 
@@ -63,11 +97,16 @@ class SPInnerWebConfig {
   int accountId;
   String baseEndpoint = 'https://cdn.privacy-mgmt.com';
   Object gdpr = {};
-  int propertyId = 7639;
-  String propertyName = 'tcfv2.mobile.webview';
-  JSObject events = createJSInteropWrapper(SPWebEvents());
+  int propertyId; // = 7639;
+  bool isSPA = false;
+  String propertyName; //= 'tcfv2.mobile.webview';
+  JSObject events; // = createJSInteropWrapper(SPWebEvents());
 
-  SPInnerWebConfig(this.accountId);
+  SPInnerWebConfig(SPConfig cfg, Completer<SPConsent> resultCompleter)
+      : accountId = cfg.accountId,
+        propertyId = cfg.propertyId,
+        propertyName = cfg.propertyName,
+        events = createJSInteropWrapper(SPWebEvents(resultCompleter));
 }
 
 // Export the class so it is accessible in JavaScript
@@ -75,7 +114,8 @@ class SPInnerWebConfig {
 class SPWebConfig {
   SPInnerWebConfig config;
 
-  SPWebConfig(this.config);
+  SPWebConfig(SPConfig cfg, Completer<SPConsent> resultCompleter)
+      : config = SPInnerWebConfig(cfg, resultCompleter);
 }
 
 // The URL from which the script should be downloaded.
@@ -143,15 +183,13 @@ String _loadScript = '''
     };
 ''';
 
-Future<void> loadWebSdk() async {
-  final completer = Completer<void>();
+Future<SPConsent> loadWebSdk(SPConfig config) async {
+  final result_completer = Completer<SPConsent>();
 
-  final config = SPWebConfig(SPInnerWebConfig(11111));
+  final spWebConfig = SPWebConfig(config, result_completer);
 
-  final export = createJSInteropWrapper(config);
+  final export = createJSInteropWrapper(spWebConfig);
   exportedConfig = export;
-  //final loadScript = web.HTMLScriptElement()..text = _loadScript;
-  //web.document.body?.appendChild(loadScript);
 
   final stubScript = web.HTMLScriptElement()..text = _sourcepointStub;
   web.document.head?.appendChild(stubScript);
@@ -159,12 +197,9 @@ Future<void> loadWebSdk() async {
   final script = web.HTMLScriptElement()
     ..async = true
     ..defer = true
-    ..src = _url
-    ..onLoad.listen((web.Event event) {
-      completer.complete();
-    });
+    ..src = _url;
 
   web.document.head?.appendChild(script);
 
-  return completer.future;
+  return result_completer.future;
 }

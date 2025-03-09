@@ -30,8 +30,8 @@ class SourcepointUnifiedCmpWeb extends SourcepointUnifiedCmpPlatform {
 
   @override
   Future<SPConsent> loadMessage(SPConfig config) async {
-    await loadWebSdk();
-    throw UnimplementedError('loadMessage is not implemented for web');
+    final consent = await loadWebSdk(config);
+    return consent;
   }
 
   @override
