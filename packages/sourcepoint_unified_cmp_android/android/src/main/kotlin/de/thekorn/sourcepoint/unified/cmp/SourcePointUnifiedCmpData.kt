@@ -15,8 +15,8 @@ import HostAPIPMTab
 import HostAPISPConsent
 import com.sourcepoint.cmplibrary.data.network.model.optimized.ConsentStatus
 import com.sourcepoint.cmplibrary.data.network.model.optimized.GranularState
-import com.sourcepoint.cmplibrary.data.network.util.CampaignsEnv
-import com.sourcepoint.cmplibrary.exception.CampaignType
+import com.sourcepoint.cmplibrary.data.network.util.CampaignType
+import com.sourcepoint.cmplibrary.model.CampaignsEnv
 import com.sourcepoint.cmplibrary.model.ConsentAction
 import com.sourcepoint.cmplibrary.model.MessageLanguage
 import com.sourcepoint.cmplibrary.model.PMTab
@@ -85,13 +85,12 @@ fun CampaignType.toHostAPICampaignType() = when (this) {
     CampaignType.CCPA -> HostAPICampaignType.CCPA
     CampaignType.GDPR -> HostAPICampaignType.GDPR
     CampaignType.USNAT -> HostAPICampaignType.USNAT
+    CampaignType.UNKNOWN -> TODO()
 }
 
 fun ActionType.toHostAPIActionType() = when (this) {
     ActionType.ACCEPT_ALL -> HostAPIActionType.ACCEPT_ALL
     ActionType.CUSTOM -> HostAPIActionType.CUSTOM
-    ActionType.GET_MSG_ERROR -> HostAPIActionType.GET_MSG_ERROR
-    ActionType.GET_MSG_NOT_CALLED -> HostAPIActionType.GET_MESSAGE_NOT_CALLED
     ActionType.MSG_CANCEL -> HostAPIActionType.MSG_CANCEL
     ActionType.PM_DISMISS -> HostAPIActionType.PM_DISMISS
     ActionType.REJECT_ALL -> HostAPIActionType.REJECT_ALL
