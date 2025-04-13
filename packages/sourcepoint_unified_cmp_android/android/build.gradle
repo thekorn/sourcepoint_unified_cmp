@@ -2,7 +2,7 @@ group 'de.thekorn.sourcepoint.unified.cmp'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '2.1.10'
+    ext.kotlin_version = '2.1.20'
     repositories {
         google()
         mavenCentral()
