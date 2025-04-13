@@ -33,6 +33,7 @@
     "ktlint",
     "Markus",
     "sourcepoint",
+    "stdlib",
     "swiftformat",
     "swiftversion",
     "tcfv",
