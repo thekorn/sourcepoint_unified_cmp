@@ -5,7 +5,6 @@ version: 0.1.29
 homepage: https://github.com/thekorn/sourcepoint_unified_cmp
 repository: https://github.com/thekorn/sourcepoint_unified_cmp/tree/main/packages/sourcepoint_unified_cmp_android
 
-
 environment:
   sdk: ">=3.0.0 <4.0.0"
   flutter: ">=3.0.0"
@@ -29,6 +28,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^5.4.4
-  pigeon: ">=24.0.0 <26.0.0"
+  pigeon: ^25.3.0
   plugin_platform_interface: ^2.0.0
   very_good_analysis: ^7.0.0
