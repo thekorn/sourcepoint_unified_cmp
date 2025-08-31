@@ -15,8 +15,9 @@ class MethodChannelSourcepointUnifiedCmp extends SourcepointUnifiedCmpPlatform {
 
   @override
   Future<SPConsent> loadMessage(SPConfig config) async {
-    return (await methodChannel
-        .invokeMethod<SPConsent>('loadMessage', [config]))!;
+    return (await methodChannel.invokeMethod<SPConsent>('loadMessage', [
+      config,
+    ]))!;
   }
 
   @override

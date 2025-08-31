@@ -2,9 +2,10 @@ name: sourcepoint_unified_cmp_flutter_webview_extension_example
 description: Demonstrates how to use the sourcepoint_unified_cmp_flutter_webview_extension extension.
 version: 0.1.0+1
 publish_to: none
+resolution: workspace
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: "^3.9.0"
 
 dependencies:
   flutter:
@@ -26,7 +27,7 @@ dependencies:
   webview_flutter: ^4.7.0
 
 dev_dependencies:
-  very_good_analysis: ^7.0.0
+  very_good_analysis: ^9.0.0
 
 flutter:
   uses-material-design: true

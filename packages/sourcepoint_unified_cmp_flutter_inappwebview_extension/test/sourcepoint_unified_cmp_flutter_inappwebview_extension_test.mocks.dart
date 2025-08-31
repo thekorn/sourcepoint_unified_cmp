@@ -47,21 +47,13 @@ class _FakePlatformInAppWebViewControllerCreationParams_0 extends _i1.SmartFake
   _FakePlatformInAppWebViewControllerCreationParams_0(
     Object parent,
     Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  ) : super(parent, parentInvocation);
 }
 
 class _FakePlatformWebStorage_1 extends _i1.SmartFake
     implements _i3.PlatformWebStorage {
-  _FakePlatformWebStorage_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakePlatformWebStorage_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [PlatformInAppWebViewController].
@@ -72,109 +64,106 @@ class MockPlatformInAppWebViewController extends _i1.Mock
   @override
   _i2.PlatformInAppWebViewControllerCreationParams get params =>
       (super.noSuchMethod(
-        Invocation.getter(#params),
-        returnValue: _FakePlatformInAppWebViewControllerCreationParams_0(
-          this,
-          Invocation.getter(#params),
-        ),
-        returnValueForMissingStub:
-            _FakePlatformInAppWebViewControllerCreationParams_0(
-          this,
-          Invocation.getter(#params),
-        ),
-      ) as _i2.PlatformInAppWebViewControllerCreationParams);
+            Invocation.getter(#params),
+            returnValue: _FakePlatformInAppWebViewControllerCreationParams_0(
+              this,
+              Invocation.getter(#params),
+            ),
+            returnValueForMissingStub:
+                _FakePlatformInAppWebViewControllerCreationParams_0(
+                  this,
+                  Invocation.getter(#params),
+                ),
+          )
+          as _i2.PlatformInAppWebViewControllerCreationParams);
 
   @override
-  _i3.PlatformWebStorage get webStorage => (super.noSuchMethod(
-        Invocation.getter(#webStorage),
-        returnValue: _FakePlatformWebStorage_1(
-          this,
-          Invocation.getter(#webStorage),
-        ),
-        returnValueForMissingStub: _FakePlatformWebStorage_1(
-          this,
-          Invocation.getter(#webStorage),
-        ),
-      ) as _i3.PlatformWebStorage);
+  _i3.PlatformWebStorage get webStorage =>
+      (super.noSuchMethod(
+            Invocation.getter(#webStorage),
+            returnValue: _FakePlatformWebStorage_1(
+              this,
+              Invocation.getter(#webStorage),
+            ),
+            returnValueForMissingStub: _FakePlatformWebStorage_1(
+              this,
+              Invocation.getter(#webStorage),
+            ),
+          )
+          as _i3.PlatformWebStorage);
 
   @override
-  _i4.Future<String> get tRexRunnerHtml => (super.noSuchMethod(
-        Invocation.getter(#tRexRunnerHtml),
-        returnValue: _i4.Future<String>.value(_i5.dummyValue<String>(
-          this,
-          Invocation.getter(#tRexRunnerHtml),
-        )),
-        returnValueForMissingStub:
-            _i4.Future<String>.value(_i5.dummyValue<String>(
-          this,
-          Invocation.getter(#tRexRunnerHtml),
-        )),
-      ) as _i4.Future<String>);
+  _i4.Future<String> get tRexRunnerHtml =>
+      (super.noSuchMethod(
+            Invocation.getter(#tRexRunnerHtml),
+            returnValue: _i4.Future<String>.value(
+              _i5.dummyValue<String>(this, Invocation.getter(#tRexRunnerHtml)),
+            ),
+            returnValueForMissingStub: _i4.Future<String>.value(
+              _i5.dummyValue<String>(this, Invocation.getter(#tRexRunnerHtml)),
+            ),
+          )
+          as _i4.Future<String>);
 
   @override
-  _i4.Future<String> get tRexRunnerCss => (super.noSuchMethod(
-        Invocation.getter(#tRexRunnerCss),
-        returnValue: _i4.Future<String>.value(_i5.dummyValue<String>(
-          this,
-          Invocation.getter(#tRexRunnerCss),
-        )),
-        returnValueForMissingStub:
-            _i4.Future<String>.value(_i5.dummyValue<String>(
-          this,
-          Invocation.getter(#tRexRunnerCss),
-        )),
-      ) as _i4.Future<String>);
+  _i4.Future<String> get tRexRunnerCss =>
+      (super.noSuchMethod(
+            Invocation.getter(#tRexRunnerCss),
+            returnValue: _i4.Future<String>.value(
+              _i5.dummyValue<String>(this, Invocation.getter(#tRexRunnerCss)),
+            ),
+            returnValueForMissingStub: _i4.Future<String>.value(
+              _i5.dummyValue<String>(this, Invocation.getter(#tRexRunnerCss)),
+            ),
+          )
+          as _i4.Future<String>);
 
   @override
-  _i4.Future<_i6.WebUri?> getUrl() => (super.noSuchMethod(
-        Invocation.method(
-          #getUrl,
-          [],
-        ),
-        returnValue: _i4.Future<_i6.WebUri?>.value(),
-        returnValueForMissingStub: _i4.Future<_i6.WebUri?>.value(),
-      ) as _i4.Future<_i6.WebUri?>);
+  _i4.Future<_i6.WebUri?> getUrl() =>
+      (super.noSuchMethod(
+            Invocation.method(#getUrl, []),
+            returnValue: _i4.Future<_i6.WebUri?>.value(),
+            returnValueForMissingStub: _i4.Future<_i6.WebUri?>.value(),
+          )
+          as _i4.Future<_i6.WebUri?>);
 
   @override
-  _i4.Future<String?> getTitle() => (super.noSuchMethod(
-        Invocation.method(
-          #getTitle,
-          [],
-        ),
-        returnValue: _i4.Future<String?>.value(),
-        returnValueForMissingStub: _i4.Future<String?>.value(),
-      ) as _i4.Future<String?>);
+  _i4.Future<String?> getTitle() =>
+      (super.noSuchMethod(
+            Invocation.method(#getTitle, []),
+            returnValue: _i4.Future<String?>.value(),
+            returnValueForMissingStub: _i4.Future<String?>.value(),
+          )
+          as _i4.Future<String?>);
 
   @override
-  _i4.Future<int?> getProgress() => (super.noSuchMethod(
-        Invocation.method(
-          #getProgress,
-          [],
-        ),
-        returnValue: _i4.Future<int?>.value(),
-        returnValueForMissingStub: _i4.Future<int?>.value(),
-      ) as _i4.Future<int?>);
+  _i4.Future<int?> getProgress() =>
+      (super.noSuchMethod(
+            Invocation.method(#getProgress, []),
+            returnValue: _i4.Future<int?>.value(),
+            returnValueForMissingStub: _i4.Future<int?>.value(),
+          )
+          as _i4.Future<int?>);
 
   @override
-  _i4.Future<String?> getHtml() => (super.noSuchMethod(
-        Invocation.method(
-          #getHtml,
-          [],
-        ),
-        returnValue: _i4.Future<String?>.value(),
-        returnValueForMissingStub: _i4.Future<String?>.value(),
-      ) as _i4.Future<String?>);
+  _i4.Future<String?> getHtml() =>
+      (super.noSuchMethod(
+            Invocation.method(#getHtml, []),
+            returnValue: _i4.Future<String?>.value(),
+            returnValueForMissingStub: _i4.Future<String?>.value(),
+          )
+          as _i4.Future<String?>);
 
   @override
-  _i4.Future<List<_i7.Favicon>> getFavicons() => (super.noSuchMethod(
-        Invocation.method(
-          #getFavicons,
-          [],
-        ),
-        returnValue: _i4.Future<List<_i7.Favicon>>.value(<_i7.Favicon>[]),
-        returnValueForMissingStub:
-            _i4.Future<List<_i7.Favicon>>.value(<_i7.Favicon>[]),
-      ) as _i4.Future<List<_i7.Favicon>>);
+  _i4.Future<List<_i7.Favicon>> getFavicons() =>
+      (super.noSuchMethod(
+            Invocation.method(#getFavicons, []),
+            returnValue: _i4.Future<List<_i7.Favicon>>.value(<_i7.Favicon>[]),
+            returnValueForMissingStub: _i4.Future<List<_i7.Favicon>>.value(
+              <_i7.Favicon>[],
+            ),
+          )
+          as _i4.Future<List<_i7.Favicon>>);
 
   @override
   _i4.Future<void> loadUrl({
@@ -183,18 +172,15 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     _i6.WebUri? allowingReadAccessTo,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #loadUrl,
-          [],
-          {
-            #urlRequest: urlRequest,
-            #iosAllowingReadAccessTo: iosAllowingReadAccessTo,
-            #allowingReadAccessTo: allowingReadAccessTo,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#loadUrl, [], {
+              #urlRequest: urlRequest,
+              #iosAllowingReadAccessTo: iosAllowingReadAccessTo,
+              #allowingReadAccessTo: allowingReadAccessTo,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> postUrl({
@@ -202,17 +188,11 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     required _i8.Uint8List? postData,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #postUrl,
-          [],
-          {
-            #url: url,
-            #postData: postData,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#postUrl, [], {#url: url, #postData: postData}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> loadData({
@@ -226,141 +206,119 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     _i6.WebUri? allowingReadAccessTo,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #loadData,
-          [],
-          {
-            #data: data,
-            #mimeType: mimeType,
-            #encoding: encoding,
-            #baseUrl: baseUrl,
-            #androidHistoryUrl: androidHistoryUrl,
-            #historyUrl: historyUrl,
-            #iosAllowingReadAccessTo: iosAllowingReadAccessTo,
-            #allowingReadAccessTo: allowingReadAccessTo,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#loadData, [], {
+              #data: data,
+              #mimeType: mimeType,
+              #encoding: encoding,
+              #baseUrl: baseUrl,
+              #androidHistoryUrl: androidHistoryUrl,
+              #historyUrl: historyUrl,
+              #iosAllowingReadAccessTo: iosAllowingReadAccessTo,
+              #allowingReadAccessTo: allowingReadAccessTo,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> loadFile({required String? assetFilePath}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #loadFile,
-          [],
-          {#assetFilePath: assetFilePath},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#loadFile, [], {#assetFilePath: assetFilePath}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> reload() => (super.noSuchMethod(
-        Invocation.method(
-          #reload,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> reload() =>
+      (super.noSuchMethod(
+            Invocation.method(#reload, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> goBack() => (super.noSuchMethod(
-        Invocation.method(
-          #goBack,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> goBack() =>
+      (super.noSuchMethod(
+            Invocation.method(#goBack, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<bool> canGoBack() => (super.noSuchMethod(
-        Invocation.method(
-          #canGoBack,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> canGoBack() =>
+      (super.noSuchMethod(
+            Invocation.method(#canGoBack, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<void> goForward() => (super.noSuchMethod(
-        Invocation.method(
-          #goForward,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> goForward() =>
+      (super.noSuchMethod(
+            Invocation.method(#goForward, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<bool> canGoForward() => (super.noSuchMethod(
-        Invocation.method(
-          #canGoForward,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> canGoForward() =>
+      (super.noSuchMethod(
+            Invocation.method(#canGoForward, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
   _i4.Future<void> goBackOrForward({required int? steps}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #goBackOrForward,
-          [],
-          {#steps: steps},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#goBackOrForward, [], {#steps: steps}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<bool> canGoBackOrForward({required int? steps}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #canGoBackOrForward,
-          [],
-          {#steps: steps},
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+            Invocation.method(#canGoBackOrForward, [], {#steps: steps}),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
   _i4.Future<void> goTo({required _i7.WebHistoryItem? historyItem}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #goTo,
-          [],
-          {#historyItem: historyItem},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#goTo, [], {#historyItem: historyItem}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<bool> isLoading() => (super.noSuchMethod(
-        Invocation.method(
-          #isLoading,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> isLoading() =>
+      (super.noSuchMethod(
+            Invocation.method(#isLoading, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<void> stopLoading() => (super.noSuchMethod(
-        Invocation.method(
-          #stopLoading,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> stopLoading() =>
+      (super.noSuchMethod(
+            Invocation.method(#stopLoading, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<dynamic> evaluateJavascript({
@@ -368,17 +326,14 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     _i7.ContentWorld? contentWorld,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #evaluateJavascript,
-          [],
-          {
-            #source: source,
-            #contentWorld: contentWorld,
-          },
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-        returnValueForMissingStub: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+            Invocation.method(#evaluateJavascript, [], {
+              #source: source,
+              #contentWorld: contentWorld,
+            }),
+            returnValue: _i4.Future<dynamic>.value(),
+            returnValueForMissingStub: _i4.Future<dynamic>.value(),
+          )
+          as _i4.Future<dynamic>);
 
   @override
   _i4.Future<void> injectJavascriptFileFromUrl({
@@ -386,42 +341,36 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     _i7.ScriptHtmlTagAttributes? scriptHtmlTagAttributes,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #injectJavascriptFileFromUrl,
-          [],
-          {
-            #urlFile: urlFile,
-            #scriptHtmlTagAttributes: scriptHtmlTagAttributes,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#injectJavascriptFileFromUrl, [], {
+              #urlFile: urlFile,
+              #scriptHtmlTagAttributes: scriptHtmlTagAttributes,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<dynamic> injectJavascriptFileFromAsset(
-          {required String? assetFilePath}) =>
+  _i4.Future<dynamic> injectJavascriptFileFromAsset({
+    required String? assetFilePath,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #injectJavascriptFileFromAsset,
-          [],
-          {#assetFilePath: assetFilePath},
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-        returnValueForMissingStub: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+            Invocation.method(#injectJavascriptFileFromAsset, [], {
+              #assetFilePath: assetFilePath,
+            }),
+            returnValue: _i4.Future<dynamic>.value(),
+            returnValueForMissingStub: _i4.Future<dynamic>.value(),
+          )
+          as _i4.Future<dynamic>);
 
   @override
   _i4.Future<void> injectCSSCode({required String? source}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #injectCSSCode,
-          [],
-          {#source: source},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#injectCSSCode, [], {#source: source}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> injectCSSFileFromUrl({
@@ -429,126 +378,110 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     _i7.CSSLinkHtmlTagAttributes? cssLinkHtmlTagAttributes,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #injectCSSFileFromUrl,
-          [],
-          {
-            #urlFile: urlFile,
-            #cssLinkHtmlTagAttributes: cssLinkHtmlTagAttributes,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#injectCSSFileFromUrl, [], {
+              #urlFile: urlFile,
+              #cssLinkHtmlTagAttributes: cssLinkHtmlTagAttributes,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> injectCSSFileFromAsset({required String? assetFilePath}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #injectCSSFileFromAsset,
-          [],
-          {#assetFilePath: assetFilePath},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#injectCSSFileFromAsset, [], {
+              #assetFilePath: assetFilePath,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   void addJavaScriptHandler({
     required String? handlerName,
     required _i7.JavaScriptHandlerCallback? callback,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #addJavaScriptHandler,
-          [],
-          {
-            #handlerName: handlerName,
-            #callback: callback,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(#addJavaScriptHandler, [], {
+      #handlerName: handlerName,
+      #callback: callback,
+    }),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  _i7.JavaScriptHandlerCallback? removeJavaScriptHandler(
-          {required String? handlerName}) =>
+  _i7.JavaScriptHandlerCallback? removeJavaScriptHandler({
+    required String? handlerName,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #removeJavaScriptHandler,
-          [],
-          {#handlerName: handlerName},
-        ),
-        returnValueForMissingStub: null,
-      ) as _i7.JavaScriptHandlerCallback?);
+            Invocation.method(#removeJavaScriptHandler, [], {
+              #handlerName: handlerName,
+            }),
+            returnValueForMissingStub: null,
+          )
+          as _i7.JavaScriptHandlerCallback?);
 
   @override
   bool hasJavaScriptHandler({required String? handlerName}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #hasJavaScriptHandler,
-          [],
-          {#handlerName: handlerName},
-        ),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
+            Invocation.method(#hasJavaScriptHandler, [], {
+              #handlerName: handlerName,
+            }),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
 
   @override
-  _i4.Future<_i8.Uint8List?> takeScreenshot(
-          {_i7.ScreenshotConfiguration? screenshotConfiguration}) =>
+  _i4.Future<_i8.Uint8List?> takeScreenshot({
+    _i7.ScreenshotConfiguration? screenshotConfiguration,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #takeScreenshot,
-          [],
-          {#screenshotConfiguration: screenshotConfiguration},
-        ),
-        returnValue: _i4.Future<_i8.Uint8List?>.value(),
-        returnValueForMissingStub: _i4.Future<_i8.Uint8List?>.value(),
-      ) as _i4.Future<_i8.Uint8List?>);
+            Invocation.method(#takeScreenshot, [], {
+              #screenshotConfiguration: screenshotConfiguration,
+            }),
+            returnValue: _i4.Future<_i8.Uint8List?>.value(),
+            returnValueForMissingStub: _i4.Future<_i8.Uint8List?>.value(),
+          )
+          as _i4.Future<_i8.Uint8List?>);
 
   @override
   _i4.Future<void> setSettings({required _i9.InAppWebViewSettings? settings}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setSettings,
-          [],
-          {#settings: settings},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#setSettings, [], {#settings: settings}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<_i9.InAppWebViewSettings?> getSettings() => (super.noSuchMethod(
-        Invocation.method(
-          #getSettings,
-          [],
-        ),
-        returnValue: _i4.Future<_i9.InAppWebViewSettings?>.value(),
-        returnValueForMissingStub:
-            _i4.Future<_i9.InAppWebViewSettings?>.value(),
-      ) as _i4.Future<_i9.InAppWebViewSettings?>);
+  _i4.Future<_i9.InAppWebViewSettings?> getSettings() =>
+      (super.noSuchMethod(
+            Invocation.method(#getSettings, []),
+            returnValue: _i4.Future<_i9.InAppWebViewSettings?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i9.InAppWebViewSettings?>.value(),
+          )
+          as _i4.Future<_i9.InAppWebViewSettings?>);
 
   @override
-  _i4.Future<_i7.WebHistory?> getCopyBackForwardList() => (super.noSuchMethod(
-        Invocation.method(
-          #getCopyBackForwardList,
-          [],
-        ),
-        returnValue: _i4.Future<_i7.WebHistory?>.value(),
-        returnValueForMissingStub: _i4.Future<_i7.WebHistory?>.value(),
-      ) as _i4.Future<_i7.WebHistory?>);
+  _i4.Future<_i7.WebHistory?> getCopyBackForwardList() =>
+      (super.noSuchMethod(
+            Invocation.method(#getCopyBackForwardList, []),
+            returnValue: _i4.Future<_i7.WebHistory?>.value(),
+            returnValueForMissingStub: _i4.Future<_i7.WebHistory?>.value(),
+          )
+          as _i4.Future<_i7.WebHistory?>);
 
   @override
-  _i4.Future<void> clearCache() => (super.noSuchMethod(
-        Invocation.method(
-          #clearCache,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> clearCache() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearCache, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> scrollTo({
@@ -557,18 +490,15 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     bool? animated = false,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #scrollTo,
-          [],
-          {
-            #x: x,
-            #y: y,
-            #animated: animated,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#scrollTo, [], {
+              #x: x,
+              #y: y,
+              #animated: animated,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> scrollBy({
@@ -577,72 +507,63 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     bool? animated = false,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #scrollBy,
-          [],
-          {
-            #x: x,
-            #y: y,
-            #animated: animated,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#scrollBy, [], {
+              #x: x,
+              #y: y,
+              #animated: animated,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> pauseTimers() => (super.noSuchMethod(
-        Invocation.method(
-          #pauseTimers,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
-
-  @override
-  _i4.Future<void> resumeTimers() => (super.noSuchMethod(
-        Invocation.method(
-          #resumeTimers,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
-
-  @override
-  _i4.Future<_i10.PlatformPrintJobController?> printCurrentPage(
-          {_i10.PrintJobSettings? settings}) =>
+  _i4.Future<void> pauseTimers() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #printCurrentPage,
-          [],
-          {#settings: settings},
-        ),
-        returnValue: _i4.Future<_i10.PlatformPrintJobController?>.value(),
-        returnValueForMissingStub:
-            _i4.Future<_i10.PlatformPrintJobController?>.value(),
-      ) as _i4.Future<_i10.PlatformPrintJobController?>);
+            Invocation.method(#pauseTimers, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<int?> getContentHeight() => (super.noSuchMethod(
-        Invocation.method(
-          #getContentHeight,
-          [],
-        ),
-        returnValue: _i4.Future<int?>.value(),
-        returnValueForMissingStub: _i4.Future<int?>.value(),
-      ) as _i4.Future<int?>);
+  _i4.Future<void> resumeTimers() =>
+      (super.noSuchMethod(
+            Invocation.method(#resumeTimers, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<int?> getContentWidth() => (super.noSuchMethod(
-        Invocation.method(
-          #getContentWidth,
-          [],
-        ),
-        returnValue: _i4.Future<int?>.value(),
-        returnValueForMissingStub: _i4.Future<int?>.value(),
-      ) as _i4.Future<int?>);
+  _i4.Future<_i10.PlatformPrintJobController?> printCurrentPage({
+    _i10.PrintJobSettings? settings,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#printCurrentPage, [], {#settings: settings}),
+            returnValue: _i4.Future<_i10.PlatformPrintJobController?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i10.PlatformPrintJobController?>.value(),
+          )
+          as _i4.Future<_i10.PlatformPrintJobController?>);
+
+  @override
+  _i4.Future<int?> getContentHeight() =>
+      (super.noSuchMethod(
+            Invocation.method(#getContentHeight, []),
+            returnValue: _i4.Future<int?>.value(),
+            returnValueForMissingStub: _i4.Future<int?>.value(),
+          )
+          as _i4.Future<int?>);
+
+  @override
+  _i4.Future<int?> getContentWidth() =>
+      (super.noSuchMethod(
+            Invocation.method(#getContentWidth, []),
+            returnValue: _i4.Future<int?>.value(),
+            returnValueForMissingStub: _i4.Future<int?>.value(),
+          )
+          as _i4.Future<int?>);
 
   @override
   _i4.Future<void> zoomBy({
@@ -651,240 +572,208 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     bool? animated = false,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #zoomBy,
-          [],
-          {
-            #zoomFactor: zoomFactor,
-            #iosAnimated: iosAnimated,
-            #animated: animated,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#zoomBy, [], {
+              #zoomFactor: zoomFactor,
+              #iosAnimated: iosAnimated,
+              #animated: animated,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<_i6.WebUri?> getOriginalUrl() => (super.noSuchMethod(
-        Invocation.method(
-          #getOriginalUrl,
-          [],
-        ),
-        returnValue: _i4.Future<_i6.WebUri?>.value(),
-        returnValueForMissingStub: _i4.Future<_i6.WebUri?>.value(),
-      ) as _i4.Future<_i6.WebUri?>);
+  _i4.Future<_i6.WebUri?> getOriginalUrl() =>
+      (super.noSuchMethod(
+            Invocation.method(#getOriginalUrl, []),
+            returnValue: _i4.Future<_i6.WebUri?>.value(),
+            returnValueForMissingStub: _i4.Future<_i6.WebUri?>.value(),
+          )
+          as _i4.Future<_i6.WebUri?>);
 
   @override
-  _i4.Future<double?> getZoomScale() => (super.noSuchMethod(
-        Invocation.method(
-          #getZoomScale,
-          [],
-        ),
-        returnValue: _i4.Future<double?>.value(),
-        returnValueForMissingStub: _i4.Future<double?>.value(),
-      ) as _i4.Future<double?>);
+  _i4.Future<double?> getZoomScale() =>
+      (super.noSuchMethod(
+            Invocation.method(#getZoomScale, []),
+            returnValue: _i4.Future<double?>.value(),
+            returnValueForMissingStub: _i4.Future<double?>.value(),
+          )
+          as _i4.Future<double?>);
 
   @override
-  _i4.Future<String?> getSelectedText() => (super.noSuchMethod(
-        Invocation.method(
-          #getSelectedText,
-          [],
-        ),
-        returnValue: _i4.Future<String?>.value(),
-        returnValueForMissingStub: _i4.Future<String?>.value(),
-      ) as _i4.Future<String?>);
+  _i4.Future<String?> getSelectedText() =>
+      (super.noSuchMethod(
+            Invocation.method(#getSelectedText, []),
+            returnValue: _i4.Future<String?>.value(),
+            returnValueForMissingStub: _i4.Future<String?>.value(),
+          )
+          as _i4.Future<String?>);
 
   @override
   _i4.Future<_i7.InAppWebViewHitTestResult?> getHitTestResult() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getHitTestResult,
-          [],
-        ),
-        returnValue: _i4.Future<_i7.InAppWebViewHitTestResult?>.value(),
-        returnValueForMissingStub:
-            _i4.Future<_i7.InAppWebViewHitTestResult?>.value(),
-      ) as _i4.Future<_i7.InAppWebViewHitTestResult?>);
+            Invocation.method(#getHitTestResult, []),
+            returnValue: _i4.Future<_i7.InAppWebViewHitTestResult?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i7.InAppWebViewHitTestResult?>.value(),
+          )
+          as _i4.Future<_i7.InAppWebViewHitTestResult?>);
 
   @override
-  _i4.Future<void> clearFocus() => (super.noSuchMethod(
-        Invocation.method(
-          #clearFocus,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> clearFocus() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearFocus, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> setContextMenu(_i11.ContextMenu? contextMenu) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setContextMenu,
-          [contextMenu],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#setContextMenu, [contextMenu]),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<_i7.RequestFocusNodeHrefResult?> requestFocusNodeHref() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #requestFocusNodeHref,
-          [],
-        ),
-        returnValue: _i4.Future<_i7.RequestFocusNodeHrefResult?>.value(),
-        returnValueForMissingStub:
-            _i4.Future<_i7.RequestFocusNodeHrefResult?>.value(),
-      ) as _i4.Future<_i7.RequestFocusNodeHrefResult?>);
+            Invocation.method(#requestFocusNodeHref, []),
+            returnValue: _i4.Future<_i7.RequestFocusNodeHrefResult?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i7.RequestFocusNodeHrefResult?>.value(),
+          )
+          as _i4.Future<_i7.RequestFocusNodeHrefResult?>);
 
   @override
   _i4.Future<_i7.RequestImageRefResult?> requestImageRef() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #requestImageRef,
-          [],
-        ),
-        returnValue: _i4.Future<_i7.RequestImageRefResult?>.value(),
-        returnValueForMissingStub:
-            _i4.Future<_i7.RequestImageRefResult?>.value(),
-      ) as _i4.Future<_i7.RequestImageRefResult?>);
+            Invocation.method(#requestImageRef, []),
+            returnValue: _i4.Future<_i7.RequestImageRefResult?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i7.RequestImageRefResult?>.value(),
+          )
+          as _i4.Future<_i7.RequestImageRefResult?>);
 
   @override
-  _i4.Future<List<_i7.MetaTag>> getMetaTags() => (super.noSuchMethod(
-        Invocation.method(
-          #getMetaTags,
-          [],
-        ),
-        returnValue: _i4.Future<List<_i7.MetaTag>>.value(<_i7.MetaTag>[]),
-        returnValueForMissingStub:
-            _i4.Future<List<_i7.MetaTag>>.value(<_i7.MetaTag>[]),
-      ) as _i4.Future<List<_i7.MetaTag>>);
+  _i4.Future<List<_i7.MetaTag>> getMetaTags() =>
+      (super.noSuchMethod(
+            Invocation.method(#getMetaTags, []),
+            returnValue: _i4.Future<List<_i7.MetaTag>>.value(<_i7.MetaTag>[]),
+            returnValueForMissingStub: _i4.Future<List<_i7.MetaTag>>.value(
+              <_i7.MetaTag>[],
+            ),
+          )
+          as _i4.Future<List<_i7.MetaTag>>);
 
   @override
-  _i4.Future<_i12.Color?> getMetaThemeColor() => (super.noSuchMethod(
-        Invocation.method(
-          #getMetaThemeColor,
-          [],
-        ),
-        returnValue: _i4.Future<_i12.Color?>.value(),
-        returnValueForMissingStub: _i4.Future<_i12.Color?>.value(),
-      ) as _i4.Future<_i12.Color?>);
+  _i4.Future<_i12.Color?> getMetaThemeColor() =>
+      (super.noSuchMethod(
+            Invocation.method(#getMetaThemeColor, []),
+            returnValue: _i4.Future<_i12.Color?>.value(),
+            returnValueForMissingStub: _i4.Future<_i12.Color?>.value(),
+          )
+          as _i4.Future<_i12.Color?>);
 
   @override
-  _i4.Future<int?> getScrollX() => (super.noSuchMethod(
-        Invocation.method(
-          #getScrollX,
-          [],
-        ),
-        returnValue: _i4.Future<int?>.value(),
-        returnValueForMissingStub: _i4.Future<int?>.value(),
-      ) as _i4.Future<int?>);
+  _i4.Future<int?> getScrollX() =>
+      (super.noSuchMethod(
+            Invocation.method(#getScrollX, []),
+            returnValue: _i4.Future<int?>.value(),
+            returnValueForMissingStub: _i4.Future<int?>.value(),
+          )
+          as _i4.Future<int?>);
 
   @override
-  _i4.Future<int?> getScrollY() => (super.noSuchMethod(
-        Invocation.method(
-          #getScrollY,
-          [],
-        ),
-        returnValue: _i4.Future<int?>.value(),
-        returnValueForMissingStub: _i4.Future<int?>.value(),
-      ) as _i4.Future<int?>);
+  _i4.Future<int?> getScrollY() =>
+      (super.noSuchMethod(
+            Invocation.method(#getScrollY, []),
+            returnValue: _i4.Future<int?>.value(),
+            returnValueForMissingStub: _i4.Future<int?>.value(),
+          )
+          as _i4.Future<int?>);
 
   @override
-  _i4.Future<_i7.SslCertificate?> getCertificate() => (super.noSuchMethod(
-        Invocation.method(
-          #getCertificate,
-          [],
-        ),
-        returnValue: _i4.Future<_i7.SslCertificate?>.value(),
-        returnValueForMissingStub: _i4.Future<_i7.SslCertificate?>.value(),
-      ) as _i4.Future<_i7.SslCertificate?>);
+  _i4.Future<_i7.SslCertificate?> getCertificate() =>
+      (super.noSuchMethod(
+            Invocation.method(#getCertificate, []),
+            returnValue: _i4.Future<_i7.SslCertificate?>.value(),
+            returnValueForMissingStub: _i4.Future<_i7.SslCertificate?>.value(),
+          )
+          as _i4.Future<_i7.SslCertificate?>);
 
   @override
   _i4.Future<void> addUserScript({required _i7.UserScript? userScript}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #addUserScript,
-          [],
-          {#userScript: userScript},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#addUserScript, [], {#userScript: userScript}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> addUserScripts(
-          {required List<_i7.UserScript>? userScripts}) =>
+  _i4.Future<void> addUserScripts({
+    required List<_i7.UserScript>? userScripts,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #addUserScripts,
-          [],
-          {#userScripts: userScripts},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#addUserScripts, [], {#userScripts: userScripts}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<bool> removeUserScript({required _i7.UserScript? userScript}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #removeUserScript,
-          [],
-          {#userScript: userScript},
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+            Invocation.method(#removeUserScript, [], {#userScript: userScript}),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
   _i4.Future<void> removeUserScriptsByGroupName({required String? groupName}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #removeUserScriptsByGroupName,
-          [],
-          {#groupName: groupName},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#removeUserScriptsByGroupName, [], {
+              #groupName: groupName,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> removeUserScripts(
-          {required List<_i7.UserScript>? userScripts}) =>
+  _i4.Future<void> removeUserScripts({
+    required List<_i7.UserScript>? userScripts,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #removeUserScripts,
-          [],
-          {#userScripts: userScripts},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#removeUserScripts, [], {
+              #userScripts: userScripts,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> removeAllUserScripts() => (super.noSuchMethod(
-        Invocation.method(
-          #removeAllUserScripts,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> removeAllUserScripts() =>
+      (super.noSuchMethod(
+            Invocation.method(#removeAllUserScripts, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   bool hasUserScript({required _i7.UserScript? userScript}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #hasUserScript,
-          [],
-          {#userScript: userScript},
-        ),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
+            Invocation.method(#hasUserScript, [], {#userScript: userScript}),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
 
   @override
   _i4.Future<_i7.CallAsyncJavaScriptResult?> callAsyncJavaScript({
@@ -893,19 +782,16 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     _i7.ContentWorld? contentWorld,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #callAsyncJavaScript,
-          [],
-          {
-            #functionBody: functionBody,
-            #arguments: arguments,
-            #contentWorld: contentWorld,
-          },
-        ),
-        returnValue: _i4.Future<_i7.CallAsyncJavaScriptResult?>.value(),
-        returnValueForMissingStub:
-            _i4.Future<_i7.CallAsyncJavaScriptResult?>.value(),
-      ) as _i4.Future<_i7.CallAsyncJavaScriptResult?>);
+            Invocation.method(#callAsyncJavaScript, [], {
+              #functionBody: functionBody,
+              #arguments: arguments,
+              #contentWorld: contentWorld,
+            }),
+            returnValue: _i4.Future<_i7.CallAsyncJavaScriptResult?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i7.CallAsyncJavaScriptResult?>.value(),
+          )
+          as _i4.Future<_i7.CallAsyncJavaScriptResult?>);
 
   @override
   _i4.Future<String?> saveWebArchive({
@@ -913,39 +799,33 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     bool? autoname = false,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #saveWebArchive,
-          [],
-          {
-            #filePath: filePath,
-            #autoname: autoname,
-          },
-        ),
-        returnValue: _i4.Future<String?>.value(),
-        returnValueForMissingStub: _i4.Future<String?>.value(),
-      ) as _i4.Future<String?>);
+            Invocation.method(#saveWebArchive, [], {
+              #filePath: filePath,
+              #autoname: autoname,
+            }),
+            returnValue: _i4.Future<String?>.value(),
+            returnValueForMissingStub: _i4.Future<String?>.value(),
+          )
+          as _i4.Future<String?>);
 
   @override
-  _i4.Future<bool> isSecureContext() => (super.noSuchMethod(
-        Invocation.method(
-          #isSecureContext,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> isSecureContext() =>
+      (super.noSuchMethod(
+            Invocation.method(#isSecureContext, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
   _i4.Future<_i13.PlatformWebMessageChannel?> createWebMessageChannel() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #createWebMessageChannel,
-          [],
-        ),
-        returnValue: _i4.Future<_i13.PlatformWebMessageChannel?>.value(),
-        returnValueForMissingStub:
-            _i4.Future<_i13.PlatformWebMessageChannel?>.value(),
-      ) as _i4.Future<_i13.PlatformWebMessageChannel?>);
+            Invocation.method(#createWebMessageChannel, []),
+            returnValue: _i4.Future<_i13.PlatformWebMessageChannel?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i13.PlatformWebMessageChannel?>.value(),
+          )
+          as _i4.Future<_i13.PlatformWebMessageChannel?>);
 
   @override
   _i4.Future<void> postWebMessage({
@@ -953,173 +833,153 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     _i6.WebUri? targetOrigin,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #postWebMessage,
-          [],
-          {
-            #message: message,
-            #targetOrigin: targetOrigin,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#postWebMessage, [], {
+              #message: message,
+              #targetOrigin: targetOrigin,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> addWebMessageListener(
-          _i13.PlatformWebMessageListener? webMessageListener) =>
+    _i13.PlatformWebMessageListener? webMessageListener,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #addWebMessageListener,
-          [webMessageListener],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#addWebMessageListener, [webMessageListener]),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   bool hasWebMessageListener(
-          _i13.PlatformWebMessageListener? webMessageListener) =>
+    _i13.PlatformWebMessageListener? webMessageListener,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #hasWebMessageListener,
-          [webMessageListener],
-        ),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
+            Invocation.method(#hasWebMessageListener, [webMessageListener]),
+            returnValue: false,
+            returnValueForMissingStub: false,
+          )
+          as bool);
 
   @override
-  _i4.Future<bool> canScrollVertically() => (super.noSuchMethod(
-        Invocation.method(
-          #canScrollVertically,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> canScrollVertically() =>
+      (super.noSuchMethod(
+            Invocation.method(#canScrollVertically, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<bool> canScrollHorizontally() => (super.noSuchMethod(
-        Invocation.method(
-          #canScrollHorizontally,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> canScrollHorizontally() =>
+      (super.noSuchMethod(
+            Invocation.method(#canScrollHorizontally, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<bool> startSafeBrowsing() => (super.noSuchMethod(
-        Invocation.method(
-          #startSafeBrowsing,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> startSafeBrowsing() =>
+      (super.noSuchMethod(
+            Invocation.method(#startSafeBrowsing, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<void> clearSslPreferences() => (super.noSuchMethod(
-        Invocation.method(
-          #clearSslPreferences,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> clearSslPreferences() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearSslPreferences, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> pause() => (super.noSuchMethod(
-        Invocation.method(
-          #pause,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> pause() =>
+      (super.noSuchMethod(
+            Invocation.method(#pause, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> resume() => (super.noSuchMethod(
-        Invocation.method(
-          #resume,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> resume() =>
+      (super.noSuchMethod(
+            Invocation.method(#resume, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<bool> pageDown({required bool? bottom}) => (super.noSuchMethod(
-        Invocation.method(
-          #pageDown,
-          [],
-          {#bottom: bottom},
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> pageDown({required bool? bottom}) =>
+      (super.noSuchMethod(
+            Invocation.method(#pageDown, [], {#bottom: bottom}),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<bool> pageUp({required bool? top}) => (super.noSuchMethod(
-        Invocation.method(
-          #pageUp,
-          [],
-          {#top: top},
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> pageUp({required bool? top}) =>
+      (super.noSuchMethod(
+            Invocation.method(#pageUp, [], {#top: top}),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<bool> zoomIn() => (super.noSuchMethod(
-        Invocation.method(
-          #zoomIn,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> zoomIn() =>
+      (super.noSuchMethod(
+            Invocation.method(#zoomIn, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<bool> zoomOut() => (super.noSuchMethod(
-        Invocation.method(
-          #zoomOut,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> zoomOut() =>
+      (super.noSuchMethod(
+            Invocation.method(#zoomOut, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<void> clearHistory() => (super.noSuchMethod(
-        Invocation.method(
-          #clearHistory,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> clearHistory() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearHistory, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> clearFormData() => (super.noSuchMethod(
-        Invocation.method(
-          #clearFormData,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> clearFormData() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearFormData, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> reloadFromOrigin() => (super.noSuchMethod(
-        Invocation.method(
-          #reloadFromOrigin,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> reloadFromOrigin() =>
+      (super.noSuchMethod(
+            Invocation.method(#reloadFromOrigin, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<_i8.Uint8List?> createPdf({
@@ -1127,138 +987,122 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     _i7.PDFConfiguration? pdfConfiguration,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #createPdf,
-          [],
-          {
-            #iosWKPdfConfiguration: iosWKPdfConfiguration,
-            #pdfConfiguration: pdfConfiguration,
-          },
-        ),
-        returnValue: _i4.Future<_i8.Uint8List?>.value(),
-        returnValueForMissingStub: _i4.Future<_i8.Uint8List?>.value(),
-      ) as _i4.Future<_i8.Uint8List?>);
+            Invocation.method(#createPdf, [], {
+              #iosWKPdfConfiguration: iosWKPdfConfiguration,
+              #pdfConfiguration: pdfConfiguration,
+            }),
+            returnValue: _i4.Future<_i8.Uint8List?>.value(),
+            returnValueForMissingStub: _i4.Future<_i8.Uint8List?>.value(),
+          )
+          as _i4.Future<_i8.Uint8List?>);
 
   @override
-  _i4.Future<_i8.Uint8List?> createWebArchiveData() => (super.noSuchMethod(
-        Invocation.method(
-          #createWebArchiveData,
-          [],
-        ),
-        returnValue: _i4.Future<_i8.Uint8List?>.value(),
-        returnValueForMissingStub: _i4.Future<_i8.Uint8List?>.value(),
-      ) as _i4.Future<_i8.Uint8List?>);
+  _i4.Future<_i8.Uint8List?> createWebArchiveData() =>
+      (super.noSuchMethod(
+            Invocation.method(#createWebArchiveData, []),
+            returnValue: _i4.Future<_i8.Uint8List?>.value(),
+            returnValueForMissingStub: _i4.Future<_i8.Uint8List?>.value(),
+          )
+          as _i4.Future<_i8.Uint8List?>);
 
   @override
-  _i4.Future<bool> hasOnlySecureContent() => (super.noSuchMethod(
-        Invocation.method(
-          #hasOnlySecureContent,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> hasOnlySecureContent() =>
+      (super.noSuchMethod(
+            Invocation.method(#hasOnlySecureContent, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<void> pauseAllMediaPlayback() => (super.noSuchMethod(
-        Invocation.method(
-          #pauseAllMediaPlayback,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> pauseAllMediaPlayback() =>
+      (super.noSuchMethod(
+            Invocation.method(#pauseAllMediaPlayback, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> setAllMediaPlaybackSuspended({required bool? suspended}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setAllMediaPlaybackSuspended,
-          [],
-          {#suspended: suspended},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#setAllMediaPlaybackSuspended, [], {
+              #suspended: suspended,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> closeAllMediaPresentations() => (super.noSuchMethod(
-        Invocation.method(
-          #closeAllMediaPresentations,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> closeAllMediaPresentations() =>
+      (super.noSuchMethod(
+            Invocation.method(#closeAllMediaPresentations, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<_i7.MediaPlaybackState?> requestMediaPlaybackState() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #requestMediaPlaybackState,
-          [],
-        ),
-        returnValue: _i4.Future<_i7.MediaPlaybackState?>.value(),
-        returnValueForMissingStub: _i4.Future<_i7.MediaPlaybackState?>.value(),
-      ) as _i4.Future<_i7.MediaPlaybackState?>);
+            Invocation.method(#requestMediaPlaybackState, []),
+            returnValue: _i4.Future<_i7.MediaPlaybackState?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i7.MediaPlaybackState?>.value(),
+          )
+          as _i4.Future<_i7.MediaPlaybackState?>);
 
   @override
-  _i4.Future<bool> isInFullscreen() => (super.noSuchMethod(
-        Invocation.method(
-          #isInFullscreen,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> isInFullscreen() =>
+      (super.noSuchMethod(
+            Invocation.method(#isInFullscreen, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
   _i4.Future<_i7.MediaCaptureState?> getCameraCaptureState() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCameraCaptureState,
-          [],
-        ),
-        returnValue: _i4.Future<_i7.MediaCaptureState?>.value(),
-        returnValueForMissingStub: _i4.Future<_i7.MediaCaptureState?>.value(),
-      ) as _i4.Future<_i7.MediaCaptureState?>);
+            Invocation.method(#getCameraCaptureState, []),
+            returnValue: _i4.Future<_i7.MediaCaptureState?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i7.MediaCaptureState?>.value(),
+          )
+          as _i4.Future<_i7.MediaCaptureState?>);
 
   @override
-  _i4.Future<void> setCameraCaptureState(
-          {required _i7.MediaCaptureState? state}) =>
+  _i4.Future<void> setCameraCaptureState({
+    required _i7.MediaCaptureState? state,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setCameraCaptureState,
-          [],
-          {#state: state},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#setCameraCaptureState, [], {#state: state}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<_i7.MediaCaptureState?> getMicrophoneCaptureState() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getMicrophoneCaptureState,
-          [],
-        ),
-        returnValue: _i4.Future<_i7.MediaCaptureState?>.value(),
-        returnValueForMissingStub: _i4.Future<_i7.MediaCaptureState?>.value(),
-      ) as _i4.Future<_i7.MediaCaptureState?>);
+            Invocation.method(#getMicrophoneCaptureState, []),
+            returnValue: _i4.Future<_i7.MediaCaptureState?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i7.MediaCaptureState?>.value(),
+          )
+          as _i4.Future<_i7.MediaCaptureState?>);
 
   @override
-  _i4.Future<void> setMicrophoneCaptureState(
-          {required _i7.MediaCaptureState? state}) =>
+  _i4.Future<void> setMicrophoneCaptureState({
+    required _i7.MediaCaptureState? state,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setMicrophoneCaptureState,
-          [],
-          {#state: state},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#setMicrophoneCaptureState, [], {#state: state}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> loadSimulatedRequest({
@@ -1267,28 +1111,24 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     _i7.URLResponse? urlResponse,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #loadSimulatedRequest,
-          [],
-          {
-            #urlRequest: urlRequest,
-            #data: data,
-            #urlResponse: urlResponse,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#loadSimulatedRequest, [], {
+              #urlRequest: urlRequest,
+              #data: data,
+              #urlResponse: urlResponse,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> openDevTools() => (super.noSuchMethod(
-        Invocation.method(
-          #openDevTools,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> openDevTools() =>
+      (super.noSuchMethod(
+            Invocation.method(#openDevTools, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<dynamic> callDevToolsProtocolMethod({
@@ -1296,17 +1136,14 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     Map<String, dynamic>? parameters,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #callDevToolsProtocolMethod,
-          [],
-          {
-            #methodName: methodName,
-            #parameters: parameters,
-          },
-        ),
-        returnValue: _i4.Future<dynamic>.value(),
-        returnValueForMissingStub: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+            Invocation.method(#callDevToolsProtocolMethod, [], {
+              #methodName: methodName,
+              #parameters: parameters,
+            }),
+            returnValue: _i4.Future<dynamic>.value(),
+            returnValueForMissingStub: _i4.Future<dynamic>.value(),
+          )
+          as _i4.Future<dynamic>);
 
   @override
   _i4.Future<void> addDevToolsProtocolEventListener({
@@ -1314,313 +1151,267 @@ class MockPlatformInAppWebViewController extends _i1.Mock
     required dynamic Function(dynamic)? callback,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #addDevToolsProtocolEventListener,
-          [],
-          {
-            #eventName: eventName,
-            #callback: callback,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#addDevToolsProtocolEventListener, [], {
+              #eventName: eventName,
+              #callback: callback,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> removeDevToolsProtocolEventListener(
-          {required String? eventName}) =>
+  _i4.Future<void> removeDevToolsProtocolEventListener({
+    required String? eventName,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #removeDevToolsProtocolEventListener,
-          [],
-          {#eventName: eventName},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#removeDevToolsProtocolEventListener, [], {
+              #eventName: eventName,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<String?> getIFrameId() => (super.noSuchMethod(
-        Invocation.method(
-          #getIFrameId,
-          [],
-        ),
-        returnValue: _i4.Future<String?>.value(),
-        returnValueForMissingStub: _i4.Future<String?>.value(),
-      ) as _i4.Future<String?>);
+  _i4.Future<String?> getIFrameId() =>
+      (super.noSuchMethod(
+            Invocation.method(#getIFrameId, []),
+            returnValue: _i4.Future<String?>.value(),
+            returnValueForMissingStub: _i4.Future<String?>.value(),
+          )
+          as _i4.Future<String?>);
 
   @override
-  _i4.Future<String> getDefaultUserAgent() => (super.noSuchMethod(
-        Invocation.method(
-          #getDefaultUserAgent,
-          [],
-        ),
-        returnValue: _i4.Future<String>.value(_i5.dummyValue<String>(
-          this,
-          Invocation.method(
-            #getDefaultUserAgent,
-            [],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i4.Future<String>.value(_i5.dummyValue<String>(
-          this,
-          Invocation.method(
-            #getDefaultUserAgent,
-            [],
-          ),
-        )),
-      ) as _i4.Future<String>);
+  _i4.Future<String> getDefaultUserAgent() =>
+      (super.noSuchMethod(
+            Invocation.method(#getDefaultUserAgent, []),
+            returnValue: _i4.Future<String>.value(
+              _i5.dummyValue<String>(
+                this,
+                Invocation.method(#getDefaultUserAgent, []),
+              ),
+            ),
+            returnValueForMissingStub: _i4.Future<String>.value(
+              _i5.dummyValue<String>(
+                this,
+                Invocation.method(#getDefaultUserAgent, []),
+              ),
+            ),
+          )
+          as _i4.Future<String>);
 
   @override
-  _i4.Future<void> clearClientCertPreferences() => (super.noSuchMethod(
-        Invocation.method(
-          #clearClientCertPreferences,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> clearClientCertPreferences() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearClientCertPreferences, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<_i6.WebUri?> getSafeBrowsingPrivacyPolicyUrl() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getSafeBrowsingPrivacyPolicyUrl,
-          [],
-        ),
-        returnValue: _i4.Future<_i6.WebUri?>.value(),
-        returnValueForMissingStub: _i4.Future<_i6.WebUri?>.value(),
-      ) as _i4.Future<_i6.WebUri?>);
+            Invocation.method(#getSafeBrowsingPrivacyPolicyUrl, []),
+            returnValue: _i4.Future<_i6.WebUri?>.value(),
+            returnValueForMissingStub: _i4.Future<_i6.WebUri?>.value(),
+          )
+          as _i4.Future<_i6.WebUri?>);
 
   @override
   _i4.Future<bool> setSafeBrowsingAllowlist({required List<String>? hosts}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setSafeBrowsingAllowlist,
-          [],
-          {#hosts: hosts},
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+            Invocation.method(#setSafeBrowsingAllowlist, [], {#hosts: hosts}),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
   _i4.Future<_i7.WebViewPackageInfo?> getCurrentWebViewPackage() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCurrentWebViewPackage,
-          [],
-        ),
-        returnValue: _i4.Future<_i7.WebViewPackageInfo?>.value(),
-        returnValueForMissingStub: _i4.Future<_i7.WebViewPackageInfo?>.value(),
-      ) as _i4.Future<_i7.WebViewPackageInfo?>);
+            Invocation.method(#getCurrentWebViewPackage, []),
+            returnValue: _i4.Future<_i7.WebViewPackageInfo?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i7.WebViewPackageInfo?>.value(),
+          )
+          as _i4.Future<_i7.WebViewPackageInfo?>);
 
   @override
   _i4.Future<void> setWebContentsDebuggingEnabled(bool? debuggingEnabled) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setWebContentsDebuggingEnabled,
-          [debuggingEnabled],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#setWebContentsDebuggingEnabled, [
+              debuggingEnabled,
+            ]),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<String?> getVariationsHeader() => (super.noSuchMethod(
-        Invocation.method(
-          #getVariationsHeader,
-          [],
-        ),
-        returnValue: _i4.Future<String?>.value(),
-        returnValueForMissingStub: _i4.Future<String?>.value(),
-      ) as _i4.Future<String?>);
+  _i4.Future<String?> getVariationsHeader() =>
+      (super.noSuchMethod(
+            Invocation.method(#getVariationsHeader, []),
+            returnValue: _i4.Future<String?>.value(),
+            returnValueForMissingStub: _i4.Future<String?>.value(),
+          )
+          as _i4.Future<String?>);
 
   @override
-  _i4.Future<bool> isMultiProcessEnabled() => (super.noSuchMethod(
-        Invocation.method(
-          #isMultiProcessEnabled,
-          [],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> isMultiProcessEnabled() =>
+      (super.noSuchMethod(
+            Invocation.method(#isMultiProcessEnabled, []),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
-  _i4.Future<void> disableWebView() => (super.noSuchMethod(
-        Invocation.method(
-          #disableWebView,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> disableWebView() =>
+      (super.noSuchMethod(
+            Invocation.method(#disableWebView, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<bool> handlesURLScheme(String? urlScheme) => (super.noSuchMethod(
-        Invocation.method(
-          #handlesURLScheme,
-          [urlScheme],
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+  _i4.Future<bool> handlesURLScheme(String? urlScheme) =>
+      (super.noSuchMethod(
+            Invocation.method(#handlesURLScheme, [urlScheme]),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
   _i4.Future<void> disposeKeepAlive(_i14.InAppWebViewKeepAlive? keepAlive) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #disposeKeepAlive,
-          [keepAlive],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#disposeKeepAlive, [keepAlive]),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<void> clearAllCache({bool? includeDiskFiles = true}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #clearAllCache,
-          [],
-          {#includeDiskFiles: includeDiskFiles},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#clearAllCache, [], {
+              #includeDiskFiles: includeDiskFiles,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> setOptions(
-          {required _i9.InAppWebViewGroupOptions? options}) =>
+  _i4.Future<void> setOptions({
+    required _i9.InAppWebViewGroupOptions? options,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setOptions,
-          [],
-          {#options: options},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#setOptions, [], {#options: options}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<_i9.InAppWebViewGroupOptions?> getOptions() => (super.noSuchMethod(
-        Invocation.method(
-          #getOptions,
-          [],
-        ),
-        returnValue: _i4.Future<_i9.InAppWebViewGroupOptions?>.value(),
-        returnValueForMissingStub:
-            _i4.Future<_i9.InAppWebViewGroupOptions?>.value(),
-      ) as _i4.Future<_i9.InAppWebViewGroupOptions?>);
+  _i4.Future<_i9.InAppWebViewGroupOptions?> getOptions() =>
+      (super.noSuchMethod(
+            Invocation.method(#getOptions, []),
+            returnValue: _i4.Future<_i9.InAppWebViewGroupOptions?>.value(),
+            returnValueForMissingStub:
+                _i4.Future<_i9.InAppWebViewGroupOptions?>.value(),
+          )
+          as _i4.Future<_i9.InAppWebViewGroupOptions?>);
 
   @override
-  _i4.Future<void> findAllAsync({required String? find}) => (super.noSuchMethod(
-        Invocation.method(
-          #findAllAsync,
-          [],
-          {#find: find},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> findAllAsync({required String? find}) =>
+      (super.noSuchMethod(
+            Invocation.method(#findAllAsync, [], {#find: find}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> findNext({required bool? forward}) => (super.noSuchMethod(
-        Invocation.method(
-          #findNext,
-          [],
-          {#forward: forward},
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> findNext({required bool? forward}) =>
+      (super.noSuchMethod(
+            Invocation.method(#findNext, [], {#forward: forward}),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<void> clearMatches() => (super.noSuchMethod(
-        Invocation.method(
-          #clearMatches,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> clearMatches() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearMatches, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
-  _i4.Future<String> getTRexRunnerHtml() => (super.noSuchMethod(
-        Invocation.method(
-          #getTRexRunnerHtml,
-          [],
-        ),
-        returnValue: _i4.Future<String>.value(_i5.dummyValue<String>(
-          this,
-          Invocation.method(
-            #getTRexRunnerHtml,
-            [],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i4.Future<String>.value(_i5.dummyValue<String>(
-          this,
-          Invocation.method(
-            #getTRexRunnerHtml,
-            [],
-          ),
-        )),
-      ) as _i4.Future<String>);
+  _i4.Future<String> getTRexRunnerHtml() =>
+      (super.noSuchMethod(
+            Invocation.method(#getTRexRunnerHtml, []),
+            returnValue: _i4.Future<String>.value(
+              _i5.dummyValue<String>(
+                this,
+                Invocation.method(#getTRexRunnerHtml, []),
+              ),
+            ),
+            returnValueForMissingStub: _i4.Future<String>.value(
+              _i5.dummyValue<String>(
+                this,
+                Invocation.method(#getTRexRunnerHtml, []),
+              ),
+            ),
+          )
+          as _i4.Future<String>);
 
   @override
-  _i4.Future<String> getTRexRunnerCss() => (super.noSuchMethod(
-        Invocation.method(
-          #getTRexRunnerCss,
-          [],
-        ),
-        returnValue: _i4.Future<String>.value(_i5.dummyValue<String>(
-          this,
-          Invocation.method(
-            #getTRexRunnerCss,
-            [],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i4.Future<String>.value(_i5.dummyValue<String>(
-          this,
-          Invocation.method(
-            #getTRexRunnerCss,
-            [],
-          ),
-        )),
-      ) as _i4.Future<String>);
+  _i4.Future<String> getTRexRunnerCss() =>
+      (super.noSuchMethod(
+            Invocation.method(#getTRexRunnerCss, []),
+            returnValue: _i4.Future<String>.value(
+              _i5.dummyValue<String>(
+                this,
+                Invocation.method(#getTRexRunnerCss, []),
+              ),
+            ),
+            returnValueForMissingStub: _i4.Future<String>.value(
+              _i5.dummyValue<String>(
+                this,
+                Invocation.method(#getTRexRunnerCss, []),
+              ),
+            ),
+          )
+          as _i4.Future<String>);
 
   @override
-  _i4.Future<double?> getScale() => (super.noSuchMethod(
-        Invocation.method(
-          #getScale,
-          [],
-        ),
-        returnValue: _i4.Future<double?>.value(),
-        returnValueForMissingStub: _i4.Future<double?>.value(),
-      ) as _i4.Future<double?>);
+  _i4.Future<double?> getScale() =>
+      (super.noSuchMethod(
+            Invocation.method(#getScale, []),
+            returnValue: _i4.Future<double?>.value(),
+            returnValueForMissingStub: _i4.Future<double?>.value(),
+          )
+          as _i4.Future<double?>);
 
   @override
   _i4.Future<bool> setSafeBrowsingWhitelist({required List<String>? hosts}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #setSafeBrowsingWhitelist,
-          [],
-          {#hosts: hosts},
-        ),
-        returnValue: _i4.Future<bool>.value(false),
-        returnValueForMissingStub: _i4.Future<bool>.value(false),
-      ) as _i4.Future<bool>);
+            Invocation.method(#setSafeBrowsingWhitelist, [], {#hosts: hosts}),
+            returnValue: _i4.Future<bool>.value(false),
+            returnValueForMissingStub: _i4.Future<bool>.value(false),
+          )
+          as _i4.Future<bool>);
 
   @override
   void dispose({bool? isKeepAlive = false}) => super.noSuchMethod(
-        Invocation.method(
-          #dispose,
-          [],
-          {#isKeepAlive: isKeepAlive},
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#dispose, [], {#isKeepAlive: isKeepAlive}),
+    returnValueForMissingStub: null,
+  );
 }

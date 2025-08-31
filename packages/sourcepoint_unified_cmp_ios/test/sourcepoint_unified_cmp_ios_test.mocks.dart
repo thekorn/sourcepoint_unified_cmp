@@ -25,13 +25,8 @@ import 'package:sourcepoint_unified_cmp_ios/src/messages.g.dart' as _i2;
 
 class _FakeHostAPISPConsent_0 extends _i1.SmartFake
     implements _i2.HostAPISPConsent {
-  _FakeHostAPISPConsent_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeHostAPISPConsent_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [SourcepointUnifiedCmpHostApi].
@@ -40,17 +35,19 @@ class _FakeHostAPISPConsent_0 extends _i1.SmartFake
 class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
     implements _i2.SourcepointUnifiedCmpHostApi {
   @override
-  String get pigeonVar_messageChannelSuffix => (super.noSuchMethod(
-        Invocation.getter(#pigeonVar_messageChannelSuffix),
-        returnValue: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#pigeonVar_messageChannelSuffix),
-        ),
-        returnValueForMissingStub: _i3.dummyValue<String>(
-          this,
-          Invocation.getter(#pigeonVar_messageChannelSuffix),
-        ),
-      ) as String);
+  String get pigeonVar_messageChannelSuffix =>
+      (super.noSuchMethod(
+            Invocation.getter(#pigeonVar_messageChannelSuffix),
+            returnValue: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#pigeonVar_messageChannelSuffix),
+            ),
+            returnValueForMissingStub: _i3.dummyValue<String>(
+              this,
+              Invocation.getter(#pigeonVar_messageChannelSuffix),
+            ),
+          )
+          as String);
 
   @override
   _i4.Future<_i2.HostAPISPConsent> loadMessage({
@@ -65,28 +62,7 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
     required bool? runCCPACampaign,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #loadMessage,
-          [],
-          {
-            #accountId: accountId,
-            #propertyId: propertyId,
-            #propertyName: propertyName,
-            #pmId: pmId,
-            #messageLanguage: messageLanguage,
-            #campaignsEnv: campaignsEnv,
-            #messageTimeout: messageTimeout,
-            #runGDPRCampaign: runGDPRCampaign,
-            #runCCPACampaign: runCCPACampaign,
-          },
-        ),
-        returnValue:
-            _i4.Future<_i2.HostAPISPConsent>.value(_FakeHostAPISPConsent_0(
-          this,
-          Invocation.method(
-            #loadMessage,
-            [],
-            {
+            Invocation.method(#loadMessage, [], {
               #accountId: accountId,
               #propertyId: propertyId,
               #propertyName: propertyName,
@@ -96,29 +72,41 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
               #messageTimeout: messageTimeout,
               #runGDPRCampaign: runGDPRCampaign,
               #runCCPACampaign: runCCPACampaign,
-            },
-          ),
-        )),
-        returnValueForMissingStub:
-            _i4.Future<_i2.HostAPISPConsent>.value(_FakeHostAPISPConsent_0(
-          this,
-          Invocation.method(
-            #loadMessage,
-            [],
-            {
-              #accountId: accountId,
-              #propertyId: propertyId,
-              #propertyName: propertyName,
-              #pmId: pmId,
-              #messageLanguage: messageLanguage,
-              #campaignsEnv: campaignsEnv,
-              #messageTimeout: messageTimeout,
-              #runGDPRCampaign: runGDPRCampaign,
-              #runCCPACampaign: runCCPACampaign,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.HostAPISPConsent>);
+            }),
+            returnValue: _i4.Future<_i2.HostAPISPConsent>.value(
+              _FakeHostAPISPConsent_0(
+                this,
+                Invocation.method(#loadMessage, [], {
+                  #accountId: accountId,
+                  #propertyId: propertyId,
+                  #propertyName: propertyName,
+                  #pmId: pmId,
+                  #messageLanguage: messageLanguage,
+                  #campaignsEnv: campaignsEnv,
+                  #messageTimeout: messageTimeout,
+                  #runGDPRCampaign: runGDPRCampaign,
+                  #runCCPACampaign: runCCPACampaign,
+                }),
+              ),
+            ),
+            returnValueForMissingStub: _i4.Future<_i2.HostAPISPConsent>.value(
+              _FakeHostAPISPConsent_0(
+                this,
+                Invocation.method(#loadMessage, [], {
+                  #accountId: accountId,
+                  #propertyId: propertyId,
+                  #propertyName: propertyName,
+                  #pmId: pmId,
+                  #messageLanguage: messageLanguage,
+                  #campaignsEnv: campaignsEnv,
+                  #messageTimeout: messageTimeout,
+                  #runGDPRCampaign: runGDPRCampaign,
+                  #runCCPACampaign: runCCPACampaign,
+                }),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.HostAPISPConsent>);
 
   @override
   _i4.Future<void> loadPrivacyManager({
@@ -128,17 +116,14 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
     required _i2.HostAPIMessageType? messageType,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #loadPrivacyManager,
-          [],
-          {
-            #pmId: pmId,
-            #pmTab: pmTab,
-            #campaignType: campaignType,
-            #messageType: messageType,
-          },
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+            Invocation.method(#loadPrivacyManager, [], {
+              #pmId: pmId,
+              #pmTab: pmTab,
+              #campaignType: campaignType,
+              #messageType: messageType,
+            }),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 }

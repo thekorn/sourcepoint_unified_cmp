@@ -46,7 +46,7 @@ jobs:
         dart pub global activate melos
         echo "Setup Melos... Done"
         echo "removing fvm from melos.yaml"
-        sed -i 's/^\(sdkPath:.*\)$/# \1/' ../../melos.yaml
+        sed -i 's/^\(  sdkPath:.*\)$/# \1/' ../../pubspec.yaml
         echo "removing fvm from melos.yaml... Done"
         echo "bootstraping packages..."
         melos bootstrap

@@ -25,7 +25,7 @@ enum CampaignsEnv {
   stage,
 
   /// Public
-  public
+  public,
 }
 
 /// Represents the configuration for Sourcepoint Unified CMP.
@@ -120,7 +120,7 @@ enum MessageType {
   ott,
 
   /// LEGACY_OTT: it presents the legacy layout and operates on TV devices.
-  legacyOtt
+  legacyOtt,
 }
 
 // ignore: public_member_api_docs
@@ -414,10 +414,7 @@ enum ActionType {
 /// interface.
 class SPError {
   // ignore: public_member_api_docs
-  SPError({
-    required this.spCode,
-    required this.description,
-  });
+  SPError({required this.spCode, required this.description});
 
   /// short representation of the error
   final String spCode;

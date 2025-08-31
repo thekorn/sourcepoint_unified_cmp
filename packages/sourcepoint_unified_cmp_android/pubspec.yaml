@@ -4,9 +4,10 @@ description: flutter plugin for the sourcepoint unified CMP,
 version: 0.1.30
 homepage: https://github.com/thekorn/sourcepoint_unified_cmp
 repository: https://github.com/thekorn/sourcepoint_unified_cmp/tree/main/packages/sourcepoint_unified_cmp_android
+resolution: workspace
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: "^3.9.0"
   flutter: ">=3.0.0"
 
 flutter:
@@ -30,4 +31,4 @@ dev_dependencies:
   mockito: ^5.4.4
   pigeon: ">=25.3.0 <27.0.0"
   plugin_platform_interface: ^2.0.0
-  very_good_analysis: ">=7.0.0 <10.0.0"
+  very_good_analysis: ^9.0.0

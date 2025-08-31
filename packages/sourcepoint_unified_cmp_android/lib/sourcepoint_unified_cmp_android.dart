@@ -173,10 +173,7 @@ extension on messages.HostAPIGDPRConsent {
 
 extension on messages.HostAPISPConsent {
   SPConsent toSPConsent() {
-    return SPConsent(
-      gdpr: gdpr?.toGDPRConsent(),
-      webConsents: webConsents,
-    );
+    return SPConsent(gdpr: gdpr?.toGDPRConsent(), webConsents: webConsents);
   }
 }
 
@@ -210,10 +207,7 @@ extension on CampaignType {
 
 extension on messages.HostAPISPError {
   SPError toSPError() {
-    return SPError(
-      spCode: cause,
-      description: message,
-    );
+    return SPError(spCode: cause, description: message);
   }
 }
 
@@ -317,8 +311,8 @@ class SourcepointEventHandler
   SourcepointEventHandler({
     SourcepointEventDelegatePlatform? delegate,
     ConsentChangeNotifier? consentChangeNotifier,
-  })  : _consentChangeNotifier = consentChangeNotifier,
-        _delegate = delegate;
+  }) : _consentChangeNotifier = consentChangeNotifier,
+       _delegate = delegate;
 
   /// The delegate for handling Sourcepoint events in the Sourcepoint
   /// Unified CMP Android library.
