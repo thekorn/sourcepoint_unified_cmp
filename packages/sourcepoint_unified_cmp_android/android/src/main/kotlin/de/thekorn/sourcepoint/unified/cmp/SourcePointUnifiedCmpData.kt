@@ -71,7 +71,7 @@ fun ConsentStatus.toHostAPIConsentStatus() = HostAPIConsentStatus(
 
 fun SPConsents.toHostAPISPConsent() = HostAPISPConsent(
     gdpr = gdpr?.toHostAPIGDPRConsent(),
-    webConsents = this.toWebViewConsentsJsonObject().toString()
+    webConsents = this.toWebViewConsentsJsonObject()?.toString()
 )
 
 fun ConsentAction.toHostAPIConsentAction() = HostAPIConsentAction(
@@ -86,6 +86,8 @@ fun CampaignType.toHostAPICampaignType() = when (this) {
     CampaignType.GDPR -> HostAPICampaignType.GDPR
     CampaignType.USNAT -> HostAPICampaignType.USNAT
     CampaignType.UNKNOWN -> TODO()
+    CampaignType.GLOBALCMP -> TODO()
+    CampaignType.PREFERENCES -> TODO()
 }
 
 fun ActionType.toHostAPIActionType() = when (this) {
