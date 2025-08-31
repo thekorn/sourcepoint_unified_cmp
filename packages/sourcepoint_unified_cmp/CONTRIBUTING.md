@@ -12,9 +12,9 @@ Packages:
 - Xcode >= 15.3 with Swift >= 5.10
 
 ```bash
-dart pub global activate melos
-dart pub global activate very_good_cli
-dart pub global activate coverde
+flutter pub global activate melos
+flutter pub global activate very_good_cli
+flutter pub global activate coverde
 ```
 
 ## important commands
