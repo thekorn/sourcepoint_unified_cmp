@@ -26,17 +26,17 @@ fi
 
 isInstalled "melos" || {
     echo "melos is not installed, installing..."
-    dart pub global activate melos $MELOS_VERSION
+    flutter pub global activate melos $MELOS_VERSION
 }
 
 if [ $(version $(melos --version)) -ne $(version "$MELOS_VERSION") ]; then
     echo "melos is installed but needs to be installed at version '$MELOS_VERSION', updating..."
-    dart pub global activate melos $MELOS_VERSION
+    flutter pub global activate melos $MELOS_VERSION
 fi
 
 isInstalled "coverde" || {
     echo "coverde is not installed, installing..."
-    dart pub global activate coverde
+    flutter pub global activate coverde
 }
 
 isInstalled "pod" || {
