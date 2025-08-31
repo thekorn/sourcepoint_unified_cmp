@@ -2,6 +2,7 @@ name: sourcepoint_unified_cmp_flutter_inappwebview_extension_example
 description: Demonstrates how to use the sourcepoint_unified_cmp_flutter_inappwebview_extension extension.
 version: 0.1.0+1
 publish_to: none
+resolution: workspace
 
 environment:
   sdk: "^3.9.0"
@@ -26,7 +27,7 @@ dependencies:
     path: ../
 
 dev_dependencies:
-  very_good_analysis: ^7.0.0
+  very_good_analysis: ^9.0.0
 
 flutter:
   uses-material-design: true

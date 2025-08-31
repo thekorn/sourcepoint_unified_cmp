@@ -11,9 +11,12 @@ dev_dependencies:
 
 workspace:
   - packages/sourcepoint_unified_cmp
+  - packages/sourcepoint_unified_cmp/example
   - packages/sourcepoint_unified_cmp_android
   - packages/sourcepoint_unified_cmp_flutter_inappwebview_extension
+  - packages/sourcepoint_unified_cmp_flutter_inappwebview_extension/example
   - packages/sourcepoint_unified_cmp_flutter_webview_extension
+  - packages/sourcepoint_unified_cmp_flutter_webview_extension/example
   - packages/sourcepoint_unified_cmp_ios
   - packages/sourcepoint_unified_cmp_platform_interface
 
