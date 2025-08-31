@@ -3,8 +3,131 @@ homepage: https://github.com/thekorn/sourcepoint_unified_cmp
 repository: https://github.com/thekorn/sourcepoint_unified_cmp
 
 environment:
-  sdk: ">=3.2.3 <4.0.0"
+  sdk: "^3.9.0"
   flutter: ">=3.0.0"
 dev_dependencies:
-  melos: ^6.0.0
+  melos: ^7.1.0
   pana: ^0.22.6
+
+workspace:
+  - packages/sourcepoint_unified_cmp
+  - packages/sourcepoint_unified_cmp_android
+  - packages/sourcepoint_unified_cmp_flutter_inappwebview_extension
+  - packages/sourcepoint_unified_cmp_flutter_webview_extension
+  - packages/sourcepoint_unified_cmp_ios
+  - packages/sourcepoint_unified_cmp_platform_interface
+
+melos:
+  name: sourcepoint_unified_cmp
+
+  sdkPath: .fvm/flutter_sdk
+
+  command:
+    clean:
+      hooks:
+        post: melos exec --concurrency=1 -- "fvm flutter clean"
+    version:
+      # Generate commit links in package changelogs.
+      #linkToCommits: true
+      # # Only allow versioning to happen on main branch.
+      # branch: master
+      # Additionally build a changelog at the root of the workspace.
+      workspaceChangelog: true
+
+  scripts:
+    analyze: fvm flutter analyze .
+
+    pana: fvm dart run pana . --exit-code-threshold 40 2>&1
+
+    format:
+      run: |
+        melos format && \
+        swiftformat . 2>&1 && \
+        ktlint --format '**/*.kt' '**/*.kts' '!**/*.g.kt'
+      description: |
+        - Requires `swiftformat` (can be installed via Brew on macOS).
+        - Requires `ktlint` (can be installed via Brew on macOS).
+
+    test:all:
+      run: |
+        melos run test --no-select && \
+        npx cspell "**/*.md" 2>&1 && \
+        melos run merge-trace-files && \
+        melos run check-coverage
+      description: |
+        Run all tests available.
+
+    test:
+      run: |
+        melos exec -c 1 --fail-fast -- \
+          "fvm flutter test --coverage"
+      description: Run `flutter test` for a specific package.
+      packageFilters:
+        dirExists:
+          - test
+        ignore:
+          - "*example*"
+
+    merge-trace-files:
+      # Merge all packages coverage trace files ignoring data related to generated files.
+      # FIXME: include all webview extension packages once they ship tests
+      description: Merge all packages coverage trace files ignoring data related to generated files.
+      run: >
+        coverde rm MELOS_ROOT_PATH/coverage/filtered.lcov.info &&
+        melos exec --ignore="webview" --file-exists=coverage/lcov.info -- "coverde filter --input ./coverage/lcov.info --output MELOS_ROOT_PATH/coverage/filtered.lcov.info --paths-parent MELOS_PACKAGE_PATH --filters '\.g\.dart'"
+
+    check-coverage:
+      description: Check the coverage of the packages.
+      run: >
+        coverde check -i MELOS_ROOT_PATH/coverage/filtered.lcov.info 20
+
+    generate:pigeon:
+      run: |
+        melos exec --concurrency=1 -- "fvm flutter pub run pigeon --input ./pigeons/messages.dart" && \
+        melos run format --no-select
+      packageFilters:
+        fileExists: "pigeons/messages.dart"
+      description: Generate the pigeon messages for supported packages.
+
+    generate:pigeon:all:
+      run: |
+        melos run generate:pigeon --no-select
+      description: Generate the pigeon messages for all the supported packages.
+
+    generate:mocks:
+      run: |
+        melos exec --concurrency=1 -- "fvm flutter pub run build_runner build --delete-conflicting-outputs" && \
+        melos run format --no-select
+      packageFilters:
+        dependsOn:
+          - build_runner
+      description: Generate mocks for tests.
+
+    generate:mocks:all:
+      run: |
+        melos run generate:mocks --no-select
+      description: Generate mocks for all tests.
+
+    run:example:
+      run: fvm flutter run
+      description: Run the example app.
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: "sourcepoint_unified_cmp_example"
+
+    run:example:flutter_webview:
+      run: fvm flutter run
+      description: Run the example flutter webview app.
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: "sourcepoint_unified_cmp_flutter_webview_extension_example"
+
+    run:example:flutter_inappwebview:
+      run: fvm flutter run
+      description: Run the example flutter inappwebview app.
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: "sourcepoint_unified_cmp_flutter_inappwebview_extension_example"
