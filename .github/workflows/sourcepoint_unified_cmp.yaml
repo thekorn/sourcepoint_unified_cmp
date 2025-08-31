@@ -20,7 +20,7 @@ jobs:
   fvmrc:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: get fvmrc
         id: fvmrc
         uses: ActionsTools/read-json-action@v1.0.5
@@ -70,8 +70,8 @@ jobs:
         working-directory: packages/sourcepoint_unified_cmp/example
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
+      - uses: actions/checkout@v5
         with:
           distribution: "temurin"
           java-version: "11"
@@ -106,7 +106,7 @@ jobs:
         working-directory: packages/sourcepoint_unified_cmp/example
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: subosito/flutter-action@v2
 
