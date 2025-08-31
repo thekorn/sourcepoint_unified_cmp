@@ -2,12 +2,7 @@
 
 import 'package:pigeon/pigeon.dart';
 
-enum HostAPIPMTab {
-  defaults,
-  purposes,
-  vendors,
-  features,
-}
+enum HostAPIPMTab { defaults, purposes, vendors, features }
 
 enum HostAPICampaignType { gdpr, ccpa, usnat }
 
@@ -28,14 +23,7 @@ enum HostAPIActionType {
   unknown,
 }
 
-enum HostAPIMessageLanguage {
-  english,
-  french,
-  german,
-  italian,
-  spanish,
-  dutch,
-}
+enum HostAPIMessageLanguage { english, french, german, italian, spanish, dutch }
 
 enum HostAPICampaignsEnv { stage, public }
 
@@ -62,10 +50,7 @@ class HostAPIGDPRPurposeGrants {
 }
 
 class HostAPISPError {
-  HostAPISPError({
-    required this.cause,
-    required this.message,
-  });
+  HostAPISPError({required this.cause, required this.message});
   final String cause;
   final String message;
 }

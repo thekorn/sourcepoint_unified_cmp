@@ -2,12 +2,7 @@
 
 import 'package:pigeon/pigeon.dart';
 
-enum HostAPIPMTab {
-  defaults,
-  purposes,
-  vendors,
-  features,
-}
+enum HostAPIPMTab { defaults, purposes, vendors, features }
 
 enum HostAPICampaignType { gdpr, ccpa }
 
@@ -29,22 +24,12 @@ enum HostAPIActionType {
 }
 
 class HostAPISPError {
-  HostAPISPError({
-    required this.spCode,
-    required this.description,
-  });
+  HostAPISPError({required this.spCode, required this.description});
   final String spCode;
   final String description;
 }
 
-enum HostAPIMessageLanguage {
-  english,
-  french,
-  german,
-  italian,
-  spanish,
-  dutch,
-}
+enum HostAPIMessageLanguage { english, french, german, italian, spanish, dutch }
 
 //FIXME: publicEnv is used because public is reserved in swift
 //  needs to be unified with android version if we want to put those in a

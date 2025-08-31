@@ -31,23 +31,13 @@ import 'package:sourcepoint_unified_cmp_platform_interface/src/types.dart'
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeMethodChannel_0 extends _i1.SmartFake implements _i2.MethodChannel {
-  _FakeMethodChannel_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeMethodChannel_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeSPConsent_1 extends _i1.SmartFake implements _i3.SPConsent {
-  _FakeSPConsent_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeSPConsent_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [MethodChannelSourcepointUnifiedCmp].
@@ -56,41 +46,32 @@ class _FakeSPConsent_1 extends _i1.SmartFake implements _i3.SPConsent {
 class MockMethodChannelSourcepointUnifiedCmp extends _i1.Mock
     implements _i4.MethodChannelSourcepointUnifiedCmp {
   @override
-  _i2.MethodChannel get methodChannel => (super.noSuchMethod(
-        Invocation.getter(#methodChannel),
-        returnValue: _FakeMethodChannel_0(
-          this,
-          Invocation.getter(#methodChannel),
-        ),
-        returnValueForMissingStub: _FakeMethodChannel_0(
-          this,
-          Invocation.getter(#methodChannel),
-        ),
-      ) as _i2.MethodChannel);
+  _i2.MethodChannel get methodChannel =>
+      (super.noSuchMethod(
+            Invocation.getter(#methodChannel),
+            returnValue: _FakeMethodChannel_0(
+              this,
+              Invocation.getter(#methodChannel),
+            ),
+            returnValueForMissingStub: _FakeMethodChannel_0(
+              this,
+              Invocation.getter(#methodChannel),
+            ),
+          )
+          as _i2.MethodChannel);
 
   @override
   _i5.Future<_i3.SPConsent> loadMessage(_i3.SPConfig? config) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #loadMessage,
-          [config],
-        ),
-        returnValue: _i5.Future<_i3.SPConsent>.value(_FakeSPConsent_1(
-          this,
-          Invocation.method(
-            #loadMessage,
-            [config],
-          ),
-        )),
-        returnValueForMissingStub:
-            _i5.Future<_i3.SPConsent>.value(_FakeSPConsent_1(
-          this,
-          Invocation.method(
-            #loadMessage,
-            [config],
-          ),
-        )),
-      ) as _i5.Future<_i3.SPConsent>);
+            Invocation.method(#loadMessage, [config]),
+            returnValue: _i5.Future<_i3.SPConsent>.value(
+              _FakeSPConsent_1(this, Invocation.method(#loadMessage, [config])),
+            ),
+            returnValueForMissingStub: _i5.Future<_i3.SPConsent>.value(
+              _FakeSPConsent_1(this, Invocation.method(#loadMessage, [config])),
+            ),
+          )
+          as _i5.Future<_i3.SPConsent>);
 
   @override
   _i5.Future<void> loadPrivacyManager(
@@ -100,36 +81,28 @@ class MockMethodChannelSourcepointUnifiedCmp extends _i1.Mock
     _i3.MessageType? messageType,
   ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #loadPrivacyManager,
-          [
-            pmId,
-            pmTab,
-            campaignType,
-            messageType,
-          ],
-        ),
-        returnValue: _i5.Future<void>.value(),
-        returnValueForMissingStub: _i5.Future<void>.value(),
-      ) as _i5.Future<void>);
+            Invocation.method(#loadPrivacyManager, [
+              pmId,
+              pmTab,
+              campaignType,
+              messageType,
+            ]),
+            returnValue: _i5.Future<void>.value(),
+            returnValueForMissingStub: _i5.Future<void>.value(),
+          )
+          as _i5.Future<void>);
 
   @override
   void registerConsentChangeNotifier(_i6.ConsentChangeNotifier? notifier) =>
       super.noSuchMethod(
-        Invocation.method(
-          #registerConsentChangeNotifier,
-          [notifier],
-        ),
+        Invocation.method(#registerConsentChangeNotifier, [notifier]),
         returnValueForMissingStub: null,
       );
 
   @override
   void registerEventDelegate(_i7.SourcepointEventDelegatePlatform? delegate) =>
       super.noSuchMethod(
-        Invocation.method(
-          #registerEventDelegate,
-          [delegate],
-        ),
+        Invocation.method(#registerEventDelegate, [delegate]),
         returnValueForMissingStub: null,
       );
 }

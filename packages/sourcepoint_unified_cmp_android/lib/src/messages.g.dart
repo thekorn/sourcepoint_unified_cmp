@@ -15,8 +15,11 @@ PlatformException _createConnectionError(String channelName) {
   );
 }
 
-List<Object?> wrapResponse(
-    {Object? result, PlatformException? error, bool empty = false}) {
+List<Object?> wrapResponse({
+  Object? result,
+  PlatformException? error,
+  bool empty = false,
+}) {
   if (empty) {
     return <Object?>[];
   }
@@ -29,43 +32,28 @@ List<Object?> wrapResponse(
 bool _deepEquals(Object? a, Object? b) {
   if (a is List && b is List) {
     return a.length == b.length &&
-        a.indexed
-            .every(((int, dynamic) item) => _deepEquals(item.$2, b[item.$1]));
+        a.indexed.every(
+          ((int, dynamic) item) => _deepEquals(item.$2, b[item.$1]),
+        );
   }
   if (a is Map && b is Map) {
     return a.length == b.length &&
-        a.entries.every((MapEntry<Object?, Object?> entry) =>
-            (b as Map<Object?, Object?>).containsKey(entry.key) &&
-            _deepEquals(entry.value, b[entry.key]));
+        a.entries.every(
+          (MapEntry<Object?, Object?> entry) =>
+              (b as Map<Object?, Object?>).containsKey(entry.key) &&
+              _deepEquals(entry.value, b[entry.key]),
+        );
   }
   return a == b;
 }
 
-enum HostAPIPMTab {
-  defaults,
-  purposes,
-  vendors,
-  features,
-}
+enum HostAPIPMTab { defaults, purposes, vendors, features }
 
-enum HostAPICampaignType {
-  gdpr,
-  ccpa,
-  usnat,
-}
+enum HostAPICampaignType { gdpr, ccpa, usnat }
 
-enum HostAPIMessageType {
-  mobile,
-  ott,
-  legacyOtt,
-}
+enum HostAPIMessageType { mobile, ott, legacyOtt }
 
-enum HostAPIGranularState {
-  all,
-  some,
-  none,
-  emptyVl,
-}
+enum HostAPIGranularState { all, some, none, emptyVl }
 
 enum HostAPIActionType {
   showOptions,
@@ -80,19 +68,9 @@ enum HostAPIActionType {
   unknown,
 }
 
-enum HostAPIMessageLanguage {
-  english,
-  french,
-  german,
-  italian,
-  spanish,
-  dutch,
-}
+enum HostAPIMessageLanguage { english, french, german, italian, spanish, dutch }
 
-enum HostAPICampaignsEnv {
-  stage,
-  public,
-}
+enum HostAPICampaignsEnv { stage, public }
 
 class HostAPIConsentAction {
   HostAPIConsentAction({
@@ -111,12 +89,7 @@ class HostAPIConsentAction {
   String? customActionId;
 
   List<Object?> _toList() {
-    return <Object?>[
-      actionType,
-      pubData,
-      campaignType,
-      customActionId,
-    ];
+    return <Object?>[actionType, pubData, campaignType, customActionId];
   }
 
   Object encode() {
@@ -151,20 +124,14 @@ class HostAPIConsentAction {
 }
 
 class HostAPIGDPRPurposeGrants {
-  HostAPIGDPRPurposeGrants({
-    required this.granted,
-    this.purposeGrants,
-  });
+  HostAPIGDPRPurposeGrants({required this.granted, this.purposeGrants});
 
   bool granted;
 
   Map<String?, bool?>? purposeGrants;
 
   List<Object?> _toList() {
-    return <Object?>[
-      granted,
-      purposeGrants,
-    ];
+    return <Object?>[granted, purposeGrants];
   }
 
   Object encode() {
@@ -175,8 +142,8 @@ class HostAPIGDPRPurposeGrants {
     result as List<Object?>;
     return HostAPIGDPRPurposeGrants(
       granted: result[0]! as bool,
-      purposeGrants:
-          (result[1] as Map<Object?, Object?>?)?.cast<String?, bool?>(),
+      purposeGrants: (result[1] as Map<Object?, Object?>?)
+          ?.cast<String?, bool?>(),
     );
   }
 
@@ -199,20 +166,14 @@ class HostAPIGDPRPurposeGrants {
 }
 
 class HostAPISPError {
-  HostAPISPError({
-    required this.cause,
-    required this.message,
-  });
+  HostAPISPError({required this.cause, required this.message});
 
   String cause;
 
   String message;
 
   List<Object?> _toList() {
-    return <Object?>[
-      cause,
-      message,
-    ];
+    return <Object?>[cause, message];
   }
 
   Object encode() {
@@ -525,11 +486,7 @@ class HostAPICCPAConsent {
 }
 
 class HostAPISPConsent {
-  HostAPISPConsent({
-    this.gdpr,
-    this.ccpa,
-    this.webConsents,
-  });
+  HostAPISPConsent({this.gdpr, this.ccpa, this.webConsents});
 
   HostAPIGDPRConsent? gdpr;
 
@@ -538,11 +495,7 @@ class HostAPISPConsent {
   String? webConsents;
 
   List<Object?> _toList() {
-    return <Object?>[
-      gdpr,
-      ccpa,
-      webConsents,
-    ];
+    return <Object?>[gdpr, ccpa, webConsents];
   }
 
   Object encode() {
@@ -592,12 +545,7 @@ class SPConfig {
   String pmId;
 
   List<Object?> _toList() {
-    return <Object?>[
-      accountId,
-      propertyId,
-      propertyName,
-      pmId,
-    ];
+    return <Object?>[accountId, propertyId, propertyName, pmId];
   }
 
   Object encode() {
@@ -743,11 +691,13 @@ class SourcepointUnifiedCmpHostApi {
   /// Constructor for [SourcepointUnifiedCmpHostApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  SourcepointUnifiedCmpHostApi(
-      {BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
-      : pigeonVar_binaryMessenger = binaryMessenger,
-        pigeonVar_messageChannelSuffix =
-            messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
+  SourcepointUnifiedCmpHostApi({
+    BinaryMessenger? binaryMessenger,
+    String messageChannelSuffix = '',
+  }) : pigeonVar_binaryMessenger = binaryMessenger,
+       pigeonVar_messageChannelSuffix = messageChannelSuffix.isNotEmpty
+           ? '.$messageChannelSuffix'
+           : '';
   final BinaryMessenger? pigeonVar_binaryMessenger;
 
   static const MessageCodec<Object?> pigeonChannelCodec = _PigeonCodec();
@@ -770,23 +720,23 @@ class SourcepointUnifiedCmpHostApi {
         'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadMessage$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel =
         BasicMessageChannel<Object?>(
-      pigeonVar_channelName,
-      pigeonChannelCodec,
-      binaryMessenger: pigeonVar_binaryMessenger,
-    );
-    final Future<Object?> pigeonVar_sendFuture =
-        pigeonVar_channel.send(<Object?>[
-      accountId,
-      propertyId,
-      propertyName,
-      pmId,
-      messageLanguage,
-      campaignsEnv,
-      messageTimeout,
-      runGDPRCampaign,
-      runCCPACampaign,
-      runUSNATCampaign
-    ]);
+          pigeonVar_channelName,
+          pigeonChannelCodec,
+          binaryMessenger: pigeonVar_binaryMessenger,
+        );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel
+        .send(<Object?>[
+          accountId,
+          propertyId,
+          propertyName,
+          pmId,
+          messageLanguage,
+          campaignsEnv,
+          messageTimeout,
+          runGDPRCampaign,
+          runCCPACampaign,
+          runUSNATCampaign,
+        ]);
     final List<Object?>? pigeonVar_replyList =
         await pigeonVar_sendFuture as List<Object?>?;
     if (pigeonVar_replyList == null) {
@@ -817,12 +767,13 @@ class SourcepointUnifiedCmpHostApi {
         'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadPrivacyManager$pigeonVar_messageChannelSuffix';
     final BasicMessageChannel<Object?> pigeonVar_channel =
         BasicMessageChannel<Object?>(
-      pigeonVar_channelName,
-      pigeonChannelCodec,
-      binaryMessenger: pigeonVar_binaryMessenger,
+          pigeonVar_channelName,
+          pigeonChannelCodec,
+          binaryMessenger: pigeonVar_binaryMessenger,
+        );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(
+      <Object?>[pmId, pmTab, campaignType, messageType],
     );
-    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel
-        .send(<Object?>[pmId, pmTab, campaignType, messageType]);
     final List<Object?>? pigeonVar_replyList =
         await pigeonVar_sendFuture as List<Object?>?;
     if (pigeonVar_replyList == null) {
@@ -861,15 +812,16 @@ abstract class SourcepointUnifiedCmpFlutterApi {
     BinaryMessenger? binaryMessenger,
     String messageChannelSuffix = '',
   }) {
-    messageChannelSuffix =
-        messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
+    messageChannelSuffix = messageChannelSuffix.isNotEmpty
+        ? '.$messageChannelSuffix'
+        : '';
     {
-      final BasicMessageChannel<
-          Object?> pigeonVar_channel = BasicMessageChannel<
-              Object?>(
-          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onUIFinished$messageChannelSuffix',
-          pigeonChannelCodec,
-          binaryMessenger: binaryMessenger);
+      final BasicMessageChannel<Object?>
+      pigeonVar_channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onUIFinished$messageChannelSuffix',
+        pigeonChannelCodec,
+        binaryMessenger: binaryMessenger,
+      );
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
@@ -881,18 +833,19 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(error: e);
           } catch (e) {
             return wrapResponse(
-                error: PlatformException(code: 'error', message: e.toString()));
+              error: PlatformException(code: 'error', message: e.toString()),
+            );
           }
         });
       }
     }
     {
-      final BasicMessageChannel<
-          Object?> pigeonVar_channel = BasicMessageChannel<
-              Object?>(
-          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onUIReady$messageChannelSuffix',
-          pigeonChannelCodec,
-          binaryMessenger: binaryMessenger);
+      final BasicMessageChannel<Object?>
+      pigeonVar_channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onUIReady$messageChannelSuffix',
+        pigeonChannelCodec,
+        binaryMessenger: binaryMessenger,
+      );
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
@@ -904,28 +857,33 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(error: e);
           } catch (e) {
             return wrapResponse(
-                error: PlatformException(code: 'error', message: e.toString()));
+              error: PlatformException(code: 'error', message: e.toString()),
+            );
           }
         });
       }
     }
     {
-      final BasicMessageChannel<
-          Object?> pigeonVar_channel = BasicMessageChannel<
-              Object?>(
-          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError$messageChannelSuffix',
-          pigeonChannelCodec,
-          binaryMessenger: binaryMessenger);
+      final BasicMessageChannel<Object?>
+      pigeonVar_channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError$messageChannelSuffix',
+        pigeonChannelCodec,
+        binaryMessenger: binaryMessenger,
+      );
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
         pigeonVar_channel.setMessageHandler((Object? message) async {
-          assert(message != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError was null.');
+          assert(
+            message != null,
+            'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError was null.',
+          );
           final List<Object?> args = (message as List<Object?>?)!;
           final HostAPISPError? arg_error = (args[0] as HostAPISPError?);
-          assert(arg_error != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError was null, expected non-null HostAPISPError.');
+          assert(
+            arg_error != null,
+            'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError was null, expected non-null HostAPISPError.',
+          );
           try {
             api.onError(arg_error!);
             return wrapResponse(empty: true);
@@ -933,28 +891,33 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(error: e);
           } catch (e) {
             return wrapResponse(
-                error: PlatformException(code: 'error', message: e.toString()));
+              error: PlatformException(code: 'error', message: e.toString()),
+            );
           }
         });
       }
     }
     {
-      final BasicMessageChannel<
-          Object?> pigeonVar_channel = BasicMessageChannel<
-              Object?>(
-          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady$messageChannelSuffix',
-          pigeonChannelCodec,
-          binaryMessenger: binaryMessenger);
+      final BasicMessageChannel<Object?>
+      pigeonVar_channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady$messageChannelSuffix',
+        pigeonChannelCodec,
+        binaryMessenger: binaryMessenger,
+      );
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
         pigeonVar_channel.setMessageHandler((Object? message) async {
-          assert(message != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady was null.');
+          assert(
+            message != null,
+            'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady was null.',
+          );
           final List<Object?> args = (message as List<Object?>?)!;
           final HostAPISPConsent? arg_consent = (args[0] as HostAPISPConsent?);
-          assert(arg_consent != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady was null, expected non-null HostAPISPConsent.');
+          assert(
+            arg_consent != null,
+            'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady was null, expected non-null HostAPISPConsent.',
+          );
           try {
             api.onConsentReady(arg_consent!);
             return wrapResponse(empty: true);
@@ -962,29 +925,34 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(error: e);
           } catch (e) {
             return wrapResponse(
-                error: PlatformException(code: 'error', message: e.toString()));
+              error: PlatformException(code: 'error', message: e.toString()),
+            );
           }
         });
       }
     }
     {
-      final BasicMessageChannel<
-          Object?> pigeonVar_channel = BasicMessageChannel<
-              Object?>(
-          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction$messageChannelSuffix',
-          pigeonChannelCodec,
-          binaryMessenger: binaryMessenger);
+      final BasicMessageChannel<Object?>
+      pigeonVar_channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction$messageChannelSuffix',
+        pigeonChannelCodec,
+        binaryMessenger: binaryMessenger,
+      );
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
         pigeonVar_channel.setMessageHandler((Object? message) async {
-          assert(message != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction was null.');
+          assert(
+            message != null,
+            'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction was null.',
+          );
           final List<Object?> args = (message as List<Object?>?)!;
           final HostAPIConsentAction? arg_consentAction =
               (args[0] as HostAPIConsentAction?);
-          assert(arg_consentAction != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction was null, expected non-null HostAPIConsentAction.');
+          assert(
+            arg_consentAction != null,
+            'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction was null, expected non-null HostAPIConsentAction.',
+          );
           try {
             api.onAction(arg_consentAction!);
             return wrapResponse(empty: true);
@@ -992,28 +960,33 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(error: e);
           } catch (e) {
             return wrapResponse(
-                error: PlatformException(code: 'error', message: e.toString()));
+              error: PlatformException(code: 'error', message: e.toString()),
+            );
           }
         });
       }
     }
     {
-      final BasicMessageChannel<
-          Object?> pigeonVar_channel = BasicMessageChannel<
-              Object?>(
-          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound$messageChannelSuffix',
-          pigeonChannelCodec,
-          binaryMessenger: binaryMessenger);
+      final BasicMessageChannel<Object?>
+      pigeonVar_channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound$messageChannelSuffix',
+        pigeonChannelCodec,
+        binaryMessenger: binaryMessenger,
+      );
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
         pigeonVar_channel.setMessageHandler((Object? message) async {
-          assert(message != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound was null.');
+          assert(
+            message != null,
+            'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound was null.',
+          );
           final List<Object?> args = (message as List<Object?>?)!;
           final String? arg_url = (args[0] as String?);
-          assert(arg_url != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound was null, expected non-null String.');
+          assert(
+            arg_url != null,
+            'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound was null, expected non-null String.',
+          );
           try {
             api.onNoIntentActivitiesFound(arg_url!);
             return wrapResponse(empty: true);
@@ -1021,28 +994,33 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(error: e);
           } catch (e) {
             return wrapResponse(
-                error: PlatformException(code: 'error', message: e.toString()));
+              error: PlatformException(code: 'error', message: e.toString()),
+            );
           }
         });
       }
     }
     {
-      final BasicMessageChannel<
-          Object?> pigeonVar_channel = BasicMessageChannel<
-              Object?>(
-          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished$messageChannelSuffix',
-          pigeonChannelCodec,
-          binaryMessenger: binaryMessenger);
+      final BasicMessageChannel<Object?>
+      pigeonVar_channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished$messageChannelSuffix',
+        pigeonChannelCodec,
+        binaryMessenger: binaryMessenger,
+      );
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
         pigeonVar_channel.setMessageHandler((Object? message) async {
-          assert(message != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished was null.');
+          assert(
+            message != null,
+            'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished was null.',
+          );
           final List<Object?> args = (message as List<Object?>?)!;
           final HostAPISPConsent? arg_consent = (args[0] as HostAPISPConsent?);
-          assert(arg_consent != null,
-              'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished was null, expected non-null HostAPISPConsent.');
+          assert(
+            arg_consent != null,
+            'Argument for dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished was null, expected non-null HostAPISPConsent.',
+          );
           try {
             api.onSpFinished(arg_consent!);
             return wrapResponse(empty: true);
@@ -1050,7 +1028,8 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(error: e);
           } catch (e) {
             return wrapResponse(
-                error: PlatformException(code: 'error', message: e.toString()));
+              error: PlatformException(code: 'error', message: e.toString()),
+            );
           }
         });
       }

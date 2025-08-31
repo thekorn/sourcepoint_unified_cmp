@@ -14,34 +14,38 @@ void main() {
 
   setUp(() {});
 
-  test('preloadConsent should run the correct JavaScript in the webview',
-      () async {
-    final consent = SPConsent(webConsents: 'bla');
+  test(
+    'preloadConsent should run the correct JavaScript in the webview',
+    () async {
+      final consent = SPConsent(webConsents: 'bla');
 
-    final mockPlatformWebViewController = MockPlatformWebViewController();
+      final mockPlatformWebViewController = MockPlatformWebViewController();
 
-    final webViewController = WebViewController.fromPlatform(
-      mockPlatformWebViewController,
-    );
+      final webViewController = WebViewController.fromPlatform(
+        mockPlatformWebViewController,
+      );
 
-    await webViewController.preloadConsent(consent: consent);
-    verify(mockPlatformWebViewController.runJavaScript(captureAny));
-  });
+      await webViewController.preloadConsent(consent: consent);
+      verify(mockPlatformWebViewController.runJavaScript(captureAny));
+    },
+  );
 
-  test('preloadConsent should raise an assertion if webConsents is null',
-      () async {
-    // ignore: avoid_redundant_argument_values
-    final consent = SPConsent(webConsents: null);
+  test(
+    'preloadConsent should raise an assertion if webConsents is null',
+    () async {
+      // ignore: avoid_redundant_argument_values
+      final consent = SPConsent(webConsents: null);
 
-    final mockPlatformWebViewController = MockPlatformWebViewController();
+      final mockPlatformWebViewController = MockPlatformWebViewController();
 
-    final webViewController = WebViewController.fromPlatform(
-      mockPlatformWebViewController,
-    );
+      final webViewController = WebViewController.fromPlatform(
+        mockPlatformWebViewController,
+      );
 
-    expect(
-      () async => webViewController.preloadConsent(consent: consent),
-      throwsAssertionError,
-    );
-  });
+      expect(
+        () async => webViewController.preloadConsent(consent: consent),
+        throwsAssertionError,
+      );
+    },
+  );
 }

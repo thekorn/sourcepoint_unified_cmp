@@ -53,8 +53,10 @@ class _SourcepointUnifiedCMPBuilderExampleState
       ..setEventDelegate(
         SourcepointEventDelegate(
           onConsentReady: (SPConsent consent) {
-            debugPrint('DELEGATE onConsentReady: Consent string: '
-                '${consent.gdpr?.euconsent}');
+            debugPrint(
+              'DELEGATE onConsentReady: Consent string: '
+              '${consent.gdpr?.euconsent}',
+            );
           },
           onSpFinished: (SPConsent consent) {
             debugPrint(
@@ -97,11 +99,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
               );
             } else if (snapshot.hasError) {
               children = <Widget>[
-                const Icon(
-                  Icons.error_outline,
-                  color: Colors.red,
-                  size: 60,
-                ),
+                const Icon(Icons.error_outline, color: Colors.red, size: 60),
                 Padding(
                   padding: const EdgeInsets.only(top: 16),
                   child: Text('Error: ${snapshot.error}'),
@@ -120,11 +118,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
                 ),
               ];
             }
-            return SingleChildScrollView(
-              child: Column(
-                children: children,
-              ),
-            );
+            return SingleChildScrollView(child: Column(children: children));
           },
         ),
       ),

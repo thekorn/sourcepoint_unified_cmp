@@ -13,38 +13,44 @@ void main() {
 
   setUp(() {});
 
-  test('preloadConsent should run the correct JavaScript in the webview',
-      () async {
-    final consent = SPConsent(webConsents: 'bla');
+  test(
+    'preloadConsent should run the correct JavaScript in the webview',
+    () async {
+      final consent = SPConsent(webConsents: 'bla');
 
-    final mockPlatformWebViewController = MockPlatformInAppWebViewController();
+      final mockPlatformWebViewController =
+          MockPlatformInAppWebViewController();
 
-    final webViewController = InAppWebViewController.fromPlatform(
-      platform: mockPlatformWebViewController,
-    );
+      final webViewController = InAppWebViewController.fromPlatform(
+        platform: mockPlatformWebViewController,
+      );
 
-    await webViewController.preloadConsent(consent: consent);
-    verify(
-      mockPlatformWebViewController.evaluateJavascript(
-        source: captureAnyNamed('source'),
-      ),
-    );
-  });
+      await webViewController.preloadConsent(consent: consent);
+      verify(
+        mockPlatformWebViewController.evaluateJavascript(
+          source: captureAnyNamed('source'),
+        ),
+      );
+    },
+  );
 
-  test('preloadConsent should raise an assertion if webConsents is null',
-      () async {
-    // ignore: avoid_redundant_argument_values
-    final consent = SPConsent(webConsents: null);
+  test(
+    'preloadConsent should raise an assertion if webConsents is null',
+    () async {
+      // ignore: avoid_redundant_argument_values
+      final consent = SPConsent(webConsents: null);
 
-    final mockPlatformWebViewController = MockPlatformInAppWebViewController();
+      final mockPlatformWebViewController =
+          MockPlatformInAppWebViewController();
 
-    final webViewController = InAppWebViewController.fromPlatform(
-      platform: mockPlatformWebViewController,
-    );
+      final webViewController = InAppWebViewController.fromPlatform(
+        platform: mockPlatformWebViewController,
+      );
 
-    expect(
-      () async => webViewController.preloadConsent(consent: consent),
-      throwsAssertionError,
-    );
-  });
+      expect(
+        () async => webViewController.preloadConsent(consent: consent),
+        throwsAssertionError,
+      );
+    },
+  );
 }

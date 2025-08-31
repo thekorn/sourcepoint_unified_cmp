@@ -16,9 +16,7 @@ void main() {
   });
 
   test('loadMessage', () async {
-    when(
-      api.loadMessage(null),
-    ).thenAnswer((_) async => SPConsent());
+    when(api.loadMessage(null)).thenAnswer((_) async => SPConsent());
     final consent = await api.loadMessage(null);
     expect(consent, isNotNull);
   });
