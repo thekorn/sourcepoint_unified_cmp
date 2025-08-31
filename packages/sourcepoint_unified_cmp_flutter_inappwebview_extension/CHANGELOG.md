@@ -1,3 +1,7 @@
+## 0.2.0
+
+ - Bump "sourcepoint_unified_cmp_flutter_inappwebview_extension" to `0.2.0`.
+
 ## 0.1.31
 
  - Bump "sourcepoint_unified_cmp_flutter_inappwebview_extension" to `0.1.31`.
