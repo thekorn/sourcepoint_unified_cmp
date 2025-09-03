@@ -49,6 +49,6 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.sourcepoint.cmplibrary:cmplibrary:7.15.5'
+    implementation 'com.sourcepoint.cmplibrary:cmplibrary:7.15.6'
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0"
 }
