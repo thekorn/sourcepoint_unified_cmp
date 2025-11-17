@@ -13,13 +13,13 @@ fi
 echo "copy doc/ to sourcepoint_unified_cmp..."
 
 # serve static files within documentation from github
-# this reduced package size 
+# this reduced package size
 sed  's/(\.\/doc\/images\//(https\:\/\/github\.com\/thekorn\/sourcepoint_unified_cmp\/raw\/main\/doc\/images\//g' README.md > packages/sourcepoint_unified_cmp/README.md
 sed  's/(\.\/doc\/images\//(https\:\/\/github\.com\/thekorn\/sourcepoint_unified_cmp\/raw\/main\/doc\/images\//g' CONTRIBUTING.md > packages/sourcepoint_unified_cmp/CONTRIBUTING.md
 
 git add .
 
-melos version \
+fvm exec melos version \
     -V sourcepoint_unified_cmp:$1 \
     -V sourcepoint_unified_cmp_android:$1 \
     -V sourcepoint_unified_cmp_ios:$1 \
@@ -28,5 +28,5 @@ melos version \
     -V sourcepoint_unified_cmp_flutter_inappwebview_extension:$1 \
     -r
 
-melos publish --no-dry-run
+fvm exec melos publish --no-dry-run
 git push

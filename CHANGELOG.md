@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-11-17
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v0.2.1`](#sourcepoint_unified_cmp---v021)
+ - [`sourcepoint_unified_cmp_android` - `v0.2.1`](#sourcepoint_unified_cmp_android---v021)
+ - [`sourcepoint_unified_cmp_ios` - `v0.2.1`](#sourcepoint_unified_cmp_ios---v021)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v0.2.1`](#sourcepoint_unified_cmp_platform_interface---v021)
+ - [`sourcepoint_unified_cmp_flutter_webview_extension` - `v0.2.1`](#sourcepoint_unified_cmp_flutter_webview_extension---v021)
+ - [`sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.2.1`](#sourcepoint_unified_cmp_flutter_inappwebview_extension---v021)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v0.2.1`
+
+ - Bump "sourcepoint_unified_cmp" to `0.2.1`.
+
+#### `sourcepoint_unified_cmp_android` - `v0.2.1`
+
+#### `sourcepoint_unified_cmp_ios` - `v0.2.1`
+
+ - Bump "sourcepoint_unified_cmp_ios" to `0.2.1`.
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v0.2.1`
+
+ - Bump "sourcepoint_unified_cmp_platform_interface" to `0.2.1`.
+
+#### `sourcepoint_unified_cmp_flutter_webview_extension` - `v0.2.1`
+
+ - Bump "sourcepoint_unified_cmp_flutter_webview_extension" to `0.2.1`.
+
+#### `sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v0.2.1`
+
+ - Bump "sourcepoint_unified_cmp_flutter_inappwebview_extension" to `0.2.1`.
+
+
 ## 2025-08-31
 
 ### Changes
