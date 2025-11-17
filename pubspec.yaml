@@ -7,7 +7,7 @@ environment:
   flutter: ">=3.0.0"
 dev_dependencies:
   melos: ^7.1.0
-  pana: ^0.22.6
+  pana: ^0.23.1
 
 workspace:
   - packages/sourcepoint_unified_cmp
@@ -42,7 +42,7 @@ melos:
 
     pana: fvm dart run pana . --exit-code-threshold 40 2>&1
 
-    format:
+    format:all:
       run: |
         melos format && \
         swiftformat . 2>&1 && \

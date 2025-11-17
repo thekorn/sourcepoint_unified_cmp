@@ -18,7 +18,7 @@ dependencies:
     # the parent directory to use the current plugin's version.
     path: ../
 
-  very_good_analysis: ^9.0.0
+  very_good_analysis: ^10.0.0
 
 flutter:
   uses-material-design: true
