@@ -108,6 +108,10 @@ enum CampaignType {
   /// mobile devices. Click here to learn more about implementing U.S.
   /// Multi-State Privacy on OTT.
   ///usnat
+
+  /// Unknown campaign type - used when the campaign type is not recognized
+  /// (e.g. ios14 or other iOS-specific campaign types)
+  unknown,
   // TODO(thekorn): add missing iOs specific campaigns
 }
 

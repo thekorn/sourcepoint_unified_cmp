@@ -142,6 +142,7 @@ enum HostAPIPMTab: Int {
 enum HostAPICampaignType: Int {
   case gdpr = 0
   case ccpa = 1
+  case unknown = 2
 }
 
 enum HostAPIMessageType: Int {

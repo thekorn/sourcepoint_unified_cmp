@@ -49,7 +49,7 @@ bool _deepEquals(Object? a, Object? b) {
 
 enum HostAPIPMTab { defaults, purposes, vendors, features }
 
-enum HostAPICampaignType { gdpr, ccpa }
+enum HostAPICampaignType { gdpr, ccpa, unknown }
 
 enum HostAPIMessageType { mobile, ott, legacyOtt }
 

@@ -43,6 +43,8 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin,
       consentManager.loadGDPRPrivacyManager(withId: pmId, tab: pmTab.toSPPrivacyManagerTab())
     case HostAPICampaignType.ccpa:
       consentManager.loadCCPAPrivacyManager(withId: pmId, tab: pmTab.toSPPrivacyManagerTab())
+    case HostAPICampaignType.unknown:
+      break
     }
   }
 

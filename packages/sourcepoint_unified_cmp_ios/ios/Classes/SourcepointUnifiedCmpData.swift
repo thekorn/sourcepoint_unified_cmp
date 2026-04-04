@@ -118,24 +118,25 @@ extension HostAPIPMTab {
 extension SPAction {
   func toHostAPIConsentAction() -> HostAPIConsentAction {
     HostAPIConsentAction(
-      actionType: try! type.toHostAPIActionType(),
+      actionType: (try? type.toHostAPIActionType()) ?? HostAPIActionType.unknown,
       pubData: String(describing: publisherData),
-      campaignType: try! campaignType.toHostAPICampaignType(),
+      campaignType: campaignType.toHostAPICampaignType(),
       customActionId: customActionId
     )
   }
 }
 
 extension SPCampaignType {
-  func toHostAPICampaignType() throws -> HostAPICampaignType {
+  func toHostAPICampaignType() -> HostAPICampaignType {
     switch self {
     case .ccpa:
-      HostAPICampaignType.ccpa
+      return HostAPICampaignType.ccpa
     case .gdpr:
-      HostAPICampaignType.gdpr
+      return HostAPICampaignType.gdpr
     default:
-      // NOTE: there is no support for all other campaign types
-      throw NotImplementedError.notImplemented
+      // NOTE: .unknown, .usnat, .ios14 and other campaign types are not fully
+      // supported yet, map them to .unknown to avoid crashing
+      return HostAPICampaignType.unknown
     }
   }
 }
