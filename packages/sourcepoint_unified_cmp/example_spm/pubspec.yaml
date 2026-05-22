@@ -1,5 +1,6 @@
-name: sourcepoint_unified_cmp_example
-description: Demonstrates how to use the sourcepoint_unified_cmp plugin.
+name: sourcepoint_unified_cmp_example_spm
+description: Demonstrates how to use the sourcepoint_unified_cmp plugin with
+  Swift Package Manager enabled on iOS.
 version: 0.1.0+1
 publish_to: none
 resolution: workspace
@@ -23,4 +24,4 @@ dependencies:
 flutter:
   uses-material-design: true
   config:
-    enable-swift-package-manager: false
+    enable-swift-package-manager: true
