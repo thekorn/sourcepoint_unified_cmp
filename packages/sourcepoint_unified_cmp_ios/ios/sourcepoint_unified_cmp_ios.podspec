@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/thekorn/sourcepoint_unified_cmp'
   s.license          = { :type => 'BSD', :file => '../LICENSE' }
   s.author           = { 'Markus Korn' => 'markus.korn@gmail.com' }
-  s.source           = { :http => 'https://github.com/thekorn/sourcepoint_unified_cmp/tree/main/packages/sourcepoint_unified_cmp_ios' }
+  s.source           = { :path => '.' }
   s.source_files = 'sourcepoint_unified_cmp_ios/Sources/sourcepoint_unified_cmp_ios/**/*.swift'
   s.dependency 'Flutter'
   s.dependency 'ConsentViewController', '7.12.9'
