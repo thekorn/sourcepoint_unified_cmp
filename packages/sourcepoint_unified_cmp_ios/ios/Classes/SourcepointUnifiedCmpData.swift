@@ -15,8 +15,8 @@ extension ConsentStatus {
     HostAPIConsentStatus(
       consentedAll: consentedAll,
       consentedToAny: consentedToAny,
-      granularStatus: nil, /// NOTE: granularStatus is not public in the ios sdk
-      hasConsentData: nil, /// NOTE: hasConsentData is not public in the ios sdk
+      granularStatus: nil, // NOTE: granularStatus is not public in the ios sdk
+      hasConsentData: nil, // NOTE: hasConsentData is not public in the ios sdk
       rejectedAny: rejectedAny,
       rejectedLI: rejectedLI,
       legalBasisChanges: legalBasisChanges,
@@ -140,10 +140,10 @@ extension SPCampaignType {
   }
 }
 
-// FIXME(thekorn) the anddroid and the ios sdk are actually diverging here.
-//   ios is using newer and more granular action types, whereas
-//   android is still using the old ones
-//   once android is catching up we need to unify
+/// FIXME(thekorn) the anddroid and the ios sdk are actually diverging here.
+///   ios is using newer and more granular action types, whereas
+///   android is still using the old ones
+///   once android is catching up we need to unify
 extension SPActionType {
   func toHostAPIActionType() throws -> HostAPIActionType {
     switch self {
