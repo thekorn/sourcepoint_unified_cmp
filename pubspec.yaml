@@ -6,8 +6,8 @@ environment:
   sdk: "^3.9.0"
   flutter: ">=3.0.0"
 dev_dependencies:
-  melos: ^7.1.0
-  pana: ^0.23.1
+  melos: ^7.7.0
+  pana: ^0.23.12
 
 workspace:
   - packages/sourcepoint_unified_cmp
