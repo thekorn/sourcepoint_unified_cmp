@@ -105,7 +105,7 @@ melos:
 
     generate:pigeon:all:
       run: |
-        melos run generate:pigeon --no-select&& \
+        melos run generate:pigeon --no-select && \
         melos run format:all
       description: Generate the pigeon messages for all the supported packages.
 
