@@ -20,7 +20,7 @@ jobs:
   fvmrc:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: get fvmrc
         id: fvmrc
         uses: ActionsTools/read-json-action@v1.0.5

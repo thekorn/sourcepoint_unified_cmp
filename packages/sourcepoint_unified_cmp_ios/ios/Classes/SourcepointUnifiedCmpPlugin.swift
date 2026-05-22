@@ -2,7 +2,7 @@ import ConsentViewController
 import Flutter
 import UIKit
 
-// This extension of Error is required to do use FlutterError in any Swift code.
+/// This extension of Error is required to do use FlutterError in any Swift code.
 extension FlutterError: Error {}
 
 public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin,

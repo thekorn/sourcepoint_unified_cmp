@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-MELOS_VERSION="7.3.0"
-FVM_VERSION="4.0.0"
+MELOS_VERSION="7.7.0"
+FVM_VERSION="4.0.5"
 POD_VERSION="1.16.2"
 
 function isInstalled() {
