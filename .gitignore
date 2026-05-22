@@ -10,6 +10,11 @@ flutter_export_environment.sh
 coverage/
 
 Podfile.lock
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Package.resolved
 # FIXME: melos publishing does not like this overrides to not exist.
 #pubspec_overrides.yaml
 #!**/example/pubspec_overrides.yaml
