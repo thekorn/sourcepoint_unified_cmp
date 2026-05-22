@@ -201,6 +201,10 @@ extension on CampaignType {
         return messages.HostAPICampaignType.ccpa;
       case CampaignType.usnat:
         return messages.HostAPICampaignType.usnat;
+      case CampaignType.unknown:
+        throw UnimplementedError(
+          'CampaignType.unknown is iOS-only and cannot be used on Android.',
+        );
     }
   }
 }

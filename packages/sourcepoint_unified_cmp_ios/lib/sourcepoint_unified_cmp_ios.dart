@@ -55,6 +55,8 @@ extension on messages.HostAPICampaignType {
         return CampaignType.gdpr;
       case messages.HostAPICampaignType.ccpa:
         return CampaignType.ccpa;
+      case messages.HostAPICampaignType.unknown:
+        return CampaignType.unknown;
     }
   }
 }
@@ -204,6 +206,8 @@ extension on CampaignType {
       case CampaignType.usnat:
         // FIXME: Handle this case.
         throw UnimplementedError();
+      case CampaignType.unknown:
+        return messages.HostAPICampaignType.unknown;
     }
   }
 }
