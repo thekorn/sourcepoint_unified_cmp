@@ -22,3 +22,5 @@ dependencies:
 
 flutter:
   uses-material-design: true
+  config:
+    enable-swift-package-manager: false

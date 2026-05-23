@@ -12,6 +12,7 @@ dev_dependencies:
 workspace:
   - packages/sourcepoint_unified_cmp
   - packages/sourcepoint_unified_cmp/example
+  - packages/sourcepoint_unified_cmp/example_spm
   - packages/sourcepoint_unified_cmp_android
   - packages/sourcepoint_unified_cmp_flutter_inappwebview_extension
   - packages/sourcepoint_unified_cmp_flutter_inappwebview_extension/example
@@ -130,6 +131,14 @@ melos:
         concurrency: 1
       packageFilters:
         scope: "sourcepoint_unified_cmp_example"
+
+    run:example:spm:
+      run: fvm flutter run
+      description: Run the example app with Swift Package Manager enabled.
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: "sourcepoint_unified_cmp_example_spm"
 
     run:example:flutter_webview:
       run: fvm flutter run
