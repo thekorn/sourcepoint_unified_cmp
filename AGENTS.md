@@ -15,7 +15,7 @@ Flutter federated plugin (Melos monorepo) wrapping the Sourcepoint CMP SDKs for 
 - All tests + coverage + cspell: `melos run test:all` · Per-package tests: `melos run test`
 - Single test: `cd packages/<pkg> && fvm flutter test test/path/to_foo_test.dart --plain-name "name"`
 - Codegen: `melos run generate:pigeon:all`, `melos run generate:mocks:all`
-- Run example app: `melos run run:example -- -d <device>` (variants: `run:example:flutter_webview`, `run:example:flutter_inappwebview`)
+- Run example app: `melos run run:example -- -d <device>` (variants: `run:example:spm`, `run:example:flutter_webview`, `run:example:flutter_inappwebview`)
 - Coverage gate: `melos run check-coverage` (≥20%, generated `*.g.dart` excluded)
 
 ## Style
@@ -23,4 +23,3 @@ Flutter federated plugin (Melos monorepo) wrapping the Sourcepoint CMP SDKs for 
 - Swift: `swiftformat .` (see `.swiftformat`). Kotlin: `ktlint --format` (skip `**/*.g.kt`).
 - Errors: surface via Pigeon `FlutterError` from native; on Dart side use typed exceptions and `Result`-style returns where present—don’t swallow errors.
 - Commit hygiene: keep changelogs per-package (Melos manages versioning); don’t hand-bump versions.
-
