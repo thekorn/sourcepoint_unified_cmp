@@ -46,4 +46,44 @@ class SourcepointController extends ConsentChangeNotifier
     debugPrint('loadMessage');
     return _platform.loadMessage(config);
   }
+
+  /// Programmatically grant custom GDPR consent to the supplied [vendors],
+  /// [categories] and [legIntCategories].
+  ///
+  /// The native SDK persists the consent locally and the registered
+  /// [ConsentChangeNotifier] / event delegate callbacks are notified about the
+  /// updated [SPConsent].
+  @override
+  Future<SPConsent> customConsentGdpr({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  }) {
+    debugPrint('customConsentGdpr');
+    return _platform.customConsentGdpr(
+      vendors: vendors,
+      categories: categories,
+      legIntCategories: legIntCategories,
+    );
+  }
+
+  /// Programmatically delete custom GDPR consent for the supplied [vendors],
+  /// [categories] and [legIntCategories].
+  ///
+  /// The native SDK persists the consent locally and the registered
+  /// [ConsentChangeNotifier] / event delegate callbacks are notified about the
+  /// updated [SPConsent].
+  @override
+  Future<SPConsent> deleteCustomConsentGdpr({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  }) {
+    debugPrint('deleteCustomConsentGdpr');
+    return _platform.deleteCustomConsentGdpr(
+      vendors: vendors,
+      categories: categories,
+      legIntCategories: legIntCategories,
+    );
+  }
 }

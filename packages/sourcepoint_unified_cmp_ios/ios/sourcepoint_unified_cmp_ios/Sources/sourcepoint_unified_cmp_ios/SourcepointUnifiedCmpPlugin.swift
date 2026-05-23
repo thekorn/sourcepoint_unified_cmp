@@ -46,6 +46,50 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin,
     }
   }
 
+  func customConsentGDPR(vendors: [String], categories: [String], legIntCategories: [String],
+                         completion: @escaping (Result<HostAPISPConsent, Error>) -> Void) {
+    guard let consentManager else {
+      completion(.failure(FlutterError(
+        code: "not_initialized",
+        message: "SPConsentManager is not initialized. Call loadMessage first.",
+        details: nil
+      )))
+      return
+    }
+    consentManager.customConsentGDPR(
+      vendors: vendors,
+      categories: categories,
+      legIntCategories: legIntCategories
+    ) { [weak self] gdprConsent in
+      let hostConsent = gdprConsent.toHostAPISPConsent()
+      self?.flutterAPI?.callOnConsentReady(hostConsent: hostConsent)
+      self?.flutterAPI?.callOnSpFinished(hostConsent: hostConsent)
+      completion(.success(hostConsent))
+    }
+  }
+
+  func deleteCustomConsentGDPR(vendors: [String], categories: [String], legIntCategories: [String],
+                               completion: @escaping (Result<HostAPISPConsent, Error>) -> Void) {
+    guard let consentManager else {
+      completion(.failure(FlutterError(
+        code: "not_initialized",
+        message: "SPConsentManager is not initialized. Call loadMessage first.",
+        details: nil
+      )))
+      return
+    }
+    consentManager.deleteCustomConsentGDPR(
+      vendors: vendors,
+      categories: categories,
+      legIntCategories: legIntCategories
+    ) { [weak self] gdprConsent in
+      let hostConsent = gdprConsent.toHostAPISPConsent()
+      self?.flutterAPI?.callOnConsentReady(hostConsent: hostConsent)
+      self?.flutterAPI?.callOnSpFinished(hostConsent: hostConsent)
+      completion(.success(hostConsent))
+    }
+  }
+
   public static func register(with registrar: FlutterPluginRegistrar) {
     instance = SourcepointUnifiedCmpPlugin()
     instance?.onRegister(registrar)
@@ -69,6 +113,10 @@ private class SourcepointFlutterApi {
     flutterAPI.onConsentReady(consent: userData.toHostAPISPConsent()) { _ in }
   }
 
+  func callOnConsentReady(hostConsent: HostAPISPConsent) {
+    flutterAPI.onConsentReady(consent: hostConsent) { _ in }
+  }
+
   func callOnUIReady(controller: UIViewController) {
     flutterAPI.onUIReady { _ in }
   }
@@ -85,6 +133,10 @@ private class SourcepointFlutterApi {
 
   func callOnSpFinished(userData: SPUserData) {
     flutterAPI.onSpFinished(consent: userData.toHostAPISPConsent()) { _ in }
+  }
+
+  func callOnSpFinished(hostConsent: HostAPISPConsent) {
+    flutterAPI.onSpFinished(consent: hostConsent) { _ in }
   }
 
   func callOnError(error: SPError) {

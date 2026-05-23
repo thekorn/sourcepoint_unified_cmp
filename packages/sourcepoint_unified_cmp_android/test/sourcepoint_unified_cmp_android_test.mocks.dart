@@ -131,4 +131,74 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
             returnValueForMissingStub: _i4.Future<void>.value(),
           )
           as _i4.Future<void>);
+
+  @override
+  _i4.Future<_i2.HostAPISPConsent> customConsentGDPR({
+    required List<String>? vendors,
+    required List<String>? categories,
+    required List<String>? legIntCategories,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#customConsentGDPR, [], {
+              #vendors: vendors,
+              #categories: categories,
+              #legIntCategories: legIntCategories,
+            }),
+            returnValue: _i4.Future<_i2.HostAPISPConsent>.value(
+              _FakeHostAPISPConsent_0(
+                this,
+                Invocation.method(#customConsentGDPR, [], {
+                  #vendors: vendors,
+                  #categories: categories,
+                  #legIntCategories: legIntCategories,
+                }),
+              ),
+            ),
+            returnValueForMissingStub: _i4.Future<_i2.HostAPISPConsent>.value(
+              _FakeHostAPISPConsent_0(
+                this,
+                Invocation.method(#customConsentGDPR, [], {
+                  #vendors: vendors,
+                  #categories: categories,
+                  #legIntCategories: legIntCategories,
+                }),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.HostAPISPConsent>);
+
+  @override
+  _i4.Future<_i2.HostAPISPConsent> deleteCustomConsentGDPR({
+    required List<String>? vendors,
+    required List<String>? categories,
+    required List<String>? legIntCategories,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#deleteCustomConsentGDPR, [], {
+              #vendors: vendors,
+              #categories: categories,
+              #legIntCategories: legIntCategories,
+            }),
+            returnValue: _i4.Future<_i2.HostAPISPConsent>.value(
+              _FakeHostAPISPConsent_0(
+                this,
+                Invocation.method(#deleteCustomConsentGDPR, [], {
+                  #vendors: vendors,
+                  #categories: categories,
+                  #legIntCategories: legIntCategories,
+                }),
+              ),
+            ),
+            returnValueForMissingStub: _i4.Future<_i2.HostAPISPConsent>.value(
+              _FakeHostAPISPConsent_0(
+                this,
+                Invocation.method(#deleteCustomConsentGDPR, [], {
+                  #vendors: vendors,
+                  #categories: categories,
+                  #legIntCategories: legIntCategories,
+                }),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.HostAPISPConsent>);
 }

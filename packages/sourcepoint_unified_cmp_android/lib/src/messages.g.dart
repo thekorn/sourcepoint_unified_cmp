@@ -10,9 +10,9 @@ import 'package:flutter/services.dart';
 import 'package:meta/meta.dart' show immutable, protected, visibleForTesting;
 
 Object? _extractReplyValueOrThrow(
-  List<Object?>? replyList,
-  String channelName, {
-  required bool isNullValid,
+    List<Object?>? replyList,
+    String channelName, {
+    required bool isNullValid,
 }) {
   if (replyList == null) {
     throw PlatformException(
@@ -34,11 +34,8 @@ Object? _extractReplyValueOrThrow(
   return replyList.firstOrNull;
 }
 
-List<Object?> wrapResponse({
-  Object? result,
-  PlatformException? error,
-  bool empty = false,
-}) {
+
+List<Object?> wrapResponse({Object? result, PlatformException? error, bool empty = false}) {
   if (empty) {
     return <Object?>[];
   }
@@ -47,7 +44,6 @@ List<Object?> wrapResponse({
   }
   return <Object?>[error.code, error.message, error.details];
 }
-
 bool _deepEquals(Object? a, Object? b) {
   if (identical(a, b)) {
     return true;
@@ -60,9 +56,8 @@ bool _deepEquals(Object? a, Object? b) {
   }
   if (a is List && b is List) {
     return a.length == b.length &&
-        a.indexed.every(
-          ((int, dynamic) item) => _deepEquals(item.$2, b[item.$1]),
-        );
+        a.indexed
+            .every(((int, dynamic) item) => _deepEquals(item.$2, b[item.$1]));
   }
   if (a is Map && b is Map) {
     if (a.length != b.length) {
@@ -111,13 +106,32 @@ int _deepHash(Object? value) {
   return value.hashCode;
 }
 
-enum HostAPIPMTab { defaults, purposes, vendors, features }
 
-enum HostAPICampaignType { gdpr, ccpa, usnat }
+enum HostAPIPMTab {
+  defaults,
+  purposes,
+  vendors,
+  features,
+}
 
-enum HostAPIMessageType { mobile, ott, legacyOtt }
+enum HostAPICampaignType {
+  gdpr,
+  ccpa,
+  usnat,
+}
 
-enum HostAPIGranularState { all, some, none, emptyVl }
+enum HostAPIMessageType {
+  mobile,
+  ott,
+  legacyOtt,
+}
+
+enum HostAPIGranularState {
+  all,
+  some,
+  none,
+  emptyVl,
+}
 
 enum HostAPIActionType {
   showOptions,
@@ -132,9 +146,19 @@ enum HostAPIActionType {
   unknown,
 }
 
-enum HostAPIMessageLanguage { english, french, german, italian, spanish, dutch }
+enum HostAPIMessageLanguage {
+  english,
+  french,
+  german,
+  italian,
+  spanish,
+  dutch,
+}
 
-enum HostAPICampaignsEnv { stage, public }
+enum HostAPICampaignsEnv {
+  stage,
+  public,
+}
 
 class HostAPIConsentAction {
   HostAPIConsentAction({
@@ -153,12 +177,16 @@ class HostAPIConsentAction {
   String? customActionId;
 
   List<Object?> _toList() {
-    return <Object?>[actionType, pubData, campaignType, customActionId];
+    return <Object?>[
+      actionType,
+      pubData,
+      campaignType,
+      customActionId,
+    ];
   }
 
   Object encode() {
-    return _toList();
-  }
+    return _toList();  }
 
   static HostAPIConsentAction decode(Object result) {
     result as List<Object?>;
@@ -179,10 +207,7 @@ class HostAPIConsentAction {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(actionType, other.actionType) &&
-        _deepEquals(pubData, other.pubData) &&
-        _deepEquals(campaignType, other.campaignType) &&
-        _deepEquals(customActionId, other.customActionId);
+    return _deepEquals(actionType, other.actionType) && _deepEquals(pubData, other.pubData) && _deepEquals(campaignType, other.campaignType) && _deepEquals(customActionId, other.customActionId);
   }
 
   @override
@@ -191,41 +216,43 @@ class HostAPIConsentAction {
 }
 
 class HostAPIGDPRPurposeGrants {
-  HostAPIGDPRPurposeGrants({required this.granted, this.purposeGrants});
+  HostAPIGDPRPurposeGrants({
+    required this.granted,
+    this.purposeGrants,
+  });
 
   bool granted;
 
   Map<String?, bool?>? purposeGrants;
 
   List<Object?> _toList() {
-    return <Object?>[granted, purposeGrants];
+    return <Object?>[
+      granted,
+      purposeGrants,
+    ];
   }
 
   Object encode() {
-    return _toList();
-  }
+    return _toList();  }
 
   static HostAPIGDPRPurposeGrants decode(Object result) {
     result as List<Object?>;
     return HostAPIGDPRPurposeGrants(
       granted: result[0]! as bool,
-      purposeGrants: (result[1] as Map<Object?, Object?>?)
-          ?.cast<String?, bool?>(),
+      purposeGrants: (result[1] as Map<Object?, Object?>?)?.cast<String?, bool?>(),
     );
   }
 
   @override
   // ignore: avoid_equals_and_hash_code_on_mutable_classes
   bool operator ==(Object other) {
-    if (other is! HostAPIGDPRPurposeGrants ||
-        other.runtimeType != runtimeType) {
+    if (other is! HostAPIGDPRPurposeGrants || other.runtimeType != runtimeType) {
       return false;
     }
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(granted, other.granted) &&
-        _deepEquals(purposeGrants, other.purposeGrants);
+    return _deepEquals(granted, other.granted) && _deepEquals(purposeGrants, other.purposeGrants);
   }
 
   @override
@@ -234,19 +261,24 @@ class HostAPIGDPRPurposeGrants {
 }
 
 class HostAPISPError {
-  HostAPISPError({required this.cause, required this.message});
+  HostAPISPError({
+    required this.cause,
+    required this.message,
+  });
 
   String cause;
 
   String message;
 
   List<Object?> _toList() {
-    return <Object?>[cause, message];
+    return <Object?>[
+      cause,
+      message,
+    ];
   }
 
   Object encode() {
-    return _toList();
-  }
+    return _toList();  }
 
   static HostAPISPError decode(Object result) {
     result as List<Object?>;
@@ -265,8 +297,7 @@ class HostAPISPError {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(cause, other.cause) &&
-        _deepEquals(message, other.message);
+    return _deepEquals(cause, other.cause) && _deepEquals(message, other.message);
   }
 
   @override
@@ -308,8 +339,7 @@ class HostAPIGranularStatus {
   }
 
   Object encode() {
-    return _toList();
-  }
+    return _toList();  }
 
   static HostAPIGranularStatus decode(Object result) {
     result as List<Object?>;
@@ -332,12 +362,7 @@ class HostAPIGranularStatus {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(defaultConsent, other.defaultConsent) &&
-        _deepEquals(previousOptInAll, other.previousOptInAll) &&
-        _deepEquals(purposeConsent, other.purposeConsent) &&
-        _deepEquals(purposeLegInt, other.purposeLegInt) &&
-        _deepEquals(vendorConsent, other.vendorConsent) &&
-        _deepEquals(vendorLegInt, other.vendorLegInt);
+    return _deepEquals(defaultConsent, other.defaultConsent) && _deepEquals(previousOptInAll, other.previousOptInAll) && _deepEquals(purposeConsent, other.purposeConsent) && _deepEquals(purposeLegInt, other.purposeLegInt) && _deepEquals(vendorConsent, other.vendorConsent) && _deepEquals(vendorLegInt, other.vendorLegInt);
   }
 
   @override
@@ -387,8 +412,7 @@ class HostAPIConsentStatus {
   }
 
   Object encode() {
-    return _toList();
-  }
+    return _toList();  }
 
   static HostAPIConsentStatus decode(Object result) {
     result as List<Object?>;
@@ -413,14 +437,7 @@ class HostAPIConsentStatus {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(consentedAll, other.consentedAll) &&
-        _deepEquals(consentedToAny, other.consentedToAny) &&
-        _deepEquals(granularStatus, other.granularStatus) &&
-        _deepEquals(hasConsentData, other.hasConsentData) &&
-        _deepEquals(rejectedAny, other.rejectedAny) &&
-        _deepEquals(rejectedLI, other.rejectedLI) &&
-        _deepEquals(legalBasisChanges, other.legalBasisChanges) &&
-        _deepEquals(vendorListAdditions, other.vendorListAdditions);
+    return _deepEquals(consentedAll, other.consentedAll) && _deepEquals(consentedToAny, other.consentedToAny) && _deepEquals(granularStatus, other.granularStatus) && _deepEquals(hasConsentData, other.hasConsentData) && _deepEquals(rejectedAny, other.rejectedAny) && _deepEquals(rejectedLI, other.rejectedLI) && _deepEquals(legalBasisChanges, other.legalBasisChanges) && _deepEquals(vendorListAdditions, other.vendorListAdditions);
   }
 
   @override
@@ -466,16 +483,14 @@ class HostAPIGDPRConsent {
   }
 
   Object encode() {
-    return _toList();
-  }
+    return _toList();  }
 
   static HostAPIGDPRConsent decode(Object result) {
     result as List<Object?>;
     return HostAPIGDPRConsent(
       uuid: result[0] as String?,
       tcData: (result[1] as Map<Object?, Object?>?)?.cast<String?, String?>(),
-      grants: (result[2] as Map<Object?, Object?>?)
-          ?.cast<String?, HostAPIGDPRPurposeGrants?>(),
+      grants: (result[2] as Map<Object?, Object?>?)?.cast<String?, HostAPIGDPRPurposeGrants?>(),
       euconsent: result[3]! as String,
       acceptedCategories: (result[4] as List<Object?>?)?.cast<String?>(),
       apply: result[5]! as bool,
@@ -492,13 +507,7 @@ class HostAPIGDPRConsent {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(uuid, other.uuid) &&
-        _deepEquals(tcData, other.tcData) &&
-        _deepEquals(grants, other.grants) &&
-        _deepEquals(euconsent, other.euconsent) &&
-        _deepEquals(acceptedCategories, other.acceptedCategories) &&
-        _deepEquals(apply, other.apply) &&
-        _deepEquals(consentStatus, other.consentStatus);
+    return _deepEquals(uuid, other.uuid) && _deepEquals(tcData, other.tcData) && _deepEquals(grants, other.grants) && _deepEquals(euconsent, other.euconsent) && _deepEquals(acceptedCategories, other.acceptedCategories) && _deepEquals(apply, other.apply) && _deepEquals(consentStatus, other.consentStatus);
   }
 
   @override
@@ -540,8 +549,7 @@ class HostAPICCPAConsent {
   }
 
   Object encode() {
-    return _toList();
-  }
+    return _toList();  }
 
   static HostAPICCPAConsent decode(Object result) {
     result as List<Object?>;
@@ -564,12 +572,7 @@ class HostAPICCPAConsent {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(uuid, other.uuid) &&
-        _deepEquals(rejectedCategories, other.rejectedCategories) &&
-        _deepEquals(rejectedVendors, other.rejectedVendors) &&
-        _deepEquals(status, other.status) &&
-        _deepEquals(uspstring, other.uspstring) &&
-        _deepEquals(apply, other.apply);
+    return _deepEquals(uuid, other.uuid) && _deepEquals(rejectedCategories, other.rejectedCategories) && _deepEquals(rejectedVendors, other.rejectedVendors) && _deepEquals(status, other.status) && _deepEquals(uspstring, other.uspstring) && _deepEquals(apply, other.apply);
   }
 
   @override
@@ -578,7 +581,11 @@ class HostAPICCPAConsent {
 }
 
 class HostAPISPConsent {
-  HostAPISPConsent({this.gdpr, this.ccpa, this.webConsents});
+  HostAPISPConsent({
+    this.gdpr,
+    this.ccpa,
+    this.webConsents,
+  });
 
   HostAPIGDPRConsent? gdpr;
 
@@ -587,12 +594,15 @@ class HostAPISPConsent {
   String? webConsents;
 
   List<Object?> _toList() {
-    return <Object?>[gdpr, ccpa, webConsents];
+    return <Object?>[
+      gdpr,
+      ccpa,
+      webConsents,
+    ];
   }
 
   Object encode() {
-    return _toList();
-  }
+    return _toList();  }
 
   static HostAPISPConsent decode(Object result) {
     result as List<Object?>;
@@ -612,9 +622,7 @@ class HostAPISPConsent {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(gdpr, other.gdpr) &&
-        _deepEquals(ccpa, other.ccpa) &&
-        _deepEquals(webConsents, other.webConsents);
+    return _deepEquals(gdpr, other.gdpr) && _deepEquals(ccpa, other.ccpa) && _deepEquals(webConsents, other.webConsents);
   }
 
   @override
@@ -639,12 +647,16 @@ class SPConfig {
   String pmId;
 
   List<Object?> _toList() {
-    return <Object?>[accountId, propertyId, propertyName, pmId];
+    return <Object?>[
+      accountId,
+      propertyId,
+      propertyName,
+      pmId,
+    ];
   }
 
   Object encode() {
-    return _toList();
-  }
+    return _toList();  }
 
   static SPConfig decode(Object result) {
     result as List<Object?>;
@@ -665,16 +677,14 @@ class SPConfig {
     if (identical(this, other)) {
       return true;
     }
-    return _deepEquals(accountId, other.accountId) &&
-        _deepEquals(propertyId, other.propertyId) &&
-        _deepEquals(propertyName, other.propertyName) &&
-        _deepEquals(pmId, other.pmId);
+    return _deepEquals(accountId, other.accountId) && _deepEquals(propertyId, other.propertyId) && _deepEquals(propertyName, other.propertyName) && _deepEquals(pmId, other.pmId);
   }
 
   @override
   // ignore: avoid_equals_and_hash_code_on_mutable_classes
   int get hashCode => _deepHash(<Object?>[runtimeType, ..._toList()]);
 }
+
 
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
@@ -683,52 +693,52 @@ class _PigeonCodec extends StandardMessageCodec {
     if (value is int) {
       buffer.putUint8(4);
       buffer.putInt64(value);
-    } else if (value is HostAPIPMTab) {
+    }    else if (value is HostAPIPMTab) {
       buffer.putUint8(129);
       writeValue(buffer, value.index);
-    } else if (value is HostAPICampaignType) {
+    }    else if (value is HostAPICampaignType) {
       buffer.putUint8(130);
       writeValue(buffer, value.index);
-    } else if (value is HostAPIMessageType) {
+    }    else if (value is HostAPIMessageType) {
       buffer.putUint8(131);
       writeValue(buffer, value.index);
-    } else if (value is HostAPIGranularState) {
+    }    else if (value is HostAPIGranularState) {
       buffer.putUint8(132);
       writeValue(buffer, value.index);
-    } else if (value is HostAPIActionType) {
+    }    else if (value is HostAPIActionType) {
       buffer.putUint8(133);
       writeValue(buffer, value.index);
-    } else if (value is HostAPIMessageLanguage) {
+    }    else if (value is HostAPIMessageLanguage) {
       buffer.putUint8(134);
       writeValue(buffer, value.index);
-    } else if (value is HostAPICampaignsEnv) {
+    }    else if (value is HostAPICampaignsEnv) {
       buffer.putUint8(135);
       writeValue(buffer, value.index);
-    } else if (value is HostAPIConsentAction) {
+    }    else if (value is HostAPIConsentAction) {
       buffer.putUint8(136);
       writeValue(buffer, value.encode());
-    } else if (value is HostAPIGDPRPurposeGrants) {
+    }    else if (value is HostAPIGDPRPurposeGrants) {
       buffer.putUint8(137);
       writeValue(buffer, value.encode());
-    } else if (value is HostAPISPError) {
+    }    else if (value is HostAPISPError) {
       buffer.putUint8(138);
       writeValue(buffer, value.encode());
-    } else if (value is HostAPIGranularStatus) {
+    }    else if (value is HostAPIGranularStatus) {
       buffer.putUint8(139);
       writeValue(buffer, value.encode());
-    } else if (value is HostAPIConsentStatus) {
+    }    else if (value is HostAPIConsentStatus) {
       buffer.putUint8(140);
       writeValue(buffer, value.encode());
-    } else if (value is HostAPIGDPRConsent) {
+    }    else if (value is HostAPIGDPRConsent) {
       buffer.putUint8(141);
       writeValue(buffer, value.encode());
-    } else if (value is HostAPICCPAConsent) {
+    }    else if (value is HostAPICCPAConsent) {
       buffer.putUint8(142);
       writeValue(buffer, value.encode());
-    } else if (value is HostAPISPConsent) {
+    }    else if (value is HostAPISPConsent) {
       buffer.putUint8(143);
       writeValue(buffer, value.encode());
-    } else if (value is SPConfig) {
+    }    else if (value is SPConfig) {
       buffer.putUint8(144);
       writeValue(buffer, value.encode());
     } else {
@@ -788,84 +798,88 @@ class SourcepointUnifiedCmpHostApi {
   /// Constructor for [SourcepointUnifiedCmpHostApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  SourcepointUnifiedCmpHostApi({
-    BinaryMessenger? binaryMessenger,
-    String messageChannelSuffix = '',
-  }) : pigeonVar_binaryMessenger = binaryMessenger,
-       pigeonVar_messageChannelSuffix = messageChannelSuffix.isNotEmpty
-           ? '.$messageChannelSuffix'
-           : '';
+  SourcepointUnifiedCmpHostApi({BinaryMessenger? binaryMessenger, String messageChannelSuffix = ''})
+      : pigeonVar_binaryMessenger = binaryMessenger,
+        pigeonVar_messageChannelSuffix = messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
   final BinaryMessenger? pigeonVar_binaryMessenger;
 
   static const MessageCodec<Object?> pigeonChannelCodec = _PigeonCodec();
 
   final String pigeonVar_messageChannelSuffix;
 
-  Future<HostAPISPConsent> loadMessage({
-    required int accountId,
-    required int propertyId,
-    required String propertyName,
-    required String pmId,
-    required HostAPIMessageLanguage messageLanguage,
-    required HostAPICampaignsEnv campaignsEnv,
-    required int messageTimeout,
-    required bool runGDPRCampaign,
-    required bool runCCPACampaign,
-    required bool runUSNATCampaign,
-  }) async {
-    final pigeonVar_channelName =
-        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadMessage$pigeonVar_messageChannelSuffix';
+  Future<HostAPISPConsent> loadMessage({required int accountId, required int propertyId, required String propertyName, required String pmId, required HostAPIMessageLanguage messageLanguage, required HostAPICampaignsEnv campaignsEnv, required int messageTimeout, required bool runGDPRCampaign, required bool runCCPACampaign, required bool runUSNATCampaign, }) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadMessage$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
     );
-    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel
-        .send(<Object?>[
-          accountId,
-          propertyId,
-          propertyName,
-          pmId,
-          messageLanguage,
-          campaignsEnv,
-          messageTimeout,
-          runGDPRCampaign,
-          runCCPACampaign,
-          runUSNATCampaign,
-        ]);
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[accountId, propertyId, propertyName, pmId, messageLanguage, campaignsEnv, messageTimeout, runGDPRCampaign, runCCPACampaign, runUSNATCampaign]);
     final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
 
     final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
-      pigeonVar_replyList,
-      pigeonVar_channelName,
-      isNullValid: false,
-    );
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
     return pigeonVar_replyValue! as HostAPISPConsent;
   }
 
-  Future<void> loadPrivacyManager({
-    required String pmId,
-    required HostAPIPMTab pmTab,
-    required HostAPICampaignType campaignType,
-    required HostAPIMessageType messageType,
-  }) async {
-    final pigeonVar_channelName =
-        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadPrivacyManager$pigeonVar_messageChannelSuffix';
+  Future<void> loadPrivacyManager({required String pmId, required HostAPIPMTab pmTab, required HostAPICampaignType campaignType, required HostAPIMessageType messageType, }) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadPrivacyManager$pigeonVar_messageChannelSuffix';
     final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
     );
-    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(
-      <Object?>[pmId, pmTab, campaignType, messageType],
-    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[pmId, pmTab, campaignType, messageType]);
     final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
 
     _extractReplyValueOrThrow(
-      pigeonVar_replyList,
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: true,
+    )
+    ;
+  }
+
+  Future<HostAPISPConsent> customConsentGDPR({required List<String> vendors, required List<String> categories, required List<String> legIntCategories, }) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.customConsentGDPR$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
-      isNullValid: true,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
     );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[vendors, categories, legIntCategories]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return pigeonVar_replyValue! as HostAPISPConsent;
+  }
+
+  Future<HostAPISPConsent> deleteCustomConsentGDPR({required List<String> vendors, required List<String> categories, required List<String> legIntCategories, }) async {
+    final pigeonVar_channelName = 'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.deleteCustomConsentGDPR$pigeonVar_messageChannelSuffix';
+    final pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(<Object?>[vendors, categories, legIntCategories]);
+    final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
+
+    final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
+        pigeonVar_replyList,
+        pigeonVar_channelName,
+        isNullValid: false,
+    )
+    ;
+    return pigeonVar_replyValue! as HostAPISPConsent;
   }
 }
 
@@ -886,20 +900,12 @@ abstract class SourcepointUnifiedCmpFlutterApi {
 
   void onSpFinished(HostAPISPConsent consent);
 
-  static void setUp(
-    SourcepointUnifiedCmpFlutterApi? api, {
-    BinaryMessenger? binaryMessenger,
-    String messageChannelSuffix = '',
-  }) {
-    messageChannelSuffix = messageChannelSuffix.isNotEmpty
-        ? '.$messageChannelSuffix'
-        : '';
+  static void setUp(SourcepointUnifiedCmpFlutterApi? api, {BinaryMessenger? binaryMessenger, String messageChannelSuffix = '',}) {
+    messageChannelSuffix = messageChannelSuffix.isNotEmpty ? '.$messageChannelSuffix' : '';
     {
       final pigeonVar_channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onUIFinished$messageChannelSuffix',
-        pigeonChannelCodec,
-        binaryMessenger: binaryMessenger,
-      );
+          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onUIFinished$messageChannelSuffix', pigeonChannelCodec,
+          binaryMessenger: binaryMessenger);
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
@@ -909,20 +915,16 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(empty: true);
           } on PlatformException catch (e) {
             return wrapResponse(error: e);
-          } catch (e) {
-            return wrapResponse(
-              error: PlatformException(code: 'error', message: e.toString()),
-            );
+          }          catch (e) {
+            return wrapResponse(error: PlatformException(code: 'error', message: e.toString()));
           }
         });
       }
     }
     {
       final pigeonVar_channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onUIReady$messageChannelSuffix',
-        pigeonChannelCodec,
-        binaryMessenger: binaryMessenger,
-      );
+          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onUIReady$messageChannelSuffix', pigeonChannelCodec,
+          binaryMessenger: binaryMessenger);
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
@@ -932,20 +934,16 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(empty: true);
           } on PlatformException catch (e) {
             return wrapResponse(error: e);
-          } catch (e) {
-            return wrapResponse(
-              error: PlatformException(code: 'error', message: e.toString()),
-            );
+          }          catch (e) {
+            return wrapResponse(error: PlatformException(code: 'error', message: e.toString()));
           }
         });
       }
     }
     {
       final pigeonVar_channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError$messageChannelSuffix',
-        pigeonChannelCodec,
-        binaryMessenger: binaryMessenger,
-      );
+          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onError$messageChannelSuffix', pigeonChannelCodec,
+          binaryMessenger: binaryMessenger);
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
@@ -957,20 +955,16 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(empty: true);
           } on PlatformException catch (e) {
             return wrapResponse(error: e);
-          } catch (e) {
-            return wrapResponse(
-              error: PlatformException(code: 'error', message: e.toString()),
-            );
+          }          catch (e) {
+            return wrapResponse(error: PlatformException(code: 'error', message: e.toString()));
           }
         });
       }
     }
     {
       final pigeonVar_channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady$messageChannelSuffix',
-        pigeonChannelCodec,
-        binaryMessenger: binaryMessenger,
-      );
+          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onConsentReady$messageChannelSuffix', pigeonChannelCodec,
+          binaryMessenger: binaryMessenger);
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
@@ -982,46 +976,37 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(empty: true);
           } on PlatformException catch (e) {
             return wrapResponse(error: e);
-          } catch (e) {
-            return wrapResponse(
-              error: PlatformException(code: 'error', message: e.toString()),
-            );
+          }          catch (e) {
+            return wrapResponse(error: PlatformException(code: 'error', message: e.toString()));
           }
         });
       }
     }
     {
       final pigeonVar_channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction$messageChannelSuffix',
-        pigeonChannelCodec,
-        binaryMessenger: binaryMessenger,
-      );
+          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onAction$messageChannelSuffix', pigeonChannelCodec,
+          binaryMessenger: binaryMessenger);
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
         pigeonVar_channel.setMessageHandler((Object? message) async {
           final List<Object?> args = message! as List<Object?>;
-          final HostAPIConsentAction arg_consentAction =
-              args[0]! as HostAPIConsentAction;
+          final HostAPIConsentAction arg_consentAction = args[0]! as HostAPIConsentAction;
           try {
             api.onAction(arg_consentAction);
             return wrapResponse(empty: true);
           } on PlatformException catch (e) {
             return wrapResponse(error: e);
-          } catch (e) {
-            return wrapResponse(
-              error: PlatformException(code: 'error', message: e.toString()),
-            );
+          }          catch (e) {
+            return wrapResponse(error: PlatformException(code: 'error', message: e.toString()));
           }
         });
       }
     }
     {
       final pigeonVar_channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound$messageChannelSuffix',
-        pigeonChannelCodec,
-        binaryMessenger: binaryMessenger,
-      );
+          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound$messageChannelSuffix', pigeonChannelCodec,
+          binaryMessenger: binaryMessenger);
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
@@ -1033,20 +1018,16 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(empty: true);
           } on PlatformException catch (e) {
             return wrapResponse(error: e);
-          } catch (e) {
-            return wrapResponse(
-              error: PlatformException(code: 'error', message: e.toString()),
-            );
+          }          catch (e) {
+            return wrapResponse(error: PlatformException(code: 'error', message: e.toString()));
           }
         });
       }
     }
     {
       final pigeonVar_channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished$messageChannelSuffix',
-        pigeonChannelCodec,
-        binaryMessenger: binaryMessenger,
-      );
+          'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpFlutterApi.onSpFinished$messageChannelSuffix', pigeonChannelCodec,
+          binaryMessenger: binaryMessenger);
       if (api == null) {
         pigeonVar_channel.setMessageHandler(null);
       } else {
@@ -1058,10 +1039,8 @@ abstract class SourcepointUnifiedCmpFlutterApi {
             return wrapResponse(empty: true);
           } on PlatformException catch (e) {
             return wrapResponse(error: e);
-          } catch (e) {
-            return wrapResponse(
-              error: PlatformException(code: 'error', message: e.toString()),
-            );
+          }          catch (e) {
+            return wrapResponse(error: PlatformException(code: 'error', message: e.toString()));
           }
         });
       }

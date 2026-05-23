@@ -24,12 +24,13 @@ final class HostApiFlutterError: Error {
   }
 
   var localizedDescription: String {
-    "HostApiFlutterError(code: \(code), message: \(message ?? "<nil>"), details: \(details ?? "<nil>")"
+    return
+      "HostApiFlutterError(code: \(code), message: \(message ?? "<nil>"), details: \(details ?? "<nil>")"
   }
 }
 
 private func wrapResult(_ result: Any?) -> [Any?] {
-  [result]
+  return [result]
 }
 
 private func wrapError(_ error: Any) -> [Any?] {
@@ -55,15 +56,11 @@ private func wrapError(_ error: Any) -> [Any?] {
 }
 
 private func createConnectionError(withChannelName channelName: String) -> HostApiFlutterError {
-  HostApiFlutterError(
-    code: "channel-error",
-    message: "Unable to establish connection on channel: '\(channelName)'.",
-    details: ""
-  )
+  return HostApiFlutterError(code: "channel-error", message: "Unable to establish connection on channel: '\(channelName)'.", details: "")
 }
 
 private func isNullish(_ value: Any?) -> Bool {
-  value is NSNull || value == nil
+  return value is NSNull || value == nil
 }
 
 private func nilOrValue<T>(_ value: Any?) -> T? {
@@ -72,12 +69,12 @@ private func nilOrValue<T>(_ value: Any?) -> T? {
 }
 
 private func doubleEqualsSourcepointUnifiedCmp(_ lhs: Double, _ rhs: Double) -> Bool {
-  (lhs.isNaN && rhs.isNaN) || lhs == rhs
+  return (lhs.isNaN && rhs.isNaN) || lhs == rhs
 }
 
 private func doubleHashSourcepointUnifiedCmp(_ value: Double, _ hasher: inout Hasher) {
   if value.isNaN {
-    hasher.combine(0x7FF8_0000_0000_0000)
+    hasher.combine(0x7FF8000000000000)
   } else {
     // Normalize -0.0 to 0.0
     hasher.combine(value == 0 ? 0 : value)
@@ -94,13 +91,13 @@ func deepEqualsSourcepointUnifiedCmp(_ lhs: Any?, _ rhs: Any?) -> Bool {
   case (nil, _), (_, nil):
     return false
 
-  case let (lhs as AnyObject, rhs as AnyObject) where lhs === rhs:
+  case (let lhs as AnyObject, let rhs as AnyObject) where lhs === rhs:
     return true
 
   case is (Void, Void):
     return true
 
-  case let (lhsArray, rhsArray) as ([Any?], [Any?]):
+  case (let lhsArray, let rhsArray) as ([Any?], [Any?]):
     guard lhsArray.count == rhsArray.count else { return false }
     for (index, element) in lhsArray.enumerated() {
       if !deepEqualsSourcepointUnifiedCmp(element, rhsArray[index]) {
@@ -109,7 +106,7 @@ func deepEqualsSourcepointUnifiedCmp(_ lhs: Any?, _ rhs: Any?) -> Bool {
     }
     return true
 
-  case let (lhsArray, rhsArray) as ([Double], [Double]):
+  case (let lhsArray, let rhsArray) as ([Double], [Double]):
     guard lhsArray.count == rhsArray.count else { return false }
     for (index, element) in lhsArray.enumerated() {
       if !doubleEqualsSourcepointUnifiedCmp(element, rhsArray[index]) {
@@ -118,7 +115,7 @@ func deepEqualsSourcepointUnifiedCmp(_ lhs: Any?, _ rhs: Any?) -> Bool {
     }
     return true
 
-  case let (lhsDictionary, rhsDictionary) as ([AnyHashable: Any?], [AnyHashable: Any?]):
+  case (let lhsDictionary, let rhsDictionary) as ([AnyHashable: Any?], [AnyHashable: Any?]):
     guard lhsDictionary.count == rhsDictionary.count else { return false }
     for (lhsKey, lhsValue) in lhsDictionary {
       var found = false
@@ -136,10 +133,10 @@ func deepEqualsSourcepointUnifiedCmp(_ lhs: Any?, _ rhs: Any?) -> Bool {
     }
     return true
 
-  case let (lhs as Double, rhs as Double):
+  case (let lhs as Double, let rhs as Double):
     return doubleEqualsSourcepointUnifiedCmp(lhs, rhs)
 
-  case let (lhsHashable, rhsHashable) as (AnyHashable, AnyHashable):
+  case (let lhsHashable, let rhsHashable) as (AnyHashable, AnyHashable):
     return lhsHashable == rhsHashable
 
   default:
@@ -149,7 +146,7 @@ func deepEqualsSourcepointUnifiedCmp(_ lhs: Any?, _ rhs: Any?) -> Bool {
 
 func deepHashSourcepointUnifiedCmp(value: Any?, hasher: inout Hasher) {
   let cleanValue = nilOrValue(value) as Any?
-  if let cleanValue {
+  if let cleanValue = cleanValue {
     if let doubleValue = cleanValue as? Double {
       doubleHashSourcepointUnifiedCmp(doubleValue, &hasher)
     } else if let valueList = cleanValue as? [Any?] {
@@ -179,6 +176,7 @@ func deepHashSourcepointUnifiedCmp(value: Any?, hasher: inout Hasher) {
     hasher.combine(0)
   }
 }
+
 
 enum HostAPIPMTab: Int {
   case defaults = 0
@@ -236,6 +234,7 @@ struct HostAPISPError: Hashable {
   var spCode: String
   var description: String
 
+
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> HostAPISPError? {
     let spCode = pigeonVar_list[0] as! String
@@ -246,23 +245,17 @@ struct HostAPISPError: Hashable {
       description: description
     )
   }
-
   func toList() -> [Any?] {
-    [
+    return [
       spCode,
       description,
     ]
   }
-
   static func == (lhs: HostAPISPError, rhs: HostAPISPError) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsSourcepointUnifiedCmp(lhs.spCode, rhs.spCode) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.description,
-        rhs.description
-      )
+    return deepEqualsSourcepointUnifiedCmp(lhs.spCode, rhs.spCode) && deepEqualsSourcepointUnifiedCmp(lhs.description, rhs.description)
   }
 
   func hash(into hasher: inout Hasher) {
@@ -277,7 +270,8 @@ struct HostAPIConsentAction: Hashable {
   var actionType: HostAPIActionType
   var pubData: String
   var campaignType: HostAPICampaignType
-  var customActionId: String?
+  var customActionId: String? = nil
+
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> HostAPIConsentAction? {
@@ -293,29 +287,19 @@ struct HostAPIConsentAction: Hashable {
       customActionId: customActionId
     )
   }
-
   func toList() -> [Any?] {
-    [
+    return [
       actionType,
       pubData,
       campaignType,
       customActionId,
     ]
   }
-
   static func == (lhs: HostAPIConsentAction, rhs: HostAPIConsentAction) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsSourcepointUnifiedCmp(lhs.actionType, rhs.actionType) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.pubData,
-        rhs.pubData
-      ) && deepEqualsSourcepointUnifiedCmp(lhs.campaignType, rhs.campaignType) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.customActionId,
-        rhs.customActionId
-      )
+    return deepEqualsSourcepointUnifiedCmp(lhs.actionType, rhs.actionType) && deepEqualsSourcepointUnifiedCmp(lhs.pubData, rhs.pubData) && deepEqualsSourcepointUnifiedCmp(lhs.campaignType, rhs.campaignType) && deepEqualsSourcepointUnifiedCmp(lhs.customActionId, rhs.customActionId)
   }
 
   func hash(into hasher: inout Hasher) {
@@ -330,7 +314,8 @@ struct HostAPIConsentAction: Hashable {
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIGDPRPurposeGrants: Hashable {
   var granted: Bool
-  var purposeGrants: [String?: Bool?]?
+  var purposeGrants: [String?: Bool?]? = nil
+
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> HostAPIGDPRPurposeGrants? {
@@ -342,23 +327,17 @@ struct HostAPIGDPRPurposeGrants: Hashable {
       purposeGrants: purposeGrants
     )
   }
-
   func toList() -> [Any?] {
-    [
+    return [
       granted,
       purposeGrants,
     ]
   }
-
   static func == (lhs: HostAPIGDPRPurposeGrants, rhs: HostAPIGDPRPurposeGrants) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsSourcepointUnifiedCmp(lhs.granted, rhs.granted) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.purposeGrants,
-        rhs.purposeGrants
-      )
+    return deepEqualsSourcepointUnifiedCmp(lhs.granted, rhs.granted) && deepEqualsSourcepointUnifiedCmp(lhs.purposeGrants, rhs.purposeGrants)
   }
 
   func hash(into hasher: inout Hasher) {
@@ -370,12 +349,13 @@ struct HostAPIGDPRPurposeGrants: Hashable {
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIGranularStatus: Hashable {
-  var defaultConsent: Bool?
-  var previousOptInAll: Bool?
-  var purposeConsent: HostAPIGranularState?
-  var purposeLegInt: HostAPIGranularState?
-  var vendorConsent: HostAPIGranularState?
-  var vendorLegInt: HostAPIGranularState?
+  var defaultConsent: Bool? = nil
+  var previousOptInAll: Bool? = nil
+  var purposeConsent: HostAPIGranularState? = nil
+  var purposeLegInt: HostAPIGranularState? = nil
+  var vendorConsent: HostAPIGranularState? = nil
+  var vendorLegInt: HostAPIGranularState? = nil
+
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> HostAPIGranularStatus? {
@@ -395,9 +375,8 @@ struct HostAPIGranularStatus: Hashable {
       vendorLegInt: vendorLegInt
     )
   }
-
   func toList() -> [Any?] {
-    [
+    return [
       defaultConsent,
       previousOptInAll,
       purposeConsent,
@@ -406,24 +385,11 @@ struct HostAPIGranularStatus: Hashable {
       vendorLegInt,
     ]
   }
-
   static func == (lhs: HostAPIGranularStatus, rhs: HostAPIGranularStatus) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsSourcepointUnifiedCmp(lhs.defaultConsent, rhs.defaultConsent) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.previousOptInAll,
-        rhs.previousOptInAll
-      ) && deepEqualsSourcepointUnifiedCmp(lhs.purposeConsent, rhs.purposeConsent) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.purposeLegInt,
-        rhs.purposeLegInt
-      ) && deepEqualsSourcepointUnifiedCmp(lhs.vendorConsent, rhs.vendorConsent) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.vendorLegInt,
-        rhs.vendorLegInt
-      )
+    return deepEqualsSourcepointUnifiedCmp(lhs.defaultConsent, rhs.defaultConsent) && deepEqualsSourcepointUnifiedCmp(lhs.previousOptInAll, rhs.previousOptInAll) && deepEqualsSourcepointUnifiedCmp(lhs.purposeConsent, rhs.purposeConsent) && deepEqualsSourcepointUnifiedCmp(lhs.purposeLegInt, rhs.purposeLegInt) && deepEqualsSourcepointUnifiedCmp(lhs.vendorConsent, rhs.vendorConsent) && deepEqualsSourcepointUnifiedCmp(lhs.vendorLegInt, rhs.vendorLegInt)
   }
 
   func hash(into hasher: inout Hasher) {
@@ -439,14 +405,15 @@ struct HostAPIGranularStatus: Hashable {
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIConsentStatus: Hashable {
-  var consentedAll: Bool?
-  var consentedToAny: Bool?
-  var granularStatus: HostAPIGranularStatus?
-  var hasConsentData: Bool?
-  var rejectedAny: Bool?
-  var rejectedLI: Bool?
-  var legalBasisChanges: Bool?
-  var vendorListAdditions: Bool?
+  var consentedAll: Bool? = nil
+  var consentedToAny: Bool? = nil
+  var granularStatus: HostAPIGranularStatus? = nil
+  var hasConsentData: Bool? = nil
+  var rejectedAny: Bool? = nil
+  var rejectedLI: Bool? = nil
+  var legalBasisChanges: Bool? = nil
+  var vendorListAdditions: Bool? = nil
+
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> HostAPIConsentStatus? {
@@ -470,9 +437,8 @@ struct HostAPIConsentStatus: Hashable {
       vendorListAdditions: vendorListAdditions
     )
   }
-
   func toList() -> [Any?] {
-    [
+    return [
       consentedAll,
       consentedToAny,
       granularStatus,
@@ -483,28 +449,11 @@ struct HostAPIConsentStatus: Hashable {
       vendorListAdditions,
     ]
   }
-
   static func == (lhs: HostAPIConsentStatus, rhs: HostAPIConsentStatus) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsSourcepointUnifiedCmp(lhs.consentedAll, rhs.consentedAll) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.consentedToAny,
-        rhs.consentedToAny
-      ) && deepEqualsSourcepointUnifiedCmp(lhs.granularStatus, rhs.granularStatus) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.hasConsentData,
-        rhs.hasConsentData
-      ) && deepEqualsSourcepointUnifiedCmp(lhs.rejectedAny, rhs.rejectedAny) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.rejectedLI,
-        rhs.rejectedLI
-      ) && deepEqualsSourcepointUnifiedCmp(lhs.legalBasisChanges, rhs.legalBasisChanges) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.vendorListAdditions,
-        rhs.vendorListAdditions
-      )
+    return deepEqualsSourcepointUnifiedCmp(lhs.consentedAll, rhs.consentedAll) && deepEqualsSourcepointUnifiedCmp(lhs.consentedToAny, rhs.consentedToAny) && deepEqualsSourcepointUnifiedCmp(lhs.granularStatus, rhs.granularStatus) && deepEqualsSourcepointUnifiedCmp(lhs.hasConsentData, rhs.hasConsentData) && deepEqualsSourcepointUnifiedCmp(lhs.rejectedAny, rhs.rejectedAny) && deepEqualsSourcepointUnifiedCmp(lhs.rejectedLI, rhs.rejectedLI) && deepEqualsSourcepointUnifiedCmp(lhs.legalBasisChanges, rhs.legalBasisChanges) && deepEqualsSourcepointUnifiedCmp(lhs.vendorListAdditions, rhs.vendorListAdditions)
   }
 
   func hash(into hasher: inout Hasher) {
@@ -522,13 +471,14 @@ struct HostAPIConsentStatus: Hashable {
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPIGDPRConsent: Hashable {
-  var uuid: String?
-  var tcData: [String?: String?]?
-  var grants: [String?: HostAPIGDPRPurposeGrants?]?
+  var uuid: String? = nil
+  var tcData: [String?: String?]? = nil
+  var grants: [String?: HostAPIGDPRPurposeGrants?]? = nil
   var euconsent: String
-  var acceptedCategories: [String?]?
+  var acceptedCategories: [String?]? = nil
   var apply: Bool
-  var consentStatus: HostAPIConsentStatus?
+  var consentStatus: HostAPIConsentStatus? = nil
+
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> HostAPIGDPRConsent? {
@@ -550,9 +500,8 @@ struct HostAPIGDPRConsent: Hashable {
       consentStatus: consentStatus
     )
   }
-
   func toList() -> [Any?] {
-    [
+    return [
       uuid,
       tcData,
       grants,
@@ -562,22 +511,11 @@ struct HostAPIGDPRConsent: Hashable {
       consentStatus,
     ]
   }
-
   static func == (lhs: HostAPIGDPRConsent, rhs: HostAPIGDPRConsent) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsSourcepointUnifiedCmp(lhs.uuid, rhs.uuid) && deepEqualsSourcepointUnifiedCmp(
-      lhs.tcData,
-      rhs.tcData
-    ) && deepEqualsSourcepointUnifiedCmp(lhs.grants, rhs.grants) && deepEqualsSourcepointUnifiedCmp(
-      lhs.euconsent,
-      rhs.euconsent
-    ) && deepEqualsSourcepointUnifiedCmp(lhs.acceptedCategories, rhs.acceptedCategories) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.apply,
-        rhs.apply
-      ) && deepEqualsSourcepointUnifiedCmp(lhs.consentStatus, rhs.consentStatus)
+    return deepEqualsSourcepointUnifiedCmp(lhs.uuid, rhs.uuid) && deepEqualsSourcepointUnifiedCmp(lhs.tcData, rhs.tcData) && deepEqualsSourcepointUnifiedCmp(lhs.grants, rhs.grants) && deepEqualsSourcepointUnifiedCmp(lhs.euconsent, rhs.euconsent) && deepEqualsSourcepointUnifiedCmp(lhs.acceptedCategories, rhs.acceptedCategories) && deepEqualsSourcepointUnifiedCmp(lhs.apply, rhs.apply) && deepEqualsSourcepointUnifiedCmp(lhs.consentStatus, rhs.consentStatus)
   }
 
   func hash(into hasher: inout Hasher) {
@@ -594,12 +532,13 @@ struct HostAPIGDPRConsent: Hashable {
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPICCPAConsent: Hashable {
-  var uuid: String?
-  var rejectedCategories: [String?]?
-  var rejectedVendors: [String?]?
-  var status: String?
+  var uuid: String? = nil
+  var rejectedCategories: [String?]? = nil
+  var rejectedVendors: [String?]? = nil
+  var status: String? = nil
   var uspstring: String
   var apply: Bool
+
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> HostAPICCPAConsent? {
@@ -619,9 +558,8 @@ struct HostAPICCPAConsent: Hashable {
       apply: apply
     )
   }
-
   func toList() -> [Any?] {
-    [
+    return [
       uuid,
       rejectedCategories,
       rejectedVendors,
@@ -630,23 +568,11 @@ struct HostAPICCPAConsent: Hashable {
       apply,
     ]
   }
-
   static func == (lhs: HostAPICCPAConsent, rhs: HostAPICCPAConsent) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsSourcepointUnifiedCmp(lhs.uuid, rhs.uuid) && deepEqualsSourcepointUnifiedCmp(
-      lhs.rejectedCategories,
-      rhs.rejectedCategories
-    ) && deepEqualsSourcepointUnifiedCmp(lhs.rejectedVendors, rhs.rejectedVendors) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.status,
-        rhs.status
-      ) && deepEqualsSourcepointUnifiedCmp(lhs.uspstring, rhs.uspstring) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.apply,
-        rhs.apply
-      )
+    return deepEqualsSourcepointUnifiedCmp(lhs.uuid, rhs.uuid) && deepEqualsSourcepointUnifiedCmp(lhs.rejectedCategories, rhs.rejectedCategories) && deepEqualsSourcepointUnifiedCmp(lhs.rejectedVendors, rhs.rejectedVendors) && deepEqualsSourcepointUnifiedCmp(lhs.status, rhs.status) && deepEqualsSourcepointUnifiedCmp(lhs.uspstring, rhs.uspstring) && deepEqualsSourcepointUnifiedCmp(lhs.apply, rhs.apply)
   }
 
   func hash(into hasher: inout Hasher) {
@@ -662,9 +588,10 @@ struct HostAPICCPAConsent: Hashable {
 
 /// Generated class from Pigeon that represents data sent in messages.
 struct HostAPISPConsent: Hashable {
-  var gdpr: HostAPIGDPRConsent?
-  var ccpa: HostAPICCPAConsent?
-  var webConsents: String?
+  var gdpr: HostAPIGDPRConsent? = nil
+  var ccpa: HostAPICCPAConsent? = nil
+  var webConsents: String? = nil
+
 
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> HostAPISPConsent? {
@@ -678,23 +605,18 @@ struct HostAPISPConsent: Hashable {
       webConsents: webConsents
     )
   }
-
   func toList() -> [Any?] {
-    [
+    return [
       gdpr,
       ccpa,
       webConsents,
     ]
   }
-
   static func == (lhs: HostAPISPConsent, rhs: HostAPISPConsent) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsSourcepointUnifiedCmp(lhs.gdpr, rhs.gdpr) && deepEqualsSourcepointUnifiedCmp(
-      lhs.ccpa,
-      rhs.ccpa
-    ) && deepEqualsSourcepointUnifiedCmp(lhs.webConsents, rhs.webConsents)
+    return deepEqualsSourcepointUnifiedCmp(lhs.gdpr, rhs.gdpr) && deepEqualsSourcepointUnifiedCmp(lhs.ccpa, rhs.ccpa) && deepEqualsSourcepointUnifiedCmp(lhs.webConsents, rhs.webConsents)
   }
 
   func hash(into hasher: inout Hasher) {
@@ -712,6 +634,7 @@ struct SPConfig: Hashable {
   var propertyName: String
   var pmId: String
 
+
   // swift-format-ignore: AlwaysUseLowerCamelCase
   static func fromList(_ pigeonVar_list: [Any?]) -> SPConfig? {
     let accountId = pigeonVar_list[0] as! Int64
@@ -726,29 +649,19 @@ struct SPConfig: Hashable {
       pmId: pmId
     )
   }
-
   func toList() -> [Any?] {
-    [
+    return [
       accountId,
       propertyId,
       propertyName,
       pmId,
     ]
   }
-
   static func == (lhs: SPConfig, rhs: SPConfig) -> Bool {
     if Swift.type(of: lhs) != Swift.type(of: rhs) {
       return false
     }
-    return deepEqualsSourcepointUnifiedCmp(lhs.accountId, rhs.accountId) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.propertyId,
-        rhs.propertyId
-      ) && deepEqualsSourcepointUnifiedCmp(lhs.propertyName, rhs.propertyName) &&
-      deepEqualsSourcepointUnifiedCmp(
-        lhs.pmId,
-        rhs.pmId
-      )
+    return deepEqualsSourcepointUnifiedCmp(lhs.accountId, rhs.accountId) && deepEqualsSourcepointUnifiedCmp(lhs.propertyId, rhs.propertyId) && deepEqualsSourcepointUnifiedCmp(lhs.propertyName, rhs.propertyName) && deepEqualsSourcepointUnifiedCmp(lhs.pmId, rhs.pmId)
   }
 
   func hash(into hasher: inout Hasher) {
@@ -764,65 +677,65 @@ private class SourcepointUnifiedCmpPigeonCodecReader: FlutterStandardReader {
   override func readValue(ofType type: UInt8) -> Any? {
     switch type {
     case 129:
-      let enumResultAsInt: Int? = nilOrValue(readValue() as! Int?)
-      if let enumResultAsInt {
+      let enumResultAsInt: Int? = nilOrValue(self.readValue() as! Int?)
+      if let enumResultAsInt = enumResultAsInt {
         return HostAPIPMTab(rawValue: enumResultAsInt)
       }
       return nil
     case 130:
-      let enumResultAsInt: Int? = nilOrValue(readValue() as! Int?)
-      if let enumResultAsInt {
+      let enumResultAsInt: Int? = nilOrValue(self.readValue() as! Int?)
+      if let enumResultAsInt = enumResultAsInt {
         return HostAPICampaignType(rawValue: enumResultAsInt)
       }
       return nil
     case 131:
-      let enumResultAsInt: Int? = nilOrValue(readValue() as! Int?)
-      if let enumResultAsInt {
+      let enumResultAsInt: Int? = nilOrValue(self.readValue() as! Int?)
+      if let enumResultAsInt = enumResultAsInt {
         return HostAPIMessageType(rawValue: enumResultAsInt)
       }
       return nil
     case 132:
-      let enumResultAsInt: Int? = nilOrValue(readValue() as! Int?)
-      if let enumResultAsInt {
+      let enumResultAsInt: Int? = nilOrValue(self.readValue() as! Int?)
+      if let enumResultAsInt = enumResultAsInt {
         return HostAPIGranularState(rawValue: enumResultAsInt)
       }
       return nil
     case 133:
-      let enumResultAsInt: Int? = nilOrValue(readValue() as! Int?)
-      if let enumResultAsInt {
+      let enumResultAsInt: Int? = nilOrValue(self.readValue() as! Int?)
+      if let enumResultAsInt = enumResultAsInt {
         return HostAPIActionType(rawValue: enumResultAsInt)
       }
       return nil
     case 134:
-      let enumResultAsInt: Int? = nilOrValue(readValue() as! Int?)
-      if let enumResultAsInt {
+      let enumResultAsInt: Int? = nilOrValue(self.readValue() as! Int?)
+      if let enumResultAsInt = enumResultAsInt {
         return HostAPIMessageLanguage(rawValue: enumResultAsInt)
       }
       return nil
     case 135:
-      let enumResultAsInt: Int? = nilOrValue(readValue() as! Int?)
-      if let enumResultAsInt {
+      let enumResultAsInt: Int? = nilOrValue(self.readValue() as! Int?)
+      if let enumResultAsInt = enumResultAsInt {
         return HostAPICampaignsEnv(rawValue: enumResultAsInt)
       }
       return nil
     case 136:
-      return HostAPISPError.fromList(readValue() as! [Any?])
+      return HostAPISPError.fromList(self.readValue() as! [Any?])
     case 137:
-      return HostAPIConsentAction.fromList(readValue() as! [Any?])
+      return HostAPIConsentAction.fromList(self.readValue() as! [Any?])
     case 138:
-      return HostAPIGDPRPurposeGrants.fromList(readValue() as! [Any?])
+      return HostAPIGDPRPurposeGrants.fromList(self.readValue() as! [Any?])
     case 139:
-      return HostAPIGranularStatus.fromList(readValue() as! [Any?])
+      return HostAPIGranularStatus.fromList(self.readValue() as! [Any?])
     case 140:
-      return HostAPIConsentStatus.fromList(readValue() as! [Any?])
+      return HostAPIConsentStatus.fromList(self.readValue() as! [Any?])
     case 141:
-      return HostAPIGDPRConsent.fromList(readValue() as! [Any?])
+      return HostAPIGDPRConsent.fromList(self.readValue() as! [Any?])
     case 142:
-      return HostAPICCPAConsent.fromList(readValue() as! [Any?])
+      return HostAPICCPAConsent.fromList(self.readValue() as! [Any?])
     case 143:
-      return HostAPISPConsent.fromList(readValue() as! [Any?])
+      return HostAPISPConsent.fromList(self.readValue() as! [Any?])
     case 144:
-      return SPConfig.fromList(readValue() as! [Any?])
+      return SPConfig.fromList(self.readValue() as! [Any?])
     default:
       return super.readValue(ofType: type)
     }
@@ -887,47 +800,35 @@ private class SourcepointUnifiedCmpPigeonCodecWriter: FlutterStandardWriter {
 
 private class SourcepointUnifiedCmpPigeonCodecReaderWriter: FlutterStandardReaderWriter {
   override func reader(with data: Data) -> FlutterStandardReader {
-    SourcepointUnifiedCmpPigeonCodecReader(data: data)
+    return SourcepointUnifiedCmpPigeonCodecReader(data: data)
   }
 
   override func writer(with data: NSMutableData) -> FlutterStandardWriter {
-    SourcepointUnifiedCmpPigeonCodecWriter(data: data)
+    return SourcepointUnifiedCmpPigeonCodecWriter(data: data)
   }
 }
 
 class SourcepointUnifiedCmpPigeonCodec: FlutterStandardMessageCodec, @unchecked Sendable {
-  static let shared =
-    SourcepointUnifiedCmpPigeonCodec(readerWriter: SourcepointUnifiedCmpPigeonCodecReaderWriter())
+  static let shared = SourcepointUnifiedCmpPigeonCodec(readerWriter: SourcepointUnifiedCmpPigeonCodecReaderWriter())
 }
+
 
 /// Generated protocol from Pigeon that represents a handler of messages from Flutter.
 protocol SourcepointUnifiedCmpHostApi {
-  func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId: String,
-                   messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv,
-                   messageTimeout: Int64, runGDPRCampaign: Bool, runCCPACampaign: Bool,
-                   completion: @escaping (Result<HostAPISPConsent, Error>) -> Void)
-  func loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType,
-                          messageType: HostAPIMessageType,
-                          completion: @escaping (Result<Void, Error>) -> Void)
+  func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Int64, runGDPRCampaign: Bool, runCCPACampaign: Bool, completion: @escaping (Result<HostAPISPConsent, Error>) -> Void)
+  func loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType, messageType: HostAPIMessageType, completion: @escaping (Result<Void, Error>) -> Void)
+  func customConsentGDPR(vendors: [String], categories: [String], legIntCategories: [String], completion: @escaping (Result<HostAPISPConsent, Error>) -> Void)
+  func deleteCustomConsentGDPR(vendors: [String], categories: [String], legIntCategories: [String], completion: @escaping (Result<HostAPISPConsent, Error>) -> Void)
 }
 
 /// Generated setup class from Pigeon to handle messages through the `binaryMessenger`.
 class SourcepointUnifiedCmpHostApiSetup {
-  static var codec: FlutterStandardMessageCodec {
-    SourcepointUnifiedCmpPigeonCodec.shared
-  }
-
-  /// Sets up an instance of `SourcepointUnifiedCmpHostApi` to handle messages through the
-  /// `binaryMessenger`.
-  static func setUp(binaryMessenger: FlutterBinaryMessenger, api: SourcepointUnifiedCmpHostApi?,
-                    messageChannelSuffix: String = "") {
+  static var codec: FlutterStandardMessageCodec { SourcepointUnifiedCmpPigeonCodec.shared }
+  /// Sets up an instance of `SourcepointUnifiedCmpHostApi` to handle messages through the `binaryMessenger`.
+  static func setUp(binaryMessenger: FlutterBinaryMessenger, api: SourcepointUnifiedCmpHostApi?, messageChannelSuffix: String = "") {
     let channelSuffix = messageChannelSuffix.count > 0 ? ".\(messageChannelSuffix)" : ""
-    let loadMessageChannel = FlutterBasicMessageChannel(
-      name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadMessage\(channelSuffix)",
-      binaryMessenger: binaryMessenger,
-      codec: codec
-    )
-    if let api {
+    let loadMessageChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadMessage\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    if let api = api {
       loadMessageChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
         let accountIdArg = args[0] as! Int64
@@ -939,21 +840,11 @@ class SourcepointUnifiedCmpHostApiSetup {
         let messageTimeoutArg = args[6] as! Int64
         let runGDPRCampaignArg = args[7] as! Bool
         let runCCPACampaignArg = args[8] as! Bool
-        api.loadMessage(
-          accountId: accountIdArg,
-          propertyId: propertyIdArg,
-          propertyName: propertyNameArg,
-          pmId: pmIdArg,
-          messageLanguage: messageLanguageArg,
-          campaignsEnv: campaignsEnvArg,
-          messageTimeout: messageTimeoutArg,
-          runGDPRCampaign: runGDPRCampaignArg,
-          runCCPACampaign: runCCPACampaignArg
-        ) { result in
+        api.loadMessage(accountId: accountIdArg, propertyId: propertyIdArg, propertyName: propertyNameArg, pmId: pmIdArg, messageLanguage: messageLanguageArg, campaignsEnv: campaignsEnvArg, messageTimeout: messageTimeoutArg, runGDPRCampaign: runGDPRCampaignArg, runCCPACampaign: runCCPACampaignArg) { result in
           switch result {
-          case let .success(res):
+          case .success(let res):
             reply(wrapResult(res))
-          case let .failure(error):
+          case .failure(let error):
             reply(wrapError(error))
           }
         }
@@ -961,28 +852,19 @@ class SourcepointUnifiedCmpHostApiSetup {
     } else {
       loadMessageChannel.setMessageHandler(nil)
     }
-    let loadPrivacyManagerChannel = FlutterBasicMessageChannel(
-      name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadPrivacyManager\(channelSuffix)",
-      binaryMessenger: binaryMessenger,
-      codec: codec
-    )
-    if let api {
+    let loadPrivacyManagerChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadPrivacyManager\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    if let api = api {
       loadPrivacyManagerChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
         let pmIdArg = args[0] as! String
         let pmTabArg = args[1] as! HostAPIPMTab
         let campaignTypeArg = args[2] as! HostAPICampaignType
         let messageTypeArg = args[3] as! HostAPIMessageType
-        api.loadPrivacyManager(
-          pmId: pmIdArg,
-          pmTab: pmTabArg,
-          campaignType: campaignTypeArg,
-          messageType: messageTypeArg
-        ) { result in
+        api.loadPrivacyManager(pmId: pmIdArg, pmTab: pmTabArg, campaignType: campaignTypeArg, messageType: messageTypeArg) { result in
           switch result {
           case .success:
             reply(wrapResult(nil))
-          case let .failure(error):
+          case .failure(let error):
             reply(wrapError(error))
           }
         }
@@ -990,25 +872,56 @@ class SourcepointUnifiedCmpHostApiSetup {
     } else {
       loadPrivacyManagerChannel.setMessageHandler(nil)
     }
+    let customConsentGDPRChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.customConsentGDPR\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    if let api = api {
+      customConsentGDPRChannel.setMessageHandler { message, reply in
+        let args = message as! [Any?]
+        let vendorsArg = args[0] as! [String]
+        let categoriesArg = args[1] as! [String]
+        let legIntCategoriesArg = args[2] as! [String]
+        api.customConsentGDPR(vendors: vendorsArg, categories: categoriesArg, legIntCategories: legIntCategoriesArg) { result in
+          switch result {
+          case .success(let res):
+            reply(wrapResult(res))
+          case .failure(let error):
+            reply(wrapError(error))
+          }
+        }
+      }
+    } else {
+      customConsentGDPRChannel.setMessageHandler(nil)
+    }
+    let deleteCustomConsentGDPRChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.deleteCustomConsentGDPR\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    if let api = api {
+      deleteCustomConsentGDPRChannel.setMessageHandler { message, reply in
+        let args = message as! [Any?]
+        let vendorsArg = args[0] as! [String]
+        let categoriesArg = args[1] as! [String]
+        let legIntCategoriesArg = args[2] as! [String]
+        api.deleteCustomConsentGDPR(vendors: vendorsArg, categories: categoriesArg, legIntCategories: legIntCategoriesArg) { result in
+          switch result {
+          case .success(let res):
+            reply(wrapResult(res))
+          case .failure(let error):
+            reply(wrapError(error))
+          }
+        }
+      }
+    } else {
+      deleteCustomConsentGDPRChannel.setMessageHandler(nil)
+    }
   }
 }
-
 /// Generated protocol from Pigeon that represents Flutter messages that can be called from Swift.
 protocol SourcepointUnifiedCmpFlutterApiProtocol {
   func onUIFinished(completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
   func onUIReady(completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
-  func onError(error errorArg: HostAPISPError,
-               completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
-  func onConsentReady(consent consentArg: HostAPISPConsent,
-                      completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
-  func onAction(consentAction consentActionArg: HostAPIConsentAction,
-                completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
-  func onNoIntentActivitiesFound(url urlArg: String,
-                                 completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
-  func onSpFinished(consent consentArg: HostAPISPConsent,
-                    completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
+  func onError(error errorArg: HostAPISPError, completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
+  func onConsentReady(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
+  func onAction(consentAction consentActionArg: HostAPIConsentAction, completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
+  func onNoIntentActivitiesFound(url urlArg: String, completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
+  func onSpFinished(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, HostApiFlutterError>) -> Void)
 }
-
 class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
   private let binaryMessenger: FlutterBinaryMessenger
   private let messageChannelSuffix: String
@@ -1016,18 +929,12 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
     self.binaryMessenger = binaryMessenger
     self.messageChannelSuffix = messageChannelSuffix.count > 0 ? ".\(messageChannelSuffix)" : ""
   }
-
   var codec: SourcepointUnifiedCmpPigeonCodec {
-    SourcepointUnifiedCmpPigeonCodec.shared
+    return SourcepointUnifiedCmpPigeonCodec.shared
   }
-
   func onUIFinished(completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
-    let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIFinished\(messageChannelSuffix)"
-    let channel = FlutterBasicMessageChannel(
-      name: channelName,
-      binaryMessenger: binaryMessenger,
-      codec: codec
-    )
+    let channelName: String = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIFinished\(messageChannelSuffix)"
+    let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
     channel.sendMessage(nil) { response in
       guard let listResponse = response as? [Any?] else {
         completion(.failure(createConnectionError(withChannelName: channelName)))
@@ -1043,14 +950,9 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
       }
     }
   }
-
   func onUIReady(completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
-    let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIReady\(messageChannelSuffix)"
-    let channel = FlutterBasicMessageChannel(
-      name: channelName,
-      binaryMessenger: binaryMessenger,
-      codec: codec
-    )
+    let channelName: String = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onUIReady\(messageChannelSuffix)"
+    let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
     channel.sendMessage(nil) { response in
       guard let listResponse = response as? [Any?] else {
         completion(.failure(createConnectionError(withChannelName: channelName)))
@@ -1066,15 +968,9 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
       }
     }
   }
-
-  func onError(error errorArg: HostAPISPError,
-               completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
-    let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onError\(messageChannelSuffix)"
-    let channel = FlutterBasicMessageChannel(
-      name: channelName,
-      binaryMessenger: binaryMessenger,
-      codec: codec
-    )
+  func onError(error errorArg: HostAPISPError, completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
+    let channelName: String = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onError\(messageChannelSuffix)"
+    let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
     channel.sendMessage([errorArg] as [Any?]) { response in
       guard let listResponse = response as? [Any?] else {
         completion(.failure(createConnectionError(withChannelName: channelName)))
@@ -1090,15 +986,9 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
       }
     }
   }
-
-  func onConsentReady(consent consentArg: HostAPISPConsent,
-                      completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
-    let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onConsentReady\(messageChannelSuffix)"
-    let channel = FlutterBasicMessageChannel(
-      name: channelName,
-      binaryMessenger: binaryMessenger,
-      codec: codec
-    )
+  func onConsentReady(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
+    let channelName: String = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onConsentReady\(messageChannelSuffix)"
+    let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
     channel.sendMessage([consentArg] as [Any?]) { response in
       guard let listResponse = response as? [Any?] else {
         completion(.failure(createConnectionError(withChannelName: channelName)))
@@ -1114,15 +1004,9 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
       }
     }
   }
-
-  func onAction(consentAction consentActionArg: HostAPIConsentAction,
-                completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
-    let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onAction\(messageChannelSuffix)"
-    let channel = FlutterBasicMessageChannel(
-      name: channelName,
-      binaryMessenger: binaryMessenger,
-      codec: codec
-    )
+  func onAction(consentAction consentActionArg: HostAPIConsentAction, completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
+    let channelName: String = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onAction\(messageChannelSuffix)"
+    let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
     channel.sendMessage([consentActionArg] as [Any?]) { response in
       guard let listResponse = response as? [Any?] else {
         completion(.failure(createConnectionError(withChannelName: channelName)))
@@ -1138,16 +1022,9 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
       }
     }
   }
-
-  func onNoIntentActivitiesFound(url urlArg: String,
-                                 completion: @escaping (Result<Void, HostApiFlutterError>)
-                                   -> Void) {
-    let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound\(messageChannelSuffix)"
-    let channel = FlutterBasicMessageChannel(
-      name: channelName,
-      binaryMessenger: binaryMessenger,
-      codec: codec
-    )
+  func onNoIntentActivitiesFound(url urlArg: String, completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
+    let channelName: String = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onNoIntentActivitiesFound\(messageChannelSuffix)"
+    let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
     channel.sendMessage([urlArg] as [Any?]) { response in
       guard let listResponse = response as? [Any?] else {
         completion(.failure(createConnectionError(withChannelName: channelName)))
@@ -1163,15 +1040,9 @@ class SourcepointUnifiedCmpFlutterApi: SourcepointUnifiedCmpFlutterApiProtocol {
       }
     }
   }
-
-  func onSpFinished(consent consentArg: HostAPISPConsent,
-                    completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
-    let channelName = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onSpFinished\(messageChannelSuffix)"
-    let channel = FlutterBasicMessageChannel(
-      name: channelName,
-      binaryMessenger: binaryMessenger,
-      codec: codec
-    )
+  func onSpFinished(consent consentArg: HostAPISPConsent, completion: @escaping (Result<Void, HostApiFlutterError>) -> Void) {
+    let channelName: String = "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpFlutterApi.onSpFinished\(messageChannelSuffix)"
+    let channel = FlutterBasicMessageChannel(name: channelName, binaryMessenger: binaryMessenger, codec: codec)
     channel.sendMessage([consentArg] as [Any?]) { response in
       guard let listResponse = response as? [Any?] else {
         completion(.failure(createConnectionError(withChannelName: channelName)))

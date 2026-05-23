@@ -888,6 +888,8 @@ private open class SourcepointUnifiedCmpPigeonCodec : StandardMessageCodec() {
 interface SourcepointUnifiedCmpHostApi {
   fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Long, runGDPRCampaign: Boolean, runCCPACampaign: Boolean, runUSNATCampaign: Boolean, callback: (Result<HostAPISPConsent>) -> Unit)
   fun loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType, messageType: HostAPIMessageType, callback: (Result<Unit>) -> Unit)
+  fun customConsentGDPR(vendors: List<String>, categories: List<String>, legIntCategories: List<String>, callback: (Result<HostAPISPConsent>) -> Unit)
+  fun deleteCustomConsentGDPR(vendors: List<String>, categories: List<String>, legIntCategories: List<String>, callback: (Result<HostAPISPConsent>) -> Unit)
 
   companion object {
     /** The codec used by SourcepointUnifiedCmpHostApi. */
@@ -942,6 +944,50 @@ interface SourcepointUnifiedCmpHostApi {
                 reply.reply(SourcepointUnifiedCmpPigeonUtils.wrapError(error))
               } else {
                 reply.reply(SourcepointUnifiedCmpPigeonUtils.wrapResult(null))
+              }
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.customConsentGDPR$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val vendorsArg = args[0] as List<String>
+            val categoriesArg = args[1] as List<String>
+            val legIntCategoriesArg = args[2] as List<String>
+            api.customConsentGDPR(vendorsArg, categoriesArg, legIntCategoriesArg) { result: Result<HostAPISPConsent> ->
+              val error = result.exceptionOrNull()
+              if (error != null) {
+                reply.reply(SourcepointUnifiedCmpPigeonUtils.wrapError(error))
+              } else {
+                val data = result.getOrNull()
+                reply.reply(SourcepointUnifiedCmpPigeonUtils.wrapResult(data))
+              }
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.deleteCustomConsentGDPR$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val vendorsArg = args[0] as List<String>
+            val categoriesArg = args[1] as List<String>
+            val legIntCategoriesArg = args[2] as List<String>
+            api.deleteCustomConsentGDPR(vendorsArg, categoriesArg, legIntCategoriesArg) { result: Result<HostAPISPConsent> ->
+              val error = result.exceptionOrNull()
+              if (error != null) {
+                reply.reply(SourcepointUnifiedCmpPigeonUtils.wrapError(error))
+              } else {
+                val data = result.getOrNull()
+                reply.reply(SourcepointUnifiedCmpPigeonUtils.wrapResult(data))
               }
             }
           }

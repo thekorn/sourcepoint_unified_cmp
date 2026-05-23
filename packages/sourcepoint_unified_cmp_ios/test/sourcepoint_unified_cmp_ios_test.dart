@@ -41,4 +41,36 @@ void main() {
     );
     expect(consent, isNotNull);
   });
+
+  test('customConsentGDPR', () async {
+    when(
+      api.customConsentGDPR(
+        vendors: ['vendor1'],
+        categories: ['category1'],
+        legIntCategories: ['legIntCategory1'],
+      ),
+    ).thenAnswer((_) async => HostAPISPConsent());
+    final consent = await api.customConsentGDPR(
+      vendors: ['vendor1'],
+      categories: ['category1'],
+      legIntCategories: ['legIntCategory1'],
+    );
+    expect(consent, isNotNull);
+  });
+
+  test('deleteCustomConsentGDPR', () async {
+    when(
+      api.deleteCustomConsentGDPR(
+        vendors: ['vendor1'],
+        categories: ['category1'],
+        legIntCategories: ['legIntCategory1'],
+      ),
+    ).thenAnswer((_) async => HostAPISPConsent());
+    final consent = await api.deleteCustomConsentGDPR(
+      vendors: ['vendor1'],
+      categories: ['category1'],
+      legIntCategories: ['legIntCategory1'],
+    );
+    expect(consent, isNotNull);
+  });
 }

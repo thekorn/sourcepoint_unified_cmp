@@ -182,6 +182,20 @@ abstract class SourcepointUnifiedCmpHostApi {
     required HostAPICampaignType campaignType,
     required HostAPIMessageType messageType,
   });
+
+  @async
+  HostAPISPConsent customConsentGDPR({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  });
+
+  @async
+  HostAPISPConsent deleteCustomConsentGDPR({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  });
 }
 
 @FlutterApi()

@@ -30,6 +30,68 @@ void main() {
     expect(r, isNotNull);
   });
 
+  test('customConsentGdpr', () async {
+    final config = SPConfig(
+      accountId: 22,
+      propertyId: 7639,
+      propertyName: 'tcfv2.mobile.webview',
+      pmId: '122058',
+      campaigns: [CampaignType.gdpr],
+    );
+    when(
+      methodChannel.customConsentGdpr(
+        vendors: anyNamed('vendors'),
+        categories: anyNamed('categories'),
+        legIntCategories: anyNamed('legIntCategories'),
+      ),
+    ).thenAnswer((_) async => SPConsent());
+    final controller = SourcepointController(config: config);
+    final r = await controller.customConsentGdpr(
+      vendors: ['vendor1'],
+      categories: ['category1'],
+      legIntCategories: ['legIntCategory1'],
+    );
+    expect(r, isNotNull);
+    verify(
+      methodChannel.customConsentGdpr(
+        vendors: ['vendor1'],
+        categories: ['category1'],
+        legIntCategories: ['legIntCategory1'],
+      ),
+    ).called(1);
+  });
+
+  test('deleteCustomConsentGdpr', () async {
+    final config = SPConfig(
+      accountId: 22,
+      propertyId: 7639,
+      propertyName: 'tcfv2.mobile.webview',
+      pmId: '122058',
+      campaigns: [CampaignType.gdpr],
+    );
+    when(
+      methodChannel.deleteCustomConsentGdpr(
+        vendors: anyNamed('vendors'),
+        categories: anyNamed('categories'),
+        legIntCategories: anyNamed('legIntCategories'),
+      ),
+    ).thenAnswer((_) async => SPConsent());
+    final controller = SourcepointController(config: config);
+    final r = await controller.deleteCustomConsentGdpr(
+      vendors: ['vendor1'],
+      categories: ['category1'],
+      legIntCategories: ['legIntCategory1'],
+    );
+    expect(r, isNotNull);
+    verify(
+      methodChannel.deleteCustomConsentGdpr(
+        vendors: ['vendor1'],
+        categories: ['category1'],
+        legIntCategories: ['legIntCategory1'],
+      ),
+    ).called(1);
+  });
+
   group('WebView Utils', () {
     test(
       'generatePreloadJSString should return the correct JavaScript string',
