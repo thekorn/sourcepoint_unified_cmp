@@ -96,7 +96,13 @@ extension SourcepointUnifiedCmpPlugin: SPDelegate {
   public func onSPUIReady(_ controller: UIViewController) {
     controller.modalPresentationStyle = .overFullScreen
     DispatchQueue.main.async {
-      getTopMostViewController()?.present(controller, animated: true)
+      guard
+        let topVC = getTopMostViewController(),
+        topVC !== controller,
+        controller.presentingViewController == nil,
+        !controller.isBeingPresented
+      else { return }
+      topVC.present(controller, animated: true)
     }
     flutterAPI?.callOnUIReady(controller: controller)
   }
