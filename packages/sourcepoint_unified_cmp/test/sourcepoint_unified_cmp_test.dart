@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -16,6 +17,12 @@ void main() {
     SourcepointUnifiedCmpPlatform.setInstanceUnverified(methodChannel);
   });
 
+  tearDown(() {
+    SourcepointUnifiedCmpPlatform.setInstanceUnverified(
+      MethodChannelSourcepointUnifiedCmp(),
+    );
+  });
+
   test('loadMessage', () async {
     final config = SPConfig(
       accountId: 22,
@@ -28,6 +35,153 @@ void main() {
     final controller = SourcepointController(config: config);
     final r = await controller.loadMessage();
     expect(r, isNotNull);
+  });
+
+  group('SourcepointController', () {
+    test('setEventDelegate registers the delegate with the platform', () {
+      final config = SPConfig(
+        accountId: 22,
+        propertyId: 7639,
+        propertyName: 'tcfv2.mobile.webview',
+        pmId: '122058',
+        campaigns: [CampaignType.gdpr],
+      );
+      final delegate = SourcepointEventDelegate();
+      SourcepointController(config: config).setEventDelegate(delegate);
+
+      verify(methodChannel.registerEventDelegate(delegate)).called(1);
+    });
+
+    test(
+      'loadPrivacyManager calls the platform with correct parameters',
+      () async {
+        final config = SPConfig(
+          accountId: 22,
+          propertyId: 7639,
+          propertyName: 'tcfv2.mobile.webview',
+          pmId: '122058',
+          campaigns: [CampaignType.gdpr],
+        );
+        when(
+          methodChannel.loadPrivacyManager(any, any, any, any),
+        ).thenAnswer((_) async {});
+
+        final controller = SourcepointController(config: config);
+        await controller.loadPrivacyManager(pmId: '122058');
+
+        verify(
+          methodChannel.loadPrivacyManager(
+            '122058',
+            PMTab.purposes,
+            CampaignType.gdpr,
+            MessageType.mobile,
+          ),
+        ).called(1);
+      },
+    );
+
+    test(
+      'loadPrivacyManager forwards all optional parameters to the platform',
+      () async {
+        final config = SPConfig(
+          accountId: 22,
+          propertyId: 7639,
+          propertyName: 'tcfv2.mobile.webview',
+          pmId: '122058',
+          campaigns: [CampaignType.gdpr],
+        );
+        when(
+          methodChannel.loadPrivacyManager(any, any, any, any),
+        ).thenAnswer((_) async {});
+
+        final controller = SourcepointController(config: config);
+        await controller.loadPrivacyManager(
+          pmId: '999',
+          pmTab: PMTab.vendors,
+          campaignType: CampaignType.ccpa,
+          messageType: MessageType.ott,
+        );
+
+        verify(
+          methodChannel.loadPrivacyManager(
+            '999',
+            PMTab.vendors,
+            CampaignType.ccpa,
+            MessageType.ott,
+          ),
+        ).called(1);
+      },
+    );
+  });
+
+  group('SourcepointUnifiedCMPBuilder', () {
+    testWidgets('shows builder content after future resolves', (tester) async {
+      final consent = SPConsent(webConsents: 'test_consent');
+      final config = SPConfig(
+        accountId: 22,
+        propertyId: 7639,
+        propertyName: 'tcfv2.mobile.webview',
+        pmId: '122058',
+        campaigns: [CampaignType.gdpr],
+      );
+      when(methodChannel.loadMessage(any)).thenAnswer((_) async => consent);
+
+      final controller = SourcepointController(config: config);
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: SourcepointUnifiedCMPBuilder(
+            controller: controller,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return const Text('loaded');
+              }
+              return const CircularProgressIndicator();
+            },
+          ),
+        ),
+      );
+
+      // Initially shows loading indicator before future resolves.
+      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+      // After the future resolves, shows the content.
+      await tester.pumpAndSettle();
+      expect(find.text('loaded'), findsOneWidget);
+    });
+
+    testWidgets('passes SPConsent snapshot to builder', (tester) async {
+      final consent = SPConsent(webConsents: 'web_consent');
+      final config = SPConfig(
+        accountId: 22,
+        propertyId: 7639,
+        propertyName: 'tcfv2.mobile.webview',
+        pmId: '122058',
+        campaigns: [CampaignType.gdpr],
+      );
+      when(methodChannel.loadMessage(any)).thenAnswer((_) async => consent);
+
+      SPConsent? receivedConsent;
+      final controller = SourcepointController(config: config);
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: SourcepointUnifiedCMPBuilder(
+            controller: controller,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                receivedConsent = snapshot.data;
+                return const Text('done');
+              }
+              return const SizedBox.shrink();
+            },
+          ),
+        ),
+      );
+
+      await tester.pumpAndSettle();
+      expect(receivedConsent, consent);
+    });
   });
 
   group('WebView Utils', () {
