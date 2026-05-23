@@ -54,7 +54,7 @@ void main() {
 
       final action = ConsentAction(
         actionType: ActionType.acceptAll,
-        pubData: {},
+        pubData: <String, Object?>{},
         campaignType: CampaignType.gdpr,
       );
       delegate.onAction?.call(action);
@@ -123,7 +123,7 @@ void main() {
       delegate.onAction?.call(
         ConsentAction(
           actionType: ActionType.rejectAll,
-          pubData: {},
+          pubData: <String, Object?>{},
           campaignType: CampaignType.gdpr,
         ),
       );

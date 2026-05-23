@@ -22,9 +22,9 @@ void main() {
     test('updateConsent calls notifyListeners', () {
       final notifier = _TestConsentChangeNotifier();
       var callCount = 0;
-      notifier.addListener(() => callCount++);
-
-      notifier.updateConsent(SPConsent(webConsents: 'test_consent'));
+      notifier
+        ..addListener(() => callCount++)
+        ..updateConsent(SPConsent(webConsents: 'test_consent'));
 
       expect(callCount, 1);
     });
@@ -32,10 +32,10 @@ void main() {
     test('updateConsent can be called multiple times', () {
       final notifier = _TestConsentChangeNotifier();
       var callCount = 0;
-      notifier.addListener(() => callCount++);
-
-      notifier.updateConsent(SPConsent(webConsents: 'first'));
-      notifier.updateConsent(SPConsent(webConsents: 'second'));
+      notifier
+        ..addListener(() => callCount++)
+        ..updateConsent(SPConsent(webConsents: 'first'))
+        ..updateConsent(SPConsent(webConsents: 'second'));
 
       expect(callCount, 2);
       expect(notifier.consent?.webConsents, 'second');
@@ -47,9 +47,8 @@ void main() {
       var secondCount = 0;
       notifier
         ..addListener(() => firstCount++)
-        ..addListener(() => secondCount++);
-
-      notifier.updateConsent(SPConsent());
+        ..addListener(() => secondCount++)
+        ..updateConsent(SPConsent());
 
       expect(firstCount, 1);
       expect(secondCount, 1);

@@ -290,12 +290,12 @@ void main() {
     test('creates with required parameters', () {
       final action = ConsentAction(
         actionType: ActionType.acceptAll,
-        pubData: {},
+        pubData: <String, Object?>{},
         campaignType: CampaignType.gdpr,
       );
       expect(action.actionType, ActionType.acceptAll);
       expect(action.campaignType, CampaignType.gdpr);
-      expect(action.pubData, {});
+      expect(action.pubData, <String, Object?>{});
       expect(action.customActionId, isNull);
     });
 

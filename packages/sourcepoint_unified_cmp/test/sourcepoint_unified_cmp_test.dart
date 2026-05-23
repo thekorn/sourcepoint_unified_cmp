@@ -41,9 +41,7 @@ void main() {
         campaigns: [CampaignType.gdpr],
       );
       final delegate = SourcepointEventDelegate();
-      final controller = SourcepointController(config: config);
-
-      controller.setEventDelegate(delegate);
+      SourcepointController(config: config).setEventDelegate(delegate);
 
       verify(methodChannel.registerEventDelegate(delegate)).called(1);
     });
