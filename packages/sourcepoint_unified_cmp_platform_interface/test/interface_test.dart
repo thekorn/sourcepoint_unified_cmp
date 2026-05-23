@@ -15,8 +15,6 @@ class _TestConsentChangeNotifier extends ConsentChangeNotifier {}
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  // This test must run before any setInstanceUnverified call to trigger the
-  // lazy static initializer for SourcepointUnifiedCmpPlatform._instance.
   test('default instance is MethodChannelSourcepointUnifiedCmp', () {
     expect(
       SourcepointUnifiedCmpPlatform.instance,
@@ -29,6 +27,12 @@ void main() {
 
     setUp(() {
       platform = _TestPlatform();
+    });
+
+    tearDown(() {
+      SourcepointUnifiedCmpPlatform.setInstanceUnverified(
+        MethodChannelSourcepointUnifiedCmp(),
+      );
     });
 
     test('registerEventDelegate throws UnimplementedError', () {

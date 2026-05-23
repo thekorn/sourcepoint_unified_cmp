@@ -17,6 +17,12 @@ void main() {
     SourcepointUnifiedCmpPlatform.setInstanceUnverified(methodChannel);
   });
 
+  tearDown(() {
+    SourcepointUnifiedCmpPlatform.setInstanceUnverified(
+      MethodChannelSourcepointUnifiedCmp(),
+    );
+  });
+
   test('loadMessage', () async {
     final config = SPConfig(
       accountId: 22,
