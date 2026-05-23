@@ -113,7 +113,7 @@ int _deepHash(Object? value) {
 
 enum HostAPIPMTab { defaults, purposes, vendors, features }
 
-enum HostAPICampaignType { gdpr, ccpa, usnat }
+enum HostAPICampaignType { gdpr, ccpa, usnat, unknown, globalcmp, preferences }
 
 enum HostAPIMessageType { mobile, ott, legacyOtt }
 

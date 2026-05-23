@@ -43,6 +43,18 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin,
       consentManager.loadGDPRPrivacyManager(withId: pmId, tab: pmTab.toSPPrivacyManagerTab())
     case HostAPICampaignType.ccpa:
       consentManager.loadCCPAPrivacyManager(withId: pmId, tab: pmTab.toSPPrivacyManagerTab())
+    case HostAPICampaignType.usnat:
+      consentManager.loadUSNatPrivacyManager(withId: pmId, tab: pmTab.toSPPrivacyManagerTab())
+    case HostAPICampaignType.globalcmp:
+      consentManager.loadGlobalCmpPrivacyManager(
+        withId: pmId, tab: pmTab.toSPPrivacyManagerTab()
+      )
+    case HostAPICampaignType.preferences:
+      consentManager.loadPreferenceCenter(withId: pmId)
+    case HostAPICampaignType.ios14:
+      break
+    case HostAPICampaignType.unknown:
+      break
     }
   }
 
@@ -148,7 +160,13 @@ extension SourcepointUnifiedCmpPlugin: SPDelegate {
   public func onSPUIReady(_ controller: UIViewController) {
     controller.modalPresentationStyle = .overFullScreen
     DispatchQueue.main.async {
-      getTopMostViewController()?.present(controller, animated: true)
+      guard
+        let topVC = getTopMostViewController(),
+        topVC !== controller,
+        controller.presentingViewController == nil,
+        !controller.isBeingPresented
+      else { return }
+      topVC.present(controller, animated: true)
     }
     flutterAPI?.callOnUIReady(controller: controller)
   }
