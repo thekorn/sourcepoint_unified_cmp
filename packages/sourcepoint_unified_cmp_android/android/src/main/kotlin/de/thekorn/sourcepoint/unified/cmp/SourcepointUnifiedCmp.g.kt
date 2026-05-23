@@ -210,7 +210,10 @@ enum class HostAPIPMTab(val raw: Int) {
 enum class HostAPICampaignType(val raw: Int) {
   GDPR(0),
   CCPA(1),
-  USNAT(2);
+  USNAT(2),
+  UNKNOWN(3),
+  GLOBALCMP(4),
+  PREFERENCES(5);
 
   companion object {
     fun ofRaw(raw: Int): HostAPICampaignType? {

@@ -100,21 +100,23 @@ enum CampaignType {
   /// Represents the United States National Advertising Initiative (USNAT).
   usnat,
 
-  /// Used if your property runs a U.S. Multi-State Privacy campaign.
-  /// Please do not attempt to utilize both CCPA and USNAT simultaneously as
-  /// this poses a compliance risk for your organization.
-  ///
-  /// This campaign type should only be implemented via the config object on
-  /// mobile devices. Click here to learn more about implementing U.S.
-  /// Multi-State Privacy on OTT.
-  ///usnat
+  /// iOS 14+ App Tracking Transparency campaign type (iOS only).
+  /// There is no Privacy Manager method for this type — it is a no-op
+  /// when `loadPrivacyManager` is called.
+  ios14,
+
+  /// Global CMP campaign type. Used when the property runs a Global CMP
+  /// campaign (available on both iOS and Android).
+  globalcmp,
+
+  /// Preference Center campaign type. Loads the Preference Center instead
+  /// of a standard Privacy Manager (available on both iOS and Android).
+  preferences,
 
   /// Unknown campaign type - used as a fallback when the native SDK returns
-  /// a campaign type that is not yet supported (e.g. ios14 or other
-  /// iOS-specific campaign types). This prevents a crash on iOS when the
-  /// user cancels the privacy consent modal.
+  /// a campaign type that is not yet supported. This prevents a crash when
+  /// the user cancels the privacy consent modal.
   unknown,
-  // TODO(thekorn): add missing iOs specific campaigns
 }
 
 /// message type - android only

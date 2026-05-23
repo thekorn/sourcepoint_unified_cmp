@@ -4,7 +4,15 @@ import 'package:pigeon/pigeon.dart';
 
 enum HostAPIPMTab { defaults, purposes, vendors, features }
 
-enum HostAPICampaignType { gdpr, ccpa, unknown }
+enum HostAPICampaignType {
+  gdpr,
+  ccpa,
+  usnat,
+  ios14,
+  globalcmp,
+  preferences,
+  unknown,
+}
 
 enum HostAPIMessageType { mobile, ott, legacyOtt }
 
