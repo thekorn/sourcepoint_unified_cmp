@@ -55,6 +55,16 @@ extension on messages.HostAPICampaignType {
         return CampaignType.gdpr;
       case messages.HostAPICampaignType.ccpa:
         return CampaignType.ccpa;
+      case messages.HostAPICampaignType.usnat:
+        return CampaignType.usnat;
+      case messages.HostAPICampaignType.ios14:
+        return CampaignType.ios14;
+      case messages.HostAPICampaignType.globalcmp:
+        return CampaignType.globalcmp;
+      case messages.HostAPICampaignType.preferences:
+        return CampaignType.preferences;
+      case messages.HostAPICampaignType.unknown:
+        return CampaignType.unknown;
     }
   }
 }
@@ -202,8 +212,15 @@ extension on CampaignType {
       case CampaignType.ccpa:
         return messages.HostAPICampaignType.ccpa;
       case CampaignType.usnat:
-        // FIXME: Handle this case.
-        throw UnimplementedError();
+        return messages.HostAPICampaignType.usnat;
+      case CampaignType.ios14:
+        return messages.HostAPICampaignType.ios14;
+      case CampaignType.globalcmp:
+        return messages.HostAPICampaignType.globalcmp;
+      case CampaignType.preferences:
+        return messages.HostAPICampaignType.preferences;
+      case CampaignType.unknown:
+        return messages.HostAPICampaignType.unknown;
     }
   }
 }

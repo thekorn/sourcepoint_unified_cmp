@@ -59,6 +59,12 @@ extension on messages.HostAPICampaignType {
         return CampaignType.ccpa;
       case messages.HostAPICampaignType.usnat:
         return CampaignType.usnat;
+      case messages.HostAPICampaignType.unknown:
+        return CampaignType.unknown;
+      case messages.HostAPICampaignType.globalcmp:
+        return CampaignType.globalcmp;
+      case messages.HostAPICampaignType.preferences:
+        return CampaignType.preferences;
     }
   }
 }
@@ -201,6 +207,16 @@ extension on CampaignType {
         return messages.HostAPICampaignType.ccpa;
       case CampaignType.usnat:
         return messages.HostAPICampaignType.usnat;
+      case CampaignType.unknown:
+        return messages.HostAPICampaignType.unknown;
+      case CampaignType.globalcmp:
+        return messages.HostAPICampaignType.globalcmp;
+      case CampaignType.preferences:
+        return messages.HostAPICampaignType.preferences;
+      case CampaignType.ios14:
+        throw UnimplementedError(
+          'CampaignType.ios14 is iOS-only and cannot be used on Android.',
+        );
     }
   }
 }

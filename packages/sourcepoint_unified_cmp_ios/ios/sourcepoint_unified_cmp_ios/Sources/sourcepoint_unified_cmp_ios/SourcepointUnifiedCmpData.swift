@@ -30,8 +30,9 @@ extension SPConsent {
     if let value = self as? SPConsent<SPGDPRConsent> {
       let tcData: [String?: String?]? = value.consents!.tcfData?.dictionaryValue?
         .reduce(into: [:]) { result, pair in
-          let value: String? = (pair.value as? String) ??
-            (pair.value as? CustomStringConvertible)?.description
+          let value: String? =
+            (pair.value as? String)
+              ?? (pair.value as? CustomStringConvertible)?.description
           result[pair.key] = value
         }
 
@@ -118,24 +119,31 @@ extension HostAPIPMTab {
 extension SPAction {
   func toHostAPIConsentAction() -> HostAPIConsentAction {
     HostAPIConsentAction(
-      actionType: try! type.toHostAPIActionType(),
+      actionType: (try? type.toHostAPIActionType()) ?? HostAPIActionType.unknown,
       pubData: String(describing: publisherData),
-      campaignType: try! campaignType.toHostAPICampaignType(),
+      campaignType: campaignType.toHostAPICampaignType(),
       customActionId: customActionId
     )
   }
 }
 
 extension SPCampaignType {
-  func toHostAPICampaignType() throws -> HostAPICampaignType {
+  func toHostAPICampaignType() -> HostAPICampaignType {
     switch self {
     case .ccpa:
-      HostAPICampaignType.ccpa
+      return HostAPICampaignType.ccpa
     case .gdpr:
-      HostAPICampaignType.gdpr
+      return HostAPICampaignType.gdpr
+    case .usnat:
+      return HostAPICampaignType.usnat
+    case .ios14:
+      return HostAPICampaignType.ios14
+    case .globalcmp:
+      return HostAPICampaignType.globalcmp
+    case .preferences:
+      return HostAPICampaignType.preferences
     default:
-      // NOTE: there is no support for all other campaign types
-      throw NotImplementedError.notImplemented
+      return HostAPICampaignType.unknown
     }
   }
 }

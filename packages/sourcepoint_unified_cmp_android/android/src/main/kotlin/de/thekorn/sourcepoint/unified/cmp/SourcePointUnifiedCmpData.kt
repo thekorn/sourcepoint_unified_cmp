@@ -85,9 +85,9 @@ fun CampaignType.toHostAPICampaignType() = when (this) {
     CampaignType.CCPA -> HostAPICampaignType.CCPA
     CampaignType.GDPR -> HostAPICampaignType.GDPR
     CampaignType.USNAT -> HostAPICampaignType.USNAT
-    CampaignType.UNKNOWN -> TODO()
-    CampaignType.GLOBALCMP -> TODO()
-    CampaignType.PREFERENCES -> TODO()
+    CampaignType.UNKNOWN -> HostAPICampaignType.UNKNOWN
+    CampaignType.GLOBALCMP -> HostAPICampaignType.GLOBALCMP
+    CampaignType.PREFERENCES -> HostAPICampaignType.PREFERENCES
 }
 
 fun ActionType.toHostAPIActionType() = when (this) {
@@ -126,6 +126,9 @@ fun HostAPICampaignType.toCampaignType() = when (this) {
     HostAPICampaignType.CCPA -> CampaignType.CCPA
     HostAPICampaignType.GDPR -> CampaignType.GDPR
     HostAPICampaignType.USNAT -> CampaignType.USNAT
+    HostAPICampaignType.UNKNOWN -> CampaignType.UNKNOWN
+    HostAPICampaignType.GLOBALCMP -> CampaignType.GLOBALCMP
+    HostAPICampaignType.PREFERENCES -> CampaignType.PREFERENCES
 }
 
 fun HostAPIMessageType.toMessageType() = when (this) {
