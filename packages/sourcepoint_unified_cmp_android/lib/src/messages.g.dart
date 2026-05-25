@@ -111,13 +111,34 @@ int _deepHash(Object? value) {
   return value.hashCode;
 }
 
-enum HostAPIPMTab { defaults, purposes, vendors, features }
+enum HostAPIPMTab {
+  defaults,
+  purposes,
+  vendors,
+  features,
+}
 
-enum HostAPICampaignType { gdpr, ccpa, usnat, unknown, globalcmp, preferences }
+enum HostAPICampaignType {
+  gdpr,
+  ccpa,
+  usnat,
+  unknown,
+  globalcmp,
+  preferences,
+}
 
-enum HostAPIMessageType { mobile, ott, legacyOtt }
+enum HostAPIMessageType {
+  mobile,
+  ott,
+  legacyOtt,
+}
 
-enum HostAPIGranularState { all, some, none, emptyVl }
+enum HostAPIGranularState {
+  all,
+  some,
+  none,
+  emptyVl,
+}
 
 enum HostAPIActionType {
   showOptions,
@@ -132,9 +153,19 @@ enum HostAPIActionType {
   unknown,
 }
 
-enum HostAPIMessageLanguage { english, french, german, italian, spanish, dutch }
+enum HostAPIMessageLanguage {
+  english,
+  french,
+  german,
+  italian,
+  spanish,
+  dutch,
+}
 
-enum HostAPICampaignsEnv { stage, public }
+enum HostAPICampaignsEnv {
+  stage,
+  public,
+}
 
 class HostAPIConsentAction {
   HostAPIConsentAction({
@@ -153,7 +184,12 @@ class HostAPIConsentAction {
   String? customActionId;
 
   List<Object?> _toList() {
-    return <Object?>[actionType, pubData, campaignType, customActionId];
+    return <Object?>[
+      actionType,
+      pubData,
+      campaignType,
+      customActionId,
+    ];
   }
 
   Object encode() {
@@ -191,14 +227,20 @@ class HostAPIConsentAction {
 }
 
 class HostAPIGDPRPurposeGrants {
-  HostAPIGDPRPurposeGrants({required this.granted, this.purposeGrants});
+  HostAPIGDPRPurposeGrants({
+    required this.granted,
+    this.purposeGrants,
+  });
 
   bool granted;
 
   Map<String?, bool?>? purposeGrants;
 
   List<Object?> _toList() {
-    return <Object?>[granted, purposeGrants];
+    return <Object?>[
+      granted,
+      purposeGrants,
+    ];
   }
 
   Object encode() {
@@ -234,14 +276,20 @@ class HostAPIGDPRPurposeGrants {
 }
 
 class HostAPISPError {
-  HostAPISPError({required this.cause, required this.message});
+  HostAPISPError({
+    required this.cause,
+    required this.message,
+  });
 
   String cause;
 
   String message;
 
   List<Object?> _toList() {
-    return <Object?>[cause, message];
+    return <Object?>[
+      cause,
+      message,
+    ];
   }
 
   Object encode() {
@@ -578,7 +626,11 @@ class HostAPICCPAConsent {
 }
 
 class HostAPISPConsent {
-  HostAPISPConsent({this.gdpr, this.ccpa, this.webConsents});
+  HostAPISPConsent({
+    this.gdpr,
+    this.ccpa,
+    this.webConsents,
+  });
 
   HostAPIGDPRConsent? gdpr;
 
@@ -587,7 +639,11 @@ class HostAPISPConsent {
   String? webConsents;
 
   List<Object?> _toList() {
-    return <Object?>[gdpr, ccpa, webConsents];
+    return <Object?>[
+      gdpr,
+      ccpa,
+      webConsents,
+    ];
   }
 
   Object encode() {
@@ -639,7 +695,12 @@ class SPConfig {
   String pmId;
 
   List<Object?> _toList() {
-    return <Object?>[accountId, propertyId, propertyName, pmId];
+    return <Object?>[
+      accountId,
+      propertyId,
+      propertyName,
+      pmId,
+    ];
   }
 
   Object encode() {
@@ -820,19 +881,20 @@ class SourcepointUnifiedCmpHostApi {
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
     );
-    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel
-        .send(<Object?>[
-          accountId,
-          propertyId,
-          propertyName,
-          pmId,
-          messageLanguage,
-          campaignsEnv,
-          messageTimeout,
-          runGDPRCampaign,
-          runCCPACampaign,
-          runUSNATCampaign,
-        ]);
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(
+      <Object?>[
+        accountId,
+        propertyId,
+        propertyName,
+        pmId,
+        messageLanguage,
+        campaignsEnv,
+        messageTimeout,
+        runGDPRCampaign,
+        runCCPACampaign,
+        runUSNATCampaign,
+      ],
+    );
     final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
 
     final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(
