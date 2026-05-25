@@ -38,7 +38,8 @@
     "USNAT",
     "uspstring",
     "webview",
-    "YAAAAAAAAAAA"
+    "YAAAAAAAAAAA",
+    "globalcmp"
   ],
   "ignorePaths": [".agents/**"]
 }
