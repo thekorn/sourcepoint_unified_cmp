@@ -914,6 +914,10 @@ protocol SourcepointUnifiedCmpHostApi {
   func loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType,
                           messageType: HostAPIMessageType,
                           completion: @escaping (Result<Void, Error>) -> Void)
+  func customConsentGDPR(vendors: [String], categories: [String], legIntCategories: [String],
+                         completion: @escaping (Result<HostAPISPConsent, Error>) -> Void)
+  func deleteCustomConsentGDPR(vendors: [String], categories: [String], legIntCategories: [String],
+                               completion: @escaping (Result<HostAPISPConsent, Error>) -> Void)
 }
 
 /// Generated setup class from Pigeon to handle messages through the `binaryMessenger`.
@@ -994,6 +998,60 @@ class SourcepointUnifiedCmpHostApiSetup {
       }
     } else {
       loadPrivacyManagerChannel.setMessageHandler(nil)
+    }
+    let customConsentGDPRChannel = FlutterBasicMessageChannel(
+      name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.customConsentGDPR\(channelSuffix)",
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    if let api {
+      customConsentGDPRChannel.setMessageHandler { message, reply in
+        let args = message as! [Any?]
+        let vendorsArg = args[0] as! [String]
+        let categoriesArg = args[1] as! [String]
+        let legIntCategoriesArg = args[2] as! [String]
+        api.customConsentGDPR(
+          vendors: vendorsArg,
+          categories: categoriesArg,
+          legIntCategories: legIntCategoriesArg
+        ) { result in
+          switch result {
+          case let .success(res):
+            reply(wrapResult(res))
+          case let .failure(error):
+            reply(wrapError(error))
+          }
+        }
+      }
+    } else {
+      customConsentGDPRChannel.setMessageHandler(nil)
+    }
+    let deleteCustomConsentGDPRChannel = FlutterBasicMessageChannel(
+      name: "dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.deleteCustomConsentGDPR\(channelSuffix)",
+      binaryMessenger: binaryMessenger,
+      codec: codec
+    )
+    if let api {
+      deleteCustomConsentGDPRChannel.setMessageHandler { message, reply in
+        let args = message as! [Any?]
+        let vendorsArg = args[0] as! [String]
+        let categoriesArg = args[1] as! [String]
+        let legIntCategoriesArg = args[2] as! [String]
+        api.deleteCustomConsentGDPR(
+          vendors: vendorsArg,
+          categories: categoriesArg,
+          legIntCategories: legIntCategoriesArg
+        ) { result in
+          switch result {
+          case let .success(res):
+            reply(wrapResult(res))
+          case let .failure(error):
+            reply(wrapError(error))
+          }
+        }
+      }
+    } else {
+      deleteCustomConsentGDPRChannel.setMessageHandler(nil)
     }
   }
 }

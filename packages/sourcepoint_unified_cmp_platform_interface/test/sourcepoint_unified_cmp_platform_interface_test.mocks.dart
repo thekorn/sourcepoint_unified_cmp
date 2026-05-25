@@ -106,4 +106,74 @@ class MockMethodChannelSourcepointUnifiedCmp extends _i1.Mock
         Invocation.method(#registerEventDelegate, [delegate]),
         returnValueForMissingStub: null,
       );
+
+  @override
+  _i5.Future<_i3.SPConsent> customConsentGdpr({
+    required List<String>? vendors,
+    required List<String>? categories,
+    required List<String>? legIntCategories,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#customConsentGdpr, [], {
+              #vendors: vendors,
+              #categories: categories,
+              #legIntCategories: legIntCategories,
+            }),
+            returnValue: _i5.Future<_i3.SPConsent>.value(
+              _FakeSPConsent_1(
+                this,
+                Invocation.method(#customConsentGdpr, [], {
+                  #vendors: vendors,
+                  #categories: categories,
+                  #legIntCategories: legIntCategories,
+                }),
+              ),
+            ),
+            returnValueForMissingStub: _i5.Future<_i3.SPConsent>.value(
+              _FakeSPConsent_1(
+                this,
+                Invocation.method(#customConsentGdpr, [], {
+                  #vendors: vendors,
+                  #categories: categories,
+                  #legIntCategories: legIntCategories,
+                }),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.SPConsent>);
+
+  @override
+  _i5.Future<_i3.SPConsent> deleteCustomConsentGdpr({
+    required List<String>? vendors,
+    required List<String>? categories,
+    required List<String>? legIntCategories,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#deleteCustomConsentGdpr, [], {
+              #vendors: vendors,
+              #categories: categories,
+              #legIntCategories: legIntCategories,
+            }),
+            returnValue: _i5.Future<_i3.SPConsent>.value(
+              _FakeSPConsent_1(
+                this,
+                Invocation.method(#deleteCustomConsentGdpr, [], {
+                  #vendors: vendors,
+                  #categories: categories,
+                  #legIntCategories: legIntCategories,
+                }),
+              ),
+            ),
+            returnValueForMissingStub: _i5.Future<_i3.SPConsent>.value(
+              _FakeSPConsent_1(
+                this,
+                Invocation.method(#deleteCustomConsentGdpr, [], {
+                  #vendors: vendors,
+                  #categories: categories,
+                  #legIntCategories: legIntCategories,
+                }),
+              ),
+            ),
+          )
+          as _i5.Future<_i3.SPConsent>);
 }

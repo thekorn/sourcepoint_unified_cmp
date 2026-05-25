@@ -301,6 +301,34 @@ class SourcepointUnifiedCmpIOS extends SourcepointUnifiedCmpPlatform {
   }
 
   @override
+  Future<SPConsent> customConsentGdpr({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  }) async {
+    final hostConsent = await _api.customConsentGDPR(
+      vendors: vendors,
+      categories: categories,
+      legIntCategories: legIntCategories,
+    );
+    return hostConsent.toSPConsent();
+  }
+
+  @override
+  Future<SPConsent> deleteCustomConsentGdpr({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  }) async {
+    final hostConsent = await _api.deleteCustomConsentGDPR(
+      vendors: vendors,
+      categories: categories,
+      legIntCategories: legIntCategories,
+    );
+    return hostConsent.toSPConsent();
+  }
+
+  @override
   void registerConsentChangeNotifier(ConsentChangeNotifier notifier) {
     assert(_notifier == null, 'ConsentChangeNotifier already set');
     messages.SourcepointUnifiedCmpFlutterApi.setUp(

@@ -41,10 +41,12 @@ private class SourcepointFlutterApi(
     }
 
     fun callOnConsentReady(consent: SPConsents, callback: (Result<Unit>) -> Unit) {
+        callOnConsentReady(consent.toHostAPISPConsent(), callback)
+    }
+
+    fun callOnConsentReady(hostConsent: HostAPISPConsent, callback: (Result<Unit>) -> Unit) {
         activity.runOnUiThread {
-            flutterApi!!.onConsentReady(
-                consent.toHostAPISPConsent()
-            ) { callback(Result.success(Unit)) }
+            flutterApi!!.onConsentReady(hostConsent) { callback(Result.success(Unit)) }
         }
     }
 
@@ -89,10 +91,12 @@ private class SourcepointFlutterApi(
     }
 
     fun callOnSpFinished(consent: SPConsents, callback: (Result<Unit>) -> Unit) {
+        callOnSpFinished(consent.toHostAPISPConsent(), callback)
+    }
+
+    fun callOnSpFinished(hostConsent: HostAPISPConsent, callback: (Result<Unit>) -> Unit) {
         activity.runOnUiThread {
-            flutterApi!!.onSpFinished(
-                consent.toHostAPISPConsent()
-            ) { callback(Result.success(Unit)) }
+            flutterApi!!.onSpFinished(hostConsent) { callback(Result.success(Unit)) }
         }
     }
 }
@@ -262,6 +266,68 @@ class SourcepointUnifiedCmpPlugin :
             pmTab.toPMTab(),
             campaignType.toCampaignType(),
             messageType.toMessageType()
+        )
+    }
+
+    override fun customConsentGDPR(
+        vendors: List<String>,
+        categories: List<String>,
+        legIntCategories: List<String>,
+        callback: (Result<HostAPISPConsent>) -> Unit
+    ) {
+        Log.d("SourcepointUnifiedCmp", "customConsentGDPR")
+        val lib = spConsentLib
+        if (lib == null) {
+            callback(
+                Result.failure(
+                    IllegalStateException(
+                        "SpConsentLib is not initialized. Call loadMessage first."
+                    )
+                )
+            )
+            return
+        }
+        lib.customConsentGDPR(
+            vendors = vendors,
+            categories = categories,
+            legIntCategories = legIntCategories,
+            success = { spConsents: SPConsents? ->
+                val hostConsent = spConsents?.toHostAPISPConsent() ?: HostAPISPConsent()
+                flutterApi.callOnConsentReady(hostConsent) {}
+                flutterApi.callOnSpFinished(hostConsent) {}
+                callback(Result.success(hostConsent))
+            }
+        )
+    }
+
+    override fun deleteCustomConsentGDPR(
+        vendors: List<String>,
+        categories: List<String>,
+        legIntCategories: List<String>,
+        callback: (Result<HostAPISPConsent>) -> Unit
+    ) {
+        Log.d("SourcepointUnifiedCmp", "deleteCustomConsentGDPR")
+        val lib = spConsentLib
+        if (lib == null) {
+            callback(
+                Result.failure(
+                    IllegalStateException(
+                        "SpConsentLib is not initialized. Call loadMessage first."
+                    )
+                )
+            )
+            return
+        }
+        lib.deleteCustomConsentTo(
+            vendors = vendors,
+            categories = categories,
+            legIntCategories = legIntCategories,
+            success = { spConsents: SPConsents? ->
+                val hostConsent = spConsents?.toHostAPISPConsent() ?: HostAPISPConsent()
+                flutterApi.callOnConsentReady(hostConsent) {}
+                flutterApi.callOnSpFinished(hostConsent) {}
+                callback(Result.success(hostConsent))
+            }
         )
     }
 }

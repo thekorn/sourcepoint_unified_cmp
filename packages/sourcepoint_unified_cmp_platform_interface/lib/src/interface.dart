@@ -86,6 +86,40 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
   ) {
     throw UnimplementedError('loadPrivacyManager() has not been implemented.');
   }
+
+  /// Programmatically grant custom GDPR consent to the supplied [vendors],
+  /// [categories] and [legIntCategories].
+  ///
+  /// Returns the updated [SPConsent] reflecting the new consent state.
+  /// The native SDKs will persist the consent locally and the registered
+  /// [ConsentChangeNotifier] and event delegate callbacks
+  /// (`onConsentReady` / `onSpFinished`) are triggered with the updated
+  /// [SPConsent].
+  Future<SPConsent> customConsentGdpr({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  }) {
+    throw UnimplementedError('customConsentGdpr() has not been implemented.');
+  }
+
+  /// Programmatically delete custom GDPR consent for the supplied [vendors],
+  /// [categories] and [legIntCategories].
+  ///
+  /// Returns the updated [SPConsent] reflecting the new consent state.
+  /// The native SDKs will persist the consent locally and the registered
+  /// [ConsentChangeNotifier] and event delegate callbacks
+  /// (`onConsentReady` / `onSpFinished`) are triggered with the updated
+  /// [SPConsent].
+  Future<SPConsent> deleteCustomConsentGdpr({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  }) {
+    throw UnimplementedError(
+      'deleteCustomConsentGdpr() has not been implemented.',
+    );
+  }
 }
 
 /// Represents the platform interface for handling Sourcepoint event delegates.

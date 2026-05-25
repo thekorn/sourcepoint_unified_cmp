@@ -31,6 +31,20 @@ class _TestController extends AbstractSourcepointConsentController
 
   @override
   Future<SPConsent> loadMessage() async => SPConsent();
+
+  @override
+  Future<SPConsent> customConsentGdpr({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  }) async => SPConsent();
+
+  @override
+  Future<SPConsent> deleteCustomConsentGdpr({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  }) async => SPConsent();
 }
 
 void main() {

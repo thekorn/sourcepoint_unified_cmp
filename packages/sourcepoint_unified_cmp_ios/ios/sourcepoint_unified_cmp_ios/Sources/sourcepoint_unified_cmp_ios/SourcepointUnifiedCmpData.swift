@@ -71,6 +71,39 @@ extension SPUserData {
   }
 }
 
+extension SPGDPRConsent {
+  func toHostAPIGDPRConsent() -> HostAPIGDPRConsent {
+    let tcData: [String?: String?]? = tcfData?.dictionaryValue?
+      .reduce(into: [:]) { result, pair in
+        let value: String? = (pair.value as? String) ??
+          (pair.value as? CustomStringConvertible)?.description
+        result[pair.key] = value
+      }
+
+    let grants: [String?: HostAPIGDPRPurposeGrants?]? = vendorGrants
+      .reduce(into: [:]) { result, pair in
+        result[pair.key] = pair.value.toHostAPIPurposeGrants()
+      }
+
+    return HostAPIGDPRConsent(
+      uuid: uuid,
+      tcData: tcData,
+      grants: grants,
+      euconsent: euconsent,
+      acceptedCategories: acceptedCategories,
+      apply: applies,
+      consentStatus: consentStatus.toHostAPIConsentStatus()
+    )
+  }
+
+  func toHostAPISPConsent() -> HostAPISPConsent {
+    HostAPISPConsent(
+      gdpr: toHostAPIGDPRConsent(),
+      webConsents: nil
+    )
+  }
+}
+
 extension HostAPICampaignsEnv {
   func toSPCampaignEnv() -> SPCampaignEnv {
     switch self {

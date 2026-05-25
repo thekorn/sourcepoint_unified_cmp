@@ -29,4 +29,24 @@ abstract class AbstractSourcepointConsentController
   /// Loading the First Layer Message
   /// and returns the initial consent status
   Future<SPConsent> loadMessage();
+
+  /// Programmatically grant custom GDPR consent to the supplied [vendors],
+  /// [categories] and [legIntCategories].
+  ///
+  /// Returns the updated [SPConsent] reflecting the new consent state.
+  Future<SPConsent> customConsentGdpr({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  });
+
+  /// Programmatically delete custom GDPR consent for the supplied [vendors],
+  /// [categories] and [legIntCategories].
+  ///
+  /// Returns the updated [SPConsent] reflecting the new consent state.
+  Future<SPConsent> deleteCustomConsentGdpr({
+    required List<String> vendors,
+    required List<String> categories,
+    required List<String> legIntCategories,
+  });
 }
