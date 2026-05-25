@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-05-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`sourcepoint_unified_cmp` - `v1.0.1`](#sourcepoint_unified_cmp---v101)
+ - [`sourcepoint_unified_cmp_android` - `v1.0.1`](#sourcepoint_unified_cmp_android---v101)
+ - [`sourcepoint_unified_cmp_ios` - `v1.0.1`](#sourcepoint_unified_cmp_ios---v101)
+ - [`sourcepoint_unified_cmp_platform_interface` - `v1.0.1`](#sourcepoint_unified_cmp_platform_interface---v101)
+ - [`sourcepoint_unified_cmp_flutter_webview_extension` - `v1.0.1`](#sourcepoint_unified_cmp_flutter_webview_extension---v101)
+ - [`sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v1.0.1`](#sourcepoint_unified_cmp_flutter_inappwebview_extension---v101)
+
+---
+
+#### `sourcepoint_unified_cmp` - `v1.0.1`
+
+ - **FIX**: restore platform instance in tearDown to prevent test leakage. ([1d9e9831](https://github.com/thekorn/sourcepoint_unified_cmp/commit/1d9e98319dfa4c3d8349ad52c30d1c8b6c7448e6))
+ - **FIX**: resolve analyzer warnings in test files. ([9c99d4c0](https://github.com/thekorn/sourcepoint_unified_cmp/commit/9c99d4c0cc1333b96b0079c1fed45a45e2d7e8a4))
+ - **FIX**(ios): migrate example_spm to UIScene lifecycle ([#331](https://github.com/thekorn/sourcepoint_unified_cmp/issues/331)). ([8a945c66](https://github.com/thekorn/sourcepoint_unified_cmp/commit/8a945c66224a4e4dafdf737b036ca1be66483fbe))
+ - **FIX**(ios): remove duplicate plugin registration in AppDelegate ([#331](https://github.com/thekorn/sourcepoint_unified_cmp/issues/331)). ([22310b16](https://github.com/thekorn/sourcepoint_unified_cmp/commit/22310b16c0d59ec50575b4e0d272a7df7f250716))
+ - **FIX**(ios): migrate example apps to UIScene lifecycle ([#331](https://github.com/thekorn/sourcepoint_unified_cmp/issues/331)). ([652ff80e](https://github.com/thekorn/sourcepoint_unified_cmp/commit/652ff80e81212ea65cea214285a26e075e65b72a))
+ - **FEAT**(consent): add customConsentGdpr / deleteCustomConsentGdpr APIs ([#327](https://github.com/thekorn/sourcepoint_unified_cmp/issues/327)). ([0e980f7f](https://github.com/thekorn/sourcepoint_unified_cmp/commit/0e980f7fcb72660dd8de79aa971de88b9f97510f))
+ - **FEAT**(example): add example_spm using Swift Package Manager. ([08662c0e](https://github.com/thekorn/sourcepoint_unified_cmp/commit/08662c0e97dd2d8b125079c4119e615c869e3e9e))
+
+#### `sourcepoint_unified_cmp_android` - `v1.0.1`
+
+ - **REFACTOR**: Refactor and update message handling classes and enums. ([3d7ca306](https://github.com/thekorn/sourcepoint_unified_cmp/commit/3d7ca306febba47bd3da486cb9ff461c7257d038))
+ - **FIX**(ios): handle unsupported campaign types gracefully instead of crashing. ([9d581c89](https://github.com/thekorn/sourcepoint_unified_cmp/commit/9d581c89498de837afa02e125a2bfb6371684775))
+ - **FEAT**: implement all missing campaign types (usnat/ios14/globalcmp/preferences). ([51e69f9c](https://github.com/thekorn/sourcepoint_unified_cmp/commit/51e69f9c833357ba2d16945398e3935c88122a0e))
+ - **FEAT**(consent): add customConsentGdpr / deleteCustomConsentGdpr APIs ([#327](https://github.com/thekorn/sourcepoint_unified_cmp/issues/327)). ([0e980f7f](https://github.com/thekorn/sourcepoint_unified_cmp/commit/0e980f7fcb72660dd8de79aa971de88b9f97510f))
+
+#### `sourcepoint_unified_cmp_ios` - `v1.0.1`
+
+ - **REFACTOR**: Refactor and improve sourcepoint_unified_cmp_ios code base. ([5d3b5cb4](https://github.com/thekorn/sourcepoint_unified_cmp/commit/5d3b5cb4d252c0b157536455f85cbe9ef5dc038c))
+ - **REFACTOR**: Refactor sourcepoint_unified_cmp_ios plugin. ([551e557b](https://github.com/thekorn/sourcepoint_unified_cmp/commit/551e557bfa473d82632e6825e7fff4edd5f9dced))
+ - **REFACTOR**: Refactor and update message handling classes and enums. ([3d7ca306](https://github.com/thekorn/sourcepoint_unified_cmp/commit/3d7ca306febba47bd3da486cb9ff461c7257d038))
+ - **FIX**(ios): handle unsupported campaign types gracefully instead of crashing. ([9d581c89](https://github.com/thekorn/sourcepoint_unified_cmp/commit/9d581c89498de837afa02e125a2bfb6371684775))
+ - **FIX**(ios): guard against presenting consent VC on itself. ([f6c1f283](https://github.com/thekorn/sourcepoint_unified_cmp/commit/f6c1f283db5be08d68c51e25a8d065fc2deccd12))
+ - **FEAT**: implement all missing campaign types (usnat/ios14/globalcmp/preferences). ([51e69f9c](https://github.com/thekorn/sourcepoint_unified_cmp/commit/51e69f9c833357ba2d16945398e3935c88122a0e))
+ - **FEAT**(consent): add customConsentGdpr / deleteCustomConsentGdpr APIs ([#327](https://github.com/thekorn/sourcepoint_unified_cmp/issues/327)). ([0e980f7f](https://github.com/thekorn/sourcepoint_unified_cmp/commit/0e980f7fcb72660dd8de79aa971de88b9f97510f))
+
+#### `sourcepoint_unified_cmp_platform_interface` - `v1.0.1`
+
+ - **FIX**: restore platform instance in tearDown to prevent test leakage. ([1d9e9831](https://github.com/thekorn/sourcepoint_unified_cmp/commit/1d9e98319dfa4c3d8349ad52c30d1c8b6c7448e6))
+ - **FIX**: resolve analyzer warnings in test files. ([9c99d4c0](https://github.com/thekorn/sourcepoint_unified_cmp/commit/9c99d4c0cc1333b96b0079c1fed45a45e2d7e8a4))
+ - **FIX**(ios): handle unsupported campaign types gracefully instead of crashing. ([9d581c89](https://github.com/thekorn/sourcepoint_unified_cmp/commit/9d581c89498de837afa02e125a2bfb6371684775))
+ - **FEAT**: implement all missing campaign types (usnat/ios14/globalcmp/preferences). ([51e69f9c](https://github.com/thekorn/sourcepoint_unified_cmp/commit/51e69f9c833357ba2d16945398e3935c88122a0e))
+ - **FEAT**: Implement custom consent methods for GDPR. ([027309f1](https://github.com/thekorn/sourcepoint_unified_cmp/commit/027309f1462ec5a3439ed9d734b5faa2c11a835f))
+ - **FEAT**(consent): add customConsentGdpr / deleteCustomConsentGdpr APIs ([#327](https://github.com/thekorn/sourcepoint_unified_cmp/issues/327)). ([0e980f7f](https://github.com/thekorn/sourcepoint_unified_cmp/commit/0e980f7fcb72660dd8de79aa971de88b9f97510f))
+
+#### `sourcepoint_unified_cmp_flutter_webview_extension` - `v1.0.1`
+
+ - **FIX**(ios): remove duplicate plugin registration in AppDelegate ([#331](https://github.com/thekorn/sourcepoint_unified_cmp/issues/331)). ([22310b16](https://github.com/thekorn/sourcepoint_unified_cmp/commit/22310b16c0d59ec50575b4e0d272a7df7f250716))
+ - **FIX**(ios): migrate example apps to UIScene lifecycle ([#331](https://github.com/thekorn/sourcepoint_unified_cmp/issues/331)). ([652ff80e](https://github.com/thekorn/sourcepoint_unified_cmp/commit/652ff80e81212ea65cea214285a26e075e65b72a))
+ - **FEAT**(example): add example_spm using Swift Package Manager. ([08662c0e](https://github.com/thekorn/sourcepoint_unified_cmp/commit/08662c0e97dd2d8b125079c4119e615c869e3e9e))
+
+#### `sourcepoint_unified_cmp_flutter_inappwebview_extension` - `v1.0.1`
+
+ - **FIX**(ios): remove duplicate plugin registration in AppDelegate ([#331](https://github.com/thekorn/sourcepoint_unified_cmp/issues/331)). ([22310b16](https://github.com/thekorn/sourcepoint_unified_cmp/commit/22310b16c0d59ec50575b4e0d272a7df7f250716))
+ - **FIX**(ios): migrate example apps to UIScene lifecycle ([#331](https://github.com/thekorn/sourcepoint_unified_cmp/issues/331)). ([652ff80e](https://github.com/thekorn/sourcepoint_unified_cmp/commit/652ff80e81212ea65cea214285a26e075e65b72a))
+ - **FEAT**(example): add example_spm using Swift Package Manager. ([08662c0e](https://github.com/thekorn/sourcepoint_unified_cmp/commit/08662c0e97dd2d8b125079c4119e615c869e3e9e))
+
+
 ## 2025-11-17
 
 ### Changes

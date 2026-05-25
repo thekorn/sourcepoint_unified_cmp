@@ -1,3 +1,10 @@
+## 1.0.1
+
+ - **REFACTOR**: Refactor and update message handling classes and enums. ([3d7ca306](https://github.com/thekorn/sourcepoint_unified_cmp/commit/3d7ca306febba47bd3da486cb9ff461c7257d038))
+ - **FIX**(ios): handle unsupported campaign types gracefully instead of crashing. ([9d581c89](https://github.com/thekorn/sourcepoint_unified_cmp/commit/9d581c89498de837afa02e125a2bfb6371684775))
+ - **FEAT**: implement all missing campaign types (usnat/ios14/globalcmp/preferences). ([51e69f9c](https://github.com/thekorn/sourcepoint_unified_cmp/commit/51e69f9c833357ba2d16945398e3935c88122a0e))
+ - **FEAT**(consent): add customConsentGdpr / deleteCustomConsentGdpr APIs ([#327](https://github.com/thekorn/sourcepoint_unified_cmp/issues/327)). ([0e980f7f](https://github.com/thekorn/sourcepoint_unified_cmp/commit/0e980f7fcb72660dd8de79aa971de88b9f97510f))
+
 ## 0.2.1
 
 ## 0.2.0

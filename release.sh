@@ -20,12 +20,12 @@ sed  's/(\.\/doc\/images\//(https\:\/\/github\.com\/thekorn\/sourcepoint_unified
 git add .
 
 fvm exec melos version \
-    -V sourcepoint_unified_cmp:$1 \
-    -V sourcepoint_unified_cmp_android:$1 \
-    -V sourcepoint_unified_cmp_ios:$1 \
-    -V sourcepoint_unified_cmp_platform_interface:$1 \
-    -V sourcepoint_unified_cmp_flutter_webview_extension:$1 \
-    -V sourcepoint_unified_cmp_flutter_inappwebview_extension:$1 \
+    -V sourcepoint_unified_cmp:1.0.1 \
+    -V sourcepoint_unified_cmp_android:1.0.1 \
+    -V sourcepoint_unified_cmp_ios:1.0.1 \
+    -V sourcepoint_unified_cmp_platform_interface:1.0.1 \
+    -V sourcepoint_unified_cmp_flutter_webview_extension:1.0.1 \
+    -V sourcepoint_unified_cmp_flutter_inappwebview_extension:1.0.1 \
     -r
 
 fvm exec melos publish --no-dry-run
