@@ -33,8 +33,7 @@ void main() {
   test(
     'preloadConsent should raise an assertion if webConsents is null',
     () async {
-      // ignore: avoid_redundant_argument_values
-      final consent = SPConsent(webConsents: null);
+      final consent = SPConsent();
 
       final mockPlatformWebViewController = MockPlatformWebViewController();
 

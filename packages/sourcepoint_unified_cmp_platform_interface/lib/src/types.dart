@@ -35,6 +35,7 @@ enum CampaignsEnv {
 /// instantiated at the first usage of the CMP SDK.
 /// The config object is a simple DTO.
 class SPConfig {
+  // no doc for the constructor
   // ignore: public_member_api_docs
   SPConfig({
     required this.accountId,
@@ -131,11 +132,13 @@ enum MessageType {
   legacyOtt,
 }
 
+// TODO(mkorn): documentation
 // ignore: public_member_api_docs
 enum GranularState { all, some, none, emptyVl }
 
 /// Represents the GDPR purpose grants.
 class GDPRPurposeGrants {
+  // no docs for the constructor
   // ignore: public_member_api_docs
   GDPRPurposeGrants({required this.granted, required this.purposeGrants});
 
@@ -154,6 +157,7 @@ class GDPRPurposeGrants {
 
 /// Represents the granular status of a component.
 class GranularStatus {
+  // no docs for the constructor
   // ignore: public_member_api_docs
   GranularStatus({
     this.defaultConsent,
@@ -193,6 +197,7 @@ class GranularStatus {
 
 /// represents the detailed consent status
 class ConsentStatus {
+  // no docs for the constructor
   // ignore: public_member_api_docs
   ConsentStatus({
     this.consentedAll,
@@ -246,6 +251,7 @@ class ConsentStatus {
 
 /// Represents the GDPR consent.
 class GDPRConsent {
+  // no docs for the constructor
   // ignore: public_member_api_docs
   GDPRConsent({
     required this.tcData,
@@ -288,6 +294,7 @@ class GDPRConsent {
 
 /// Represents the CCPA (California Consumer Privacy Act) consent.
 class CCPAConsent {
+  // no docs for the constructor
   // ignore: public_member_api_docs
   CCPAConsent({
     required this.rejectedCategories,
@@ -323,20 +330,21 @@ class CCPAConsent {
 /// SpConsent
 ///    |-- gdpr?
 ///    |   |-- uuid: String?
-///    |   |-- tcData: Map<String, String>
-///    |   |-- grants: Map<String, GDPRPurposeGrants>
+///    |   |-- tcData: Map&lt;String, String&gt;
+///    |   |-- grants: Map&lt;String, GDPRPurposeGrants&gt;
 ///    |   |-- euconsent: String
-///    |   |-- acceptedCategories: List<String>
+///    |   |-- acceptedCategories: List&lt;String&gt;
 ///    |   |-- apply: Boolean
 ///    |   |-- consentStatus: ConsentStatus
 ///    |-- ccpa?
 ///        |-- uuid: String?
-///        |-- rejectedCategories: List<String>
-///        |-- rejectedVendors: List<String>
+///        |-- rejectedCategories: List&lt;String&gt;
+///        |-- rejectedVendors: List&lt;String&gt;
 ///        |-- status: String?
 ///        |-- uspstring: String
 ///        |-- apply: Boolean
 class SPConsent {
+  // no docs for the constructor
   // ignore: public_member_api_docs
   SPConsent({this.gdpr, this.ccpa, this.webConsents});
 
@@ -363,6 +371,7 @@ class SPConsent {
 /// |-- campaignType: CampaignType
 /// |-- customActionId: String?
 class ConsentAction {
+  // no docs for the constructor
   // ignore: public_member_api_docs
   ConsentAction({
     required this.actionType,
@@ -421,6 +430,7 @@ enum ActionType {
 /// Represents an error that can occur in the Sourcepoint Unified CMP platform
 /// interface.
 class SPError {
+  // no docs for the constructor
   // ignore: public_member_api_docs
   SPError({required this.spCode, required this.description});
 

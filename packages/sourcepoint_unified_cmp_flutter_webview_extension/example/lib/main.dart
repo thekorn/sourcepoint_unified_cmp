@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:sourcepoint_unified_cmp/sourcepoint_unified_cmp.dart';
 import 'package:sourcepoint_unified_cmp_flutter_webview_extension/sourcepoint_unified_cmp_flutter_webview_extension.dart';
@@ -52,13 +54,13 @@ class _SourcepointUnifiedCMPBuilderExampleState
     _controller = SourcepointController(config: config)
       ..setEventDelegate(
         SourcepointEventDelegate(
-          onConsentReady: (SPConsent consent) {
+          onConsentReady: (consent) {
             debugPrint(
               'DELEGATE onConsentReady: Consent string: '
               '${consent.gdpr?.euconsent}',
             );
           },
-          onSpFinished: (SPConsent consent) {
+          onSpFinished: (consent) {
             debugPrint(
               'DELEGATE SpFinished: Consent string: ${consent.gdpr?.euconsent}',
             );
@@ -67,7 +69,9 @@ class _SourcepointUnifiedCMPBuilderExampleState
       );
 
     _webViewController = WebViewController()
+      // ignore: discarded_futures it should be unawaited
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      // ignore: discarded_futures it should be unawaited
       ..setBackgroundColor(Colors.white);
   }
 
@@ -81,7 +85,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
       body: Center(
         child: SourcepointUnifiedCMPBuilder(
           controller: _controller,
-          builder: (BuildContext context, AsyncSnapshot<SPConsent> snapshot) {
+          builder: (context, snapshot) {
             List<Widget> children;
             if (snapshot.hasData) {
               final consent = snapshot.data;
@@ -89,13 +93,17 @@ class _SourcepointUnifiedCMPBuilderExampleState
               debugPrint('   grants: ${consent?.gdpr?.grants}');
               debugPrint('euconsent: ${consent?.gdpr?.euconsent}');
               _webViewController
+                // ignore: discarded_futures it should be unawaited
                 ..setNavigationDelegate(
                   NavigationDelegate(
-                    onPageFinished: (String url) {
-                      _webViewController.preloadConsent(consent: consent!);
+                    onPageFinished: (url) {
+                      unawaited(
+                        _webViewController.preloadConsent(consent: consent!),
+                      );
                     },
                   ),
                 )
+                // ignore: discarded_futures it should be unawaited
                 ..loadRequest(
                   Uri.parse(
                     'https://sourcepointusa.github.io/sdks-auth-consent-test-page/?_sp_version=4.9.0&_sp_pass_consent=true',

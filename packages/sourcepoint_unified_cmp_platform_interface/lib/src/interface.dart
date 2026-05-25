@@ -36,6 +36,7 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
   }
 
   @visibleForTesting
+  // only needed for testing
   // ignore: public_member_api_docs, use_setters_to_change_properties
   static void setInstanceUnverified(SourcepointUnifiedCmpPlatform instance) {
     _instance = instance;

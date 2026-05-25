@@ -69,7 +69,7 @@ void main() {
         TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
             .setMockMethodCallHandler(
               const MethodChannel('sourcepoint_unified_cmp'),
-              (MethodCall methodCall) async {
+              (methodCall) async {
                 if (methodCall.method == 'loadPrivacyManager') {
                   return null;
                 }

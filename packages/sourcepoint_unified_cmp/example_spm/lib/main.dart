@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:sourcepoint_unified_cmp/sourcepoint_unified_cmp.dart';
@@ -51,13 +51,13 @@ class _SourcepointUnifiedCMPBuilderExampleState
     _controller = SourcepointController(config: config)
       ..setEventDelegate(
         SourcepointEventDelegate(
-          onConsentReady: (SPConsent consent) {
+          onConsentReady: (consent) {
             debugPrint(
               'DELEGATE onConsentReady: Consent string: '
               '${consent.gdpr?.euconsent}',
             );
           },
-          onSpFinished: (SPConsent consent) {
+          onSpFinished: (consent) {
             debugPrint(
               'DELEGATE SpFinished: Consent string: ${consent.gdpr?.euconsent}',
             );
@@ -82,7 +82,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
       body: Center(
         child: SourcepointUnifiedCMPBuilder(
           controller: _controller,
-          builder: (BuildContext context, AsyncSnapshot<SPConsent> snapshot) {
+          builder: (context, snapshot) {
             List<Widget> children;
             if (snapshot.hasData) {
               final consent = snapshot.data;
@@ -103,9 +103,11 @@ class _SourcepointUnifiedCMPBuilderExampleState
                   padding: const EdgeInsets.only(top: 16),
                   child: TextButton(
                     onPressed: () {
-                      _controller.loadPrivacyManager(
-                        pmId: '122058',
-                        pmTab: PMTab.vendors,
+                      unawaited(
+                        _controller.loadPrivacyManager(
+                          pmId: '122058',
+                          pmTab: PMTab.vendors,
+                        ),
                       );
                     },
                     child: const Text('Load Privacy Manager'),
