@@ -1,5 +1,3 @@
-// ignore_for_file: one_member_abstracts
-
 import 'package:pigeon/pigeon.dart';
 
 enum HostAPIPMTab { defaults, purposes, vendors, features }

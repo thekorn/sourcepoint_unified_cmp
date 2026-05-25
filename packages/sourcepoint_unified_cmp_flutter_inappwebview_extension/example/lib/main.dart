@@ -52,13 +52,13 @@ class _SourcepointUnifiedCMPBuilderExampleState
     _controller = SourcepointController(config: config)
       ..setEventDelegate(
         SourcepointEventDelegate(
-          onConsentReady: (SPConsent consent) {
+          onConsentReady: (consent) {
             debugPrint(
               'DELEGATE onConsentReady: Consent string: '
               '${consent.gdpr?.euconsent}',
             );
           },
-          onSpFinished: (SPConsent consent) {
+          onSpFinished: (consent) {
             debugPrint(
               'DELEGATE SpFinished: Consent string: ${consent.gdpr?.euconsent}',
             );
@@ -77,7 +77,7 @@ class _SourcepointUnifiedCMPBuilderExampleState
       body: Center(
         child: SourcepointUnifiedCMPBuilder(
           controller: _controller,
-          builder: (BuildContext context, AsyncSnapshot<SPConsent> snapshot) {
+          builder: (context, snapshot) {
             List<Widget> children;
             if (snapshot.hasData) {
               final consent = snapshot.data;

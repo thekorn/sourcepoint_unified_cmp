@@ -276,9 +276,11 @@ void main() {
     );
 
     test(
+      // just a longer test description
       // ignore: lines_longer_than_80_chars
       'generatePreloadJSString should throw an AssertionError when webConsents is null',
       () {
+        // proper test
         // ignore: avoid_redundant_argument_values
         final consent = SPConsent(webConsents: null);
 
