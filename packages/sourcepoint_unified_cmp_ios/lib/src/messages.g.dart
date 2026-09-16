@@ -819,6 +819,9 @@ class SourcepointUnifiedCmpHostApi {
     required int messageTimeout,
     required bool runGDPRCampaign,
     required bool runCCPACampaign,
+    required Map<String, String> gdprTargetingParams,
+    required Map<String, String> ccpaTargetingParams,
+    String? authId,
   }) async {
     final pigeonVar_channelName =
         'dev.flutter.pigeon.sourcepoint_unified_cmp_ios.SourcepointUnifiedCmpHostApi.loadMessage$pigeonVar_messageChannelSuffix';
@@ -838,6 +841,9 @@ class SourcepointUnifiedCmpHostApi {
           messageTimeout,
           runGDPRCampaign,
           runCCPACampaign,
+          gdprTargetingParams,
+          ccpaTargetingParams,
+          authId,
         ]);
     final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
 

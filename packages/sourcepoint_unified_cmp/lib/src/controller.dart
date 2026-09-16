@@ -41,10 +41,14 @@ class SourcepointController extends ConsentChangeNotifier
 
   /// Loading the First Layer Message
   /// and returns the initial consent status
+  ///
+  /// Pass [authId] to load the message for a signed-in user, so a consent
+  /// decision that user already took elsewhere is reused instead of the
+  /// message being shown again.
   @override
-  Future<SPConsent> loadMessage() async {
+  Future<SPConsent> loadMessage({String? authId}) async {
     debugPrint('loadMessage');
-    return _platform.loadMessage(config);
+    return _platform.loadMessage(config, authId: authId);
   }
 
   /// Programmatically grant custom GDPR consent to the supplied [vendors],

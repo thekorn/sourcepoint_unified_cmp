@@ -3,6 +3,7 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
@@ -62,6 +63,10 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
     required bool? runGDPRCampaign,
     required bool? runCCPACampaign,
     required bool? runUSNATCampaign,
+    required Map<String, String>? gdprTargetingParams,
+    required Map<String, String>? ccpaTargetingParams,
+    required Map<String, String>? usnatTargetingParams,
+    String? authId,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#loadMessage, [], {
@@ -75,6 +80,10 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
               #runGDPRCampaign: runGDPRCampaign,
               #runCCPACampaign: runCCPACampaign,
               #runUSNATCampaign: runUSNATCampaign,
+              #gdprTargetingParams: gdprTargetingParams,
+              #ccpaTargetingParams: ccpaTargetingParams,
+              #usnatTargetingParams: usnatTargetingParams,
+              #authId: authId,
             }),
             returnValue: _i4.Future<_i2.HostAPISPConsent>.value(
               _FakeHostAPISPConsent_0(
@@ -90,6 +99,10 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
                   #runGDPRCampaign: runGDPRCampaign,
                   #runCCPACampaign: runCCPACampaign,
                   #runUSNATCampaign: runUSNATCampaign,
+                  #gdprTargetingParams: gdprTargetingParams,
+                  #ccpaTargetingParams: ccpaTargetingParams,
+                  #usnatTargetingParams: usnatTargetingParams,
+                  #authId: authId,
                 }),
               ),
             ),
@@ -107,6 +120,10 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
                   #runGDPRCampaign: runGDPRCampaign,
                   #runCCPACampaign: runCCPACampaign,
                   #runUSNATCampaign: runUSNATCampaign,
+                  #gdprTargetingParams: gdprTargetingParams,
+                  #ccpaTargetingParams: ccpaTargetingParams,
+                  #usnatTargetingParams: usnatTargetingParams,
+                  #authId: authId,
                 }),
               ),
             ),

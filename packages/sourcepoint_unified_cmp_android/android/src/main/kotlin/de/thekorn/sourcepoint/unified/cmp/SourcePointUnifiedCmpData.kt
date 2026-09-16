@@ -25,6 +25,7 @@ import com.sourcepoint.cmplibrary.model.exposed.GDPRPurposeGrants
 import com.sourcepoint.cmplibrary.model.exposed.MessageType
 import com.sourcepoint.cmplibrary.model.exposed.SPConsents
 import com.sourcepoint.cmplibrary.model.exposed.SPGDPRConsent
+import com.sourcepoint.cmplibrary.model.exposed.TargetingParam
 import com.sourcepoint.cmplibrary.model.exposed.toWebViewConsentsJsonObject
 
 fun GDPRPurposeGrants.toHostAPIPurposeGrants() = HostAPIGDPRPurposeGrants(
@@ -136,3 +137,10 @@ fun HostAPIMessageType.toMessageType() = when (this) {
     HostAPIMessageType.OTT -> MessageType.OTT
     HostAPIMessageType.LEGACY_OTT -> MessageType.LEGACY_OTT
 }
+
+/**
+ * Sourcepoint takes targeting params as a list of key/value pairs, the
+ * flutter side sends them as a map.
+ */
+fun Map<String, String>.toTargetingParams(): List<TargetingParam> =
+    map { (key, value) -> TargetingParam(key, value) }

@@ -46,6 +46,7 @@ class SPConfig {
     this.messageLanguage = MessageLanguage.english,
     this.campaignsEnv = CampaignsEnv.public,
     this.messageTimeout = 30000,
+    this.targetingParams = const {},
   });
 
   /// The account ID associated with the source point.
@@ -73,6 +74,19 @@ class SPConfig {
   ///
   /// The [campaigns] property holds a list of [CampaignType] objects.
   final List<CampaignType> campaigns;
+
+  /// Targeting params sent with each campaign, keyed by the campaign they
+  /// belong to.
+  ///
+  /// Sourcepoint's scenario in the portal matches on these to decide which
+  /// message a property serves, so they are what lets an app ask for a
+  /// different first layer than the one the scenario falls through to.
+  ///
+  /// An entry is sent only for a campaign that [campaigns] also lists and
+  /// that `loadMessage` itself runs, which is [CampaignType.gdpr] and
+  /// [CampaignType.ccpa] on both platforms and [CampaignType.usnat] on
+  /// Android. Every other entry is ignored.
+  final Map<CampaignType, Map<String, String>> targetingParams;
 }
 
 /// Selected tab within the privacy manager.

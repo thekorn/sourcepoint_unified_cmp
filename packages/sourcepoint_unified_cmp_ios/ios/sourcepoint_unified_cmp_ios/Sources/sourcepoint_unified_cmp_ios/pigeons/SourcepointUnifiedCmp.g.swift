@@ -67,7 +67,9 @@ private func isNullish(_ value: Any?) -> Bool {
 }
 
 private func nilOrValue<T>(_ value: Any?) -> T? {
-  if value is NSNull { return nil }
+  if value is NSNull {
+    return nil
+  }
   return value as! T?
 }
 
@@ -132,7 +134,9 @@ func deepEqualsSourcepointUnifiedCmp(_ lhs: Any?, _ rhs: Any?) -> Bool {
           }
         }
       }
-      if !found { return false }
+      if !found {
+        return false
+      }
     }
     return true
 
@@ -910,7 +914,8 @@ protocol SourcepointUnifiedCmpHostApi {
   func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId: String,
                    messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv,
                    messageTimeout: Int64, runGDPRCampaign: Bool, runCCPACampaign: Bool,
-                   completion: @escaping (Result<HostAPISPConsent, Error>) -> Void)
+                   gdprTargetingParams: [String: String], ccpaTargetingParams: [String: String],
+                   authId: String?, completion: @escaping (Result<HostAPISPConsent, Error>) -> Void)
   func loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType,
                           messageType: HostAPIMessageType,
                           completion: @escaping (Result<Void, Error>) -> Void)
@@ -948,6 +953,9 @@ class SourcepointUnifiedCmpHostApiSetup {
         let messageTimeoutArg = args[6] as! Int64
         let runGDPRCampaignArg = args[7] as! Bool
         let runCCPACampaignArg = args[8] as! Bool
+        let gdprTargetingParamsArg = args[9] as! [String: String]
+        let ccpaTargetingParamsArg = args[10] as! [String: String]
+        let authIdArg: String? = nilOrValue(args[11])
         api.loadMessage(
           accountId: accountIdArg,
           propertyId: propertyIdArg,
@@ -957,7 +965,10 @@ class SourcepointUnifiedCmpHostApiSetup {
           campaignsEnv: campaignsEnvArg,
           messageTimeout: messageTimeoutArg,
           runGDPRCampaign: runGDPRCampaignArg,
-          runCCPACampaign: runCCPACampaignArg
+          runCCPACampaign: runCCPACampaignArg,
+          gdprTargetingParams: gdprTargetingParamsArg,
+          ccpaTargetingParams: ccpaTargetingParamsArg,
+          authId: authIdArg
         ) { result in
           switch result {
           case let .success(res):

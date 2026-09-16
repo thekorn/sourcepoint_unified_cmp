@@ -873,6 +873,10 @@ class SourcepointUnifiedCmpHostApi {
     required bool runGDPRCampaign,
     required bool runCCPACampaign,
     required bool runUSNATCampaign,
+    required Map<String, String> gdprTargetingParams,
+    required Map<String, String> ccpaTargetingParams,
+    required Map<String, String> usnatTargetingParams,
+    String? authId,
   }) async {
     final pigeonVar_channelName =
         'dev.flutter.pigeon.sourcepoint_unified_cmp_android.SourcepointUnifiedCmpHostApi.loadMessage$pigeonVar_messageChannelSuffix';
@@ -881,20 +885,23 @@ class SourcepointUnifiedCmpHostApi {
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
     );
-    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel.send(
-      <Object?>[
-        accountId,
-        propertyId,
-        propertyName,
-        pmId,
-        messageLanguage,
-        campaignsEnv,
-        messageTimeout,
-        runGDPRCampaign,
-        runCCPACampaign,
-        runUSNATCampaign,
-      ],
-    );
+    final Future<Object?> pigeonVar_sendFuture = pigeonVar_channel
+        .send(<Object?>[
+          accountId,
+          propertyId,
+          propertyName,
+          pmId,
+          messageLanguage,
+          campaignsEnv,
+          messageTimeout,
+          runGDPRCampaign,
+          runCCPACampaign,
+          runUSNATCampaign,
+          gdprTargetingParams,
+          ccpaTargetingParams,
+          usnatTargetingParams,
+          authId,
+        ]);
     final pigeonVar_replyList = await pigeonVar_sendFuture as List<Object?>?;
 
     final Object? pigeonVar_replyValue = _extractReplyValueOrThrow(

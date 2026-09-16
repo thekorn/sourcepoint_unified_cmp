@@ -3,6 +3,7 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
@@ -61,6 +62,9 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
     required int? messageTimeout,
     required bool? runGDPRCampaign,
     required bool? runCCPACampaign,
+    required Map<String, String>? gdprTargetingParams,
+    required Map<String, String>? ccpaTargetingParams,
+    String? authId,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#loadMessage, [], {
@@ -73,6 +77,9 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
               #messageTimeout: messageTimeout,
               #runGDPRCampaign: runGDPRCampaign,
               #runCCPACampaign: runCCPACampaign,
+              #gdprTargetingParams: gdprTargetingParams,
+              #ccpaTargetingParams: ccpaTargetingParams,
+              #authId: authId,
             }),
             returnValue: _i4.Future<_i2.HostAPISPConsent>.value(
               _FakeHostAPISPConsent_0(
@@ -87,6 +94,9 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
                   #messageTimeout: messageTimeout,
                   #runGDPRCampaign: runGDPRCampaign,
                   #runCCPACampaign: runCCPACampaign,
+                  #gdprTargetingParams: gdprTargetingParams,
+                  #ccpaTargetingParams: ccpaTargetingParams,
+                  #authId: authId,
                 }),
               ),
             ),
@@ -103,6 +113,9 @@ class MockSourcepointUnifiedCmpHostApi extends _i1.Mock
                   #messageTimeout: messageTimeout,
                   #runGDPRCampaign: runGDPRCampaign,
                   #runCCPACampaign: runCCPACampaign,
+                  #gdprTargetingParams: gdprTargetingParams,
+                  #ccpaTargetingParams: ccpaTargetingParams,
+                  #authId: authId,
                 }),
               ),
             ),

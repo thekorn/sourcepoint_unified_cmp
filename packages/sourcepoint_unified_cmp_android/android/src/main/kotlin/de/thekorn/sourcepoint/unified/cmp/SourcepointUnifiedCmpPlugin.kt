@@ -205,6 +205,13 @@ class SourcepointUnifiedCmpPlugin :
 
         override fun onSpFinished(sPConsents: SPConsents) {
             Log.d("SourcepointUnifiedCmp", "onSpFinished")
+            // A custom action, a dismiss and a back press all end the
+            // message without onConsentReady, which is the only other
+            // place this is completed, so without this the future
+            // loadMessage() returned would stay pending forever.
+            if (!isInitialized.isCompleted) {
+                isInitialized.complete(sPConsents.toHostAPISPConsent())
+            }
             flutterApi.callOnSpFinished(sPConsents) {}
         }
     }
@@ -221,6 +228,10 @@ class SourcepointUnifiedCmpPlugin :
         runGDPRCampaign: Boolean,
         runCCPACampaign: Boolean,
         runUSNATCampaign: Boolean,
+        gdprTargetingParams: Map<String, String>,
+        ccpaTargetingParams: Map<String, String>,
+        usnatTargetingParams: Map<String, String>,
+        authId: String?,
         callback: (Result<HostAPISPConsent>) -> Unit
     ) {
         Log.d("SourcepointUnifiedCmp", "loadMessage")
@@ -231,9 +242,27 @@ class SourcepointUnifiedCmpPlugin :
             .addMessageLanguage(messageLanguage.toMessageLanguage())
             .addCampaignsEnv(campaignsEnv.toCampaignsEnv())
             .addMessageTimeout(messageTimeout)
-        if (runGDPRCampaign) cmpConfig.addCampaign(CampaignType.GDPR)
-        if (runCCPACampaign) cmpConfig.addCampaign(CampaignType.CCPA)
-        if (runUSNATCampaign) cmpConfig.addCampaign(CampaignType.USNAT)
+        if (runGDPRCampaign) {
+            cmpConfig.addCampaign(
+                CampaignType.GDPR,
+                gdprTargetingParams.toTargetingParams(),
+                null
+            )
+        }
+        if (runCCPACampaign) {
+            cmpConfig.addCampaign(
+                CampaignType.CCPA,
+                ccpaTargetingParams.toTargetingParams(),
+                null
+            )
+        }
+        if (runUSNATCampaign) {
+            cmpConfig.addCampaign(
+                CampaignType.USNAT,
+                usnatTargetingParams.toTargetingParams(),
+                null
+            )
+        }
 
         Log.d("SourcepointUnifiedCmp", "loadMessage")
         val spClient = LocalClient()
@@ -244,7 +273,14 @@ class SourcepointUnifiedCmpPlugin :
                 activity = this.activity,
                 spClient = spClient
             )
-        spConsentLib!!.loadMessage()
+        // `loadMessage(authId)` and `loadMessage(authId, pubData, cmpViewId)`
+        // are both applicable to a single nullable String, so the no-arg
+        // overload keeps the call unambiguous when there is no authId.
+        if (authId == null) {
+            spConsentLib!!.loadMessage()
+        } else {
+            spConsentLib!!.loadMessage(authId = authId, pubData = null, cmpViewId = null)
+        }
         spClient.isInitialized.invokeOnCompletion {
             if (it != null) {
                 Log.d("SourcepointUnifiedCmp", "initial loadMessage error thrown: $it")

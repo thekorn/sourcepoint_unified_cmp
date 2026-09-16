@@ -169,6 +169,10 @@ abstract class SourcepointUnifiedCmpHostApi {
     required bool runGDPRCampaign,
     required bool runCCPACampaign,
     required bool runUSNATCampaign,
+    required Map<String, String> gdprTargetingParams,
+    required Map<String, String> ccpaTargetingParams,
+    required Map<String, String> usnatTargetingParams,
+    String? authId,
   });
 
   @async
