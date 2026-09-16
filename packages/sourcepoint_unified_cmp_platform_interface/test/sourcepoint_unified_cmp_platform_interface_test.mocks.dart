@@ -3,6 +3,7 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'dart:async' as _i5;
 
 import 'package:flutter/services.dart' as _i2;
@@ -62,14 +63,23 @@ class MockMethodChannelSourcepointUnifiedCmp extends _i1.Mock
           as _i2.MethodChannel);
 
   @override
-  _i5.Future<_i3.SPConsent> loadMessage(_i3.SPConfig? config) =>
+  _i5.Future<_i3.SPConsent> loadMessage(
+    _i3.SPConfig? config, {
+    String? authId,
+  }) =>
       (super.noSuchMethod(
-            Invocation.method(#loadMessage, [config]),
+            Invocation.method(#loadMessage, [config], {#authId: authId}),
             returnValue: _i5.Future<_i3.SPConsent>.value(
-              _FakeSPConsent_1(this, Invocation.method(#loadMessage, [config])),
+              _FakeSPConsent_1(
+                this,
+                Invocation.method(#loadMessage, [config], {#authId: authId}),
+              ),
             ),
             returnValueForMissingStub: _i5.Future<_i3.SPConsent>.value(
-              _FakeSPConsent_1(this, Invocation.method(#loadMessage, [config])),
+              _FakeSPConsent_1(
+                this,
+                Invocation.method(#loadMessage, [config], {#authId: authId}),
+              ),
             ),
           )
           as _i5.Future<_i3.SPConsent>);

@@ -15,21 +15,23 @@ public class SourcepointUnifiedCmpPlugin: UIViewController, FlutterPlugin,
   func loadMessage(accountId: Int64, propertyId: Int64, propertyName: String, pmId _: String,
                    messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv,
                    messageTimeout: Int64, runGDPRCampaign: Bool, runCCPACampaign: Bool,
+                   gdprTargetingParams: [String: String],
+                   ccpaTargetingParams: [String: String], authId: String?,
                    completion: @escaping (Result<HostAPISPConsent, Error>) -> Void) {
     consentManager = SPConsentManager(
       accountId: Int(accountId),
       propertyId: Int(propertyId),
       propertyName: try! SPPropertyName(propertyName),
       campaigns: SPCampaigns(
-        gdpr: runGDPRCampaign ? SPCampaign() : nil,
-        ccpa: runCCPACampaign ? SPCampaign() : nil,
+        gdpr: runGDPRCampaign ? SPCampaign(targetingParams: gdprTargetingParams) : nil,
+        ccpa: runCCPACampaign ? SPCampaign(targetingParams: ccpaTargetingParams) : nil,
         environment: campaignsEnv.toSPCampaignEnv()
       ),
       delegate: self
     )
     consentManager.messageLanguage = messageLanguage.toSPMessageLanguage()
     consentManager.messageTimeoutInSeconds = Double(messageTimeout) / 1000
-    consentManager.loadMessage()
+    consentManager.loadMessage(forAuthId: authId)
     isInitialized.setCompletionHandler { [completion] result in
       completion(.success(result.toHostAPISPConsent()))
     }

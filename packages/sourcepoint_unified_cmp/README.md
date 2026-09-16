@@ -37,6 +37,35 @@ final config = SPConfig(
 _controller = SourcepointController(config: config);
 ```
 
+### targeting params
+
+`SPConfig.targetingParams` are handed to the scenario in the sourcepoint
+portal, which is what decides the message a property serves. They are keyed by
+the campaign they belong to:
+
+```dart
+final config = SPConfig(
+    accountId: 22,
+    propertyId: 7639,
+    propertyName: 'tcfv2.mobile.webview',
+    pmId: '122058',
+    campaigns: [CampaignType.gdpr],
+    targetingParams: {
+        CampaignType.gdpr: {'message': 'pur'},
+    },
+);
+```
+
+### authenticated consent
+
+Pass an `authId` to load the message for a signed in user, so a consent
+decision that user has already taken elsewhere is found again instead of the
+message being shown a second time:
+
+```dart
+final consent = await _controller.loadMessage(authId: 'a-user-id');
+```
+
 in the widget tree, the consent can initially be loaded using the `SourcepointUnifiedCMPBuilder`:
 
 ```dart

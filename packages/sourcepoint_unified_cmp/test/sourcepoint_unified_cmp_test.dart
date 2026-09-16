@@ -31,10 +31,29 @@ void main() {
       pmId: '122058',
       campaigns: [CampaignType.gdpr],
     );
-    when(methodChannel.loadMessage(any)).thenAnswer((_) async => SPConsent());
+    when(
+      methodChannel.loadMessage(any, authId: anyNamed('authId')),
+    ).thenAnswer((_) async => SPConsent());
     final controller = SourcepointController(config: config);
     final r = await controller.loadMessage();
     expect(r, isNotNull);
+  });
+
+  test('loadMessage passes the authId through to the platform', () async {
+    final config = SPConfig(
+      accountId: 22,
+      propertyId: 7639,
+      propertyName: 'tcfv2.mobile.webview',
+      pmId: '122058',
+      campaigns: [CampaignType.gdpr],
+    );
+    when(
+      methodChannel.loadMessage(any, authId: anyNamed('authId')),
+    ).thenAnswer((_) async => SPConsent());
+    await SourcepointController(
+      config: config,
+    ).loadMessage(authId: 'user-42');
+    verify(methodChannel.loadMessage(config, authId: 'user-42')).called(1);
   });
 
   group('SourcepointController', () {
@@ -186,7 +205,9 @@ void main() {
         pmId: '122058',
         campaigns: [CampaignType.gdpr],
       );
-      when(methodChannel.loadMessage(any)).thenAnswer((_) async => consent);
+      when(
+        methodChannel.loadMessage(any, authId: anyNamed('authId')),
+      ).thenAnswer((_) async => consent);
 
       final controller = SourcepointController(config: config);
 
@@ -221,7 +242,9 @@ void main() {
         pmId: '122058',
         campaigns: [CampaignType.gdpr],
       );
-      when(methodChannel.loadMessage(any)).thenAnswer((_) async => consent);
+      when(
+        methodChannel.loadMessage(any, authId: anyNamed('authId')),
+      ).thenAnswer((_) async => consent);
 
       SPConsent? receivedConsent;
       final controller = SourcepointController(config: config);

@@ -102,6 +102,7 @@ extension on messages.HostAPIConsentAction {
       actionType: actionType.toActionType(),
       pubData: jsonDecode(pubData),
       campaignType: campaignType.toCampaignType(),
+      customActionId: customActionId,
     );
   }
 }
@@ -269,7 +270,7 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
   }
 
   @override
-  Future<SPConsent> loadMessage(SPConfig config) async {
+  Future<SPConsent> loadMessage(SPConfig config, {String? authId}) async {
     assert(config.campaigns.isNotEmpty, 'campaigns cannot be empty');
     final hostConsent = await _api.loadMessage(
       accountId: config.accountId,
@@ -282,6 +283,13 @@ class SourcepointUnifiedCmpAndroid extends SourcepointUnifiedCmpPlatform {
       runCCPACampaign: config.campaigns.contains(CampaignType.ccpa),
       runGDPRCampaign: config.campaigns.contains(CampaignType.gdpr),
       runUSNATCampaign: config.campaigns.contains(CampaignType.usnat),
+      gdprTargetingParams:
+          config.targetingParams[CampaignType.gdpr] ?? const {},
+      ccpaTargetingParams:
+          config.targetingParams[CampaignType.ccpa] ?? const {},
+      usnatTargetingParams:
+          config.targetingParams[CampaignType.usnat] ?? const {},
+      authId: authId,
     );
     final consent = hostConsent.toSPConsent();
     return consent;

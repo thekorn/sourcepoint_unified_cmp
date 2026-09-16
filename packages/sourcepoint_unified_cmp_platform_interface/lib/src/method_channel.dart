@@ -14,9 +14,10 @@ class MethodChannelSourcepointUnifiedCmp extends SourcepointUnifiedCmpPlatform {
   ConsentChangeNotifier? _notifier;
 
   @override
-  Future<SPConsent> loadMessage(SPConfig config) async {
+  Future<SPConsent> loadMessage(SPConfig config, {String? authId}) async {
     return (await methodChannel.invokeMethod<SPConsent>('loadMessage', [
       config,
+      authId,
     ]))!;
   }
 

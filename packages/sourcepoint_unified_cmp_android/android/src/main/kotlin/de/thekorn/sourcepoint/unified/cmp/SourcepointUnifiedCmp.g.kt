@@ -889,7 +889,7 @@ private open class SourcepointUnifiedCmpPigeonCodec : StandardMessageCodec() {
 
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
 interface SourcepointUnifiedCmpHostApi {
-  fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Long, runGDPRCampaign: Boolean, runCCPACampaign: Boolean, runUSNATCampaign: Boolean, callback: (Result<HostAPISPConsent>) -> Unit)
+  fun loadMessage(accountId: Long, propertyId: Long, propertyName: String, pmId: String, messageLanguage: HostAPIMessageLanguage, campaignsEnv: HostAPICampaignsEnv, messageTimeout: Long, runGDPRCampaign: Boolean, runCCPACampaign: Boolean, runUSNATCampaign: Boolean, gdprTargetingParams: Map<String, String>, ccpaTargetingParams: Map<String, String>, usnatTargetingParams: Map<String, String>, authId: String?, callback: (Result<HostAPISPConsent>) -> Unit)
   fun loadPrivacyManager(pmId: String, pmTab: HostAPIPMTab, campaignType: HostAPICampaignType, messageType: HostAPIMessageType, callback: (Result<Unit>) -> Unit)
   fun customConsentGDPR(vendors: List<String>, categories: List<String>, legIntCategories: List<String>, callback: (Result<HostAPISPConsent>) -> Unit)
   fun deleteCustomConsentGDPR(vendors: List<String>, categories: List<String>, legIntCategories: List<String>, callback: (Result<HostAPISPConsent>) -> Unit)
@@ -918,7 +918,11 @@ interface SourcepointUnifiedCmpHostApi {
             val runGDPRCampaignArg = args[7] as Boolean
             val runCCPACampaignArg = args[8] as Boolean
             val runUSNATCampaignArg = args[9] as Boolean
-            api.loadMessage(accountIdArg, propertyIdArg, propertyNameArg, pmIdArg, messageLanguageArg, campaignsEnvArg, messageTimeoutArg, runGDPRCampaignArg, runCCPACampaignArg, runUSNATCampaignArg) { result: Result<HostAPISPConsent> ->
+            val gdprTargetingParamsArg = args[10] as Map<String, String>
+            val ccpaTargetingParamsArg = args[11] as Map<String, String>
+            val usnatTargetingParamsArg = args[12] as Map<String, String>
+            val authIdArg = args[13] as String?
+            api.loadMessage(accountIdArg, propertyIdArg, propertyNameArg, pmIdArg, messageLanguageArg, campaignsEnvArg, messageTimeoutArg, runGDPRCampaignArg, runCCPACampaignArg, runUSNATCampaignArg, gdprTargetingParamsArg, ccpaTargetingParamsArg, usnatTargetingParamsArg, authIdArg) { result: Result<HostAPISPConsent> ->
               val error = result.exceptionOrNull()
               if (error != null) {
                 reply.reply(SourcepointUnifiedCmpPigeonUtils.wrapError(error))

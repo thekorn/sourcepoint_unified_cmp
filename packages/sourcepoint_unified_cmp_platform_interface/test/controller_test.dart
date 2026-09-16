@@ -30,7 +30,7 @@ class _TestController extends AbstractSourcepointConsentController
   }) async {}
 
   @override
-  Future<SPConsent> loadMessage() async => SPConsent();
+  Future<SPConsent> loadMessage({String? authId}) async => SPConsent();
 
   @override
   Future<SPConsent> customConsentGdpr({

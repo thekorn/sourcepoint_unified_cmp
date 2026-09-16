@@ -28,7 +28,7 @@ abstract class AbstractSourcepointConsentController
 
   /// Loading the First Layer Message
   /// and returns the initial consent status
-  Future<SPConsent> loadMessage();
+  Future<SPConsent> loadMessage({String? authId});
 
   /// Programmatically grant custom GDPR consent to the supplied [vendors],
   /// [categories] and [legIntCategories].

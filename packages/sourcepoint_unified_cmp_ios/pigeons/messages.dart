@@ -181,6 +181,9 @@ abstract class SourcepointUnifiedCmpHostApi {
     required int messageTimeout,
     required bool runGDPRCampaign,
     required bool runCCPACampaign,
+    required Map<String, String> gdprTargetingParams,
+    required Map<String, String> ccpaTargetingParams,
+    String? authId,
   });
 
   @async

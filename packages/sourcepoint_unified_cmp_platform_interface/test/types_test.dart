@@ -19,6 +19,7 @@ void main() {
       expect(config.messageLanguage, MessageLanguage.english);
       expect(config.campaignsEnv, CampaignsEnv.public);
       expect(config.messageTimeout, 30000);
+      expect(config.targetingParams, isEmpty);
     });
 
     test('creates with optional parameters overriding defaults', () {
@@ -36,6 +37,26 @@ void main() {
       expect(config.campaignsEnv, CampaignsEnv.stage);
       expect(config.messageTimeout, 10000);
       expect(config.campaigns, contains(CampaignType.ccpa));
+    });
+
+    test('keeps targeting params separate per campaign', () {
+      final config = SPConfig(
+        accountId: 22,
+        propertyId: 7639,
+        propertyName: 'test.property',
+        pmId: '123',
+        campaigns: [CampaignType.gdpr, CampaignType.ccpa],
+        targetingParams: {
+          CampaignType.gdpr: {'message': 'pur', 'legal': 'no'},
+          CampaignType.ccpa: {'message': 'ccpa'},
+        },
+      );
+      expect(config.targetingParams[CampaignType.gdpr], {
+        'message': 'pur',
+        'legal': 'no',
+      });
+      expect(config.targetingParams[CampaignType.ccpa], {'message': 'ccpa'});
+      expect(config.targetingParams[CampaignType.usnat], isNull);
     });
   });
 

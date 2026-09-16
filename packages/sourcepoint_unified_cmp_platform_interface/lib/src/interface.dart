@@ -74,7 +74,11 @@ abstract class SourcepointUnifiedCmpPlatform extends PlatformInterface {
   }
 
   /// show privacy manager
-  Future<SPConsent> loadMessage(SPConfig config) {
+  ///
+  /// [authId] identifies the signed-in user to Sourcepoint, so a consent
+  /// decision taken on one device or on the web is found again instead of
+  /// the message being shown a second time.
+  Future<SPConsent> loadMessage(SPConfig config, {String? authId}) {
     throw UnimplementedError('loadMessage() has not been implemented.');
   }
 
